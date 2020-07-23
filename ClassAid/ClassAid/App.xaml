@@ -5,7 +5,4 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="ClassAid.App">
-    <Application.Resources>
-
-    </Application.Resources>
 </Application>

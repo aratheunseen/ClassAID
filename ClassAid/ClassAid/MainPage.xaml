@@ -6,13 +6,27 @@
              mc:Ignorable="d"
              x:Class="ClassAid.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-        <Button Text="Click Me" Clicked="Handle_Clicked" />
-
-    </StackLayout>
-
+    <Grid Margin="20,35,20,20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout >
+            
+        </StackLayout>
+        <Label Text="Column 0, Row 0" />
+        <Label Grid.Column="1"
+           Text="Column 1, Row 0" />
+        <Label Grid.Row="1"
+           Text="Column 0, Row 1" />
+        <StackLayout Grid.Column="1" Grid.Row="1" BackgroundColor="AliceBlue">
+            <Label 
+           Text="Column 2, Row 1" />
+        </StackLayout>
+        
+    </Grid>
 </ContentPage>
