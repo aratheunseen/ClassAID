@@ -17,5 +17,11 @@ namespace ClassAid
         {
             InitializeComponent();
         }
+        int count = 0;
+        private void Handle_Clicked(object sender, EventArgs e)
+        {
+            count++;
+            ((Button)sender).Text = $"You clicked {count} times.";
+        }
     }
 }
