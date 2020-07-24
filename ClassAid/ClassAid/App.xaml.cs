@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassAid.Views;
+using System;
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,7 +15,7 @@ namespace ClassAid
             // MainPage = new MainPage();
             InitializeComponent();
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
-            MainPage = new NavigationPage(new NotesPage());
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
