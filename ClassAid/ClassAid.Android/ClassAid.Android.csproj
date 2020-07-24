@@ -91,13 +91,16 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\teacher.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassAid\ClassAid.csproj">
       <Project>{1840700F-8EB9-487E-9ED3-D76709D52989}</Project>
       <Name>ClassAid</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\teacher.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

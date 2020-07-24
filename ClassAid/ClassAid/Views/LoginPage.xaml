@@ -6,12 +6,18 @@
              mc:Ignorable="d"
              x:Class="ClassAid.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Username"/>
-            <Entry x:Name="usernameText" Placeholder="Username"/>
-            <Label Text="Password"/>
-            <Entry x:Name="passwordText" Placeholder="Password"/>
-            <Button x:Name="loginBtn" Text="Log In" Clicked="loginBtn_Clicked"/>
+        <StackLayout x:Name="MasterLayout">
+            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                <Image x:Name="logoIcon" Source="teacher.png" Margin="0,80,0,0"/>
+            </StackLayout>
+            <StackLayout x:Name="LoginEntry" Padding="45,45" VerticalOptions="StartAndExpand">
+                <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True"/>
+                <Label Text="Username"/>
+                <Entry x:Name="usernameText" Placeholder="Username"/>
+                <Label Text="Password"/>
+                <Entry x:Name="passwordText" Placeholder="Password"/>
+                <Button x:Name="loginBtn" Text="Log In" Clicked="loginBtn_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
