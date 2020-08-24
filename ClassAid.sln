@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassAid.Android", "ClassAid\ClassAid.Android\ClassAid.Android.csproj", "{4A983D72-99CC-4A80-BAE1-A09F983D49E9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassAid", "ClassAid\ClassAid\ClassAid.csproj", "{9D24C6FD-AB5B-4D48-83DC-EC40DA6C3899}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassAidUniversal", "ClassAidUniversal\ClassAidUniversal.csproj", "{2267CB52-7F86-49CA-B1F6-79B451298D64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassAidBackend", "ClassAidBackend\ClassAidBackend.csproj", "{883B6F06-6EEC-4B95-A75D-786C52FC5803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassAidBackend", "ClassAidBackend\ClassAidBackend.csproj", "{883B6F06-6EEC-4B95-A75D-786C52FC5803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassAid Raw Test", "ClassAid Raw Test\ClassAid Raw Test.csproj", "{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,16 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A983D72-99CC-4A80-BAE1-A09F983D49E9}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{9D24C6FD-AB5B-4D48-83DC-EC40DA6C3899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D24C6FD-AB5B-4D48-83DC-EC40DA6C3899}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D24C6FD-AB5B-4D48-83DC-EC40DA6C3899}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D24C6FD-AB5B-4D48-83DC-EC40DA6C3899}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2267CB52-7F86-49CA-B1F6-79B451298D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2267CB52-7F86-49CA-B1F6-79B451298D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2267CB52-7F86-49CA-B1F6-79B451298D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +23,10 @@ Global
 		{883B6F06-6EEC-4B95-A75D-786C52FC5803}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{883B6F06-6EEC-4B95-A75D-786C52FC5803}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{883B6F06-6EEC-4B95-A75D-786C52FC5803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
