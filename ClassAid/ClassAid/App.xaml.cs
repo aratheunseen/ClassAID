@@ -11,7 +11,7 @@ namespace ClassAid
         public App()
         {
             InitializeComponent();
-            MainPage = new StartPage();
+            MainPage = new NavigationPage(new StartPage());
             //MainPage = new NavigationPage(new MainPage());
         }
 

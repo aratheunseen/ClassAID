@@ -62,5 +62,10 @@ namespace ClassAid
                 btnAdd.IsEnabled = true;
             }
         }
+
+        //private void goBackButton_Clicked(object sender, EventArgs e)
+        //{
+        //    Navigation.PopAsync();
+        //}
     }
 }

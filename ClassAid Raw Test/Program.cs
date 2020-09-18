@@ -1,8 +1,6 @@
 ﻿using System;
-using ClassAidUniversal.WebConnection;
 using ClassAidUniversal.Users;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace ClassAid_Raw_Test
 {
@@ -22,7 +20,8 @@ namespace ClassAid_Raw_Test
             //sl.Add(s);
             //sl.Add(s);
             //sl.Add(s);
-            
+            Console.WriteLine("Hello");
+            //Yo Wassup
             //admin.UserBase = Newtonsoft.Json.JsonConvert.SerializeObject(sl);
             Console.WriteLine(admin.StudentList.Count());
             //admin.UserBase = Newtonsoft.Json.JsonConvert.SerializeObject(sl);
@@ -32,3 +31,4 @@ namespace ClassAid_Raw_Test
         }
     }
 }
+//Hello World
