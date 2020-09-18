@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Image x:Name="imgBanner" 
+                       Margin="50"
+                       Source="classaid_logo.png" 
+                       HeightRequest="200" 
+                       WidthRequest="200"></Image>
+                <Entry x:Name="userName" 
+                       Placeholder="Username"
+                       TextChanged="form_TextChanged"
+                       Margin="15,3"></Entry>
+                <Entry x:Name="userPass"
+                       Margin="15,3"
+                       Placeholder="Password" 
+                       TextChanged="form_TextChanged"
+                       IsPassword="True"></Entry>
+                <Entry x:Name="userId" Margin="15,3"
+                       TextChanged="form_TextChanged"
+                       Placeholder="Student ID"></Entry>
+                <Entry x:Name="adminCode" Margin="15,3"
+                       TextChanged="form_TextChanged"
+                       Placeholder="Admin Code"></Entry>
+                <StackLayout  HorizontalOptions="CenterAndExpand"
+                              Margin="15,3"
+                              Orientation="Horizontal">
+                    <Button x:Name="btnAdd" 
+                            WidthRequest="200"
+                            Margin="5"
+                            IsEnabled="False"
+                            Text="Signup" 
+                            Clicked="btnAdd_Clicked"/>
+                </StackLayout>
+                <Label HorizontalOptions="Center" TextType="Html">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Already have an account? "/>
+                            <Span Text="Log in" TextColor="#0078d4"/>
+                            <Span Text=" instead."/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label HorizontalOptions="CenterAndExpand" TextType="Html">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Mistakenly here? "/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button ></Button>
+                </StackLayout>
+                <Label HorizontalOptions="Center"
+                       x:Name="resultText"
+                       TextColor="GreenYellow">
+                    
+                </Label>
+                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -16,7 +16,7 @@ namespace ClassAidUniversal.WebConnection
             request.AddHeader("Content-Type", "application/json");
             request.AddJsonBody(JsonConvert.SerializeObject(admin));
             var response = client.Post(request);
-            return response.Content; // Raw content as string
+            return response.Content;
             
         }
     }

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.StartPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Margin="50">
+                <Image x:Name="imgBanner" 
+                       Margin="50"
+                       Source="classaid_logo.png" 
+                       HeightRequest="200" 
+                       WidthRequest="200"></Image>
+
+                <Label HorizontalOptions="CenterAndExpand">Are you a class representative?</Label>
+                <Button x:Name="adminBtn" 
+                        Clicked="adminBtn_Clicked"
+                        Text="Continue as an Admin"/>
+                <Label HorizontalOptions="CenterAndExpand">Are you a genarel student?</Label>
+                <Button x:Name="studentBtn" 
+                        Clicked="studentBtn_Clicked"
+                        Text="Continue as a Student"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1"
+                         Margin="20"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                <Label>Read about our privacy policy.</Label>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

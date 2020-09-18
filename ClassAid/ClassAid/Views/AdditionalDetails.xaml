@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.Views.AdditionalDetails">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Image x:Name="imgBanner" 
+                       Margin="50"
+                       Source="classaid_logo.png" 
+                       HeightRequest="200" 
+                       WidthRequest="200"></Image>
+                <Entry x:Name="userRealName" 
+                       Placeholder="Name"
+                       Margin="15,3"></Entry>
+                <Entry x:Name="userEmail"
+                       Margin="15,3"
+                       Placeholder="Email" 
+                       IsPassword="True" Keyboard="Email"></Entry>
+                <Entry x:Name="userPhone" Margin="15,3"
+                       Placeholder="Phone"
+                       IsTextPredictionEnabled="True"
+                       Keyboard="Numeric"></Entry>
+                <StackLayout  HorizontalOptions="CenterAndExpand"
+                              Margin="15,3"
+                              Orientation="Horizontal">
+                    <Button x:Name="completeSignUp" 
+                            WidthRequest="200"
+                            Margin="5"
+                            Text="Complete Sign Up" 
+                            Clicked="completeSignUp_Clicked"/>
+                </StackLayout>
+                <Label HorizontalOptions="Center"
+                       x:Name="resultText"
+                       TextColor="GreenYellow">
+                </Label>
+                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
