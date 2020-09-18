@@ -19,7 +19,7 @@ namespace ClassAid
 
         private void adminBtn_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            Navigation.PushAsync(new MainPage());
         }
 
         private void studentBtn_Clicked(object sender, EventArgs e)
