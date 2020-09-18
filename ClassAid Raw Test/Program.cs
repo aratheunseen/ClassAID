@@ -22,7 +22,6 @@ namespace ClassAid_Raw_Test
             //sl.Add(s);
             //sl.Add(s);
             //sl.Add(s);
-            Console.WriteLine("Iamawesome");
             
             //admin.UserBase = Newtonsoft.Json.JsonConvert.SerializeObject(sl);
             Console.WriteLine(admin.StudentList.Count());
