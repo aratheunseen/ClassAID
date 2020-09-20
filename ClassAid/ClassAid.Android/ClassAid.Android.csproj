@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <Compile Include="Models\Toast_Android.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -118,5 +119,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

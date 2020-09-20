@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ClassAid.Models;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -18,5 +19,10 @@ namespace ClassAid.Views.AdminViews
             userPhone.Text = admin.Phone.ToString();
             userID.Text = admin.ID;
         }
-    }
+        protected override bool OnBackButtonPressed()
+        {
+            DependencyService.Get<Toast>().Show("This is a message. LOL.");
+            return true;
+        }
+    }    
 }
