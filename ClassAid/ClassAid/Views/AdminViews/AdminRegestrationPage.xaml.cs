@@ -1,17 +1,10 @@
 ﻿using ClassAid.DataContex;
-using ClassAid.Models.Users;
-using ClassAid.Views;
-using Firebase.Database.Query;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid.Views
+namespace ClassAid.Views.AdminViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminRegestrationPage : ContentPage
@@ -25,12 +18,6 @@ namespace ClassAid.Views
             dB = new FireSharpDB(server, authKey);
             Routing.RegisterRoute("aboutpage", typeof(AboutPage));
         }
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    this.Animate("", (s) => Layout(new Rectangle(((1 - s) * Width), Y, Width, Height)), 0, 600, Easing.SpringIn, null, null);
-
-        //}
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
             Admin admin = new Admin(userName.Text, userPass.Text);
@@ -63,9 +50,5 @@ namespace ClassAid.Views
             }
         }
 
-        //private void goBackButton_Clicked(object sender, EventArgs e)
-        //{
-        //    Navigation.PopAsync();
-        //}
     }
 }

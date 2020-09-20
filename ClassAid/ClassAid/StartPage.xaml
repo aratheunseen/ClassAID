@@ -12,6 +12,7 @@
             <StackLayout HorizontalOptions="Center"
                      VerticalOptions="Center"
                      Margin="50">
+                <!--TODO: Fix Image-->
                 <Image x:Name="imgBanner" 
                        Margin="50"
                        Source="classaid_logo.png" 
@@ -19,6 +20,7 @@
                        WidthRequest="200"></Image>
 
                 <Label HorizontalOptions="CenterAndExpand">Are you a class representative?</Label>
+                <!--TODO: Redesign Buttons and labels-->
                 <Button x:Name="adminBtn" 
                         Clicked="adminBtn_Clicked"
                         Text="Continue as an Admin"/>
@@ -26,13 +28,19 @@
                 <Button x:Name="studentBtn" 
                         Clicked="studentBtn_Clicked"
                         Text="Continue as a Student"/>
+                
             </StackLayout>
             <StackLayout Grid.Row="1"
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
+                <Button x:Name="bypassBtn" 
+                        HorizontalOptions="Center"
+                        Clicked="bypassBtn_Clicked"
+                        Text="Bypass Btn"/>
                 <Label x:Name="swapText">Read about our privacy policy.</Label>
-                <BoxView Color="Teal">
+                <BoxView Color="Teal"
+                         WidthRequest="200">
                     <BoxView.GestureRecognizers>
                         <SwipeGestureRecognizer Direction="Left" 
                                                 Swiped="SwipeGestureRecognizer_Swiped"/>
