@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="MainPage.xaml">
+    <EmbeddedResource Update="Views\AdminRegestrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="StartPage.xaml">
@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Update="Views\AdminRegestrationPage.xaml.cs">
+      <DependentUpon>AdminRegestrationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
