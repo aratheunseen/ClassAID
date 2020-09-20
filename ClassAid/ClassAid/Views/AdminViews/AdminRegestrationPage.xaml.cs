@@ -31,6 +31,7 @@ namespace ClassAid.Views.AdminViews
             }
             catch (Exception)
             {
+                // TODO: Custom error page with SVG
                 resultText.Text = "Something bad happened. Please check back in a short.";
             }
 
