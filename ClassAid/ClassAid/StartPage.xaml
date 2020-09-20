@@ -31,8 +31,17 @@
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Label>Read about our privacy policy.</Label>
+                <Label x:Name="swapText">Read about our privacy policy.</Label>
+                <BoxView Color="Teal">
+                    <BoxView.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Left" 
+                                                Swiped="SwipeGestureRecognizer_Swiped"/>
+                        <SwipeGestureRecognizer Direction="Right"
+                                                Swiped="SwipeGestureRecognizer_Swiped_1"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
             </StackLayout>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>

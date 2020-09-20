@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid
+namespace ClassAid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class AdminRegestrationPage : ContentPage
     {
         FireSharpDB dB;
-        public MainPage()
+        public AdminRegestrationPage()
         {
             InitializeComponent();
             string server = "https://classaidapp.firebaseio.com/";
