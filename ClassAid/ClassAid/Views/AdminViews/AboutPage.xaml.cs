@@ -7,8 +7,10 @@ using ClassAid.Models;
 
 namespace ClassAid.Views.AdminViews
 {
+
     public partial class AboutPage : ContentPage
     {
+        private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
         public AboutPage(Admin admin)
@@ -20,9 +22,15 @@ namespace ClassAid.Views.AdminViews
             userID.Text = admin.ID;
         }
         protected override bool OnBackButtonPressed()
-        {
-            DependencyService.Get<Toast>().Show("This is a message. LOL.");
+        {            
+            if (!canExit)
+            {
+                DependencyService.Get<Toast>().Show("Press again to Exit.");
+                canExit = true;
+            }
+            else
+                System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
             return true;
         }
-    }    
+    }
 }

@@ -18,17 +18,15 @@
                        Source="classaid_logo.png" 
                        HeightRequest="200" 
                        WidthRequest="200"></Image>
-
-                <Label HorizontalOptions="CenterAndExpand">Are you a class representative?</Label>
                 <!--TODO: Redesign Buttons and labels-->
+                <Label HorizontalOptions="CenterAndExpand">Are you a class representative?</Label>
                 <Button x:Name="adminBtn" 
                         Clicked="adminBtn_Clicked"
                         Text="Continue as an Admin"/>
                 <Label HorizontalOptions="CenterAndExpand">Are you a genarel student?</Label>
                 <Button x:Name="studentBtn" 
                         Clicked="studentBtn_Clicked"
-                        Text="Continue as a Student"/>
-                
+                        Text="Continue as a Student"/>                
             </StackLayout>
             <StackLayout Grid.Row="1"
                          Margin="20"
