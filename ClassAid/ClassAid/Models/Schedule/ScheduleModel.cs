@@ -11,8 +11,8 @@ namespace ClassAid.Models.Schedule
     {
         public string Subject { get; set; }
         public Teacher Teacher { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
         public string CourseCode { get; set; }
     }
 }

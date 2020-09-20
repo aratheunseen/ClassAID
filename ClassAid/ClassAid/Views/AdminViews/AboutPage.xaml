@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.AdminViews.AboutPage"
              xmlns:vm="clr-namespace:ClassAid.ViewModels"
-             NavigationPage.HasNavigationBar="False"
-             Title="{Binding Title}">
+             xmlns:local="clr-namespace:ClassAid.Models.Schedule"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,27 +17,44 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" 
-                     VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start" 
-                         VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" 
-                             VerticalOptions="FillAndExpand">
-                    <Label FontSize="Header">
-                        Jon Doe
-                    </Label>
-                </ContentView>
-            </StackLayout>
+        <StackLayout Orientation="Vertical" Padding="10">
+            <Label x:Name="userName" FontSize="Large"/>
+            <Label x:Name="userMail"/>
+            <Label x:Name="userPhone"/>
+            <Label x:Name="userID"/>
+            <!--<Label Text="Press back btn to see a toast."/>-->
+            <Entry x:Name="courseCode"
+                       Placeholder="Course Code"/>
+            <Entry x:Name="subjectName"
+                       Placeholder="Subject Name"/>
+            <Picker Title="Select Teacher"
+                        x:Name="teacherPeaker"
+                        ItemDisplayBinding="{Binding Name}"/>
+
+            <TimePicker x:Name="startDate"/>
+            <TimePicker x:Name="endDate"/>
+            <Button  x:Name="addScheduleBtn"
+                     Text="Add"
+                     HorizontalOptions="Start"
+                     Clicked="addScheduleBtn_Clicked"/>
         </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label x:Name="userMail"></Label>
-                <Label x:Name="userPhone"></Label>
-                <Label x:Name="userID"></Label>
-                <Label Text="Press back btn to see a toast."></Label>
-            </StackLayout>
-        </ScrollView>
+        <RefreshView Grid.Row="1"
+                     x:Name="scheduleRefreshView"
+                     Refreshing="scheduleRefreshView_Refreshing">
+            <CollectionView x:Name="scheduleView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:ScheduleModel">
+                        <StackLayout Margin="5">
+                            <Label Margin="3" Text="{Binding Subject}"/>
+                            <Label Margin="3" Text="{Binding Teacher.Name}"/>
+                            <Label Margin="3" Text="{Binding CourseCode}"/>
+                            <Label Margin="3" Text="{Binding StartTime}"/>
+                            <Label Margin="3" Text="{Binding StartTime}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </Grid>
 
 </ContentPage>
