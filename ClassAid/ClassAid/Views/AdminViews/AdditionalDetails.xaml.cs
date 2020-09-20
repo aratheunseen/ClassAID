@@ -6,7 +6,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid.Views
+namespace ClassAid.Views.AdminViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage

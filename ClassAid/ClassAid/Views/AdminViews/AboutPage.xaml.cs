@@ -4,7 +4,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid.Views
+namespace ClassAid.Views.AdminViews
 {
     public partial class AboutPage : ContentPage
     {
