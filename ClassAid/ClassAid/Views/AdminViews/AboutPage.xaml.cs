@@ -1,12 +1,10 @@
 ﻿using ClassAid.Models.Users;
 using System;
-using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using ClassAid.Models;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
-using System.Collections.Generic;
+using ClassAid.Views.AdminViews.Settings;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -14,6 +12,7 @@ namespace ClassAid.Views.AdminViews
     public partial class AboutPage : ContentPage
     {
         public static ObservableCollection<ScheduleModel> scheduleCores;
+        public static ObservableCollection<Teacher> teachers;
         private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
@@ -21,21 +20,15 @@ namespace ClassAid.Views.AdminViews
         {
             scheduleCores = new ObservableCollection<ScheduleModel>();
             InitializeComponent();
-            
-            List<Teacher> tList = new List<Teacher>()
+
+            teachers = new ObservableCollection<Teacher>()
             {
                 new Teacher(){Name="Nahid Hasan", Designation="Lect"},
-                new Teacher(){Name="Shahrirar Saif", Designation="Lect"},
-                new Teacher(){Name="Sarwar Parvej", Designation="Ast. Proff"}
+                new Teacher(){Name="Shahriar Saif", Designation="Lect"},
+                new Teacher(){Name="Sarwar Parvez", Designation="Ast. Proff"}
             };
-            teacherPeaker.ItemsSource = tList;
-            
-            //scheduleCores = new ObservableCollection<ScheduleModel>()
-            //{
-            //    new ScheduleModel(){ CourseCode="211", Subject="DS",Teacher=tList[0]}
-            //};
 
-
+            teacherListView.ItemsSource = teachers;
             this.admin = admin;
             userName.Text = admin.Name;
             userMail.Text = admin.Email;
@@ -55,21 +48,20 @@ namespace ClassAid.Views.AdminViews
             return true;
         }
 
-        private void addScheduleBtn_Clicked(object sender, EventArgs e)
-        {
-            scheduleCores.Add(new ScheduleModel()
-            {
-                Teacher = (Teacher)teacherPeaker.SelectedItem,
-                StartTime = startDate.Time,
-                EndTime = endDate.Time,
-                Subject = subjectName.Text,
-                CourseCode = courseCode.Text
-            });
-        }
 
         private void scheduleRefreshView_Refreshing(object sender, EventArgs e)
         {
-            scheduleRefreshView.IsRefreshing = false;
+           scheduleRefreshView.IsRefreshing = false;
+        }
+
+        private void teacherAddBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddTeacherPage(teachers));
+        }
+
+        private void scheduleAddBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddSchedulePage(scheduleCores, teachers));
         }
     }
 }

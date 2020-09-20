@@ -16,13 +16,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <StackLayout Orientation="Vertical" Padding="10">
             <Label x:Name="userName" FontSize="Large"/>
             <Label x:Name="userMail"/>
             <Label x:Name="userPhone"/>
             <Label x:Name="userID"/>
-            <!--<Label Text="Press back btn to see a toast."/>-->
+        </StackLayout>
+        <!--<Label Text="Press back btn to see a toast."/>-->
+        <!--<StackLayout>
             <Entry x:Name="courseCode"
                        Placeholder="Course Code"/>
             <Entry x:Name="subjectName"
@@ -37,24 +41,61 @@
                      Text="Add"
                      HorizontalOptions="Start"
                      Clicked="addScheduleBtn_Clicked"/>
-        </StackLayout>
+        </StackLayout>-->
         <RefreshView Grid.Row="1"
                      x:Name="scheduleRefreshView"
                      Refreshing="scheduleRefreshView_Refreshing">
             <CollectionView x:Name="scheduleView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="local:ScheduleModel">
-                        <StackLayout Margin="5">
+                        <StackLayout Margin="5" 
+                                     Padding="5"
+                                     BackgroundColor="Beige">
                             <Label Margin="3" Text="{Binding Subject}"/>
                             <Label Margin="3" Text="{Binding Teacher.Name}"/>
                             <Label Margin="3" Text="{Binding CourseCode}"/>
                             <Label Margin="3" Text="{Binding StartTime}"/>
-                            <Label Margin="3" Text="{Binding StartTime}"/>
+                            <Label Margin="3" Text="{Binding EndTime}"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
+        <CollectionView x:Name="teacherListView"
+                   Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:Teacher">
+                    <StackLayout Padding="2" >
+                        <Grid Margin="3"
+                              BackgroundColor="LawnGreen">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Name}"
+                                   Margin="3"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Margin="3"
+                                   Text="{Binding Designation}"
+                                   FontAttributes="Italic"/>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <StackLayout Orientation="Horizontal"
+                     Grid.Row="3"
+                     Margin="5">
+            <Button Text="Add Teacher"
+                    Margin="2"
+                    x:Name="teacherAddBtn"
+                    Clicked="teacherAddBtn_Clicked"/>
+            <Button Text="Add Schedule"
+                    Margin="2"
+                    x:Name="scheduleAddBtn"
+                    Clicked="scheduleAddBtn_Clicked"/>
+        </StackLayout>
     </Grid>
 
 </ContentPage>
