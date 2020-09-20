@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.Views.AdminViews.Settings.AddSchedulePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="courseCode"
+                   TextChanged="inputTextChanged"
+                       Placeholder="Course Code"/>
+            <Entry x:Name="subjectName"
+                   TextChanged="inputTextChanged"
+                       Placeholder="Subject Name"/>
+            <Picker Title="Select Teacher"
+                        x:Name="teacherPeaker"
+                        ItemDisplayBinding="{Binding Name}"/>
+
+            <TimePicker x:Name="startDate"/>
+            <TimePicker x:Name="endDate"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="addTeacherBtn" 
+                    IsEnabled="False"
+                    Text="Add" 
+                    Margin="5"
+                    HorizontalOptions="Start"
+                        Clicked="addScheduleBtn_Clicked"/>
+                <Button x:Name="goBackBtn" 
+                        Clicked="goBackBtn_Clicked"
+                        BackgroundColor="White"
+                        TextColor="BlueViolet"
+                        Text="Back" 
+                        Margin="5"
+                        HorizontalOptions="Start"/>
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
