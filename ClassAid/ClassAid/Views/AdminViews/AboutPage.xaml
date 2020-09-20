@@ -35,6 +35,7 @@
                 <Label x:Name="userMail"></Label>
                 <Label x:Name="userPhone"></Label>
                 <Label x:Name="userID"></Label>
+                <Label Text="Press back btn to see a toast."></Label>
             </StackLayout>
         </ScrollView>
     </Grid>
