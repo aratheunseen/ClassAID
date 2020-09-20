@@ -2,11 +2,6 @@
 using ClassAid.Views.AdminViews;
 using ClassAid.Views.StudentViews;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,7 +22,7 @@ namespace ClassAid
 
         private void studentBtn_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new StudentRegestrationPage());
         }
 
         private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
@@ -48,8 +43,6 @@ namespace ClassAid
             admin.Name = "Jon Doe";
             admin.Phone = 01911104587;
             Application.Current.MainPage = new AboutPage(admin);
-
-
         }
     }
 }

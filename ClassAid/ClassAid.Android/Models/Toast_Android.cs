@@ -7,7 +7,7 @@ namespace ClassAid.Droid.Models
     {
         public void Show(string message)
         {
-            Android.Widget.Toast.MakeText(Android.App.Application.Context, message, ToastLength.Long).Show();
+            Toast.MakeText(Android.App.Application.Context, message, ToastLength.Long).Show();
         }
     }
 }
