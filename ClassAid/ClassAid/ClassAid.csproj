@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.2" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.2" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />  
