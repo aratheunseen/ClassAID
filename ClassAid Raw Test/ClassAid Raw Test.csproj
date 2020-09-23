@@ -6,8 +6,4 @@
     <RootNamespace>ClassAid_Raw_Test</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ClassAidUniversal\ClassAidUniversal.csproj" />
-  </ItemGroup>
-
 </Project>
