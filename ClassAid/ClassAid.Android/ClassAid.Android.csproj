@@ -56,6 +56,9 @@
     <BundleAssemblies>false</BundleAssemblies>
     <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
     <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\Mahmudul Hasan\AppData\Local\Xamarin\Mono for Android\Keystore\LavenderX\LavenderX.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>mahmud.com</AndroidSigningStorePass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
