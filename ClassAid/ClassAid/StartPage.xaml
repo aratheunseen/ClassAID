@@ -50,7 +50,7 @@
                         HorizontalOptions="Center"
                         Clicked="bypassBtn_Clicked"
                         Text="Bypass Btn"/>
-                <Label x:Name="swapText">Read about our privacy policy.</Label>
+                <Label x:Name="swapText">Read about our privacy policy and TOS</Label>
                 <BoxView Color="Teal"
                          WidthRequest="200">
                     <BoxView.GestureRecognizers>
