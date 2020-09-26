@@ -9,6 +9,7 @@
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
                 <Image x:Name="imgBanner" 
                        Margin="50"
+                       
                        Source="classaid_logo.png" 
                        HeightRequest="200" 
                        WidthRequest="200"></Image>
@@ -27,10 +28,11 @@
                 <Entry x:Name="adminCode" Margin="15,3"
                        TextChanged="form_TextChanged"
                        Placeholder="Admin Code"></Entry>
+                
                 <Components:ClassAidEntry Margin="15,3"
-                    Placeholder="Hola">
-                    
-                </Components:ClassAidEntry>
+                                          Placeholder="Custom Entry"/>
+                
+
                 <StackLayout  HorizontalOptions="CenterAndExpand"
                               Margin="15,3"
                               Orientation="Horizontal">

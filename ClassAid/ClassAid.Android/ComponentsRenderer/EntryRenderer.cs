@@ -24,12 +24,11 @@ namespace ClassAid.Droid.ComponentsRenderer
 
             if (Control != null)
             {
-                GradientDrawable gd = new GradientDrawable();
-                gd.SetColor(global::Android.Graphics.Color.Transparent);
+                GradientDrawable gd = new GradientDrawable();                
+                gd.SetColor(Android.Graphics.Color.Transparent);
                 Control.SetBackgroundDrawable(gd);
-                Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
-                Control.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.White));
-                
+                ////Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                //Control.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.White));
             }
         }
     }
