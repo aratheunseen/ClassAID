@@ -17,7 +17,7 @@ namespace ClassAid
 
         private void adminBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AdminRegistrationPage());
+            Navigation.PushAsync(new AdminLoginPage());
         }
 
         private void studentBtn_Clicked(object sender, EventArgs e)
