@@ -1,43 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage"
-             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
-             NavigationPage.HasNavigationBar="False">
+             x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+        <StackLayout BackgroundColor="#F7F7FF">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="40">
                 <Image x:Name="imgBanner" 
-                       Margin="50"                       
-                       Source="classaid_logo.png" 
-                       HeightRequest="200" 
-                       WidthRequest="200"></Image>
-                <Entry x:Name="userName" 
-                       Placeholder="Username"
-                       TextChanged="form_TextChanged"
-                       Margin="15,3"></Entry>
-                <Entry x:Name="userPass"
-                       Margin="15,3"
+                       Source="classaid_demo.png" 
+                       HeightRequest="120" 
+                       WidthRequest="120"></Image>
+                <StackLayout Grid.Row="1"
+                         Margin="10"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                </StackLayout>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                    <Entry x:Name="userName" 
+                           Placeholder="Username"
+                           TextChanged="form_TextChanged"
+                           Margin="15,2"
+                           ></Entry>
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                    <Entry x:Name="userPass"
+                       Margin="15,2"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
                        IsPassword="True"></Entry>
-                <Entry x:Name="userId" Margin="15,3"
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Entry x:Name="userId" Margin="15,3"
                        TextChanged="form_TextChanged"
                        Placeholder="Student ID"></Entry>
-                <Entry x:Name="adminCode" Margin="15,3"
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                    <Entry x:Name="adminCode"
+                       Margin="15,2"
                        TextChanged="form_TextChanged"
                        Placeholder="Admin Code"></Entry>
+                </Frame>
                 
-                <Components:ClassAidEntry Margin="15,3"
-                                          Placeholder="Custom Entry"/>
-                
+                <Label Text="By clicking sign up, you follow our privacy policy and terms of services." Padding="15"/>
+
 
                 <StackLayout  HorizontalOptions="CenterAndExpand"
-                              Margin="15,3"
+                              Margin="15,2"
                               Orientation="Horizontal">
                     <Button x:Name="btnAdd" 
-                            WidthRequest="200"
-                            Margin="5"
+                            WidthRequest="300"
+                            BackgroundColor="#8576F5"
+                            CornerRadius="15"
                             IsEnabled="False"
                             Text="Signup" 
                             Clicked="btnAdd_Clicked"/>
@@ -52,13 +64,13 @@
                     </Label.FormattedText>
                 </Label>
                 <StackLayout Orientation="Horizontal">
-                    <Label HorizontalOptions="CenterAndExpand" TextType="Html">
+                    <!--<Label HorizontalOptions="CenterAndExpand" TextType="Html">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Mistakenly here? "/>
                             </FormattedString>
                         </Label.FormattedText>
-                    </Label>
+                    </Label>-->
                     <!--<Button x:Name="goBackButton" 
                             Text="Go Back"
                             Clicked="goBackButton_Clicked"/>-->
