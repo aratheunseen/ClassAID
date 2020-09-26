@@ -4,6 +4,19 @@
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <!--Change to #AEB0BE if neccecary-->
+            <Setter Property="TextColor" Value="#3955a3"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#8576F5"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
             <StackLayout HorizontalOptions="Center"
@@ -16,40 +29,35 @@
                        WidthRequest="150"></Image>
             </StackLayout>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
-
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
-                       Placeholder="Username"
+                       Style="{StaticResource ClassAidEntryDesign}"
                        TextChanged="form_TextChanged"
-                       TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userPass"
-                       Margin="15,3"
+                       Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
-                       TextColor="#AEB0BE"
                        IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userId" 
-                       Margin="15,3"
                        TextChanged="form_TextChanged"
-                       TextColor="#AEB0BE"
+                       Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Student ID"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="adminCode"
-                       Margin="15,3"
+                       Style="{StaticResource ClassAidEntryDesign}"
                        TextChanged="form_TextChanged"
-                       TextColor="#AEB0BE"
                        Placeholder="Admin Code"></Components:ClassAidEntry>
                 </Frame>
 
-                <Label Text="By clicking sign up, you follow our privacy policy and terms of services."  TextColor="#AEB0BE" Padding="15"/>
+                <Label Text="By clicking sign up, you follow our privacy policy and terms of services."  
+                       TextColor="#AEB0BE" 
+                       Padding="15"/>
 
 
                 <StackLayout  HorizontalOptions="CenterAndExpand"
@@ -83,7 +91,8 @@
                        x:Name="resultText"
                        TextColor="GreenYellow">
                 </Label>
-                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
+                <ActivityIndicator x:Name="activityIndicator" 
+                                   IsRunning="False" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
