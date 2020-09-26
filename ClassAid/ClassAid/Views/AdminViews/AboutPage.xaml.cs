@@ -13,12 +13,15 @@ namespace ClassAid.Views.AdminViews
     {
         public static ObservableCollection<ScheduleModel> scheduleCores;
         public static ObservableCollection<Teacher> teachers;
+        public static ObservableCollection<EventModel> eventModels;
+
         private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
         public AboutPage(Admin admin)
         {
             scheduleCores = new ObservableCollection<ScheduleModel>();
+            eventModels = new ObservableCollection<EventModel>();
             InitializeComponent();
 
             teachers = new ObservableCollection<Teacher>()
@@ -28,13 +31,16 @@ namespace ClassAid.Views.AdminViews
                 new Teacher(){Name="Sarwar Parvez", Designation="Ast. Proff"}
             };
 
-            teacherListView.ItemsSource = teachers;
+            
             this.admin = admin;
             userName.Text = admin.Name;
             userMail.Text = admin.Email;
             userPhone.Text = admin.Phone.ToString();
             userID.Text = admin.ID;
+
+            teacherListView.ItemsSource = teachers;
             scheduleView.ItemsSource = scheduleCores;
+            eventsListView.ItemsSource = eventModels;
         }
         protected override bool OnBackButtonPressed()
         {            
@@ -66,7 +72,7 @@ namespace ClassAid.Views.AdminViews
 
         private void eventAddBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddEventPage());
+            Navigation.PushAsync(new AddEventPage(eventModels));
         }
     }
 }
