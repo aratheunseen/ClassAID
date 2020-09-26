@@ -4,6 +4,7 @@ using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Firebase.Database;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -27,7 +28,6 @@ namespace ClassAid.Views.AdminViews
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
             Admin admin = new Admin(userName.Text, userPass.Text);
-            admin.ID = userId.Text;
             try
             {
                 activityIndicator.IsRunning = true;
@@ -45,7 +45,6 @@ namespace ClassAid.Views.AdminViews
         private void form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) ||
-                string.IsNullOrWhiteSpace(userId.Text) ||
                 string.IsNullOrWhiteSpace(userPass.Text))
             {
                 btnAdd.IsEnabled = false;
@@ -54,6 +53,12 @@ namespace ClassAid.Views.AdminViews
             {
                 btnAdd.IsEnabled = true;
             }
+        }
+
+        private void adminLoginBypassBtn_Clicked(object sender, EventArgs e)
+        {
+            Admin ad = new Admin("HolaSenorita", "ILoveYou");
+            Navigation.PushAsync(new AdditionalDetails(ad,new FirebaseClient("LOL")));
         }
     }
 }
