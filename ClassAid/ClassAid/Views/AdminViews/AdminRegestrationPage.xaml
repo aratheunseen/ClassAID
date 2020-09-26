@@ -8,8 +8,7 @@
         <StackLayout>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
                 <Image x:Name="imgBanner" 
-                       Margin="50"
-                       
+                       Margin="50"                       
                        Source="classaid_logo.png" 
                        HeightRequest="200" 
                        WidthRequest="200"></Image>

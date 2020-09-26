@@ -1,16 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentViews.StudentLoginPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Don't have any account? Sign up is just a step away."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="regBtn"
-                        Text="Sign Up"/>
-            </StackLayout>
+            <Label VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account? "/>
+                        <Span Text="Sign up" TextColor="#4f6bed">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="gst"/>
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text=" instead."/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
