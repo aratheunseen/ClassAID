@@ -11,7 +11,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Don't have an account? "/>
-                        <Span Text="Sign up" TextColor="#4f6bed">
+                        <Span Text="Sign up" TextColor="#0078d4">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer x:Name="gst"/>
                             </Span.GestureRecognizers>

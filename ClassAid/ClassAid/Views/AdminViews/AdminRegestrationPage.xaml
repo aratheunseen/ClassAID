@@ -1,36 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
+            <StackLayout HorizontalOptions="Start"
+                         VerticalOptions="Start">
+                <Image x:Name="imgBanner"                        
+                       Opacity=".50"
+                       Source="classaid_demo.png" 
+                       HeightRequest="100" 
+                       WidthRequest="100"></Image>
+            </StackLayout>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="40">
-                <Image x:Name="imgBanner" 
-                       Margin="50"
-                       
-                       Source="classaid_logo.png" 
-                       HeightRequest="200" 
-                       WidthRequest="200"></Image>
-                <Entry x:Name="userName" 
+                
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                    <Components:ClassAidEntry x:Name="userName" 
                        Placeholder="Username"
                        TextChanged="form_TextChanged"
-                       Margin="15,3"></Entry>
-                <Entry x:Name="userPass"
+                       Margin="15,3"></Components:ClassAidEntry>
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                    <Components:ClassAidEntry x:Name="userPass"
                        Margin="15,3"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
-                       IsPassword="True"></Entry>
+                       IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                        <Entry x:Name="userId" Margin="15,3"
+                    <Components:ClassAidEntry x:Name="userId" Margin="15,3"
                        TextChanged="form_TextChanged"
-                       Placeholder="Student ID"></Entry>
+                       Placeholder="Student ID"></Components:ClassAidEntry>
                 </Frame>
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                    <Entry x:Name="adminCode"
+                    <Components:ClassAidEntry x:Name="adminCode"
                        Margin="15,2"
                        TextChanged="form_TextChanged"
-                       Placeholder="Admin Code"></Entry>
+                       Placeholder="Admin Code"></Components:ClassAidEntry>
                 </Frame>
                 
                 <Label Text="By clicking sign up, you follow our privacy policy and terms of services." Padding="15"/>
@@ -51,27 +61,20 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Already have an account? "/>
-                            <Span Text="Log in" TextColor="#0078d4"/>
+                            <Span Text="Log in" TextColor="#0078d4">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="adminLoginGst"/>
+                                </Span.GestureRecognizers>
+                            </Span>
                             <Span Text=" instead."/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
                 <StackLayout Orientation="Horizontal">
-                    <!--<Label HorizontalOptions="CenterAndExpand" TextType="Html">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Mistakenly here? "/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>-->
-                    <!--<Button x:Name="goBackButton" 
-                            Text="Go Back"
-                            Clicked="goBackButton_Clicked"/>-->
                 </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
-
                 </Label>
                 <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
             </StackLayout>
