@@ -36,16 +36,16 @@
                        TextChanged="form_TextChanged"
                        Placeholder="Student ID"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame BorderColor="#8576F5" 
+                       BackgroundColor="#F7F7FF" 
+                       Padding="0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="adminCode"
                        Margin="15,2"
                        TextChanged="form_TextChanged"
                        Placeholder="Admin Code"></Components:ClassAidEntry>
                 </Frame>
-                
+
                 <Label Text="By clicking sign up, you follow our privacy policy and terms of services." Padding="15"/>
-
-
                 <StackLayout  HorizontalOptions="CenterAndExpand"
                               Margin="15,2"
                               Orientation="Horizontal">

@@ -3,7 +3,6 @@ using System;
 using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ClassAid.CustomComponents;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -53,16 +52,6 @@ namespace ClassAid.Views.AdminViews
             {
                 btnAdd.IsEnabled = true;
             }
-        }
-
-        private void userName_PropertyChanged()
-        {
-
-        }
-
-        private void Frame_SizeChanged()
-        {
-
         }
     }
 }
