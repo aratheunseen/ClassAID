@@ -56,11 +56,12 @@
                               Margin="15,3"
                               Orientation="Horizontal">
                     <Button x:Name="btnAdd" 
-                            WidthRequest="300"
+                            WidthRequest="250"
+                            MinimumWidthRequest="250"
                             BackgroundColor="#8576F5"
                             CornerRadius="25"
                             IsEnabled="False"
-                            Text="Signup" 
+                            Text="Sign Up" 
                             Clicked="btnAdd_Clicked"/>
                 </StackLayout>
                 <Label HorizontalOptions="Center" TextType="Html">

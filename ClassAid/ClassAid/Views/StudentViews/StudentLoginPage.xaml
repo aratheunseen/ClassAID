@@ -1,25 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentViews.StudentLoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label VerticalOptions="CenterAndExpand" 
+        <StackLayout BackgroundColor="#F7F7FF">
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                <Image x:Name="imgBanner" 
+                       Margin="40"
+                       Opacity="1"
+                       Source="classaid_demo.png" 
+                       HeightRequest="150" 
+                       WidthRequest="150"></Image>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
+
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                    <Components:ClassAidEntry x:Name="userId" 
+                       Placeholder="Student ID"
+                       TextColor="#AEB0BE"
+                       Margin="15,3"></Components:ClassAidEntry>
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                    <Components:ClassAidEntry x:Name="userPass"
+                       Margin="15,3"
+                       Placeholder="Password" 
+                       TextColor="#AEB0BE"
+                       IsPassword="True"></Components:ClassAidEntry>
+                </Frame>
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="teamCode" 
+                       Margin="15,3"
+                       TextColor="#AEB0BE"
+                       Placeholder="Team Code"></Components:ClassAidEntry>
+                </Frame>
+
+                <Label/>
+
+
+                <StackLayout  HorizontalOptions="CenterAndExpand"
+                              Margin="15,3"
+                              Orientation="Horizontal">
+                    <Button x:Name="btnAdd" 
+                            WidthRequest="250"
+                            MinimumWidthRequest="250"
+                            BackgroundColor="#8576F5"
+                            CornerRadius="25"
+                            IsEnabled="False"
+                            Text="Sign In" />
+                </StackLayout>
+                <Label VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                    LineBreakMode="WordWrap">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Don't have an account? "/>
-                        <Span Text="Sign up" TextColor="#0078d4">
-                            <Span.GestureRecognizers>
-                                <TapGestureRecognizer x:Name="gst"/>
-                            </Span.GestureRecognizers>
-                        </Span>
-                        <Span Text=" instead."/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don't have an account? " TextColor="#AEB0BE"/>
+                            <Span Text="Sign up" TextColor="#8576F5">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="gst"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" instead." TextColor="#AEB0BE"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Orientation="Horizontal">
+                </StackLayout>
+                <Label HorizontalOptions="Center"
+                       x:Name="resultText"
+                       TextColor="GreenYellow">
+                </Label>
+                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
