@@ -40,7 +40,6 @@ namespace ClassAid.Views.AdminViews
                 // TODO: Custom error page with SVG
                 resultText.Text = "Something bad happened. Please check back in a short.";
             }
-
         }
 
         private void form_TextChanged(object sender, TextChangedEventArgs e)

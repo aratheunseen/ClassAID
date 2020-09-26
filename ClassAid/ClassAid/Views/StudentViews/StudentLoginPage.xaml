@@ -18,7 +18,6 @@
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
 
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-
                     <Components:ClassAidEntry x:Name="userId" 
                        Placeholder="Student ID"
                        TextColor="#AEB0BE"

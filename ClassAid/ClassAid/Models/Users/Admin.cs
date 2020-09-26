@@ -4,6 +4,7 @@ using Firebase.Database;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ namespace ClassAid.Models.Users
         public string ID { get; set; }
         public DateTime JoinDate { get; set; } = DateTime.Now;
         public string UserBase { get; set; }
-        
+        public ObservableCollection<Teacher> teacherList { get; set; }
         public List<Student> StudentList 
         { 
             get 

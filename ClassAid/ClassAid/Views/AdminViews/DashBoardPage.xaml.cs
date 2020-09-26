@@ -5,6 +5,8 @@ using ClassAid.Models;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
 using ClassAid.Views.AdminViews.Settings;
+using Firebase.Database;
+using ClassAid.DataContex;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -14,31 +16,27 @@ namespace ClassAid.Views.AdminViews
         public static ObservableCollection<ScheduleModel> scheduleCores;
         public static ObservableCollection<Teacher> teachers;
         public static ObservableCollection<EventModel> eventModels;
-
+        FirebaseClient client;
         private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
-        public DashBoardPage(Admin admin)
+        public DashBoardPage(Admin admin, FirebaseClient client)
         {
             scheduleCores = new ObservableCollection<ScheduleModel>();
             eventModels = new ObservableCollection<EventModel>();
             InitializeComponent();
-
-            teachers = new ObservableCollection<Teacher>()
-            {
-                new Teacher(){Name="Nahid Hasan", Designation="Lect"},
-                new Teacher(){Name="Shahriar Saif", Designation="Lect"},
-                new Teacher(){Name="Sarwar Parvez", Designation="Ast. Proff"}
-            };
-
-            
+            Action action = new Action(async ()=> admin = await AdminDbHandler.RealTimeConnection<Admin>(client, "Admin", admin));
+            action.Invoke();
+            teachers = new ObservableCollection<Teacher>();
+            admin.teacherList = new ObservableCollection<Teacher>();
+            this.client = client;
             this.admin = admin;
             userName.Text = admin.Name;
             userMail.Text = admin.Email;
             userPhone.Text = admin.Phone.ToString();
             userID.Text = admin.ID;
 
-            teacherListView.ItemsSource = teachers;
+            teacherListView.ItemsSource = admin.teacherList;
             scheduleView.ItemsSource = scheduleCores;
             eventsListView.ItemsSource = eventModels;
         }
@@ -62,7 +60,7 @@ namespace ClassAid.Views.AdminViews
 
         private void teacherAddBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddTeacherPage(teachers));
+            Navigation.PushAsync(new AddTeacherPage(admin,client));
         }
 
         private void scheduleAddBtn_Clicked(object sender, EventArgs e)

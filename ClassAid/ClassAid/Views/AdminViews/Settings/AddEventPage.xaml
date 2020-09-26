@@ -8,22 +8,15 @@
         <StackLayout>
             <Components:ClassAidEntry Placeholder="Argent!!! Bad news."
                                       x:Name="eventTitle">
-                
             </Components:ClassAidEntry>
-            <Editor x:Name="eventBody"  AutoSize="TextChanges" 
+            <Editor x:Name="eventBody"  
+                    AutoSize="TextChanges" 
                     Keyboard="Chat"
                     Placeholder="Exam on friday. Oh nooo!!!">
-
             </Editor>
             <Button x:Name="saveEvent" 
                     Clicked="saveEvent_Clicked" 
                     Text="Save"/>
-            <Button x:Name="t" Clicked="t_Clicked" Text="Lounch Rich Editor"/>
-            <WebView x:Name="displayWebView"
-                     HeightRequest="200">
-                
-            </WebView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
