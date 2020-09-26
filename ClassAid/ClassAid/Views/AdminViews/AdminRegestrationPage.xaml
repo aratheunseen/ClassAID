@@ -6,21 +6,23 @@
              x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout HorizontalOptions="Start"
-                         VerticalOptions="Start">
-                <Image x:Name="imgBanner"                        
-                       Opacity=".50"
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                <Image x:Name="imgBanner" 
+                       Margin="15"
+                       Opacity="1"
                        Source="classaid_demo.png" 
-                       HeightRequest="100" 
-                       WidthRequest="100"></Image>
+                       HeightRequest="150" 
+                       WidthRequest="150"></Image>
             </StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="40">
-                
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
+
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
 
                     <Components:ClassAidEntry x:Name="userName" 
                        Placeholder="Username"
                        TextChanged="form_TextChanged"
+                       TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
@@ -29,29 +31,34 @@
                        Margin="15,3"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
+                       TextColor="#AEB0BE"
                        IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                    <Components:ClassAidEntry x:Name="userId" Margin="15,3"
+                    <Components:ClassAidEntry x:Name="userId" 
+                       Margin="15,3"
                        TextChanged="form_TextChanged"
+                       TextColor="#AEB0BE"
                        Placeholder="Student ID"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#8576F5" 
-                       BackgroundColor="#F7F7FF" 
-                       Padding="0" CornerRadius="30">
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="adminCode"
-                       Margin="15,2"
+                       Margin="15,3"
                        TextChanged="form_TextChanged"
+                       TextColor="#AEB0BE"
                        Placeholder="Admin Code"></Components:ClassAidEntry>
                 </Frame>
-                <Label Text="By clicking sign up, you follow our privacy policy and terms of services." Padding="15"/>
+
+                <Label Text="By clicking sign up, you follow our privacy policy and terms of services."  TextColor="#AEB0BE" Padding="15"/>
+
+
                 <StackLayout  HorizontalOptions="CenterAndExpand"
-                              Margin="15,2"
+                              Margin="15,3"
                               Orientation="Horizontal">
                     <Button x:Name="btnAdd" 
                             WidthRequest="300"
                             BackgroundColor="#8576F5"
-                            CornerRadius="15"
+                            CornerRadius="25"
                             IsEnabled="False"
                             Text="Signup" 
                             Clicked="btnAdd_Clicked"/>
@@ -59,16 +66,18 @@
                 <Label HorizontalOptions="Center" TextType="Html">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Already have an account? "/>
-                            <Span Text="Log in" TextColor="#0078d4">
+                            <Span Text="Already have an account? " TextColor="#AEB0BE"/>
+                            <Span Text="Log in" TextColor="#8576F5">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer x:Name="adminLoginGst"/>
                                 </Span.GestureRecognizers>
                             </Span>
-                            <Span Text=" instead."/>
+                            <Span Text=" instead." TextColor="#AEB0BE"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <StackLayout Orientation="Horizontal">
+                </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
