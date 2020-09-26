@@ -6,24 +6,17 @@
         <StackLayout BackgroundColor="#F7F7FF">
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start" Padding="40">
                 <Image x:Name="imgBanner" 
-                       Source="classaid_demo.png" 
-                       HeightRequest="120" 
-                       WidthRequest="120"></Image>
-                <StackLayout Grid.Row="1"
-                         Margin="10"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand">
-                </StackLayout>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                    <Entry x:Name="userName" 
-                           Placeholder="Username"
-                           TextChanged="form_TextChanged"
-                           Margin="15,2"
-                           ></Entry>
-                </Frame>
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                    <Entry x:Name="userPass"
-                       Margin="15,2"
+                       Margin="50"
+                       
+                       Source="classaid_logo.png" 
+                       HeightRequest="200" 
+                       WidthRequest="200"></Image>
+                <Entry x:Name="userName" 
+                       Placeholder="Username"
+                       TextChanged="form_TextChanged"
+                       Margin="15,3"></Entry>
+                <Entry x:Name="userPass"
+                       Margin="15,3"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
                        IsPassword="True"></Entry>
