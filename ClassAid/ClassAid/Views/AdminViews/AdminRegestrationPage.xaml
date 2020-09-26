@@ -16,50 +16,61 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property ="CornerRadius" Value="30"/>
         </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="Center">
+            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
-                       Margin="15"
-                       Opacity="1"
+                       Margin="15" Opacity="1"
                        Source="classaid_demo.png" 
                        HeightRequest="150" 
-                       WidthRequest="150"></Image>
+                       WidthRequest="150"/>
             </StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
+            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" 
+                         Padding="40">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
-                       TextChanged="form_TextChanged"
-                       Margin="15,3"></Components:ClassAidEntry>
+                       Placeholder="Username"
+                       TextChanged="form_TextChanged"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userPass"
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
-                       IsPassword="True"></Components:ClassAidEntry>
+                       IsPassword="True"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userId" 
                        TextChanged="form_TextChanged"
                        Style="{StaticResource ClassAidEntryDesign}"
-                       Placeholder="Student ID"></Components:ClassAidEntry>
+                       Placeholder="Student ID"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="adminCode"
                        Style="{StaticResource ClassAidEntryDesign}"
                        TextChanged="form_TextChanged"
-                       Placeholder="Admin Code"></Components:ClassAidEntry>
+                       Placeholder="Admin Code"/>
                 </Frame>
-
-                <Label Text="By clicking sign up, you follow our privacy policy and terms of services."  
-                       TextColor="#AEB0BE" 
-                       Padding="15"/>
-
-
+                <Label TextColor="#AEB0BE" 
+                       Padding="15">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="By clicking sign up, you follow our "/>
+                            <Span Text="privacy policy" TextColor="#8576F5">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="privacyURI"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" and terms of services."/>
+                        </FormattedString>
+                    </Label.FormattedText>                    
+                </Label>
                 <StackLayout  HorizontalOptions="CenterAndExpand"
                               Margin="15,3"
                               Orientation="Horizontal">
@@ -85,8 +96,6 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <StackLayout Orientation="Horizontal">
-                </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">

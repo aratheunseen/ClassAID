@@ -3,6 +3,7 @@ using System;
 using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -11,6 +12,7 @@ namespace ClassAid.Views.AdminViews
     {
         FireSharpDB dB;
         public static Command TapCommand;
+
         public AdminRegestrationPage()
         {
             InitializeComponent();
@@ -18,8 +20,12 @@ namespace ClassAid.Views.AdminViews
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
             dB = new FireSharpDB(server, authKey);
             Routing.RegisterRoute("aboutpage", typeof(AboutPage));
-            TapCommand = new Command(async () => await Navigation.PushAsync(new AdminLoginPage()));
-            adminLoginGst.Command = TapCommand;
+
+            adminLoginGst.Command = new Command(async () =>
+            await Navigation.PushAsync(new AdminLoginPage()));
+
+            privacyURI.Command = new Command(async () =>
+            await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
         }
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
