@@ -8,21 +8,18 @@ using Xamarin.Essentials;
 namespace ClassAid.Views.AdminViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdminRegestrationPage : ContentPage
+    public partial class AdminRegistrationPage : ContentPage
     {
         FireSharpDB dB;
         public static Command TapCommand;
 
-        public AdminRegestrationPage()
+        public AdminRegistrationPage()
         {
             InitializeComponent();
             string server = "https://classaidapp.firebaseio.com/";
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
             dB = new FireSharpDB(server, authKey);
-            Routing.RegisterRoute("aboutpage", typeof(AboutPage));
-
-            adminLoginGst.Command = new Command(async () =>
-            await Navigation.PushAsync(new AdminLoginPage()));
+            Routing.RegisterRoute("aboutpage", typeof(DashBoardPage));
 
             privacyURI.Command = new Command(async () =>
             await Launcher.OpenAsync(new Uri("https://mahmudx.com")));

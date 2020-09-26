@@ -25,16 +25,10 @@
     <EmbeddedResource Update="StartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminViews\AddEvents.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminViews\AdditionalDetails.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminViews\AdminLoginPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminViews\AdminRegestrationPage.xaml">
+    <EmbeddedResource Update="Views\AdminViews\AdminRegistrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminViews\Settings\AddEventPage.xaml">
@@ -49,9 +43,6 @@
     <EmbeddedResource Update="Views\StudentViews\StudentLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\StudentRegestrationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +52,12 @@
   <ItemGroup>
     <Compile Update="Views\AdminRegestrationPage.xaml.cs">
       <DependentUpon>AdminRegestrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AdminViews\AdminRegistrationPage.xaml.cs">
+      <DependentUpon>AdminRegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AdminViews\DashBoardPage.xaml.cs">
+      <DependentUpon>DashBoardPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

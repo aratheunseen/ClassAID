@@ -9,7 +9,7 @@ using ClassAid.Views.AdminViews.Settings;
 namespace ClassAid.Views.AdminViews
 {
 
-    public partial class AboutPage : ContentPage
+    public partial class DashBoardPage : ContentPage
     {
         public static ObservableCollection<ScheduleModel> scheduleCores;
         public static ObservableCollection<Teacher> teachers;
@@ -18,7 +18,7 @@ namespace ClassAid.Views.AdminViews
         private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
-        public AboutPage(Admin admin)
+        public DashBoardPage(Admin admin)
         {
             scheduleCores = new ObservableCollection<ScheduleModel>();
             eventModels = new ObservableCollection<EventModel>();
