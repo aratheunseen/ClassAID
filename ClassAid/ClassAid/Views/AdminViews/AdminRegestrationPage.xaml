@@ -8,7 +8,7 @@
         <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
             <Setter Property="Margin" Value="15,3"/>
             <!--Change to #AEB0BE if neccecary-->
-            <Setter Property="TextColor" Value="#3955a3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
         </Style>
         <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
             <Setter Property="BorderColor" Value="#8576F5"/>
@@ -25,7 +25,7 @@
         <StackLayout BackgroundColor="#F7F7FF">
             <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
-                       Margin="15" Opacity="1"
+                       Margin="15,50,15,15" Opacity="1"
                        Source="classaid_demo.png" 
                        HeightRequest="150" 
                        WidthRequest="150"/>
@@ -79,8 +79,9 @@
                             MinimumWidthRequest="250"
                             BackgroundColor="#8576F5"
                             CornerRadius="25"
+                            
                             IsEnabled="False"
-                            Text="Sign Up" 
+                            Text="Sign Up"
                             Clicked="btnAdd_Clicked"/>
                 </StackLayout>
                 <Label HorizontalOptions="Center" TextType="Html">

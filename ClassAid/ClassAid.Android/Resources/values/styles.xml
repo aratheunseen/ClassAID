@@ -3,7 +3,6 @@
   <style name="MainTheme" parent="MainTheme.Base">
     <item name="android:statusBarColor">#544054</item>
     <item name="android:windowBackground">@color/splash_background</item>
-    <!-- Set theme colors from https://aka.ms/material-colors -->
     <item name="android:actionBarStyle">@style/ActionBarTheme</item>
   </style>
   <style name="ActionBarTheme" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
