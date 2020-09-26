@@ -5,7 +5,5 @@
     <color name="colorPrimaryDark">#cfb8e8</color>
     <color name="colorAccent">#5149d7</color>
     <color name="splash_background">#FFFFFF</color>
+  <color name="color_action_bar">#1a1a1a</color>
 </resources>
-<!--<color name="colorPrimary">#3F51B5</color>
-<color name="colorPrimaryDark">#303F9F</color>
-<color name="colorAccent">#FF4081</color>-->

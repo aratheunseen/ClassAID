@@ -44,7 +44,6 @@
                        TextChanged="form_TextChanged"
                        Placeholder="Admin Code"></Components:ClassAidEntry>
                 </Frame>
-
                 <Label Text="By clicking sign up, you follow our privacy policy and terms of services." Padding="15"/>
                 <StackLayout  HorizontalOptions="CenterAndExpand"
                               Margin="15,2"
@@ -70,8 +69,6 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <StackLayout Orientation="Horizontal">
-                </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
