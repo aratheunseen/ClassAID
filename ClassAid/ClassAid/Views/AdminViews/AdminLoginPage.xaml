@@ -36,6 +36,7 @@
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Username"
+                       SelectionLength="6"
                        TextChanged="form_TextChanged"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -43,6 +44,7 @@
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
+                       SelectionLength="6"
                        IsPassword="True"/>
                 </Frame>
                 <Label TextColor="#AEB0BE" 

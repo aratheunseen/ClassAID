@@ -7,14 +7,11 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="Center" BackgroundColor="#F7F7FF">
-                <StackLayout  Padding="20" HorizontalOptions="Center"
-                         VerticalOptions="Center">
-                    <Label HorizontalOptions="Center"
+                <Label Margin="20" HorizontalOptions="Center"
                        Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
                        TextColor="Gray"
                        >
-                    </Label>
-                </StackLayout>
+                </Label>
                 <StackLayout Padding="30">
                     <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
                         <Components:ClassAidEntry x:Name="userRealName"
@@ -58,13 +55,6 @@
                        Margin="15,3"
                        TextColor="#AEB0BE"
                        Placeholder="Phone Number"></Components:ClassAidEntry>
-                    </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                        <Components:ClassAidEntry x:Name="userPass" 
-                       Margin="15,3"
-                       TextColor="#AEB0BE"
-                       IsPassword="True"
-                       Placeholder="Password"></Components:ClassAidEntry>
                     </Frame>
                     <Label/>
                     <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
