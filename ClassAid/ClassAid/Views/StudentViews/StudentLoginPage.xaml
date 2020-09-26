@@ -15,19 +15,19 @@
                        HeightRequest="150" 
                        WidthRequest="150"></Image>
             </StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
+            <StackLayout Padding="40">
 
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="userId" 
-                       Placeholder="Student ID"
+                       Placeholder="Student ID or Roll Number"
                        TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
 
-                    <Components:ClassAidEntry x:Name="userPass"
+                    <Components:ClassAidEntry x:Name="phoneNumber"
                        Margin="15,3"
-                       Placeholder="Password" 
+                       Placeholder="Phone Number" 
                        TextColor="#AEB0BE"
                        IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
@@ -37,36 +37,14 @@
                        TextColor="#AEB0BE"
                        Placeholder="Team Code"></Components:ClassAidEntry>
                 </Frame>
-
                 <Label/>
-
-
-                <StackLayout  HorizontalOptions="CenterAndExpand"
-                              Margin="15,3"
-                              Orientation="Horizontal">
-                    <Button x:Name="btnAdd" 
-                            WidthRequest="250"
-                            MinimumWidthRequest="250"
-                            BackgroundColor="#8576F5"
-                            CornerRadius="25"
-                            IsEnabled="False"
-                            Text="Sign In" />
-                </StackLayout>
-                <Label VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   LineBreakMode="WordWrap">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Don't have an account? " TextColor="#AEB0BE"/>
-                            <Span Text="Sign up" TextColor="#8576F5">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="gst"/>
-                                </Span.GestureRecognizers>
-                            </Span>
-                            <Span Text=" instead." TextColor="#AEB0BE"/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="btnAdd"
+                                Margin="15,3"
+                                HorizontalOptions="Center"
+                                IsEnabled="False"
+                                Text="Sign In"/>
+                </Frame>
                 <StackLayout Orientation="Horizontal">
                 </StackLayout>
                 <Label HorizontalOptions="Center"
