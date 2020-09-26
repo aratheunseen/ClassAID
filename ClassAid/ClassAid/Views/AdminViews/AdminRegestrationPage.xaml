@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage">
+             x:Class="ClassAid.Views.AdminViews.AdminRegestrationPage"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
@@ -25,6 +27,10 @@
                 <Entry x:Name="adminCode" Margin="15,3"
                        TextChanged="form_TextChanged"
                        Placeholder="Admin Code"></Entry>
+                <Components:ClassAidEntry Margin="15,3"
+                    Placeholder="Hola">
+                    
+                </Components:ClassAidEntry>
                 <StackLayout  HorizontalOptions="CenterAndExpand"
                               Margin="15,3"
                               Orientation="Horizontal">

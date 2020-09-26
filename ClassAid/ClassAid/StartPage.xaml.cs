@@ -22,17 +22,7 @@ namespace ClassAid
 
         private void studentBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StudentRegestrationPage());
-        }
-
-        private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
-        {
-            swapText.Text = "Swaped left";
-        }
-
-        private void SwipeGestureRecognizer_Swiped_1(object sender, SwipedEventArgs e)
-        {
-            swapText.Text = "Swaped right";
+            Navigation.PushAsync(new StudentLoginPage());
         }
 
         private void bypassBtn_Clicked(object sender, EventArgs e)
