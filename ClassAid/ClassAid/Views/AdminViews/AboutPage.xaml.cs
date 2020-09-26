@@ -63,5 +63,10 @@ namespace ClassAid.Views.AdminViews
         {
             Navigation.PushAsync(new AddSchedulePage(scheduleCores, teachers));
         }
+
+        private void eventAddBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddEventPage());
+        }
     }
 }
