@@ -1,10 +1,8 @@
-﻿using ClassAid.Models.Schedule;
+﻿using ClassAid.DataContex;
+using ClassAid.Models.Schedule;
+using ClassAid.Models.Users;
+using Firebase.Database;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,19 +12,19 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSchedulePage : ContentPage
     {
-        private ObservableCollection<ScheduleModel> schedules;
-        private ObservableCollection<Teacher> teachers;
-        public AddSchedulePage(ObservableCollection<ScheduleModel> schedules,ObservableCollection<Teacher> teachers)
+        private readonly FirebaseClient client;
+        private readonly Admin admin;
+        public AddSchedulePage(Admin admin, FirebaseClient client)
         {
-            this.teachers = teachers;
-            this.schedules = schedules;
+            this.admin = admin;
+            this.client = client;
             InitializeComponent();
-            teacherPeaker.ItemsSource = this.teachers;
+            teacherPeaker.ItemsSource = admin.teacherList;
         }
 
-        private void addScheduleBtn_Clicked(object sender, EventArgs e)
+        private async void addScheduleBtn_Clicked(object sender, EventArgs e)
         {
-            schedules.Insert(0, new ScheduleModel()
+            admin.ScheduleList.Insert(0, new ScheduleModel()
             {
                 Teacher = (Teacher)teacherPeaker.SelectedItem,
                 StartTime = startDate.Time,
@@ -34,7 +32,8 @@ namespace ClassAid.Views.AdminViews.Settings
                 Subject = subjectName.Text,
                 CourseCode = courseCode.Text
             });
-            Navigation.PopAsync();
+            await Navigation.PopAsync();
+            await AdminDbHandler.UpdateAdmin(client, admin);
         }
 
         private void goBackBtn_Clicked(object sender, EventArgs e)

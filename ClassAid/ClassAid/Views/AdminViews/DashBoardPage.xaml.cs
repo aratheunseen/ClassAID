@@ -37,8 +37,8 @@ namespace ClassAid.Views.AdminViews
             userID.Text = admin.ID;
 
             teacherListView.ItemsSource = admin.teacherList;
-            scheduleView.ItemsSource = scheduleCores;
-            eventsListView.ItemsSource = eventModels;
+            scheduleView.ItemsSource = admin.ScheduleList;
+            eventsListView.ItemsSource = admin.EventList;
         }
         protected override bool OnBackButtonPressed()
         {            
@@ -65,12 +65,12 @@ namespace ClassAid.Views.AdminViews
 
         private void scheduleAddBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddSchedulePage(scheduleCores, teachers));
+            Navigation.PushAsync(new AddSchedulePage(admin, client));
         }
 
         private void eventAddBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddEventPage(eventModels));
+            Navigation.PushAsync(new AddEventPage(admin, client));
         }
     }
 }

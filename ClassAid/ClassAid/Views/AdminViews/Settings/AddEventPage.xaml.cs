@@ -1,6 +1,8 @@
-﻿using ClassAid.Models.Schedule;
+﻿using ClassAid.DataContex;
+using ClassAid.Models.Schedule;
+using ClassAid.Models.Users;
+using Firebase.Database;
 using System;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,22 +11,25 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEventPage : ContentPage
     {
-        ObservableCollection<EventModel> eventModels;
-        public AddEventPage(ObservableCollection<EventModel> eventModels)
+        private readonly Admin admin;
+        private readonly FirebaseClient client;
+        public AddEventPage(Admin admin, FirebaseClient client)
         {
             InitializeComponent();
-            this.eventModels = eventModels;
-        }        
+            this.admin = admin;
+            this.client = client;
+        }
 
-        private void saveEvent_Clicked(object sender, EventArgs e)
+        private async void saveEvent_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
-            eventModels.Add(
-                new EventModel() 
+            await Navigation.PopAsync();
+            admin.EventList.Add(
+                new EventModel()
                 {
                     Title = eventTitle.Text,
                     Details = eventBody.Text
                 });
+            await AdminDbHandler.UpdateAdmin(client, admin);
         }
     }
 }
