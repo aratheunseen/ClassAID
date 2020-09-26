@@ -54,5 +54,14 @@ namespace ClassAid.Views.AdminViews
             }
         }
 
+        private void userName_PropertyChanged()
+        {
+
+        }
+
+        private void Frame_SizeChanged()
+        {
+
+        }
     }
 }

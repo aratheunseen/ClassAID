@@ -24,15 +24,15 @@
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
                 </StackLayout>
-
-
+                
+                
                 <!--TODO: Redesign Buttons and labels-->
                 <Button x:Name="adminBtn" 
                         Clicked="adminBtn_Clicked"
                         Text="Continue as an Admin"
                         BackgroundColor="#8576F5"
                         CornerRadius="25"/>
-
+                
                 <Button x:Name="studentBtn" 
                         Clicked="studentBtn_Clicked"
                         Text="Continue as a Student"
@@ -40,7 +40,7 @@
                         TextColor="#565B6E"
                         CornerRadius="25"
                         BorderWidth="2"
-                        BorderColor="#8576F5"/>
+                        BorderColor="#8576F5"/>                
             </StackLayout>
             <StackLayout Grid.Row="1"
                          Margin="20"
@@ -50,9 +50,18 @@
                         HorizontalOptions="Center"
                         Clicked="bypassBtn_Clicked"
                         Text="Bypass Btn"/>
-                <Label>Read about our privacy policy.</Label>
-
-            </StackLayout>
+                <Label x:Name="swapText">Read about our privacy policy and TOS</Label>
+                <BoxView Color="Teal"
+                         WidthRequest="200">
+                    <BoxView.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Left" 
+                                                Swiped="SwipeGestureRecognizer_Swiped"/>
+                        <SwipeGestureRecognizer Direction="Right"
+                                                Swiped="SwipeGestureRecognizer_Swiped_1"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                </StackLayout>
         </Grid>
+
     </ContentPage.Content>
 </ContentPage>
