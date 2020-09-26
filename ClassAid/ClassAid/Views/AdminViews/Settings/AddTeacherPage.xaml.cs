@@ -1,4 +1,7 @@
-﻿using ClassAid.Models.Schedule;
+﻿using ClassAid.DataContex;
+using ClassAid.Models.Schedule;
+using ClassAid.Models.Users;
+using Firebase.Database;
 using System;
 using System.Collections.ObjectModel;
 
@@ -10,17 +13,20 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTeacherPage : ContentPage
     {
-        ObservableCollection<Teacher> teachers;
-        public AddTeacherPage(ObservableCollection<Teacher> teachers)
+        Admin admin;
+        FirebaseClient client;
+        public AddTeacherPage(Admin admin, FirebaseClient client)
         {
             InitializeComponent();
-            this.teachers = teachers;
+            this.admin = admin;
+            this.client = client;
         }
-        private void addTeacherBtn_Clicked(object sender, EventArgs e)
+        private async void addTeacherBtn_Clicked(object sender, EventArgs e)
         {
             Teacher t = new Teacher() { Name = teacherName.Text, Designation = teacherDesegnation.Text };
-            teachers.Add(t);
-            Navigation.PopAsync();
+            admin.teacherList.Add(t);
+            await Navigation.PopAsync();
+            await AdminDbHandler.UpdateAdmin(client, admin);            
         }
 
         private void inputField_TextChanged(object sender, TextChangedEventArgs e)

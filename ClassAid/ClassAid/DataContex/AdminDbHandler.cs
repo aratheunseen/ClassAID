@@ -3,6 +3,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,15 @@ namespace ClassAid.DataContex
               .Child("Admin")
               .Child(toUpdatePerson.Key)
               .PutAsync(newAdmin);
+        }
+        public static async Task<T> RealTimeConnection<T>(FirebaseClient client,string tablename, T data)
+        {
+            object respons = null;
+            await Task.Run(() => client
+               .Child(tablename)
+               .AsObservable<T>()
+               .Subscribe(d => respons = d.Object));
+            return (T) Convert.ChangeType(respons, typeof(T));
         }
         public static async Task DeletePerson(FirebaseClient client, Admin removableAdmin)
         {

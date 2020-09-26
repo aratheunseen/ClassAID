@@ -28,7 +28,7 @@ namespace ClassAid.Views.AdminViews
             try
             {
                 await AdminDbHandler.UpdateAdmin(client, admin);
-                Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
+                Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin,client));
             }
             catch (Exception)
             {
