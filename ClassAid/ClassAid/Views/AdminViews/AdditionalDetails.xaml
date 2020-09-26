@@ -1,34 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.AdminViews.AdditionalDetails">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
-                <Image x:Name="imgBanner" 
-                       Margin="50"
-                       Source="classaid_logo.png" 
-                       HeightRequest="200" 
-                       WidthRequest="200"></Image>
-                <Entry x:Name="userRealName" 
-                       Placeholder="Name"
-                       Margin="15,3"></Entry>
-                <Entry x:Name="userEmail"
+            <StackLayout VerticalOptions="Center" BackgroundColor="#F7F7FF">
+                <StackLayout  Padding="20" HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                    <Label HorizontalOptions="Center"
+                       Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
+                       TextColor="Gray"
+                       >
+                    </Label>
+                </StackLayout>
+                <StackLayout Padding="30">
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="userRealName"
+                       Placeholder="Full Name"
+                       TextColor="#AEB0BE"
+                       Margin="15,3"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="instName"
+                       Placeholder="Institute Name"
+                       TextColor="#AEB0BE"
+                       Margin="15,3"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="instShortForm"
+                       Placeholder="Institute Short Form"
+                       TextColor="#AEB0BE"
+                       Margin="15,3"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                        <Components:ClassAidEntry x:Name="deptName"
                        Margin="15,3"
-                       Placeholder="Email" 
-                       IsPassword="True" Keyboard="Email"></Entry>
-                <Entry x:Name="userPhone" Margin="15,3"
-                       Placeholder="Phone"
-                       IsTextPredictionEnabled="True"
-                       Keyboard="Numeric"></Entry>
-                <StackLayout  HorizontalOptions="CenterAndExpand"
-                              Margin="15,3"
-                              Orientation="Horizontal">
-                    <Button x:Name="completeSignUp" 
-                            WidthRequest="200"
-                            Margin="5"
-                            Text="Complete Sign Up" 
-                            Clicked="completeSignUp_Clicked"/>
+                       Placeholder="Department" 
+                       TextColor="#AEB0BE"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="semName" 
+                       Margin="15,3"
+                       TextColor="#AEB0BE"
+                       Placeholder="Semester or Class"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="stuId" 
+                       Margin="15,3"
+                       TextColor="#AEB0BE"
+                       Placeholder="Student ID or Roll Number"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="userPhone" 
+                       Margin="15,3"
+                       TextColor="#AEB0BE"
+                       Placeholder="Phone Number"></Components:ClassAidEntry>
+                    </Frame>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="userPass" 
+                       Margin="15,3"
+                       TextColor="#AEB0BE"
+                       IsPassword="True"
+                       Placeholder="Password"></Components:ClassAidEntry>
+                    </Frame>
+                    <Label/>
+                    <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
+                        <Components:ClassAidEntry x:Name="btnAdd"
+                                Margin="15,3"
+                                HorizontalOptions="Center"
+                                IsEnabled="False"
+                                Text="Continue to Dashboard"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                    </StackLayout>
                 </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"

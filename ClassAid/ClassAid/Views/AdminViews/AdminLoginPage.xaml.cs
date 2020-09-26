@@ -60,5 +60,6 @@ namespace ClassAid.Views.AdminViews
             Admin ad = new Admin("HolaSenorita", "ILoveYou");
             Navigation.PushAsync(new AdditionalDetails(ad,new FirebaseClient("LOL")));
         }
+
     }
 }
