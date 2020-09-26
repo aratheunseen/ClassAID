@@ -3,6 +3,7 @@ using System;
 using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ClassAid.CustomComponents;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -17,6 +18,8 @@ namespace ClassAid.Views.AdminViews
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
             dB = new FireSharpDB(server, authKey);
             Routing.RegisterRoute("aboutpage", typeof(AboutPage));
+
+            
         }
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
