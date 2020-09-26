@@ -8,12 +8,12 @@ using Xamarin.Essentials;
 namespace ClassAid.Views.AdminViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdminRegistrationPage : ContentPage
+    public partial class AdminLoginPage : ContentPage
     {
         FireSharpDB dB;
         public static Command TapCommand;
 
-        public AdminRegistrationPage()
+        public AdminLoginPage()
         {
             InitializeComponent();
             string server = "https://classaidapp.firebaseio.com/";
