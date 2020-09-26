@@ -17,7 +17,7 @@ namespace ClassAid
 
         private void adminBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AdminRegestrationPage());
+            Navigation.PushAsync(new AdminRegistrationPage());
         }
 
         private void studentBtn_Clicked(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace ClassAid
             admin.Name = "Jon Doe";
             admin.Phone = 01911104587;
             //Application.Current.MainPage = new AboutPage(admin);
-            Application.Current.MainPage = new NavigationPage(new AboutPage(admin));
+            Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
 
         }
     }

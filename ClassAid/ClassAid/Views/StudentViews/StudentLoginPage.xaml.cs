@@ -10,8 +10,6 @@ namespace ClassAid.Views.StudentViews
         public StudentLoginPage()
         {
             InitializeComponent();
-            TapCommand = new Command(async () => await Navigation.PushAsync(new StudentRegestrationPage()));
-            gst.Command = TapCommand;
         }
     }
 }

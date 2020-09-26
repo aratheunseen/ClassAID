@@ -1,7 +1,6 @@
 ﻿using Android.Content;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
-using Android.Text;
 using ClassAid.CustomComponents;
 using ClassAid.Droid.ComponentsRenderer;
 using Xamarin.Forms;
