@@ -25,23 +25,6 @@
             <Label x:Name="userPhone"/>
             <Label x:Name="userID"/>
         </StackLayout>
-        <!--<Label Text="Press back btn to see a toast."/>-->
-        <!--<StackLayout>
-            <Entry x:Name="courseCode"
-                       Placeholder="Course Code"/>
-            <Entry x:Name="subjectName"
-                       Placeholder="Subject Name"/>
-            <Picker Title="Select Teacher"
-                        x:Name="teacherPeaker"
-                        ItemDisplayBinding="{Binding Name}"/>
-
-            <TimePicker x:Name="startDate"/>
-            <TimePicker x:Name="endDate"/>
-            <Button  x:Name="addScheduleBtn"
-                     Text="Add"
-                     HorizontalOptions="Start"
-                     Clicked="addScheduleBtn_Clicked"/>
-        </StackLayout>-->
         <RefreshView Grid.Row="1"
                      x:Name="scheduleRefreshView"
                      Refreshing="scheduleRefreshView_Refreshing">
@@ -95,6 +78,10 @@
                     Margin="2"
                     x:Name="scheduleAddBtn"
                     Clicked="scheduleAddBtn_Clicked"/>
+            <Button Text="Add Event"
+                    Margin="2"
+                    x:Name="eventAddBtn"
+                    Clicked="eventAddBtn_Clicked"/>
         </StackLayout>
     </Grid>
 

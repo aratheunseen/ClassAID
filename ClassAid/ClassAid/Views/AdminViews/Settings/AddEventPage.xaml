@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             x:Class="ClassAid.Views.AdminViews.Settings.AddEventPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Components:ClassAidEntry Placeholder="Argent!!! Bad news.">
+                
+            </Components:ClassAidEntry>
+            <Editor Placeholder="Exam on friday. Oh nooo!!!">
+                
+            </Editor>
+            <Button x:Name="t" Clicked="t_Clicked" Text="Lounch Rich Editor"/>
+            <WebView x:Name="displayWebView"
+                     HeightRequest="200">
+                
+            </WebView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
