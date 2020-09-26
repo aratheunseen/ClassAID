@@ -45,23 +45,11 @@
                        TextChanged="form_TextChanged"
                        IsPassword="True"/>
                 </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="userId" 
-                       TextChanged="form_TextChanged"
-                       Style="{StaticResource ClassAidEntryDesign}"
-                       Placeholder="Student ID"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="adminCode"
-                       Style="{StaticResource ClassAidEntryDesign}"
-                       TextChanged="form_TextChanged"
-                       Placeholder="Admin Code"/>
-                </Frame>
                 <Label TextColor="#AEB0BE" 
                        Padding="15">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="By clicking sign up, you follow our "/>
+                            <Span Text="By clicking sign in, you follow our "/>
                             <Span Text="privacy policy" TextColor="#8576F5">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer x:Name="privacyURI"/>
@@ -69,38 +57,28 @@
                             </Span>
                             <Span Text=" and terms of services."/>
                         </FormattedString>
-                    </Label.FormattedText>                    
-                </Label>
-                <StackLayout  HorizontalOptions="CenterAndExpand"
-                              Margin="15,3"
-                              Orientation="Horizontal">
-                    <Button x:Name="btnAdd" 
-                            WidthRequest="250"
-                            MinimumWidthRequest="250"
-                            BackgroundColor="#8576F5"
-                            CornerRadius="25"
-                            
-                            IsEnabled="False"
-                            Text="Sign Up"
-                            Clicked="btnAdd_Clicked"/>
-                </StackLayout>
-                <Label HorizontalOptions="Center" TextType="Html">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Already have an account? " TextColor="#AEB0BE"/>
-                            <Span Text="Log in" TextColor="#8576F5">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="adminLoginGst"/>
-                                </Span.GestureRecognizers>
-                            </Span>
-                            <Span Text=" instead." TextColor="#AEB0BE"/>
-                        </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="btnAdd"
+                                Margin="15,3"
+                                HorizontalOptions="Center"
+                                IsEnabled="False"
+                                Text="Sign In"/>
+                </Frame>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
                 </Label>
+                <StackLayout Grid.Row="1"
+                         Margin="20"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand">
+                    <Button x:Name="bypassBtn" 
+                        HorizontalOptions="Center"
+                        Clicked="adminLoginBypassBtn_Clicked"
+                        Text="After Login Bypass Btn"/>
+                </StackLayout>
                 <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="False" />
             </StackLayout>
