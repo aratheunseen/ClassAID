@@ -24,11 +24,12 @@ namespace ClassAid.Droid.ComponentsRenderer
 
             if (Control != null)
             {
+                Android.Graphics.Color placeHolderColor = new Android.Graphics.Color(98, 100, 167);
                 GradientDrawable gd = new GradientDrawable();                
                 gd.SetColor(Android.Graphics.Color.Transparent);
                 Control.SetBackgroundDrawable(gd);
                 ////Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
-                //Control.SetHintTextColor(ColorStateList.ValueOf(Android.Graphics.Color.White));
+                Control.SetHintTextColor(ColorStateList.ValueOf(placeHolderColor));
             }
         }
     }
