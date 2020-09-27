@@ -3,7 +3,7 @@ using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +20,7 @@ namespace ClassAid.Views.AdminViews.Settings
             this.client = client;
             InitializeComponent();
             teacherPeaker.ItemsSource = admin.TeacherList;
+            dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
         private async void addScheduleBtn_Clicked(object sender, EventArgs e)
