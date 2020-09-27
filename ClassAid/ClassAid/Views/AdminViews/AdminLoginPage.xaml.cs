@@ -43,11 +43,11 @@ namespace ClassAid.Views.AdminViews
             if (string.IsNullOrWhiteSpace(userName.Text) ||
                 string.IsNullOrWhiteSpace(userPass.Text))
             {
-                btnAdd.IsEnabled = false;
+             //   btnAdd.IsEnabled = false;
             }
             else
             {
-                btnAdd.IsEnabled = true;
+            //    btnAdd.IsEnabled = true;
             }
         }
 
