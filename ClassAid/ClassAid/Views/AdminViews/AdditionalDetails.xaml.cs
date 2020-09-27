@@ -1,8 +1,11 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models.Engines;
 using ClassAid.Models.Users;
 using Firebase.Database;
+using Newtonsoft.Json;
 using System;
-
+using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,23 +15,40 @@ namespace ClassAid.Views.AdminViews
     public partial class AdditionalDetails : ContentPage
     {
         Admin admin;
-        FirebaseClient client;
-        public AdditionalDetails(Admin admin, FirebaseClient client)
+        public static LocalAdminStorageContex storageContex;
+        public static LocalAdminStorageContex Database
+        {
+            get
+            {
+                if (storageContex == null)
+                {
+                    storageContex = new LocalAdminStorageContex();
+                }
+                return storageContex;
+            }
+        }
+        public AdditionalDetails(Admin admin)
         {
             InitializeComponent();
             this.admin = admin;
-            this.client = client;
         }
 
         private async void completeSignUp_Clicked(object sender, EventArgs e)
         {
             admin.Name = userRealName.Text;
-            admin.Email = userEmail.Text;
-            admin.Phone = long.Parse(userPhone.Text);
+            admin.Phone = userPhone.Text;
             try
             {
-                await AdminDbHandler.UpdateAdmin(client, admin);
-                Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin,client));
+                await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), admin);
+                Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
+                LoginAuthModel authModel = new LoginAuthModel()
+                {
+                    isLoggedIn = true,
+                    key = admin.Key,
+                    User = UserType.Admin
+                };
+                File.WriteAllText(App.authFile,JsonConvert.SerializeObject(authModel));
+                storageContex.SaveItemAsync(admin);
             }
             catch (Exception)
             {

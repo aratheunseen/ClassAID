@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClassAid.Models.Schedule
+﻿namespace ClassAid.Models.Schedule
 {
     public class BatchDetails
     {

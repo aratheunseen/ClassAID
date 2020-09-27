@@ -7,6 +7,7 @@ using ClassAid.Models.Schedule;
 using ClassAid.Views.AdminViews.Settings;
 using Firebase.Database;
 using ClassAid.DataContex;
+using ClassAid.Models.Engines;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -16,27 +17,46 @@ namespace ClassAid.Views.AdminViews
         public static ObservableCollection<ScheduleModel> scheduleCores;
         public static ObservableCollection<Teacher> teachers;
         public static ObservableCollection<EventModel> eventModels;
+        public static LocalAdminStorageContex LocalStorage;
+        public static LocalAdminStorageContex Database
+        {
+            get
+            {
+                if (LocalStorage == null)
+                {
+                    LocalStorage = new LocalAdminStorageContex();
+                }
+                return LocalStorage;
+            }
+        }
         FirebaseClient client;
         private bool canExit = false;
         public Admin admin;
         public string RealName { get { return admin.Name; } }
-        public DashBoardPage(Admin admin, FirebaseClient client)
+        public DashBoardPage(LoginAuthModel authModel)
         {
-            scheduleCores = new ObservableCollection<ScheduleModel>();
-            eventModels = new ObservableCollection<EventModel>();
-            InitializeComponent();
-            Action action = new Action(async ()=> admin = await AdminDbHandler.RealTimeConnection<Admin>(client, "Admin", admin));
+            Action action = async () => admin = await Database.GetItemsAsync(authModel.key);
             action.Invoke();
-            teachers = new ObservableCollection<Teacher>();
-            admin.teacherList = new ObservableCollection<Teacher>();
-            this.client = client;
+            InitializeComponent();
+            LoadVariables();
+        }
+        public DashBoardPage(Admin admin)
+        {
             this.admin = admin;
+            InitializeComponent();
+            LoadVariables();
+        }
+        private void LoadVariables()
+        {
+            admin.ScheduleList = new ObservableCollection<ScheduleModel>();
+            admin.EventList = new ObservableCollection<EventModel>();
+            admin.TeacherList = new ObservableCollection<Teacher>();
+            client = App.fireSharpClient.GetClient();
+
             userName.Text = admin.Name;
-            userMail.Text = admin.Email;
-            userPhone.Text = admin.Phone.ToString();
             userID.Text = admin.ID;
 
-            teacherListView.ItemsSource = admin.teacherList;
+            teacherListView.ItemsSource = admin.TeacherList;
             scheduleView.ItemsSource = admin.ScheduleList;
             eventsListView.ItemsSource = admin.EventList;
         }
