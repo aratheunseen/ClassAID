@@ -43,17 +43,8 @@ namespace ClassAid.Models.Users
             }
         }
         public string Schedule { get; set; }
-        public ScheduleCore ScheduleList 
-        { 
-            get
-            {
-                if(!string.IsNullOrWhiteSpace(Schedule))
-                    return JsonConvert.DeserializeObject<ScheduleCore>(Schedule);
-                else
-                    return new ScheduleCore();
-            } 
-        }
-
+        public ObservableCollection<ScheduleModel> ScheduleList { get; set; }
+        public ObservableCollection<EventModel> EventList { get; set; }
         public static explicit operator Admin(FirebaseObject<Admin> v)
         {
             throw new NotImplementedException();
