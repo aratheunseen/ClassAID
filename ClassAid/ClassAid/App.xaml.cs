@@ -43,6 +43,7 @@ namespace ClassAid
                 {
                     MainPage = new NavigationPage(new StudentDashBoard());
                 }
+                //File.Delete(authFile);
             }
             else
             {

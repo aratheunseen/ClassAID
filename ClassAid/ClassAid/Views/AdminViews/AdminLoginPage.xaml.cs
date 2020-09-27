@@ -16,12 +16,11 @@ namespace ClassAid.Views.AdminViews
         {
             InitializeComponent();
 
-            Routing.RegisterRoute("aboutpage", typeof(DashBoardPage));
-
-         //   privacyURI.Command = new Command(async () =>
-         //   await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
+            //   privacyURI.Command = new Command(async () =>
+            //   await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
+            SignInBtn.Command = new Command(() => btnAdd_Clicked());
         }
-        private async void btnAdd_Clicked(object sender, EventArgs e)
+        private async void btnAdd_Clicked()
         {
             Admin admin = new Admin(userName.Text, userPass.Text);
             try
