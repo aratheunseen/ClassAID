@@ -28,10 +28,9 @@ namespace ClassAid
         private void bypassBtn_Clicked(object sender, EventArgs e)
         {
             Admin admin = new Admin("HolaSenorita","IamAwesome");
-            admin.Email = "mail@iloveyou.com";
             admin.ID = "192311000";
             admin.Name = "Jon Doe";
-            admin.Phone = 01911104587;
+            admin.Phone = "01911104587";
             //Application.Current.MainPage = new AboutPage(admin);
             //Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
         }

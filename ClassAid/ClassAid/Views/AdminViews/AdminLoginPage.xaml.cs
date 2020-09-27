@@ -11,15 +11,11 @@ namespace ClassAid.Views.AdminViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdminLoginPage : ContentPage
     {
-        FireSharpDB dB;
         public static Command TapCommand;
-
         public AdminLoginPage()
         {
             InitializeComponent();
-            string server = "https://classaidapp.firebaseio.com/";
-            string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
-            dB = new FireSharpDB(server, authKey);
+
             Routing.RegisterRoute("aboutpage", typeof(DashBoardPage));
 
             privacyURI.Command = new Command(async () =>
@@ -31,8 +27,8 @@ namespace ClassAid.Views.AdminViews
             try
             {
                 activityIndicator.IsRunning = true;
-                string id = await dB.InsertData("Admin", admin);
-                Application.Current.MainPage = new AdditionalDetails(admin, dB.GetClient());
+                string id = await App.fireSharpClient.InsertData("Admin", admin);
+                Application.Current.MainPage = new AdditionalDetails(admin);
                 activityIndicator.IsRunning = false;
             }
             catch (Exception)
@@ -58,7 +54,7 @@ namespace ClassAid.Views.AdminViews
         private void adminLoginBypassBtn_Clicked(object sender, EventArgs e)
         {
             Admin ad = new Admin("HolaSenorita", "ILoveYou");
-            Navigation.PushAsync(new AdditionalDetails(ad,new FirebaseClient("LOL")));
+            Navigation.PushAsync(new AdditionalDetails(ad));
         }
     }
 }

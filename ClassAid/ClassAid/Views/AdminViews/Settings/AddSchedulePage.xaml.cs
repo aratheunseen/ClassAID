@@ -19,7 +19,7 @@ namespace ClassAid.Views.AdminViews.Settings
             this.admin = admin;
             this.client = client;
             InitializeComponent();
-            teacherPeaker.ItemsSource = admin.teacherList;
+            teacherPeaker.ItemsSource = admin.TeacherList;
         }
 
         private async void addScheduleBtn_Clicked(object sender, EventArgs e)
