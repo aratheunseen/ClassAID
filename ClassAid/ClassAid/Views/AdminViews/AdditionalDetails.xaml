@@ -64,6 +64,20 @@
                                 IsEnabled="False"
                                 Text="Continue to Dashboard"/>
                     </Frame>
+                    <Label TextColor="#AEB0BE" 
+                       Padding="15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="By clicking continue, you follow our "/>
+                                <Span Text="privacy policy" TextColor="#8576F5">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="privacyURI"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text=" and terms of services."/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                     <StackLayout Orientation="Horizontal">
                     </StackLayout>
                 </StackLayout>
