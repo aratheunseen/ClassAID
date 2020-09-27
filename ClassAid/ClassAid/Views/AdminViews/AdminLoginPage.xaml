@@ -46,13 +46,13 @@
                        SelectionLength="6"
                        IsPassword="True"/>
                 </Frame>
-                <Label Padding="15"/>
+                <Label/>
                 <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
-                    <Components:ClassAidEntry x:Name="btnAdd"
-                                Margin="15,3"
-                                HorizontalOptions="Center"
-                                IsEnabled="False"
-                                Text="Sign In"/>
+                    <Label HorizontalOptions="Center" Text="Sign In" TextColor="#FFFFFF" Padding="15">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="studentSignIn"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
