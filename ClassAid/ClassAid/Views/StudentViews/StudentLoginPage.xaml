@@ -42,11 +42,14 @@
                        Placeholder="Team Code"></Components:ClassAidEntry>
                 </Frame>
                 <Label/>
-                <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
-                    <Label HorizontalOptions="Center" Text="Sign In" TextColor="#FFFFFF" Padding="15">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="studentSignIn"/>
-                        </Label.GestureRecognizers>
+                <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="15" CornerRadius="30">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="studentSignIn"/>
+                    </Frame.GestureRecognizers>
+                    <Label HorizontalOptions="Center"
+                           Text="Sign In"
+                           TextColor="#FFFFFF"
+                           Margin="15,3">
                     </Label>
                 </Frame>
                 <StackLayout Orientation="Horizontal">
