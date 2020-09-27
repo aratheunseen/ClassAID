@@ -15,25 +15,14 @@ namespace ClassAid.Views.AdminViews
     public partial class AdditionalDetails : ContentPage
     {
         Admin admin;
-        public static LocalAdminStorageContex storageContex;
-        public static LocalAdminStorageContex Database
-        {
-            get
-            {
-                if (storageContex == null)
-                {
-                    storageContex = new LocalAdminStorageContex();
-                }
-                return storageContex;
-            }
-        }
         public AdditionalDetails(Admin admin)
         {
             InitializeComponent();
             this.admin = admin;
+            contToDashBtn.Command = new Command(() => completeSignUp_Clicked());
         }
 
-        private async void completeSignUp_Clicked(object sender, EventArgs e)
+        private async void completeSignUp_Clicked()
         {
             admin.Name = userRealName.Text;
             admin.Phone = userPhone.Text;
@@ -45,10 +34,11 @@ namespace ClassAid.Views.AdminViews
                 {
                     isLoggedIn = true,
                     key = admin.Key,
-                    User = UserType.Admin
+                    User = UserType.Admin,
+                    AdminData = admin
                 };
                 File.WriteAllText(App.authFile,JsonConvert.SerializeObject(authModel));
-                storageContex.SaveItemAsync(admin);
+                
             }
             catch (Exception)
             {
