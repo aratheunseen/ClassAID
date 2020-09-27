@@ -47,10 +47,13 @@
                        IsPassword="True"/>
                 </Frame>
                 <Label/>
-                <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
-                    <Label HorizontalOptions="Center" Text="Sign In" TextColor="#FFFFFF" Padding="15">
+                <Frame Style="{StaticResource ClassAidFrameDesign} "   BackgroundColor="#8576F5">
+                    <Label HorizontalOptions="Center"
+                           Text="Sign In"
+                           TextColor="#FFFFFF"
+                           Padding="15">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="studentSignIn"/>
+                            <TapGestureRecognizer x:Name="adminLoginBtn"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </Frame>

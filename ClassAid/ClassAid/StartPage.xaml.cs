@@ -31,8 +31,8 @@ namespace ClassAid
             admin.ID = "192311000";
             admin.Name = "Jon Doe";
             admin.Phone = "01911104587";
-            //Application.Current.MainPage = new AboutPage(admin);
-            //Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
+            Application.Current.MainPage = new DashBoardPage(admin);
+            Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
         }
     }
 }
