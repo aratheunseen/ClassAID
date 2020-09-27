@@ -5,6 +5,10 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <ApplicationIcon>classaid_logo.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
+    <Company>Pienteger Inc.</Company>
+    <Authors>Pienteger Inc.</Authors>
+    <Copyright>Pienteger Inc.</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
