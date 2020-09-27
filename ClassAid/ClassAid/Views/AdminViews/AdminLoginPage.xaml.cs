@@ -22,8 +22,8 @@ namespace ClassAid.Views.AdminViews
             dB = new FireSharpDB(server, authKey);
             Routing.RegisterRoute("aboutpage", typeof(DashBoardPage));
 
-            privacyURI.Command = new Command(async () =>
-            await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
+         //   privacyURI.Command = new Command(async () =>
+         //   await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
         }
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
