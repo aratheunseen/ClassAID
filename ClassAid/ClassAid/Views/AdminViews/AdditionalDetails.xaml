@@ -56,12 +56,17 @@
                        TextColor="#AEB0BE"
                        Placeholder="Phone Number"></Components:ClassAidEntry>
                     </Frame>
-                    <Label/>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
-                        <Components:ClassAidEntry x:Name="btnAdd"
+                    <Label/>                    
+                    <Frame BorderColor="#8576F5" 
+                       BackgroundColor="#8576F5" 
+                       HeightRequest="30"
+                       Padding="0" CornerRadius="30">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="contToDashBtn"/>
+                        </Frame.GestureRecognizers>
+                        <Label x:Name="btnAdd"
                                 Margin="15,3"
                                 HorizontalOptions="Center"
-                                IsEnabled="False"
                                 Text="Continue to Dashboard"/>
                     </Frame>
                     <Label TextColor="#AEB0BE" 
