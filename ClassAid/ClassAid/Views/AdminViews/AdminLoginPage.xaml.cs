@@ -18,8 +18,8 @@ namespace ClassAid.Views.AdminViews
 
             Routing.RegisterRoute("aboutpage", typeof(DashBoardPage));
 
-            privacyURI.Command = new Command(async () =>
-            await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
+         //   privacyURI.Command = new Command(async () =>
+         //   await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
         }
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
@@ -56,5 +56,6 @@ namespace ClassAid.Views.AdminViews
             Admin ad = new Admin("HolaSenorita", "ILoveYou");
             Navigation.PushAsync(new AdditionalDetails(ad));
         }
+
     }
 }

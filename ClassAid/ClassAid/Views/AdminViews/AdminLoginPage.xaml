@@ -30,12 +30,12 @@
                        HeightRequest="150" 
                        WidthRequest="150"/>
             </StackLayout>
-            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" 
-                         Padding="40">
+            <StackLayout Padding="40">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Username"
+                       SelectionLength="6"
                        TextChanged="form_TextChanged"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -43,22 +43,10 @@
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Password" 
                        TextChanged="form_TextChanged"
+                       SelectionLength="6"
                        IsPassword="True"/>
                 </Frame>
-                <Label TextColor="#AEB0BE" 
-                       Padding="15">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="By clicking sign in, you follow our "/>
-                            <Span Text="privacy policy" TextColor="#8576F5">
-                                <Span.GestureRecognizers>
-                                    <TapGestureRecognizer x:Name="privacyURI"/>
-                                </Span.GestureRecognizers>
-                            </Span>
-                            <Span Text=" and terms of services."/>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+                <Label Padding="15"/>
                 <Frame BorderColor="#8576F5" BackgroundColor="#8576F5" Padding="0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="btnAdd"
                                 Margin="15,3"
