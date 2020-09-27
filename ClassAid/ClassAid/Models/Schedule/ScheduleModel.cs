@@ -14,5 +14,6 @@ namespace ClassAid.Models.Schedule
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public string CourseCode { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
     }
 }

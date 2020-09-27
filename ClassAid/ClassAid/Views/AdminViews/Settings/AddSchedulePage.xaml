@@ -14,7 +14,8 @@
             <Picker Title="Select Teacher"
                         x:Name="teacherPeaker"
                         ItemDisplayBinding="{Binding Name}"/>
-
+            <Picker Title="Select Day"
+                        x:Name="dayPeaker"/>
             <TimePicker x:Name="startDate"/>
             <TimePicker x:Name="endDate"/>
 
