@@ -96,7 +96,7 @@
             <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,60,10,0"
+                   Margin="0,55,10,0"
                    HeightRequest="20"
                    WidthRequest="20"
                    BackgroundColor="LightGray"
@@ -107,12 +107,51 @@
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-                   Margin="5,60,0,0"
+                   Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
                    BackgroundColor="Red">
             </BoxView>
+            <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                   Grid.Row="2"
+                  FontSize="15"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,55,10,0"
+                   Grid.ColumnSpan="4"/>
 
+
+            
+            <BoxView Grid.Row="2"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+                   Margin="0,150,10,0"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   BackgroundColor="LightGray"
+                     CornerRadius="30"
+                     >
+            </BoxView>
+            <BoxView Grid.Row="2"
+                     Grid.Column="1"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+                   Margin="5,150,0,0"
+                   HeightRequest="20"
+                   WidthRequest="2"
+                   BackgroundColor="#8576F5">
+            </BoxView>
+            <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                   Grid.Row="2"
+                  FontSize="15"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,150,10,0"
+                   Grid.ColumnSpan="4"/>
 
             <!-- Menu -->
             <BoxView Grid.Row="3"
