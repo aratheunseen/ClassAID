@@ -35,7 +35,7 @@
             <Image Grid.Column="0"
                    Grid.Row="1"
                Margin="0,0,5,0"
-               Source="classaid_demo.png"
+               Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
                HorizontalOptions="End"
@@ -49,6 +49,14 @@
                VerticalOptions="Start" 
                Margin="5,0,0,0"
                    Grid.ColumnSpan="2"/>
+            <Image Grid.Column="4"
+                   Grid.Row="1"
+               Margin="0,0,15,0"
+               Source="plus.png"
+               HeightRequest="24"
+               WidthRequest="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"></Image>
 
             <!-- Schedue Content -->
             <BoxView Grid.Row="1"
@@ -167,11 +175,12 @@
             <Image Grid.Column="0"
                    Grid.Row="2"
                Margin="0,0,5,0"
-               Source="classaid_demo.png"
+               Source="notice.png"
                HeightRequest="32"
                WidthRequest="32"
                HorizontalOptions="End"
                VerticalOptions="Start"></Image>
+            
             <Label Text="Notice"
                    Grid.Column="1"
                    Grid.Row="2"
@@ -180,7 +189,16 @@
                HorizontalOptions="Start"
                VerticalOptions="Start" 
                Margin="5,0,0,0"
-                   Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
+
+            <Image Grid.Column="4"
+                   Grid.Row="2"
+               Margin="0,0,15,0"
+               Source="plus.png"
+               HeightRequest="24"
+               WidthRequest="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"></Image>
 
             <!-- Notice Content -->
             <BoxView Grid.Row="2"
@@ -213,7 +231,6 @@
                    Grid.ColumnSpan="4"/>
 
 
-            
             <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
@@ -244,28 +261,38 @@
                    Grid.ColumnSpan="4"/>
 
             <!-- Menu -->
-            <Button
-                Grid.Column="0"
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                BackgroundColor="#EBEBFF"
-                CornerRadius="20">
-            </Button>
-            <Button
-                Grid.Column="2"
-                Grid.Row="3"
-                BackgroundColor="#EBEBFF"
-                CornerRadius="15">
-            </Button>
-            <Button
-               HeightRequest="20"
-               WidthRequest="20"
-                Grid.Column="3"
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                BackgroundColor="#EBEBFF"
-                CornerRadius="20">
-            </Button>
+            <ImageButton Grid.Column="0"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+               Margin="0,0,5,0"
+               Source="notice.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></ImageButton>
+
+            <ImageButton Grid.Column="2"
+                   Grid.Row="3"
+               Margin="0,0,5,0"
+               Source="message.png"
+               HeightRequest="40"
+               WidthRequest="40"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></ImageButton>
+
+            <ImageButton Grid.Column="3"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+               Margin="0,0,5,0"
+               Source="schedule.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></ImageButton>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
