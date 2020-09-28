@@ -4,7 +4,6 @@ using ClassAid.Views.StudentViews;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace ClassAid
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -27,7 +26,7 @@ namespace ClassAid
 
         private void gotoBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new StudentDashBoard());
+             Navigation.PushAsync(new StudentDashBoard());
         }
 
         private void bypassBtn_Clicked(object sender, EventArgs e)
@@ -39,6 +38,5 @@ namespace ClassAid
             Application.Current.MainPage = new DashBoardPage(admin);
             Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
         }
-
     }
 }

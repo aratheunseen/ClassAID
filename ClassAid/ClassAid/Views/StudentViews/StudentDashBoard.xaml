@@ -9,13 +9,13 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="55" />
+                <RowDefinition Height="65" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- HEADER -->
+            <!-- Header -->
             <Label Text="ClassAiD"
                       FontSize="30"
                        TextColor="#8576F5"
@@ -23,19 +23,23 @@
                    VerticalOptions="Start" 
                    Margin="20,20,0,0"
                        Grid.ColumnSpan="4"/>
-            <ImageButton Grid.Column="4"
+            <Image Grid.Column="4"
                    Margin="0,20,20,0"
-                   Source=""
+                   Source="classaid_logo.png"
                    HeightRequest="40"
                    WidthRequest="40"
                    HorizontalOptions="End"
-                   VerticalOptions="Start" />
+                   VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="profileBtn"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Schedule Title -->
             <Image Grid.Column="0"
                    Grid.Row="1"
                Margin="0,0,5,0"
-               Source="classaid_demo.png"
+               Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
                HorizontalOptions="End"
@@ -49,12 +53,80 @@
                VerticalOptions="Start" 
                Margin="5,0,0,0"
                    Grid.ColumnSpan="2"/>
+            <Image Grid.Column="4"
+                   Grid.Row="1"
+               Margin="0,4,15,0"
+               Source="plus.png"
+               HeightRequest="24"
+               WidthRequest="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="addSchedule"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Schedue Content -->
             <BoxView Grid.Row="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start" 
+                   Margin="0,60,10,0"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   BackgroundColor="LightGray"
+                     CornerRadius="30"
+                     >
+            </BoxView>
+            <BoxView Grid.Row="1"
+                     Grid.Column="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start" 
+                   Margin="5,60,0,0"
+                   HeightRequest="20"
+                   WidthRequest="2"
+                   BackgroundColor="Green">
+            </BoxView>
+            <Label Text="CSE 123"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="18"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,55,10,0"
+                   Grid.ColumnSpan="4"/>
+            <Label Text="Object Oriented Programming and Design Pattern Lab"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,80,10,0"
+                   Grid.ColumnSpan="3"/>
+            <Label Text="10:00AM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,60,10,0"
+               Margin="5,60,15,0"/>
+            <Label Text="12:00PM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,80,15,0"/>
+
+
+
+            <BoxView Grid.Row="1"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+                   Margin="0,160,10,0"
                    HeightRequest="20"
                    WidthRequest="20"
                    BackgroundColor="LightGray"
@@ -65,11 +137,45 @@
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-                   Margin="5,60,0,0"
+                   Margin="5,160,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Red">
+                   BackgroundColor="#8576F5">
             </BoxView>
+            <Label Text="CSE 123"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="18"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,155,10,0"
+                   Grid.ColumnSpan="4"/>
+            <Label Text="Object Oriented Programming and Design Pattern Lab"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,180,10,0"
+                   Grid.ColumnSpan="3"/>
+            <Label Text="10:00AM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,160,15,0"/>
+            <Label Text="12:00PM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,180,15,0"/>
 
 
 
@@ -77,11 +183,12 @@
             <Image Grid.Column="0"
                    Grid.Row="2"
                Margin="0,0,5,0"
-               Source="classaid_demo.png"
+               Source="notice.png"
                HeightRequest="32"
                WidthRequest="32"
                HorizontalOptions="End"
                VerticalOptions="Start"></Image>
+            
             <Label Text="Notice"
                    Grid.Column="1"
                    Grid.Row="2"
@@ -90,7 +197,20 @@
                HorizontalOptions="Start"
                VerticalOptions="Start" 
                Margin="5,0,0,0"
-                   Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
+
+            <Image Grid.Column="4"
+                   Grid.Row="2"
+               Margin="0,4,15,0"
+               Source="plus.png"
+               HeightRequest="24"
+               WidthRequest="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="addNotice"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Notice Content -->
             <BoxView Grid.Row="2"
@@ -110,7 +230,7 @@
                    Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Red">
+                   BackgroundColor="Green">
             </BoxView>
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
@@ -123,7 +243,6 @@
                    Grid.ColumnSpan="4"/>
 
 
-            
             <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
@@ -154,9 +273,54 @@
                    Grid.ColumnSpan="4"/>
 
             <!-- Menu -->
-            <BoxView Grid.Row="3"
-                 Grid.ColumnSpan="5" 
-                     Color="#EBEBFF"/>
+            <Frame Grid.Column="0"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="fullNotice"/>
+                </Frame.GestureRecognizers>
+                <Image
+                   Source="notice.png"
+                   HeightRequest="32"
+                   WidthRequest="32"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"></Image>
+            </Frame>
+
+            <Frame Grid.Column="2"
+                   Grid.Row="3"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="groupMessage"/>
+                </Frame.GestureRecognizers>
+                <Image Grid.Column="2"
+                   Grid.Row="3"
+               Margin="0,0,5,0"
+               Source="message.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></Image>
+            </Frame>
+            <Frame Grid.Column="3"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="fullSchedule"/>
+                </Frame.GestureRecognizers>
+                <Image 
+               Margin="0,0,5,0"
+               Source="schedule.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"></Image>
+                </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
