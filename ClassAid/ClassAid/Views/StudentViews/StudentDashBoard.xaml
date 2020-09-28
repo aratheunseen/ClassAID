@@ -9,7 +9,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="55" />
+                <RowDefinition Height="65" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -23,13 +23,17 @@
                    VerticalOptions="Start" 
                    Margin="20,20,0,0"
                        Grid.ColumnSpan="4"/>
-            <ImageButton Grid.Column="4"
+            <Image Grid.Column="4"
                    Margin="0,20,20,0"
-                   Source=""
+                   Source="classaid_logo.png"
                    HeightRequest="40"
                    WidthRequest="40"
                    HorizontalOptions="End"
-                   VerticalOptions="Start"/>
+                   VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="profileBtn"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Schedule Title -->
             <Image Grid.Column="0"
@@ -51,12 +55,16 @@
                    Grid.ColumnSpan="2"/>
             <Image Grid.Column="4"
                    Grid.Row="1"
-               Margin="0,0,15,0"
+               Margin="0,4,15,0"
                Source="plus.png"
                HeightRequest="24"
                WidthRequest="24"
                HorizontalOptions="Center"
-               VerticalOptions="Start"></Image>
+               VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="addSchedule"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Schedue Content -->
             <BoxView Grid.Row="1"
@@ -193,12 +201,16 @@
 
             <Image Grid.Column="4"
                    Grid.Row="2"
-               Margin="0,0,15,0"
+               Margin="0,4,15,0"
                Source="plus.png"
                HeightRequest="24"
                WidthRequest="24"
                HorizontalOptions="Center"
-               VerticalOptions="Start"></Image>
+               VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="addNotice"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <!-- Notice Content -->
             <BoxView Grid.Row="2"
@@ -261,38 +273,54 @@
                    Grid.ColumnSpan="4"/>
 
             <!-- Menu -->
-            <ImageButton Grid.Column="0"
+            <Frame Grid.Column="0"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="fullNotice"/>
+                </Frame.GestureRecognizers>
+                <Image
+                   Source="notice.png"
+                   HeightRequest="32"
+                   WidthRequest="32"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"></Image>
+            </Frame>
+
+            <Frame Grid.Column="2"
                    Grid.Row="3"
-                   Grid.ColumnSpan="2"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="groupMessage"/>
+                </Frame.GestureRecognizers>
+                <Image Grid.Column="2"
+                   Grid.Row="3"
                Margin="0,0,5,0"
-               Source="notice.png"
+               Source="message.png"
                HeightRequest="32"
                WidthRequest="32"
                BackgroundColor="Transparent"
                HorizontalOptions="Center"
-               VerticalOptions="Center"></ImageButton>
-
-            <ImageButton Grid.Column="2"
-                   Grid.Row="3"
-               Margin="0,0,5,0"
-               Source="message.png"
-               HeightRequest="40"
-               WidthRequest="40"
-               BackgroundColor="Transparent"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"></ImageButton>
-
-            <ImageButton Grid.Column="3"
+               VerticalOptions="Center"></Image>
+            </Frame>
+            <Frame Grid.Column="3"
                    Grid.Row="3"
                    Grid.ColumnSpan="2"
+                   BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="fullSchedule"/>
+                </Frame.GestureRecognizers>
+                <Image 
                Margin="0,0,5,0"
                Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
                BackgroundColor="Transparent"
                HorizontalOptions="Center"
-               VerticalOptions="Center"></ImageButton>
-
+               VerticalOptions="Center"></Image>
+                </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
