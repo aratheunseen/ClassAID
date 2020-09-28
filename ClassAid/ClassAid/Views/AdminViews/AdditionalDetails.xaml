@@ -6,7 +6,8 @@
              x:Class="ClassAid.Views.AdminViews.AdditionalDetails">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout VerticalOptions="Center" BackgroundColor="#F7F7FF">
+            <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                <StackLayout VerticalOptions="Center" BackgroundColor="#F7F7FF">
                 <Label Margin="20" HorizontalOptions="Center"
                        Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
                        TextColor="Gray"
@@ -70,30 +71,28 @@
                                 HorizontalOptions="Center"
                                 Text="Continue to Dashboard"/>
                     </Frame>
-                    <Label TextColor="#AEB0BE" 
+                        <Label TextColor="#AEB0BE" 
                        Padding="15">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="By clicking Continue, you agree with our "/>
-                                <Span Text="Privacy Policy" TextColor="#8576F5">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="privacyURI"/>
-                                    </Span.GestureRecognizers>
-                                </Span>
-                                <Span Text=" and Terms of Service."/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <StackLayout Orientation="Horizontal">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="By clicking Continue, you agree with our "/>
+                                    <Span Text="Privacy Policy" TextColor="#8576F5">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="privacyURI"/>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text=" and Terms of Service."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </StackLayout>
-                </StackLayout>
                 <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
                 </Label>
-                <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
-
-            </StackLayout>
+                    <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
