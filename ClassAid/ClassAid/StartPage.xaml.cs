@@ -25,6 +25,11 @@ namespace ClassAid
             Navigation.PushAsync(new StudentLoginPage());
         }
 
+        private void gotoBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new StudentDashBoard());
+        }
+
         private void bypassBtn_Clicked(object sender, EventArgs e)
         {
             Admin admin = new Admin("HolaSenorita","IamAwesome");
@@ -34,5 +39,6 @@ namespace ClassAid
             Application.Current.MainPage = new DashBoardPage(admin);
             Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
         }
+
     }
 }
