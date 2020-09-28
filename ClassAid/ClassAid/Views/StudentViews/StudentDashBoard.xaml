@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- HEADER -->
+            <!-- Header -->
             <Label Text="ClassAiD"
                       FontSize="30"
                        TextColor="#8576F5"
@@ -29,7 +29,7 @@
                    HeightRequest="40"
                    WidthRequest="40"
                    HorizontalOptions="End"
-                   VerticalOptions="Start" />
+                   VerticalOptions="Start"/>
 
             <!-- Schedule Title -->
             <Image Grid.Column="0"
@@ -52,9 +52,65 @@
 
             <!-- Schedue Content -->
             <BoxView Grid.Row="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start" 
+                   Margin="0,60,10,0"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   BackgroundColor="LightGray"
+                     CornerRadius="30"
+                     >
+            </BoxView>
+            <BoxView Grid.Row="1"
+                     Grid.Column="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start" 
+                   Margin="5,60,0,0"
+                   HeightRequest="20"
+                   WidthRequest="2"
+                   BackgroundColor="Green">
+            </BoxView>
+            <Label Text="CSE 123"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="18"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,55,10,0"
+                   Grid.ColumnSpan="4"/>
+            <Label Text="Object Oriented Programming and Design Pattern Lab"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,80,10,0"
+                   Grid.ColumnSpan="3"/>
+            <Label Text="10:00AM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,60,10,0"
+               Margin="5,60,15,0"/>
+            <Label Text="12:00PM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,80,15,0"/>
+
+
+
+            <BoxView Grid.Row="1"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+                   Margin="0,160,10,0"
                    HeightRequest="20"
                    WidthRequest="20"
                    BackgroundColor="LightGray"
@@ -65,11 +121,45 @@
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-                   Margin="5,60,0,0"
+                   Margin="5,160,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Red">
+                   BackgroundColor="#8576F5">
             </BoxView>
+            <Label Text="CSE 123"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="18"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,155,10,0"
+                   Grid.ColumnSpan="4"/>
+            <Label Text="Object Oriented Programming and Design Pattern Lab"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,180,10,0"
+                   Grid.ColumnSpan="3"/>
+            <Label Text="10:00AM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,160,15,0"/>
+            <Label Text="12:00PM"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,180,15,0"/>
 
 
 
@@ -110,7 +200,7 @@
                    Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Red">
+                   BackgroundColor="Green">
             </BoxView>
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
@@ -154,9 +244,28 @@
                    Grid.ColumnSpan="4"/>
 
             <!-- Menu -->
-            <BoxView Grid.Row="3"
-                 Grid.ColumnSpan="5" 
-                     Color="#EBEBFF"/>
+            <Button
+                Grid.Column="0"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#EBEBFF"
+                CornerRadius="20">
+            </Button>
+            <Button
+                Grid.Column="2"
+                Grid.Row="3"
+                BackgroundColor="#EBEBFF"
+                CornerRadius="15">
+            </Button>
+            <Button
+               HeightRequest="20"
+               WidthRequest="20"
+                Grid.Column="3"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#EBEBFF"
+                CornerRadius="20">
+            </Button>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
