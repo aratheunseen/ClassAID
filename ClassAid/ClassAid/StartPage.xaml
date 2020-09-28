@@ -45,6 +45,10 @@
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
+                <Button x:Name="gotoBtn" 
+                        HorizontalOptions="Center"
+                        Clicked="gotoBtn_Clicked"
+                        Text="Stu Dash Btn"/>
                 <Button x:Name="bypassBtn" 
                         HorizontalOptions="Center"
                         Clicked="bypassBtn_Clicked"
