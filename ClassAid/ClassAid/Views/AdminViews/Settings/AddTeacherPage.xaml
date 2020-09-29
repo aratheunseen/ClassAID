@@ -14,20 +14,28 @@
                         Margin="0,60,0,100"
                        Opacity="1"></Label>
             </StackLayout>
-            <StackLayout  Padding="30">
-                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" CornerRadius="20">
+            <StackLayout Padding="30">
+                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
                     <Entry x:Name="teacherName" 
                    TextChanged="inputField_TextChanged"
                    Placeholder="Teacher Name"
                    TextColor="#8B84B9"/>
                 </Frame>
 
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" CornerRadius="20">
+                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
                     <Entry x:Name="teacherDesegnation"
                    TextColor="#8B84B9"
                    TextChanged="inputField_TextChanged"
                    Placeholder="Desegnation"/>
                 </Frame>
+
+                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
+                    <Entry x:Name="teacherPhoneNumber"
+                   TextColor="#8B84B9"
+                   TextChanged="inputField_TextChanged"
+                   Placeholder="Phone Number"/>
+                </Frame>
+
                 <Button x:Name="addTeacherBtn" 
                     Clicked="addTeacherBtn_Clicked"
                     IsEnabled="False"

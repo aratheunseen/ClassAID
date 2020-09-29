@@ -13,6 +13,11 @@ namespace ClassAid.Views.AdminViews.Settings
     {
         private readonly Admin admin;
         private readonly FirebaseClient client;
+
+        public AddEventPage()
+        {
+        }
+
         public AddEventPage(Admin admin, FirebaseClient client)
         {
             InitializeComponent();
