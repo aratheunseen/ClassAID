@@ -14,7 +14,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<local:ViewEventTemplate/>-->
+                            <!--<local:ViewEventTemplate/> comment-->
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
