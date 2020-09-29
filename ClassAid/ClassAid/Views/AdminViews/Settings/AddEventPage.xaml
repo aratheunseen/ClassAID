@@ -6,23 +6,23 @@
              x:Class="ClassAid.Views.AdminViews.Settings.AddEventPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F7F7FF">
+        <StackLayout BackgroundColor="#F7F7FF" Padding="30">
             <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center">
                 <Label Text="Add Notice"
                        TextColor="#8576F5"
                        FontSize="25"
-                        Margin="0,60,0,20"
+                        Margin="0,60,0,50"
                        Opacity="1"></Label>
             </StackLayout>
-            <Frame BorderColor="#C4C1DE"  Padding="20" Margin="15" CornerRadius="20">
+            <Frame BorderColor="#C4C1DE" CornerRadius="20">
             <Components:ClassAidEntry Placeholder="Argent!!! Bad news."
                                       x:Name="eventTitle"
                                       TextColor="#8B84B9"
                                       >
             </Components:ClassAidEntry>
             </Frame>
-            <Frame BorderColor="#C4C1DE" Padding="30" Margin="15,5,15,50" HeightRequest="250" CornerRadius="20">
+            <Frame BorderColor="#C4C1DE" HeightRequest="250" CornerRadius="20">
             <Editor x:Name="eventBody"  
                     AutoSize="TextChanges" 
                     Keyboard="Chat"
@@ -34,9 +34,8 @@
                     Clicked="saveEvent_Clicked" 
                     Text="Publish"
                     TextColor="#FFFFFF"
-                    Margin="30,5"
-                    BackgroundColor="#8576F5"
-                    Padding="15" 
+                    Margin="0,50"
+                    BackgroundColor="#8576F5" 
                     CornerRadius="30"/>
         </StackLayout>
     </ContentPage.Content>
