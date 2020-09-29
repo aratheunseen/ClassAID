@@ -17,6 +17,8 @@ namespace ClassAid.Views
     public partial class Dashboard : ContentPage
     {
         private static Shared shared;
+        private Admin admin;
+        private Student student;
         private static string timeFormat = @"dd\:hh\:mm";
         public Dashboard()
         {
@@ -26,13 +28,22 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             shared = admin;
+            this.admin = admin;
             InitializeData();
+            addSchedule.Command = 
+                new Command(async () => 
+                await Navigation.PushAsync(new AddSchedulePage(admin)));
+            addNoticeBtn.Command =
+                new Command(async () =>
+                await Navigation.PushAsync(new AddEventPage(admin)));
+
         }
         public Dashboard(Student student)
         {
             InitializeComponent();
             addNoticeImage.IsVisible = false;
             shared = student;
+            this.student = student;
             InitializeData();
         }
         void logout()
@@ -42,8 +53,7 @@ namespace ClassAid.Views
         }
         private void InitializeData()
         {
-           profileBtn.Command = new Command(()=> logout());
-            
+            profileBtn.Command = new Command(() => logout());
             try
             {
                 var d = shared.ScheduleList[0];

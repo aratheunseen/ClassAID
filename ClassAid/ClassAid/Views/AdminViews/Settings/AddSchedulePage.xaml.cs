@@ -14,10 +14,10 @@ namespace ClassAid.Views.AdminViews.Settings
     {
         private readonly FirebaseClient client;
         private readonly Admin admin;
-        public AddSchedulePage(Admin admin, FirebaseClient client)
+        public AddSchedulePage(Admin admin)
         {
             this.admin = admin;
-            this.client = client;
+            this.client = App.fireSharpClient.GetClient();
             InitializeComponent();
             teacherPeaker.ItemsSource = admin.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
@@ -48,6 +48,11 @@ namespace ClassAid.Views.AdminViews.Settings
                 addTeacherBtn.IsEnabled = true;
             else
                 addTeacherBtn.IsEnabled = false;
+        }
+
+        private async void addTeacher_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddTeacherPage(admin));
         }
     }
 }
