@@ -15,11 +15,11 @@ namespace ClassAid.Views.AdminViews.Settings
     {
         Admin admin;
         FirebaseClient client;
-        public AddTeacherPage(Admin admin, FirebaseClient client)
+        public AddTeacherPage(Admin admin)
         {
             InitializeComponent();
             this.admin = admin;
-            this.client = client;
+            this.client = App.fireSharpClient.GetClient();
         }
         private async void addTeacherBtn_Clicked(object sender, EventArgs e)
         {

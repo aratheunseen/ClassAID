@@ -18,11 +18,11 @@ namespace ClassAid.Views.AdminViews.Settings
         {
         }
 
-        public AddEventPage(Admin admin, FirebaseClient client)
+        public AddEventPage(Admin admin)
         {
             InitializeComponent();
             this.admin = admin;
-            this.client = client;
+            this.client = App.fireSharpClient.GetClient();
         }
 
         private async void saveEvent_Clicked(object sender, EventArgs e)
