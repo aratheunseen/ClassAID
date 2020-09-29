@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.Views.StudentViews.ViewEventPage"
+             Title="Noticeboard">
+    <ContentPage.Content>
+        <ScrollView>
+        <Grid BackgroundColor="#F7F7FF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <BoxView HorizontalOptions="End"
+                    VerticalOptions="Start" 
+                   Margin="0,20,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="MediumVioletRed"
+                     CornerRadius="30"
+                     >
+            </BoxView>
+                <Label Text="4m"
+                   Grid.Column="0"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="0,40,10,0"/>
+                <BoxView Grid.Column="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start" 
+                   Margin="5,15,0,0"
+                   HeightRequest="50"
+                   WidthRequest="2"
+                   BackgroundColor="MediumVioletRed">
+                </BoxView>
+                <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,15,10,0"
+                   Grid.ColumnSpan="4"/>
+            <Label Text="Notice is a written or printed information or news announcement. Notices are either displayed at prominent places or published in newspapers/ magazines. It is meant only for a select group. Since a notice contains a formal announcement or information, its tone and style is formal and factual. Its language should be simple and formal. Notice is always brief and to the point."
+                   Grid.Column="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,70,10,0"
+                   Grid.ColumnSpan="4"/>
+
+
+
+                <BoxView HorizontalOptions="End"
+               VerticalOptions="Start" 
+                   Margin="0,255,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="DarkCyan"
+                     CornerRadius="30"
+                     >
+                </BoxView>
+                <BoxView Grid.Column="1"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+                   Margin="5,250,0,0"
+                   HeightRequest="50"
+                   WidthRequest="2"
+                   BackgroundColor="DarkCyan">
+                </BoxView>
+                <Label Text="13h"
+                   Grid.Column="0"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="0,270,10,0"/>
+                <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                   FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,250,10,0"
+                   Grid.ColumnSpan="4"/>
+                <Label Text="All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice."
+                   Grid.Column="1"
+                   FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,305,10,0"
+                   Grid.ColumnSpan="4"/>
+            
+            
+            
+            <BoxView HorizontalOptions="End"
+               VerticalOptions="Start" 
+                   Margin="0,490,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="OrangeRed"
+                     CornerRadius="30"
+                     >
+            </BoxView>
+                <Label Text="23h"
+                   Grid.Column="0"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="0,510,10,0"/>
+                <BoxView Grid.Column="1"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+                   Margin="5,485,0,0"
+                   HeightRequest="50"
+                   WidthRequest="2"
+                   BackgroundColor="OrangeRed">
+            </BoxView>
+            <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                   FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,485,10,0"
+                   Grid.ColumnSpan="4"/>
+                <Label Text="All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice. All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice. All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice. All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice. All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice. All students are hereby informed about a change in school timings from 1st October, 20xx. The school will now start at 9 a.m. and end at 3 p.m. In the past few years, it has been seen that winters are rather severe and it becomes quite difficult to start early due to the extreme cold weather and the dense fog. So these new timings will be followed till further notice."
+                   Grid.Column="1"
+                   FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,545,10,100"
+                   Grid.ColumnSpan="4"/>
+                <Label HorizontalOptions="Center" TextColor="DimGray"
+               VerticalOptions="End" Grid.ColumnSpan="5" Text="No More Notice" FontSize="20" Padding="20"></Label>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

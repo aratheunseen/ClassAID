@@ -15,7 +15,7 @@
                        HeightRequest="150" 
                        WidthRequest="150"></Image>
             </StackLayout>
-            <StackLayout Padding="40">
+            <StackLayout Padding="30">
                 <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="fullName" 
                        Margin="15,3"
