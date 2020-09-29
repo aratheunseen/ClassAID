@@ -5,31 +5,45 @@
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Start"
-                     Orientation="Vertical"
-                     Padding="2">
-            <Entry x:Name="teacherName" 
-                   Margin="5"
+        <StackLayout  BackgroundColor="#F7F7FF">
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center">
+                <Label Text="Add Teacher Details"
+                       TextColor="#8576F5"
+                       FontSize="25"
+                        Margin="0,60,0,100"
+                       Opacity="1"></Label>
+            </StackLayout>
+            <StackLayout  Padding="30">
+                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" CornerRadius="20">
+                    <Entry x:Name="teacherName" 
                    TextChanged="inputField_TextChanged"
-                   Placeholder="Teacher Name"/>
-            <Entry x:Name="teacherDesegnation"
-                   Margin="5"
+                   Placeholder="Teacher Name"
+                   TextColor="#8B84B9"/>
+                </Frame>
+
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" CornerRadius="20">
+                    <Entry x:Name="teacherDesegnation"
+                   TextColor="#8B84B9"
                    TextChanged="inputField_TextChanged"
                    Placeholder="Desegnation"/>
-            <StackLayout Orientation="Horizontal">
+                </Frame>
                 <Button x:Name="addTeacherBtn" 
                     Clicked="addTeacherBtn_Clicked"
                     IsEnabled="False"
-                    Text="Add" 
-                    Margin="5"
-                    HorizontalOptions="Start"/>
-                <Button x:Name="goBackBtn" 
+                    Text="Add Teacher" 
+                    TextColor="#FFFFFF"
+                    Margin="0,100"
+                    BackgroundColor="#8576F5"
+                    CornerRadius="30"/>
+                <!--<Button x:Name="goBackBtn" 
                         Clicked="goBackBtn_Clicked"
-                        BackgroundColor="White"
-                        TextColor="BlueViolet"
                         Text="Back" 
-                        Margin="5"
-                        HorizontalOptions="Start"/>
+                        TextColor="#FFFFFF"
+                    Margin="30,5"
+                    BackgroundColor="#8576F5"
+                    Padding="15" 
+                    CornerRadius="30"/>-->
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
