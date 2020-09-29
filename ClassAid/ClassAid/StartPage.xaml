@@ -41,12 +41,10 @@
                         BorderWidth="2"
                         BorderColor="#8576F5"/>
             </StackLayout>
-            <StackLayout Grid.Row="1"
+            <!--<StackLayout Grid.Row="1"
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
-                <Label x:Name="testText"/>
-                <Label x:Name="secondTestText"/>
                 <Button x:Name="gotoBtn" 
                         HorizontalOptions="Center"
                         Clicked="gotoBtn_Clicked"
@@ -55,7 +53,7 @@
                         HorizontalOptions="Center"
                         Clicked="bypassBtn_Clicked"
                         Text="Bypass Btn"/>
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
 
     </ContentPage.Content>

@@ -27,12 +27,6 @@
                        Margin="15,3"></Components:ClassAidEntry>
                     </Frame>
                     <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
-                        <Components:ClassAidEntry x:Name="instShortForm"
-                       Placeholder="Institute Short Form"
-                       TextColor="#AEB0BE"
-                       Margin="15,3"></Components:ClassAidEntry>
-                    </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
 
                         <Components:ClassAidEntry x:Name="deptName"
                        Margin="15,3"
@@ -45,7 +39,14 @@
                        TextColor="#AEB0BE"
                        Placeholder="Semester or Class"></Components:ClassAidEntry>
                     </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+
+                        <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                            <Components:ClassAidEntry x:Name="secName"
+                       Placeholder="Section"
+                       TextColor="#AEB0BE"
+                       Margin="15,3"></Components:ClassAidEntry>
+                        </Frame>
+                        <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
                         <Components:ClassAidEntry x:Name="stuId" 
                        Margin="15,3"
                        TextColor="#AEB0BE"

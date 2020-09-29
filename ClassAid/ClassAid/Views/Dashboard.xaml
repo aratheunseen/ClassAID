@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassAid.Views"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ClassAid.Views.Dashboard">
     <ContentPage.Content>
         <Grid BackgroundColor="#F7F7FF">
             <Grid.RowDefinitions>
@@ -74,8 +74,7 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="MediumVioletRed"
-                     CornerRadius="30"
-                     >
+                     CornerRadius="30">
             </BoxView>
             <BoxView Grid.Row="1"
                      Grid.Column="1"
@@ -86,16 +85,16 @@
                    WidthRequest="2"
                    BackgroundColor="MediumVioletRed">
             </BoxView>
-            <Label Text="CSE 123"
+            <Label x:Name="firstScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
-                  FontSize="18"
+                   FontSize="18"
                    TextColor="Gray"
-               HorizontalOptions="Start"
-               VerticalOptions="Start" 
-               Margin="15,55,10,0"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start" 
+                   Margin="15,55,10,0"
                    Grid.ColumnSpan="4"/>
-            <Label Text="Object Oriented Programming and Design Pattern Lab"
+            <Label x:Name="firstScheduleCourseName"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="14"
@@ -104,7 +103,7 @@
                VerticalOptions="Start" 
                Margin="5,80,10,0"
                    Grid.ColumnSpan="3"/>
-            <Label Text="10:00AM"
+            <Label x:Name="firstScheduleStart" 
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -112,14 +111,14 @@
                HorizontalOptions="End"
                VerticalOptions="Start" 
                Margin="5,60,15,0"/>
-            <Label Text="12:00PM"
+            <Label x:Name="firstScheduleEnd" 
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
                    TextColor="Black"
-               HorizontalOptions="End"
-               VerticalOptions="Start" 
-               Margin="5,80,15,0"/>
+                   HorizontalOptions="End"
+                   VerticalOptions="Start" 
+                   Margin="5,80,15,0"/>
 
 
 
@@ -142,7 +141,7 @@
                    WidthRequest="2"
                    BackgroundColor="DarkCyan">
             </BoxView>
-            <Label Text="CSE 123"
+            <Label x:Name="secondScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="18"
@@ -151,7 +150,7 @@
                VerticalOptions="Start" 
                Margin="15,155,10,0"
                    Grid.ColumnSpan="4"/>
-            <Label Text="Object Oriented Programming and Design Pattern Lab"
+            <Label x:Name="secondScheduleCourseName"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="14"
@@ -160,7 +159,7 @@
                VerticalOptions="Start" 
                Margin="5,180,10,0"
                    Grid.ColumnSpan="3"/>
-            <Label Text="10:00AM"
+            <Label x:Name="secondScheduleStart"
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -168,7 +167,7 @@
                HorizontalOptions="End"
                VerticalOptions="Start" 
                Margin="5,160,15,0"/>
-            <Label Text="12:00PM"
+            <Label x:Name="secondScheduleEnd"
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -188,7 +187,7 @@
                WidthRequest="32"
                HorizontalOptions="End"
                VerticalOptions="Start"></Image>
-            
+
             <Label Text="Notice"
                    Grid.Column="1"
                    Grid.Row="2"
@@ -200,6 +199,7 @@
                Grid.ColumnSpan="3"/>
 
             <Image Grid.Column="4"
+                   x:Name="addNoticeImage"
                    Grid.Row="2"
                Margin="0,4,15,0"
                Source="plus.png"
@@ -208,7 +208,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Start">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="addNotice"/>
+                    <TapGestureRecognizer x:Name="addNoticeBtn"/>
                 </Image.GestureRecognizers>
             </Image>
 
@@ -297,8 +297,7 @@
                     <TapGestureRecognizer x:Name="groupMessage"/>
                 </Frame.GestureRecognizers>
                 <Image Grid.Column="2"
-                   Grid.Row="3"
-             
+                   Grid.Row="3"             
                Source="message.png"
                HeightRequest="32"
                WidthRequest="32"
@@ -320,7 +319,7 @@
                HeightRequest="32"
                WidthRequest="32"
                BackgroundColor="Transparent"></Image>
-                </Frame>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
