@@ -26,7 +26,7 @@ namespace ClassAid
 
         private void gotoBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ViewEventPage());
+            Navigation.PushAsync(new ViewScheduleTemplate());
         }
 
         private void bypassBtn_Clicked(object sender, EventArgs e)
