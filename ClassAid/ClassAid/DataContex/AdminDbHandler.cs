@@ -14,13 +14,13 @@ namespace ClassAid.DataContex
     {
         public static async Task UpdateAdmin(FirebaseClient client, Admin newAdmin)
         {
-            var toUpdatePerson = (await client
-              .Child("Admin")
-              .OnceAsync<Admin>()).Where(a => a.Object.Key == newAdmin.Key).FirstOrDefault();
+            //var toUpdatePerson = (await client
+            //  .Child("Admin")
+            //  .OnceAsync<Admin>()).Where(a => a.Object.Key == newAdmin.Key).FirstOrDefault();
 
             await client
               .Child("Admin")
-              .Child(toUpdatePerson.Key)
+              .Child(newAdmin.Key)
               .PutAsync(newAdmin);
         }
         public static async Task<T> RealTimeConnection<T>(FirebaseClient client,string tablename, T data)
