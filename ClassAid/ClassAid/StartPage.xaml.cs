@@ -13,10 +13,6 @@ namespace ClassAid
         public StartPage()
         {
             InitializeComponent();
-            //Preferences.Set("test", "Hello World");
-            testText.Text = Preferences.Get("test","Not Found").ToString();
-            //Application.Current.Properties["id"] = "LOL";
-            //secondTestText.Text = Application.Current.Properties["id"] as string;
         }
 
         private void adminBtn_Clicked(object sender, EventArgs e)
@@ -33,10 +29,9 @@ namespace ClassAid
         {
             Navigation.PushAsync(new ViewScheduleTemplate());
         }
-
         private void bypassBtn_Clicked(object sender, EventArgs e)
         {
-            Admin admin = new Admin("HolaSenorita","IamAwesome");
+            Admin admin = new Admin("HolaSenorita", "IamAwesome");
             admin.ID = "192311000";
             admin.Name = "Jon Doe";
             admin.Phone = "01911104587";

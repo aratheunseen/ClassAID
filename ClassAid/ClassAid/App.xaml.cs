@@ -26,28 +26,15 @@ namespace ClassAid
             string server = "https://classaidapp.firebaseio.com/";
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
             fireSharpClient = new FireSharpDB(server, authKey);
-            InitializeComponent();            
-
-            bool doesExist = File.Exists(authFile);
-            var current = Connectivity.NetworkAccess;
-            
-            if (doesExist)
+            InitializeComponent();
+            string  loginState = Preferences.Get("isLoggedin", "false");
+            if (loginState == "false")
             {
-                string text = File.ReadAllText(authFile);
-                var loginInfo = JsonConvert.DeserializeObject<LoginAuthModel>(text);
-                if (loginInfo.User == UserType.Admin)
-                {
-                    MainPage = new NavigationPage(new DashBoardPage(loginInfo));
-                }
-                else if (loginInfo.User == UserType.Student)
-                {
-                    MainPage = new NavigationPage(new StudentDashBoard());
-                }
-                File.Delete(authFile);
+                MainPage = new NavigationPage(new StartPage());
             }
             else
             {
-                MainPage = new NavigationPage(new StartPage());
+                MainPage = new NavigationPage(new Dashboard());
             }
         }
 
