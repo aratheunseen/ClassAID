@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassAid.Views.StudentViews.ViewEventTemplate"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Frame Padding="0">
+                <Grid BackgroundColor="#F7F7FF">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <BoxView HorizontalOptions="End"
+                    VerticalOptions="Start" 
+                   Margin="0,20,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="MediumVioletRed"
+                     CornerRadius="30"
+                     >
+                    </BoxView>
+                    <Label Text="4m"
+                   Grid.Column="0"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="0,40,10,0"/>
+                    <BoxView Grid.Column="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start" 
+                   Margin="5,15,0,0"
+                   HeightRequest="50"
+                   WidthRequest="2"
+                   BackgroundColor="MediumVioletRed">
+                    </BoxView>
+                    <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                   Grid.Column="1"
+                  FontSize="14"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="15,15,10,0"
+                   Grid.ColumnSpan="4"/>
+                    <Label Text="Notice is a written or printed information or news announcement. Notices are either displayed at prominent places or published in newspapers/ magazines. It is meant only for a select group. Since a notice contains a formal announcement or information, its tone and style is formal and factual. Its language should be simple and formal. Notice is always brief and to the point."
+                   Grid.Column="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,70,10,0"
+                   Grid.ColumnSpan="4"/>
+                </Grid>
+            </Frame>
+    </ContentPage.Content>
+</ContentPage>
