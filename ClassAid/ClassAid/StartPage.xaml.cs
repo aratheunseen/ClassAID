@@ -2,6 +2,7 @@
 using ClassAid.Views.AdminViews;
 using ClassAid.Views.StudentViews;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 namespace ClassAid
@@ -12,6 +13,10 @@ namespace ClassAid
         public StartPage()
         {
             InitializeComponent();
+            //Preferences.Set("test", "Hello World");
+            testText.Text = Preferences.Get("test","Not Found").ToString();
+            //Application.Current.Properties["id"] = "LOL";
+            //secondTestText.Text = Application.Current.Properties["id"] as string;
         }
 
         private void adminBtn_Clicked(object sender, EventArgs e)
