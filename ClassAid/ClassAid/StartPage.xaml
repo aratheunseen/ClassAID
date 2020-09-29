@@ -45,6 +45,8 @@
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
+                <Label x:Name="testText"/>
+                <Label x:Name="secondTestText"/>
                 <Button x:Name="gotoBtn" 
                         HorizontalOptions="Center"
                         Clicked="gotoBtn_Clicked"
