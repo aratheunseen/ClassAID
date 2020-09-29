@@ -9,7 +9,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="65" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -17,7 +17,7 @@
 
             <!-- Header -->
             <Label Text="ClassAiD"
-                      FontSize="30"
+                      FontSize="25"
                        TextColor="#8576F5"
                    HorizontalOptions="Start"
                    VerticalOptions="Start" 
@@ -25,9 +25,9 @@
                        Grid.ColumnSpan="4"/>
             <Image Grid.Column="4"
                    Margin="0,20,20,0"
-                   Source="classaid_logo.png"
-                   HeightRequest="40"
-                   WidthRequest="40"
+                   Source="avater.png"
+                   HeightRequest="32"
+                   WidthRequest="32"
                    HorizontalOptions="End"
                    VerticalOptions="Start">
                 <Image.GestureRecognizers>
@@ -70,10 +70,10 @@
             <BoxView Grid.Row="1"
                     HorizontalOptions="End"
                     VerticalOptions="Start" 
-                   Margin="0,60,10,0"
-                   HeightRequest="20"
-                   WidthRequest="20"
-                   BackgroundColor="LightGray"
+                   Margin="0,65,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="MediumVioletRed"
                      CornerRadius="30"
                      >
             </BoxView>
@@ -84,7 +84,7 @@
                    Margin="5,60,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Green">
+                   BackgroundColor="MediumVioletRed">
             </BoxView>
             <Label Text="CSE 123"
                    Grid.Column="1"
@@ -126,10 +126,10 @@
             <BoxView Grid.Row="1"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,160,10,0"
-                   HeightRequest="20"
-                   WidthRequest="20"
-                   BackgroundColor="LightGray"
+                   Margin="0,165,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="DarkCyan"
                      CornerRadius="30"
                      >
             </BoxView>
@@ -140,7 +140,7 @@
                    Margin="5,160,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="#8576F5">
+                   BackgroundColor="DarkCyan">
             </BoxView>
             <Label Text="CSE 123"
                    Grid.Column="1"
@@ -216,10 +216,10 @@
             <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,55,10,0"
-                   HeightRequest="20"
-                   WidthRequest="20"
-                   BackgroundColor="LightGray"
+                   Margin="0,60,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="MediumVioletRed"
                      CornerRadius="30"
                      >
             </BoxView>
@@ -230,7 +230,7 @@
                    Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="Green">
+                   BackgroundColor="MediumVioletRed">
             </BoxView>
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
@@ -246,10 +246,10 @@
             <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,150,10,0"
-                   HeightRequest="20"
-                   WidthRequest="20"
-                   BackgroundColor="LightGray"
+                   Margin="0,155,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="DarkCyan"
                      CornerRadius="30"
                      >
             </BoxView>
@@ -260,7 +260,7 @@
                    Margin="5,150,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="#8576F5">
+                   BackgroundColor="DarkCyan">
             </BoxView>
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
@@ -276,7 +276,9 @@
             <Frame Grid.Column="0"
                        Grid.Row="3"
                        Grid.ColumnSpan="2"
-                   BackgroundColor="Transparent">
+                   BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+               VerticalOptions="Center">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer x:Name="fullNotice"/>
                 </Frame.GestureRecognizers>
@@ -285,8 +287,7 @@
                    HeightRequest="32"
                    WidthRequest="32"
                    BackgroundColor="Transparent"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"></Image>
+                   ></Image>
             </Frame>
 
             <Frame Grid.Column="2"
@@ -297,7 +298,7 @@
                 </Frame.GestureRecognizers>
                 <Image Grid.Column="2"
                    Grid.Row="3"
-               Margin="0,0,5,0"
+             
                Source="message.png"
                HeightRequest="32"
                WidthRequest="32"
@@ -308,18 +309,17 @@
             <Frame Grid.Column="3"
                    Grid.Row="3"
                    Grid.ColumnSpan="2"
-                   BackgroundColor="Transparent">
+                   BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+               VerticalOptions="Center">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer x:Name="fullSchedule"/>
                 </Frame.GestureRecognizers>
                 <Image 
-               Margin="0,0,5,0"
                Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
-               BackgroundColor="Transparent"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"></Image>
+               BackgroundColor="Transparent"></Image>
                 </Frame>
         </Grid>
     </ContentPage.Content>
