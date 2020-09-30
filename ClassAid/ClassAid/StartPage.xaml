@@ -7,8 +7,8 @@
 <ContentPage.Content>
         <Grid BackgroundColor="#F7F7FF">
             <Grid.RowDefinitions>
-                <RowDefinition Height="4*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
             <!--TODO: Fix Image-->
             <StackLayout Grid.Row="0" Margin="50">
