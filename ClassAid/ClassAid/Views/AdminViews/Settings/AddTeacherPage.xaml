@@ -5,10 +5,25 @@
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="Center">
+            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Label Text="Add Teacher Details"
                        TextColor="#6264a7"
                        FontSize="25"
@@ -16,35 +31,47 @@
                        Opacity="1"></Label>
             </StackLayout>
             <StackLayout Padding="30">
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherName" 
                    TextChanged="inputField_TextChanged"
                    Placeholder="Teacher Name"
-                   TextColor="#6264a7"/>
+                   TextColor="#6264a7"
+                   Margin="15,3"/>
                 </Frame>
 
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherDesegnation"
                    TextColor="#6264a7"
                    TextChanged="inputField_TextChanged"
-                   Placeholder="Desegnation"/>
+                   Placeholder="Desegnation"
+                   Margin="15,3"/>
                 </Frame>
 
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherPhoneNumber"
                    TextColor="#6264a7"
                    TextChanged="inputField_TextChanged"
-                   Placeholder="Phone Number"/>
+                   Placeholder="Phone Number"
+                   Margin="15,3"/>
                 </Frame>
 
-                <Button x:Name="addTeacherBtn" 
-                    Clicked="addTeacherBtn_Clicked"
-                    IsEnabled="False"
-                    Text="Add Teacher" 
-                    TextColor="#FFFFFF"
-                    Margin="0,100"
-                    BackgroundColor="#6264a7"
-                    CornerRadius="30"/>
+                <Label Margin="30"/>
+                
+                <Frame BorderColor="#6264a7" 
+                       BackgroundColor="#6264a7" 
+                       Padding="15"
+                       CornerRadius="15">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="addTeacherBtn"/>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="btnAdd"
+                                Margin="15,3"
+                               FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                HorizontalOptions="Center"
+                                Text="Continue to Dashboard"/>
+                </Frame>
+                
                 <!--<Button x:Name="goBackBtn" 
                         Clicked="goBackBtn_Clicked"
                         Text="Back" 
