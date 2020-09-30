@@ -7,11 +7,10 @@
     <ContentPage.Resources>
         <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
             <Setter Property="Margin" Value="15,3"/>
-            <!--Change to #AEB0BE if neccecary-->
             <Setter Property="TextColor" Value="#6264a7"/>
         </Style>
         <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
-            <Setter Property="BorderColor" Value="#8576F5"/>
+            <Setter Property="BorderColor" Value="#6264a7"/>
             <Setter Property="BackgroundColor" Value="#f7f7ff"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property ="CornerRadius" Value="30"/>
@@ -23,48 +22,48 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="Center">
+            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
-                       Margin="40"
+                       Margin="0,70,0,50"
                        Opacity="1"
                        Source="classaid_demo.png" 
                        HeightRequest="150" 
                        WidthRequest="150"></Image>
             </StackLayout>
             <StackLayout Padding="30">
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="fullName" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        Placeholder="Full Name"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userId" 
                        Placeholder="Student ID or Roll Number"
                        TextColor="#6264a7"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="phoneNumber"
                        Margin="15,3"
                        Placeholder="Phone Number" 
                        TextColor="#6264a7"
                        IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teamCode" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        Placeholder="Team Code"></Components:ClassAidEntry>
                 </Frame>
                 <Label/>
-                <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="30">
+                <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer x:Name="studentSignIn"/>
                     </Frame.GestureRecognizers>
                     <Label HorizontalOptions="Center"
                            Text="Sign In"
+                           FontSize="14"
                            TextColor="#FFFFFF"
                            Margin="15,3">
                     </Label>
