@@ -1,20 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassAid.Views.StudentViews.ViewScheduleTemplate"
-             NavigationPage.HasNavigationBar="False">
+             x:Class="ClassAid.Views.StudentViews.ViewSchedulePage">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <ListView x:Name="listView"   
-                  HasUnevenRows="True"  >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <!--<local:ViewScheduleTemplate/>-->
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
