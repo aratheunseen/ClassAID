@@ -33,6 +33,7 @@
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="userRealName"
                        Placeholder="Full Name"
+                       TextChanged="form_TextChanged"
                        TextColor="#6264a7"
                        Margin="15,3"></Components:ClassAidEntry>
                     </Frame>
@@ -40,18 +41,21 @@
                         <Components:ClassAidEntry x:Name="instName"
                        Placeholder="Institute Name"
                        TextColor="#6264a7"
-                       Margin="15,3"></Components:ClassAidEntry>
+                       Margin="15,3"
+                        TextChanged="form_TextChanged"></Components:ClassAidEntry>
                     </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
 
                         <Components:ClassAidEntry x:Name="deptName"
                        Margin="15,3"
                        Placeholder="Department" 
+                       TextChanged="form_TextChanged"
                        TextColor="#6264a7"></Components:ClassAidEntry>
                     </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="semName" 
                        Margin="15,3"
+                      TextChanged="form_TextChanged"
                        TextColor="#6264a7"
                        Placeholder="Semester or Class"></Components:ClassAidEntry>
                     </Frame>
@@ -60,19 +64,22 @@
                             <Components:ClassAidEntry x:Name="secName"
                        Placeholder="Section"
                        TextColor="#6264a7"
-                       Margin="15,3"></Components:ClassAidEntry>
+                       Margin="15,3"
+                      TextChanged="form_TextChanged"></Components:ClassAidEntry>
                         </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="stuId" 
                        Margin="15,3"
                        TextColor="#6264a7"
+                       TextChanged="form_TextChanged"
                        Placeholder="Student ID or Roll Number"></Components:ClassAidEntry>
                     </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="userPhone" 
                        Margin="15,3"
                        TextColor="#6264a7"
-                       Placeholder="Phone Number"></Components:ClassAidEntry>
+                       Placeholder="Phone Number"
+                        TextChanged="form_TextChanged"></Components:ClassAidEntry>
                     </Frame>
                     <Label/>
                         <Frame BorderColor="#6264a7" 

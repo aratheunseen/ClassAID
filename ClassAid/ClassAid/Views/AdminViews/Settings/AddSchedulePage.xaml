@@ -31,7 +31,7 @@
                 </StackLayout>
                 <Frame  Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="courseCode"
-                   TextChanged="inputTextChanged"
+                   TextChanged="form_TextChanged"
                        Placeholder="Course Code"
                       Margin="15,3"
                                TextColor="#6264a7"/>
@@ -39,7 +39,7 @@
 
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="subjectName"
-                   TextChanged="inputTextChanged"
+                   TextChanged="form_TextChanged"
                        Placeholder="Subject Name"
                                TextColor="#6264a7"
                         Margin="15,3"/>

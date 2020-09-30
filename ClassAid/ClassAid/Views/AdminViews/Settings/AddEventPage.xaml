@@ -33,6 +33,7 @@
             <Frame Style="{StaticResource ClassAidFrameDesign}">
             <Components:ClassAidEntry Placeholder="Short title"
                                       x:Name="eventTitle"
+                                      TextChanged="form_TextChanged"
                                       TextColor="#6264a7"
                                       Margin="15,3"
                                       >
@@ -41,6 +42,7 @@
             <Frame Style="{StaticResource ClassAidFrameDesign}">
             <Editor x:Name="eventBody"  
                     AutoSize="TextChanges" 
+                    TextChanged="form_TextChanged"
                     Keyboard="Chat"
                     Placeholder="Exam on friday. Oh nooo!!!"
                     TextColor="#6264a7"
