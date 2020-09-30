@@ -4,27 +4,28 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.Dashboard">
     <ContentPage.Content>
-        <Grid BackgroundColor="#F7F7FF">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="70" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <Grid BackgroundColor="#F7F7FF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="70" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Header -->
-            <Label Text="ClassAiD"
+                <!-- Header -->
+                <Label Text="ClassAiD"
                       FontSize="25"
                        TextColor="#6264a7"
                    HorizontalOptions="Start"
                    VerticalOptions="Start" 
                    Margin="20,20,0,0"
                        Grid.ColumnSpan="4"/>
-            
-            <Image Grid.Column="3"
+
+                <Image Grid.Column="3"
                    Grid.ColumnSpan="1"
                    Source="sync.png"
                Margin="0,25,0,0"
@@ -32,25 +33,25 @@
                WidthRequest="25"
                HorizontalOptions="End"
                VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="allSyncButton"/>
-                </Image.GestureRecognizers>
-            </Image>
-            
-            <Image Grid.Column="4"
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="allSyncButton"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image Grid.Column="4"
                    Margin="15,20,0,0"
                    Source="avater.png"
                    HeightRequest="32"
                    WidthRequest="32"
                    HorizontalOptions="Start"
                    VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="profileBtn"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="profileBtn"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <!-- Schedule Title -->
-            <Image Grid.Column="0"
+                <!-- Schedule Title -->
+                <Image Grid.Column="0"
                    Grid.Row="1"
                Margin="0,0,5,0"
                Source="schedule.png"
@@ -58,7 +59,7 @@
                WidthRequest="32"
                HorizontalOptions="End"
                VerticalOptions="Start"></Image>
-            <Label Text="Schedule"
+                <Label Text="Schedule"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="22"
@@ -67,7 +68,7 @@
                VerticalOptions="Start" 
                Margin="5,0,0,0"
                    Grid.ColumnSpan="2"/>
-            <Image Grid.Column="4"
+                <Image Grid.Column="4"
                    x:Name="addScheduleBtnImage"
                    Grid.Row="1"
                    Source="plus.png"
@@ -76,13 +77,13 @@
                    WidthRequest="24"
                    HorizontalOptions="Center"
                    VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="addSchedule"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="addSchedule"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <!-- Schedule Content -->
-            <BoxView Grid.Row="1"
+                <!-- Schedule Content -->
+                <BoxView Grid.Row="1"
                     HorizontalOptions="End"
                     VerticalOptions="Start" 
                    Margin="0,65,15,0"
@@ -90,7 +91,7 @@
                    WidthRequest="10"
                    BackgroundColor="MediumVioletRed"
                      CornerRadius="30"/>
-            <BoxView Grid.Row="1"
+                <BoxView Grid.Row="1"
                      Grid.Column="1"
                      HorizontalOptions="Start"
                      VerticalOptions="Start" 
@@ -98,7 +99,7 @@
                    HeightRequest="20"
                    WidthRequest="2"
                    BackgroundColor="MediumVioletRed"/>
-            <Label x:Name="firstScheduleCourseCode"
+                <Label x:Name="firstScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
                    FontSize="18"
@@ -107,7 +108,7 @@
                    VerticalOptions="Start" 
                    Margin="15,55,10,0"
                    Grid.ColumnSpan="4"/>
-            <Label x:Name="firstScheduleCourseName"
+                <Label x:Name="firstScheduleCourseName"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="14"
@@ -116,7 +117,7 @@
                VerticalOptions="Start" 
                Margin="5,80,10,0"
                    Grid.ColumnSpan="3"/>
-            <Label x:Name="firstScheduleStart" 
+                <Label x:Name="firstScheduleStart" 
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -124,7 +125,7 @@
                HorizontalOptions="End"
                VerticalOptions="Start" 
                Margin="5,60,15,0"/>
-            <Label x:Name="firstScheduleEnd" 
+                <Label x:Name="firstScheduleEnd" 
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -135,7 +136,7 @@
 
 
 
-            <BoxView Grid.Row="1"
+                <BoxView Grid.Row="1"
                HorizontalOptions="End"
                VerticalOptions="Start" 
                    Margin="0,165,15,0"
@@ -143,7 +144,7 @@
                    WidthRequest="10"
                    BackgroundColor="DarkCyan"
                      CornerRadius="30"/>
-            <BoxView Grid.Row="1"
+                <BoxView Grid.Row="1"
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
@@ -151,7 +152,7 @@
                    HeightRequest="20"
                    WidthRequest="2"
                    BackgroundColor="DarkCyan"/>
-            <Label x:Name="secondScheduleCourseCode"
+                <Label x:Name="secondScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="18"
@@ -160,7 +161,7 @@
                VerticalOptions="Start" 
                Margin="15,155,10,0"
                    Grid.ColumnSpan="4"/>
-            <Label x:Name="secondScheduleCourseName"
+                <Label x:Name="secondScheduleCourseName"
                    Grid.Column="1"
                    Grid.Row="1"
                   FontSize="14"
@@ -169,7 +170,7 @@
                VerticalOptions="Start" 
                Margin="5,180,10,0"
                    Grid.ColumnSpan="3"/>
-            <Label x:Name="secondScheduleStart"
+                <Label x:Name="secondScheduleStart"
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -177,7 +178,7 @@
                HorizontalOptions="End"
                VerticalOptions="Start" 
                Margin="5,160,15,0"/>
-            <Label x:Name="secondScheduleEnd"
+                <Label x:Name="secondScheduleEnd"
                    Grid.Column="4"
                    Grid.Row="1"
                   FontSize="12"
@@ -188,8 +189,8 @@
 
 
 
-            <!-- Notice Title -->
-            <Image Grid.Column="0"
+                <!-- Notice Title -->
+                <Image Grid.Column="0"
                    Grid.Row="2"
                Margin="0,0,5,0"
                Source="notice.png"
@@ -198,7 +199,7 @@
                HorizontalOptions="End"
                VerticalOptions="Start"/>
 
-            <Label Text="Notice"
+                <Label Text="Notice"
                    Grid.Column="1"
                    Grid.Row="2"
                   FontSize="22"
@@ -208,7 +209,7 @@
                Margin="5,0,0,0"
                Grid.ColumnSpan="3"/>
 
-            <Image Grid.Column="4"
+                <Image Grid.Column="4"
                    x:Name="addNoticeBtnImage"
                    Grid.Row="2"
                    Margin="0,4,15,0"
@@ -217,13 +218,13 @@
                    WidthRequest="25"
                    HorizontalOptions="Center"
                    VerticalOptions="Start">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="addNoticeBtn"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="addNoticeBtn"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
-            <!-- Notice Content -->
-            <BoxView Grid.Row="2"
+                <!-- Notice Content -->
+                <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
                    Margin="0,60,15,0"
@@ -231,7 +232,7 @@
                    WidthRequest="10"
                    BackgroundColor="MediumVioletRed"
                      CornerRadius="30"/>
-            <BoxView Grid.Row="2"
+                <BoxView Grid.Row="2"
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
@@ -240,7 +241,7 @@
                    WidthRequest="2"
                    BackgroundColor="MediumVioletRed"/>
 
-            <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
                    Grid.Row="2"
                   FontSize="15"
@@ -251,7 +252,7 @@
                    Grid.ColumnSpan="4"/>
 
 
-            <BoxView Grid.Row="2"
+                <BoxView Grid.Row="2"
                HorizontalOptions="End"
                VerticalOptions="Start" 
                    Margin="0,155,15,0"
@@ -259,7 +260,7 @@
                    WidthRequest="10"
                    BackgroundColor="DarkCyan"
                      CornerRadius="30"/>
-            <BoxView Grid.Row="2"
+                <BoxView Grid.Row="2"
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
@@ -267,7 +268,7 @@
                    HeightRequest="20"
                    WidthRequest="2"
                    BackgroundColor="DarkCyan"/>
-            <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
+                <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
                    Grid.Row="2"
                   FontSize="15"
@@ -277,29 +278,29 @@
                Margin="15,150,10,0"
                    Grid.ColumnSpan="4"/>
 
-            <!-- Menu -->
-            <Frame Grid.Column="0"
+                <!-- Menu -->
+                <Frame Grid.Column="0"
                        Grid.Row="3"
                        Grid.ColumnSpan="2"
                    BackgroundColor="Transparent"
                 HorizontalOptions="Center"
                VerticalOptions="Center">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="fullNotice"/>
-                </Frame.GestureRecognizers>
-                <Image
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="fullNotice"/>
+                    </Frame.GestureRecognizers>
+                    <Image
                    Source="notice.png"
                    HeightRequest="32"
                    WidthRequest="32"
                    BackgroundColor="Transparent"/>
-            </Frame>
-            <Frame Grid.Column="2"
+                </Frame>
+                <Frame Grid.Column="2"
                    Grid.Row="3"
                    BackgroundColor="Transparent">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="groupMessage"/>
-                </Frame.GestureRecognizers>
-                <Image Grid.Column="2"
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="groupMessage"/>
+                    </Frame.GestureRecognizers>
+                    <Image Grid.Column="2"
                    Grid.Row="3"             
                Source="message.png"
                HeightRequest="32"
@@ -307,22 +308,23 @@
                BackgroundColor="Transparent"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
-            </Frame>
-            <Frame Grid.Column="3"
+                </Frame>
+                <Frame Grid.Column="3"
                    Grid.Row="3"
                    Grid.ColumnSpan="2"
                    BackgroundColor="Transparent"
                 HorizontalOptions="Center"
                VerticalOptions="Center">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="fullSchedule"/>
-                </Frame.GestureRecognizers>
-                <Image 
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="fullSchedule"/>
+                    </Frame.GestureRecognizers>
+                    <Image 
                Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
                BackgroundColor="Transparent"/>
-            </Frame>
-        </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -21,75 +21,77 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#F7F7FF" Padding="30">
-            <StackLayout>
-                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
-                    <Label Text="Add Schedule Details"
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout  BackgroundColor="#F7F7FF" Padding="30">
+                <StackLayout>
+                    <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                        <Label Text="Add Schedule Details"
                        TextColor="#6264a7"
                        FontSize="25"
                         Margin="0,70,0,70"></Label>
-                </StackLayout>
-                <Frame  Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="courseCode"
+                    </StackLayout>
+                    <Frame  Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="courseCode"
                    TextChanged="Form_TextChanged"
                        Placeholder="Course Code"
                       Margin="15,3"
                                TextColor="#6264a7"/>
-                </Frame>
+                    </Frame>
 
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="subjectName"
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="subjectName"
                    TextChanged="Form_TextChanged"
                        Placeholder="Subject Name"
                                TextColor="#6264a7"
                         Margin="15,3"/>
-                </Frame>
+                    </Frame>
 
-                <Grid>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource ClassAidFrameDesign}">
-                        <Picker Title="Select Teacher"
+                    <Grid>
+                        <Frame Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource ClassAidFrameDesign}">
+                            <Picker Title="Select Teacher"
                         x:Name="teacherPeaker"
                         TextColor="#6264a7"
                                 Margin="15,3"
                         WidthRequest="100"
                         ItemDisplayBinding="{Binding Name}"/>
-                    </Frame>
-                    <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,5,0" Grid.Column="4" x:Name="addTeacher"
+                        </Frame>
+                        <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,5,0" Grid.Column="4" x:Name="addTeacher"
                                  ImageSource="plus.png"
                                  BackgroundColor="Transparent"
                              Clicked="AddTeacher_Clicked"
                                  WidthRequest="40"
                                  HeightRequest="40"
                              Text="Add Teacher"/>
-                </Grid>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Picker Title="Select Day"
+                    </Grid>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Picker Title="Select Day"
                                 TextColor="#6264a7"
                             Margin="15,3"
                         x:Name="dayPeaker"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <TimePicker x:Name="startDate" TextColor="#6264a7" Margin="15,3"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <TimePicker x:Name="endDate" TextColor="#6264a7" Margin="15,3"/>
-                </Frame>
-            </StackLayout>
-            <Label Margin="10"/>
-            <Frame BorderColor="#6264a7" 
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <TimePicker x:Name="startDate" TextColor="#6264a7" Margin="15,3"/>
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <TimePicker x:Name="endDate" TextColor="#6264a7" Margin="15,3"/>
+                    </Frame>
+                </StackLayout>
+                <Label Margin="10"/>
+                <Frame BorderColor="#6264a7" 
                        BackgroundColor="#6264a7" 
                        Padding="15"
                        CornerRadius="15">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="addTeacherBtn"/>
-                </Frame.GestureRecognizers>
-                <Label x:Name="btnAdd"
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="addTeacherBtn"/>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="btnAdd"
                                 Margin="15,3"
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
                                 Text="Add Schedule"/>
-            </Frame>
-        </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

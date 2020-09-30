@@ -22,58 +22,60 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
-                <Label Text="Add Teacher Details"
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#F7F7FF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                    <Label Text="Add Teacher Details"
                        TextColor="#6264a7"
                        FontSize="25"
                         Margin="0,100,0,70"
                        Opacity="1"></Label>
-            </StackLayout>
-            <StackLayout Padding="30">
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="teacherName" 
+                </StackLayout>
+                <StackLayout Padding="30">
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="teacherName" 
                    TextChanged="Form_TextChanged"
                    Placeholder="Teacher Name"
                    TextColor="#6264a7"
                    Margin="15,3"/>
-                </Frame>
+                    </Frame>
 
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="teacherDesegnation"
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="teacherDesegnation"
                    TextColor="#6264a7"
                    TextChanged="Form_TextChanged"
                    Placeholder="Designation"
                    Margin="15,3"/>
-                </Frame>
+                    </Frame>
 
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="teacherPhoneNumber"
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="teacherPhoneNumber"
                    TextColor="#6264a7"
                    TextChanged="Form_TextChanged"
                    Placeholder="Phone Number"
                    Keyboard="Numeric"
                    MaxLength="11"
                    Margin="15,3"/>
-                </Frame>
+                    </Frame>
 
-                <Label Margin="30"/>
+                    <Label Margin="30"/>
 
-                <Frame BorderColor="#6264a7" 
+                    <Frame BorderColor="#6264a7" 
                        BackgroundColor="#6264a7" 
                        Padding="15"
                        CornerRadius="15">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="addTeacherBtn"/>
-                    </Frame.GestureRecognizers>
-                    <Label x:Name="btnAdd"
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="addTeacherBtn"/>
+                        </Frame.GestureRecognizers>
+                        <Label x:Name="btnAdd"
                                 Margin="15,3"
                                 FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
                                 Text="Add Teacher"/>
-                </Frame>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

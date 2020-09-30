@@ -23,23 +23,24 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F7F7FF" Padding="30">
-            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
-                <Label Text="Add Notice"
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#F7F7FF" Padding="30">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                    <Label Text="Add Notice"
                        TextColor="#6264a7"
                        FontSize="25"
                         Margin="0,70,0,70"
                        Opacity="1"/>
-            </StackLayout>
-            <Frame Style="{StaticResource ClassAidFrameDesign}">
-                <Components:ClassAidEntry Placeholder="Short title"
+                </StackLayout>
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
+                    <Components:ClassAidEntry Placeholder="Short title"
                                       x:Name="eventTitle"
                                       TextChanged="Form_TextChanged"
                                       TextColor="#6264a7"
                                       Margin="15,3"/>
-            </Frame>
-            <Frame Style="{StaticResource ClassAidFrameDesign}">
-            <Editor x:Name="eventBody"  
+                </Frame>
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
+                    <Editor x:Name="eventBody"  
                     AutoSize="TextChanges" 
                     TextChanged="Form_TextChanged"
                     Keyboard="Chat"
@@ -47,23 +48,24 @@
                     TextColor="#6264a7"
                     Margin="15,3"
                     HeightRequest="250">
-            </Editor>
-            </Frame>
-            <Label Margin="10"/>
-            <Frame BorderColor="#6264a7" 
+                    </Editor>
+                </Frame>
+                <Label Margin="10"/>
+                <Frame BorderColor="#6264a7" 
                        BackgroundColor="#6264a7" 
                        Padding="15"
                        CornerRadius="15">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="saveEvent"/>
-                </Frame.GestureRecognizers>
-                <Label x:Name="btnAdd"
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="saveEvent"/>
+                    </Frame.GestureRecognizers>
+                    <Label x:Name="btnAdd"
                        Margin="15,3"
                        FontAttributes="Bold"
                        TextColor="#FFFFFF"
                        HorizontalOptions="Center"
                        Text="Publish"/>
-            </Frame>
-        </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

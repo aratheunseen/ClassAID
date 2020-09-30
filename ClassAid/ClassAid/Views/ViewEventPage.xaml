@@ -8,48 +8,49 @@
              NavigationPage.HasNavigationBar="False"
              Title="Noticeboard">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <CollectionView x:Name="eventListView"
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout Orientation="Vertical">
+                <CollectionView x:Name="eventListView"
                       SelectionMode="None">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="schedule:EventModel">
-                        <Frame Padding="0">
-                            <Grid BackgroundColor="#F7F7FF">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <BoxView HorizontalOptions="End"
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="schedule:EventModel">
+                            <Frame Padding="0">
+                                <Grid BackgroundColor="#F7F7FF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,20,15,0"
                                         HeightRequest="10"
                                         WidthRequest="10"
                                         BackgroundColor="MediumVioletRed"
                                         CornerRadius="30"/>
-                                <Label Text="{Binding StartDate}"
+                                    <Label Text="{Binding StartDate}"
                                        Grid.Column="0"
                                        FontSize="14"
                                        TextColor="Black"
                                        HorizontalOptions="End"
                                        VerticalOptions="Start" 
                                        Margin="0,40,10,0"/>
-                                <Label Text="{Binding EndDate}"
+                                    <Label Text="{Binding EndDate}"
                                        Grid.Column="0"
                                        FontSize="14"
                                        TextColor="Black"
                                        HorizontalOptions="End"
                                        VerticalOptions="Start" 
                                        Margin="0,40,10,0"/>
-                                <BoxView Grid.Column="1"
+                                    <BoxView Grid.Column="1"
                                          HorizontalOptions="Start"
                                          VerticalOptions="Start"
                                          Margin="5,15,0,0"
                                          HeightRequest="50"
                                          WidthRequest="2"
                                          BackgroundColor="MediumVioletRed"/>
-                                <Label Text="{Binding Title}"
+                                    <Label Text="{Binding Title}"
                                        Grid.Column="1"
                                        FontSize="14"
                                        TextColor="Black"
@@ -57,7 +58,7 @@
                                        VerticalOptions="Start" 
                                        Margin="15,15,10,0"
                                        Grid.ColumnSpan="4"/>
-                                <Label Text="{Binding Details}"
+                                    <Label Text="{Binding Details}"
                                        Grid.Column="1"
                                        FontSize="14"
                                        TextColor="Gray"
@@ -65,11 +66,12 @@
                                        VerticalOptions="Start" 
                                        Margin="5,70,10,0"
                                        Grid.ColumnSpan="4"/>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
