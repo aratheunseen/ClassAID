@@ -22,8 +22,8 @@ namespace ClassAid.Views.AdminViews
         }
         private async void BtnAdd_Clicked()
         {
-            try
-            {
+            //try
+            //{
                 Shared user = new Shared(userName.Text+"admin", userPass.Text);
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
@@ -45,11 +45,11 @@ namespace ClassAid.Views.AdminViews
                     Preferences.Set(PrefKeys.isLoggedIn, true);
                     Preferences.Set(PrefKeys.adminKey, tempAdmin.Key);
                 }
-            }
-            catch (Exception e)
-            {
-                resultText.Text = "Sorry something bad happened. " + e.Message;
-            }
+            ////}
+            ////catch (Exception e)
+            ////{
+            ////    resultText.Text = "Sorry something bad happened. " + e.Message;
+            ////}
 
         }
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
