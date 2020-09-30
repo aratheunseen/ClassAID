@@ -9,19 +9,19 @@
             <StackLayout>
                 <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center">
-                    <Label Text="Add Schedule"
+                    <Label Text="Add Schedule Details"
                        TextColor="#6264a7"
                        FontSize="25"
-                        Margin="0,30,0,60"></Label>
+                        Margin="0,70,0,70"></Label>
                 </StackLayout>
-                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="courseCode"
                    TextChanged="inputTextChanged"
                        Placeholder="Course Code"
-                               TextColor="#8B84B9"/>
+                               TextColor="#6264a7"/>
                 </Frame>
 
-                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                     <Components:ClassAidEntry x:Name="subjectName"
                    TextChanged="inputTextChanged"
                        Placeholder="Subject Name"
@@ -29,7 +29,7 @@
                 </Frame>
 
                 <StackLayout Orientation="Horizontal">
-                    <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                         <Picker Title="Select Teacher"
                         x:Name="teacherPeaker"
                         TextColor="#6264a7"
@@ -44,24 +44,24 @@
                                  HeightRequest="32"
                              Text="Add Teacher"/>
                 </StackLayout>
-                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                     <Picker Title="Select Day"
-                                TextColor="#8B84B9"
+                                TextColor="#6264a7"
                         x:Name="dayPeaker"/>
                 </Frame>
-                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                     <TimePicker x:Name="startDate" TextColor="#6264a7"/>
                 </Frame>
-                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                     <TimePicker x:Name="endDate" TextColor="#6264a7"/>
                 </Frame>
             </StackLayout>
             <Button x:Name="addTeacherBtn" 
                     IsEnabled="False"
-                    Text="Add" 
+                    Text="Add  Schedule" 
                     TextColor="#FFFFFF"
                     Margin="0,50"
-                    BackgroundColor="#8576F5" 
+                    BackgroundColor="#6264a7" 
                     CornerRadius="30"
                     Clicked="addScheduleBtn_Clicked"/>
         </StackLayout>

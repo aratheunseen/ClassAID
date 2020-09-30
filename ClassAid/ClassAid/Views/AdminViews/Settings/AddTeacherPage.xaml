@@ -2,36 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.AdminViews.Settings.AddTeacherPage"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#F7F7FF">
+        <StackLayout BackgroundColor="#F7F7FF">
             <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center">
                 <Label Text="Add Teacher Details"
-                       TextColor="#8576F5"
+                       TextColor="#6264a7"
                        FontSize="25"
-                        Margin="0,60,0,100"
+                        Margin="0,100,0,70"
                        Opacity="1"></Label>
             </StackLayout>
             <StackLayout Padding="30">
-                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
-                    <Entry x:Name="teacherName" 
+                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="teacherName" 
                    TextChanged="inputField_TextChanged"
                    Placeholder="Teacher Name"
-                   TextColor="#8B84B9"/>
+                   TextColor="#6264a7"/>
                 </Frame>
 
-                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
-                    <Entry x:Name="teacherDesegnation"
-                   TextColor="#8B84B9"
+                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="teacherDesegnation"
+                   TextColor="#6264a7"
                    TextChanged="inputField_TextChanged"
                    Placeholder="Desegnation"/>
                 </Frame>
 
-                <Frame BorderColor="#C4C1DE"  Padding="10" CornerRadius="20">
-                    <Entry x:Name="teacherPhoneNumber"
-                   TextColor="#8B84B9"
+                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="teacherPhoneNumber"
+                   TextColor="#6264a7"
                    TextChanged="inputField_TextChanged"
                    Placeholder="Phone Number"/>
                 </Frame>
@@ -42,7 +43,7 @@
                     Text="Add Teacher" 
                     TextColor="#FFFFFF"
                     Margin="0,100"
-                    BackgroundColor="#8576F5"
+                    BackgroundColor="#6264a7"
                     CornerRadius="30"/>
                 <!--<Button x:Name="goBackBtn" 
                         Clicked="goBackBtn_Clicked"
