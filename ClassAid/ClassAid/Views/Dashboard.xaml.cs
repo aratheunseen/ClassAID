@@ -65,6 +65,11 @@ namespace ClassAid.Views
         }
         private void InitializeData()
         {
+            if (!user.IsAdmin)
+            {
+                addScheduleBtnImage.IsVisible = false;
+                addNoticeBtnImage.IsVisible = false;
+            }
             if (user.ScheduleList == null)            
                 user.ScheduleList =
                     new ObservableCollection<ScheduleModel>();

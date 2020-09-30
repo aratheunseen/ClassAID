@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassAid.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace ClassAid.Views.StudentViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewScheduleTemplate : ContentPage
+    public partial class AdditionalDetails : ContentPage
     {
-        public ViewScheduleTemplate()
+        public AdditionalDetails(Shared user)
         {
             InitializeComponent();
         }
