@@ -22,7 +22,8 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F7F7FF">
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#F7F7FF">
             <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
                        Margin="0,70,0,50" Opacity="1"
@@ -81,5 +82,6 @@
                                    IsRunning="False" />
             </StackLayout>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

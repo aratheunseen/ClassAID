@@ -5,13 +5,14 @@
              x:Class="ClassAid.StartPage">
     
 <ContentPage.Content>
-        <Grid BackgroundColor="#F7F7FF">
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <Grid BackgroundColor="#F7F7FF">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="150"/>
-            </Grid.RowDefinitions>
-            <!--TODO: Fix Image-->
-            <StackLayout Grid.Row="0" Margin="50">
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <!--TODO: Fix Image-->
+                <StackLayout Grid.Row="0" Margin="50">
                     <Image x:Name="imgBanner" 
                            Margin="50"
                            Source="classaid_demo.png" 
@@ -20,13 +21,13 @@
                 </StackLayout>
 
                 <!--TODO: Redesign Buttons and labels-->
-            <StackLayout Grid.Row="1" Margin="15,0,15,50">
-                <Button x:Name="studentBtn" 
+                <StackLayout Grid.Row="1" Margin="15,0,15,50">
+                    <Button x:Name="studentBtn" 
                             Clicked="StudentBtn_Clicked"
                             Text="Continue as a Student"
                             BackgroundColor="#6264a7"
                             CornerRadius="15"/>
-                <Button x:Name="adminBtn" 
+                    <Button x:Name="adminBtn" 
                             Clicked="AdminBtn_Clicked"
                             Text="Continue as an Admin"
                             BackgroundColor="#F7F7FF"
@@ -34,8 +35,8 @@
                             CornerRadius="15"
                             BorderWidth="1"
                             BorderColor="#6264a7"/>
-            </StackLayout>
-            <!--<StackLayout Grid.Row="1"
+                </StackLayout>
+                <!--<StackLayout Grid.Row="1"
                          Margin="20"
                          HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand">
@@ -49,6 +50,6 @@
                         Text="Bypass Btn"/>
             </StackLayout>-->
         </Grid>
-
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

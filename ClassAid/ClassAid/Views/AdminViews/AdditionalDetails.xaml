@@ -21,44 +21,43 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" BackgroundColor="#F7F7FF">
-                <Label Margin="20" HorizontalOptions="Center"
+                    <Label Margin="20" HorizontalOptions="Center"
                        Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
                        TextColor="Gray"
                        >
-                </Label>
-                <StackLayout Padding="30">
+                    </Label>
+                    <StackLayout Padding="30">
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="userRealName"
+                            <Components:ClassAidEntry x:Name="userRealName"
                        Placeholder="Full Name"
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"
                        Margin="15,3"></Components:ClassAidEntry>
-                    </Frame>
+                        </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="instName"
+                            <Components:ClassAidEntry x:Name="instName"
                        Placeholder="Institute Name"
                        TextColor="#6264a7"
                        Margin="15,3"
                         TextChanged="Form_TextChanged"></Components:ClassAidEntry>
-                    </Frame>
+                        </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
 
-                        <Components:ClassAidEntry x:Name="deptName"
+                            <Components:ClassAidEntry x:Name="deptName"
                        Margin="15,3"
                        Placeholder="Department" 
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"></Components:ClassAidEntry>
-                    </Frame>
+                        </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="semName" 
+                            <Components:ClassAidEntry x:Name="semName" 
                        Margin="15,3"
                       TextChanged="Form_TextChanged"
                        TextColor="#6264a7"
                        Placeholder="Semester or Class"></Components:ClassAidEntry>
-                    </Frame>
+                        </Frame>
 
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                             <Components:ClassAidEntry x:Name="secName"
@@ -68,37 +67,37 @@
                       TextChanged="Form_TextChanged"></Components:ClassAidEntry>
                         </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="stuId" 
+                            <Components:ClassAidEntry x:Name="stuId" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        TextChanged="Form_TextChanged"
-                       Placeholder="Student ID or Roll Number"></Components:ClassAidEntry>
-                    </Frame>
+                       Placeholder="Student ID"></Components:ClassAidEntry>
+                        </Frame>
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="userPhone" 
+                            <Components:ClassAidEntry x:Name="userPhone" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        Placeholder="Phone Number"
-                        Keyboard="Numeric"
+                        Keyboard="Telephone"
                         MaxLength="11"
                         TextChanged="Form_TextChanged"></Components:ClassAidEntry>
-                    </Frame>
-                    <Label/>
+                        </Frame>
+                        <Label/>
                         <Frame BorderColor="#6264a7" 
                        BackgroundColor="#6264a7" 
                        Padding="15"
                        CornerRadius="15">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="contToDashBtn"/>
-                        </Frame.GestureRecognizers>
-                        <Label x:Name="btnAdd"
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="contToDashBtn"/>
+                            </Frame.GestureRecognizers>
+                            <Label x:Name="btnAdd"
                                 Margin="15,3"
                                FontSize="14"
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
                                 Text="Continue to Dashboard"/>
-                    </Frame>
+                        </Frame>
                         <Label TextColor="#AEB0BE" 
                        Padding="15">
                             <Label.FormattedText>
@@ -114,13 +113,12 @@
                             </Label.FormattedText>
                         </Label>
                     </StackLayout>
-                <Label HorizontalOptions="Center"
+                    <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
-                </Label>
+                    </Label>
                     <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

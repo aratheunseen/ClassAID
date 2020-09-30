@@ -21,69 +21,78 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#F7F7FF">
-            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
-                <Image x:Name="imgBanner" 
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#F7F7FF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                    <Image x:Name="imgBanner" 
                        Margin="0,70,0,50"
                        Opacity="1"
                        Source="classaid_demo.png" 
                        HeightRequest="150" 
                        WidthRequest="150"></Image>
-            </StackLayout>
-            <StackLayout Padding="30">
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="userName" 
+                </StackLayout>
+                <StackLayout Padding="30">
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="userName" 
                        Margin="15,3"
                        TextColor="#6264a7"
+                       SelectionLength="6"
+                       MaxLength="10"
                        TextChanged="Form_TextChanged"
                        Placeholder="Username"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="userPass" 
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="userPass" 
                        Placeholder="Password"
                        TextColor="#6264a7"
+                       SelectionLength="6"
+                       MaxLength="10"
+                       IsPassword="True"
                        TextChanged="Form_TextChanged"
                        Margin="15,3"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="phoneNumber"
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="phoneNumber"
                        Margin="15,3"
                        Placeholder="Phone Number" 
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"
                        MaxLength="11"
-                       Keyboard="Numeric"
+                       Keyboard="Telephone"
                        IsPassword="True"/>
-                </Frame>
-                <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="teamCode" 
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="teamCode" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        TextChanged="Form_TextChanged"
-                       Placeholder="Team Code"/>
-                </Frame>
-                <Label/>
-                <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="studentSignIn"/>
-                    </Frame.GestureRecognizers>
-                    <Label HorizontalOptions="Center"
+                       Placeholder="Team Code"
+                       SelectionLength="7"
+                       MaxLength="30"/>
+                    </Frame>
+                    <Label/>
+                    <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="studentSignIn"/>
+                        </Frame.GestureRecognizers>
+                        <Label HorizontalOptions="Center"
                            Text="Sign In"
                            FontSize="14"
                            TextColor="#FFFFFF"
                            FontAttributes="Bold"
                            Margin="15,3">
-                    </Label>
-                </Frame>
-                <StackLayout Orientation="Horizontal">
-                </StackLayout>
-                <Label HorizontalOptions="Center"
+                        </Label>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                    </StackLayout>
+                    <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        TextColor="GreenYellow">
-                </Label>
-                <ActivityIndicator x:Name="activityIndicator" 
+                    </Label>
+                    <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="False" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
