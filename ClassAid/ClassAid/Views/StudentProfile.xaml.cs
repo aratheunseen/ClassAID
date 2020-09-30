@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid.Views.StudentViews
+namespace ClassAid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewEventTemplate : ContentPage
+    public partial class StudentProfile : ContentPage
     {
-        public ViewEventTemplate()
+        public StudentProfile()
         {
             InitializeComponent();
         }

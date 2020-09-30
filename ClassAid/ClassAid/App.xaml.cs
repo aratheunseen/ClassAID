@@ -7,6 +7,8 @@ using Microsoft.AppCenter.Crashes;
 using System.IO;
 using Xamarin.Essentials;
 using ClassAid.DataContex;
+using ClassAid.Models;
+using ClassAid.Models.Users;
 
 namespace ClassAid
 {
@@ -21,14 +23,38 @@ namespace ClassAid
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
             fireSharpClient = new FireSharpDB(server, authKey);
             InitializeComponent();
-            string  loginState = Preferences.Get("isLoggedin", "false");
-            if (loginState == "false")
+            bool loginState = Preferences.Get(PrefKeys.isLoggedIn, false);
+            var current = Connectivity.NetworkAccess;
+            Connectivity.ConnectivityChanged += CheckConnection;
+            if (!loginState && current == NetworkAccess.Internet)
                 MainPage = new NavigationPage(new StartPage());
+            else if (!loginState)
+                DependencyService.Get<Toast>().Show("No INTERNET connection.");
             else
                 MainPage = new NavigationPage(new Dashboard());
         }
-        
 
+        private async void CheckConnection(object sender, ConnectivityChangedEventArgs e)
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                if (Preferences.Get(PrefKeys.isSyncPending, false))
+                {
+                    try
+                    {
+                        Shared admin = await LocalStorageEngine.ReadDataAsync<Shared>
+                      (FileType.Shared);
+                        await AdminDbHandler.UpdateAdmin(fireSharpClient.GetClient(), admin);
+                    }
+                    catch (Exception)
+                    {
+                        return;
+                    }
+                }
+            }
+            else
+                return;
+        }
         protected override void OnStart()
         {
             AppCenter.Start("android=6c9e3d95-2ad6-4960-bdd8-d63483b3a7a2;" +

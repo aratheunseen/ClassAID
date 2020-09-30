@@ -1,5 +1,8 @@
-﻿using System;
+﻿using ClassAid.Models.Schedule;
+using ClassAid.Models.Users;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,14 +10,18 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ClassAid.Views.StudentViews
+namespace ClassAid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewSchedulePage : ContentPage
     {
-        public ViewSchedulePage()
+        public ViewSchedulePage(Shared admin)
         {
             InitializeComponent();
+            if (admin.ScheduleList != null)
+            {
+
+            }
         }
     }
 }

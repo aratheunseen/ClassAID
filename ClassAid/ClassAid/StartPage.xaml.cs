@@ -15,27 +15,27 @@ namespace ClassAid
             InitializeComponent();
         }
         
-        private void adminBtn_Clicked(object sender, EventArgs e)
+        private void AdminBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AdminLoginPage());
         }
 
-        private void studentBtn_Clicked(object sender, EventArgs e)
+        private void StudentBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new StudentLoginPage());
         }
 
-        private void gotoBtn_Clicked(object sender, EventArgs e)
+        private void GotoBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ViewScheduleTemplate());
         }
-        private void bypassBtn_Clicked(object sender, EventArgs e)
+        private void BypassBtn_Clicked(object sender, EventArgs e)
         {
-            Admin admin = new Admin("jondoe", "yodawgssup");
-            admin.ID = "192311000";
-            admin.Name = "Jon Doe";
-            admin.Phone = "01911104587";
-            Application.Current.MainPage = new Dashboard(admin);
+            //Admin admin = new Admin("jondoe", "yodawgssup");
+            //admin.ID = "192311000";
+            //admin.Name = "Jon Doe";
+            //admin.Phone = "01911104587";
+            //Application.Current.MainPage = new Dashboard(admin);
         }
     }
 }

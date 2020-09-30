@@ -14,28 +14,28 @@ namespace ClassAid.Views.AdminViews.Settings
     public partial class AddSchedulePage : ContentPage
     {
         private readonly FirebaseClient client;
-        private readonly Admin admin;
-        public AddSchedulePage(Admin admin)
+        private readonly Shared user;
+        public AddSchedulePage(Shared user)
         {
-            if (admin.TeacherList == null)
+            if (user.TeacherList == null)
             {
-                admin.TeacherList = new ObservableCollection<Teacher>();
+                user.TeacherList = new ObservableCollection<Teacher>();
             }
-            if (admin.ScheduleList == null)
+            if (user.ScheduleList == null)
             {
-                admin.ScheduleList =
+                user.ScheduleList =
                     new ObservableCollection<ScheduleModel>();
             }
-            this.admin = admin;
+            this.user = user;
             client = App.fireSharpClient.GetClient();
             InitializeComponent();
-            teacherPeaker.ItemsSource = admin.TeacherList;
+            teacherPeaker.ItemsSource = user.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
         private async void AddScheduleBtn_Clicked()
         {
-            admin.ScheduleList.Insert(0, new ScheduleModel()
+            user.ScheduleList.Insert(0, new ScheduleModel()
             {
                 Teacher = (Teacher)teacherPeaker.SelectedItem,
                 StartTime = startDate.Time,
@@ -45,7 +45,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
         });
             await Navigation.PopAsync();
-            await AdminDbHandler.UpdateAdmin(client, admin);
+            await AdminDbHandler.UpdateAdmin(client, user);
         }
 
         private void goBackBtn_Clicked(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace ClassAid.Views.AdminViews.Settings
         // TODO: Can not build after change the button to frame gesture
         private async void AddTeacher_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddTeacherPage(admin));
+            await Navigation.PushAsync(new AddTeacherPage(user));
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)

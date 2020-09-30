@@ -72,7 +72,7 @@
                          VerticalOptions="CenterAndExpand">
                     <Button x:Name="bypassBtn" 
                         HorizontalOptions="Center"
-                        Clicked="adminLoginBypassBtn_Clicked"
+                        Clicked="AdminLoginBypassBtn_Clicked"
                         Text="After Login Bypass Btn"/>
                 </StackLayout>
                 <ActivityIndicator x:Name="activityIndicator" 

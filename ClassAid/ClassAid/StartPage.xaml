@@ -22,12 +22,12 @@
                 <!--TODO: Redesign Buttons and labels-->
             <StackLayout Grid.Row="1" Margin="15,0,15,50">
                 <Button x:Name="studentBtn" 
-                            Clicked="studentBtn_Clicked"
+                            Clicked="StudentBtn_Clicked"
                             Text="Continue as a Student"
                             BackgroundColor="#6264a7"
                             CornerRadius="15"/>
                 <Button x:Name="adminBtn" 
-                            Clicked="adminBtn_Clicked"
+                            Clicked="AdminBtn_Clicked"
                             Text="Continue as an Admin"
                             BackgroundColor="#F7F7FF"
                             TextColor="#6264a7"

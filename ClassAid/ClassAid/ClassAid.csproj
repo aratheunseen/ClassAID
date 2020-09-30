@@ -67,16 +67,13 @@
     <EmbeddedResource Update="Views\StudentViews\StudentLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\StudentProfie.xaml">
+    <EmbeddedResource Update="Views\StudentProfile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\ViewEventPage.xaml">
+    <EmbeddedResource Update="Views\ViewEventPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\ViewEventTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\ViewSchedulePage.xaml">
+    <EmbeddedResource Update="Views\ViewSchedulePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentViews\ViewScheduleTemplate.xaml">
@@ -90,6 +87,9 @@
     </Compile>
     <Compile Update="Views\AdminViews\AdminLoginPage.xaml.cs">
       <DependentUpon>AdminLoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StudentProfile.xaml.cs">
+      <DependentUpon>StudentProfile.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
