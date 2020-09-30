@@ -10,17 +10,19 @@ namespace ClassAid.DataContex
 {
     public class FirebaseHandler
     {
-        private static FirebaseClient client;
-        public FirebaseHandler()
+        private static FirebaseClient client
         {
-            string server = "https://classaidapp.firebaseio.com/";
-            string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
-            client = new FirebaseClient(
-              server,
-              new FirebaseOptions
-              {
-                  AuthTokenAsyncFactory = () => Task.FromResult(authKey)
-              });
+            get
+            {
+                string server = "https://classaidapp.firebaseio.com/";
+                string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
+                return new FirebaseClient(
+                  server,
+                  new FirebaseOptions
+                  {
+                      AuthTokenAsyncFactory = () => Task.FromResult(authKey)
+                  });
+            }
         }
         public static async Task InsertData(Shared user)
         {
@@ -28,7 +30,7 @@ namespace ClassAid.DataContex
                 .Child(TableName(user.IsAdmin))
                 .Child(user.Key)
                 .PostAsync(user);
-            LocalStorageEngine.SaveDataAsync(user, FileType.Admin);            
+            LocalStorageEngine.SaveDataAsync(user, FileType.Admin);
         }
         public static async Task UpdateAdmin(Shared user)
         {
