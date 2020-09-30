@@ -1,4 +1,0 @@
-﻿TODO: Hello
-TODO: Look at the AdminReg XAML page code and adopt the
-      styling pattern. It will allow u to write less code.
-TODO: SQLite out, JSON in.
