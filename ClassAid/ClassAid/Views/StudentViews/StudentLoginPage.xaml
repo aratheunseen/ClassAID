@@ -39,7 +39,7 @@
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userId" 
-                       Placeholder="Student ID or Roll Number"
+                       Placeholder="Student ID"
                        TextColor="#6264a7"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
