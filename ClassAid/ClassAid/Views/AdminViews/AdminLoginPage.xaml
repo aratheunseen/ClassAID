@@ -36,6 +36,7 @@
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Username"
                        SelectionLength="6"
+                       MaxLength="10"
                        TextChanged="Form_TextChanged"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -44,6 +45,7 @@
                        Placeholder="Password" 
                        TextChanged="Form_TextChanged"
                        SelectionLength="6"
+                       MaxLength="10"
                        IsPassword="True"/>
                 </Frame>
                 <Label/>
