@@ -2,11 +2,7 @@
 using ClassAid.Models.Engines;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
-using Firebase.Database;
-using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -41,7 +37,7 @@ namespace ClassAid.Views.AdminViews
             try
             {
                 await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), admin);
-                Application.Current.MainPage = new NavigationPage(new DashBoardPage(admin));
+                Application.Current.MainPage = new NavigationPage(new Dashboard(admin));
                 Preferences.Set("isLoggedin", "true");
                 Preferences.Set("adminKey", admin.Key);
                 LoginAuthModel authModel = new LoginAuthModel()
