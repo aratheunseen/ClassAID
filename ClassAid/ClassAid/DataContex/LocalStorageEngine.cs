@@ -10,19 +10,21 @@ namespace ClassAid.DataContex
         private static string fileName = "";
         public async static void SaveDataAsync<T>(T data, FileType fileType)
         {
+            
             fileName = Path.Combine(
                 Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData), 
-                ((int)fileType).ToString(), ".nsdl");
+                fileType.ToString()+".nsdl");
+            
             await Task.Run(() =>
             File.WriteAllText(fileName, JsonConvert.SerializeObject(data)));
         }
-        public async static Task<T> ReadDataAsync<T>(T data, FileType fileType)
+        public async static Task<T> ReadDataAsync<T>(FileType fileType)
         {
             fileName = Path.Combine(
                 Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
-                ((int)fileType).ToString(), ".nsdl");
+                fileType.ToString() + ".nsdl");
             if (File.Exists(fileName))
             {
                 string result = null;
@@ -42,6 +44,8 @@ namespace ClassAid.DataContex
         Schedule,
         Teacher,
         Student,
-        Events
+        Events,
+        Shared,
+        Admin
     }
 }

@@ -80,7 +80,7 @@
                 </Image.GestureRecognizers>
             </Image>
 
-            <!-- Schedue Content -->
+            <!-- Schedule Content -->
             <BoxView Grid.Row="1"
                     HorizontalOptions="End"
                     VerticalOptions="Start" 
