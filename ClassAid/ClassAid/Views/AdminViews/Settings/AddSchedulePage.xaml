@@ -4,35 +4,53 @@
              x:Class="ClassAid.Views.AdminViews.Settings.AddSchedulePage"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout  BackgroundColor="#F7F7FF" Padding="30">
             <StackLayout>
-                <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="Center">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                     <Label Text="Add Schedule Details"
                        TextColor="#6264a7"
                        FontSize="25"
                         Margin="0,70,0,70"></Label>
                 </StackLayout>
-                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame  Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="courseCode"
                    TextChanged="inputTextChanged"
                        Placeholder="Course Code"
+                      Margin="15,3"
                                TextColor="#6264a7"/>
                 </Frame>
 
-                <Frame BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="subjectName"
                    TextChanged="inputTextChanged"
                        Placeholder="Subject Name"
-                               TextColor="#6264a7"/>
+                               TextColor="#6264a7"
+                        Margin="15,3"/>
                 </Frame>
 
                 <Grid>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="5" BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Frame Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource ClassAidFrameDesign}">
                         <Picker Title="Select Teacher"
                         x:Name="teacherPeaker"
                         TextColor="#6264a7"
+                                Margin="15,3"
                         WidthRequest="100"
                         ItemDisplayBinding="{Binding Name}"/>
                     </Frame>
@@ -44,16 +62,17 @@
                                  HeightRequest="40"
                              Text="Add Teacher"/>
                 </Grid>
-                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Picker Title="Select Day"
                                 TextColor="#6264a7"
+                            Margin="15,3"
                         x:Name="dayPeaker"/>
                 </Frame>
-                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
-                    <TimePicker x:Name="startDate" TextColor="#6264a7"/>
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
+                    <TimePicker x:Name="startDate" TextColor="#6264a7" Margin="15,3"/>
                 </Frame>
-                <Frame  BorderColor="#6264a7" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
-                    <TimePicker x:Name="endDate" TextColor="#6264a7"/>
+                <Frame Style="{StaticResource ClassAidFrameDesign}">
+                    <TimePicker x:Name="endDate" TextColor="#6264a7" Margin="15,3"/>
                 </Frame>
             </StackLayout>
             <Label Margin="10"/>
@@ -69,7 +88,7 @@
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
-                                Text="Continue to Dashboard"/>
+                                Text="Add Schedule"/>
             </Frame>
         </StackLayout>
     </ContentPage.Content>

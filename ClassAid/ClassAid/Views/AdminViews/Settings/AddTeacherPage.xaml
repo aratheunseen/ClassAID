@@ -69,7 +69,7 @@
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
-                                Text="Continue to Dashboard"/>
+                                Text="Add Teacher"/>
                 </Frame>
                 
                 <!--<Button x:Name="goBackBtn" 

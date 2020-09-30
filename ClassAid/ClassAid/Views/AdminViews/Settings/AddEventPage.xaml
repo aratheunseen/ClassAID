@@ -5,38 +5,64 @@
              xmlns:local="clr-namespace:ClassAid.Views.AdminViews.Settings"
              x:Class="ClassAid.Views.AdminViews.Settings.AddEventPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#F7F7FF" Padding="30">
-            <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="Center">
+            <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Label Text="Add Notice"
-                       TextColor="#8576F5"
+                       TextColor="#6264a7"
                        FontSize="25"
-                        Margin="0,60,0,50"
+                        Margin="0,70,0,70"
                        Opacity="1"></Label>
             </StackLayout>
-            <Frame BorderColor="#C4C1DE" CornerRadius="20">
+            <Frame Style="{StaticResource ClassAidFrameDesign}">
             <Components:ClassAidEntry Placeholder="Argent!!! Bad news."
                                       x:Name="eventTitle"
-                                      TextColor="#8B84B9"
+                                      TextColor="#6264a7"
+                                      Margin="15,3"
                                       >
             </Components:ClassAidEntry>
             </Frame>
-            <Frame BorderColor="#C4C1DE" HeightRequest="250" CornerRadius="20">
+            <Frame Style="{StaticResource ClassAidFrameDesign}">
             <Editor x:Name="eventBody"  
                     AutoSize="TextChanges" 
                     Keyboard="Chat"
                     Placeholder="Exam on friday. Oh nooo!!!"
-                    TextColor="#8B84B9">
+                    TextColor="#6264a7"
+                    Margin="15,3"
+                    HeightRequest="250">
             </Editor>
             </Frame>
-            <Button x:Name="saveEvent" 
-                    Clicked="saveEvent_Clicked" 
-                    Text="Publish"
-                    TextColor="#FFFFFF"
-                    Margin="0,50"
-                    BackgroundColor="#8576F5" 
-                    CornerRadius="30"/>
+            <Label Margin="10"/>
+            <Frame BorderColor="#6264a7" 
+                       BackgroundColor="#6264a7" 
+                       Padding="15"
+                       CornerRadius="15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="saveEvent"/>
+                </Frame.GestureRecognizers>
+                <Label x:Name="btnAdd"
+                                Margin="15,3"
+                               FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                HorizontalOptions="Center"
+                                Text="Add Schedule"/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
