@@ -12,6 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Interfaces\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Views\StudentViews\Page1.xaml.cs" />
     <Compile Remove="Views\StudentViews\Profile.xaml.cs" />
   </ItemGroup>
@@ -55,9 +64,6 @@
     <EmbeddedResource Update="Views\Dashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentViews\StudentDashBoard.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentViews\StudentLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -79,19 +85,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\AdminRegestrationPage.xaml.cs">
       <DependentUpon>AdminRegestrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\AdminViews\AdminLoginPage.xaml.cs">
       <DependentUpon>AdminLoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\AdminViews\DashBoardPage.xaml.cs">
-      <DependentUpon>DashBoardPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
