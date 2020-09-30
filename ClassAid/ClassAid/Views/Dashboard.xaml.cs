@@ -59,6 +59,7 @@ namespace ClassAid.Views
         void Logout()
         {
             Preferences.Set(PrefKeys.isLoggedIn, false);
+            LocalStorageEngine.ClearData(FileType.Admin);
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
         }

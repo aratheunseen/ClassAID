@@ -25,6 +25,7 @@ namespace ClassAid.Views.AdminViews
             try
             {
                 Shared user = new Shared(userName.Text, userPass.Text);
+                user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
                     await AdminDbHandler.GetAdmin(
@@ -56,7 +57,9 @@ namespace ClassAid.Views.AdminViews
         private void form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) ||
-                string.IsNullOrWhiteSpace(userPass.Text))
+                string.IsNullOrWhiteSpace(userPass.Text)||
+                userName.Text.Length < 6 ||
+                userPass.Text.Length < 6 )
 
             {
                 signInBtn.Command = null;

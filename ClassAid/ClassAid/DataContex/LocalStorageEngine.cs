@@ -37,6 +37,16 @@ namespace ClassAid.DataContex
                 throw new Exception("File Not Found");
             }
         }
+        public async static void ClearData(FileType fileType)
+        {
+            fileName = Path.Combine(
+                Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                fileType.ToString() + ".nsdl");
+            if (File.Exists(fileName))
+                await Task.Run(()=>File.Delete(fileName));
+            else return;
+        }
     }
     enum FileType
     {
