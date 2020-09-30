@@ -32,15 +32,15 @@
             </StackLayout>
             <StackLayout Padding="30">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="fullName" 
+                    <Components:ClassAidEntry x:Name="userName" 
                        Margin="15,3"
                        TextColor="#6264a7"
                        TextChanged="Form_TextChanged"
                        Placeholder="Username"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry x:Name="userId" 
-                       Placeholder="Student ID"
+                    <Components:ClassAidEntry x:Name="userPass" 
+                       Placeholder="Password"
                        TextColor="#6264a7"
                        TextChanged="Form_TextChanged"
                        Margin="15,3"/>

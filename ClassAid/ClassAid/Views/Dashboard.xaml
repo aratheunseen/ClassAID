@@ -68,13 +68,14 @@
                Margin="5,0,0,0"
                    Grid.ColumnSpan="2"/>
             <Image Grid.Column="4"
+                   x:Name="addScheduleBtnImage"
                    Grid.Row="1"
                    Source="plus.png"
-               Margin="0,5,15,0"
-               HeightRequest="24"
-               WidthRequest="24"
-               HorizontalOptions="Center"
-               VerticalOptions="Start">
+                   Margin="0,5,15,0"
+                   HeightRequest="24"
+                   WidthRequest="24"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer x:Name="addSchedule"/>
                 </Image.GestureRecognizers>
@@ -208,14 +209,14 @@
                Grid.ColumnSpan="3"/>
 
             <Image Grid.Column="4"
-                   x:Name="addNoticeImage"
+                   x:Name="addNoticeBtnImage"
                    Grid.Row="2"
-               Margin="0,4,15,0"
-               Source="plus.png"
-               HeightRequest="25"
-               WidthRequest="25"
-               HorizontalOptions="Center"
-               VerticalOptions="Start">
+                   Margin="0,4,15,0"
+                   Source="plus.png"
+                   HeightRequest="25"
+                   WidthRequest="25"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer x:Name="addNoticeBtn"/>
                 </Image.GestureRecognizers>

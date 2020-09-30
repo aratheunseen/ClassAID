@@ -13,13 +13,11 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTeacherPage : ContentPage
     {
-        Shared user;
-        FirebaseClient client;
+        readonly Shared user;
         public AddTeacherPage(Shared user)
         {
             InitializeComponent();
             this.user = user;
-            client = App.fireSharpClient.GetClient();
         }
         private async void AddTeacherBtn_Clicked()
         {
@@ -30,14 +28,15 @@ namespace ClassAid.Views.AdminViews.Settings
             };
             user.TeacherList.Add(t);
             await Navigation.PopAsync();
-            await AdminDbHandler.UpdateAdmin(client, user);            
+            await FirebaseHandler.UpdateAdmin(user);            
         }
         
         // TODO: Can not build after change the button to frame gesture
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
+            if (string.IsNullOrWhiteSpace(teacherName.Text) ||
+                string.IsNullOrWhiteSpace(teacherDesegnation.Text))
                 addTeacherBtn.Command= null;
             else
                 addTeacherBtn.Command = new Command(()=> AddTeacherBtn_Clicked());

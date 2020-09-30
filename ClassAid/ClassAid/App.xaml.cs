@@ -14,14 +14,9 @@ namespace ClassAid
 {
     public partial class App : Application
     {
-        internal static FireSharpDB fireSharpClient;
         internal static string authFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ClassAiD_Auth.nsdl");
-
         public App()
         {
-            string server = "https://classaidapp.firebaseio.com/";
-            string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
-            fireSharpClient = new FireSharpDB(server, authKey);
             InitializeComponent();
             bool loginState = Preferences.Get(PrefKeys.isLoggedIn, false);
             var current = Connectivity.NetworkAccess;
@@ -44,7 +39,7 @@ namespace ClassAid
                     {
                         Shared admin = await LocalStorageEngine.ReadDataAsync<Shared>
                       (FileType.Shared);
-                        await AdminDbHandler.UpdateAdmin(fireSharpClient.GetClient(), admin);
+                        await FirebaseHandler.UpdateAdmin(admin);
                     }
                     catch (Exception)
                     {
