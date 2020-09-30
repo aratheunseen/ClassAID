@@ -1,18 +1,12 @@
 ﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using ClassAid.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System.IO;
-using Newtonsoft.Json;
-using ClassAid.Models.Engines;
-using ClassAid.Views.AdminViews;
 using Xamarin.Essentials;
 using ClassAid.DataContex;
-using ClassAid.Models.Users;
-using ClassAid.Views.StudentViews;
 
 namespace ClassAid
 {
@@ -29,14 +23,11 @@ namespace ClassAid
             InitializeComponent();
             string  loginState = Preferences.Get("isLoggedin", "false");
             if (loginState == "false")
-            {
                 MainPage = new NavigationPage(new StartPage());
-            }
             else
-            {
                 MainPage = new NavigationPage(new Dashboard());
-            }
         }
+        
 
         protected override void OnStart()
         {

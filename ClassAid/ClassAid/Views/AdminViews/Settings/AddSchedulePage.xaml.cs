@@ -4,6 +4,7 @@ using ClassAid.Models.Users;
 using Firebase.Database;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,8 +17,17 @@ namespace ClassAid.Views.AdminViews.Settings
         private readonly Admin admin;
         public AddSchedulePage(Admin admin)
         {
+            if (admin.TeacherList == null)
+            {
+                admin.TeacherList = new ObservableCollection<Teacher>();
+            }
+            if (admin.ScheduleList == null)
+            {
+                admin.ScheduleList =
+                    new ObservableCollection<ScheduleModel>();
+            }
             this.admin = admin;
-            this.client = App.fireSharpClient.GetClient();
+            client = App.fireSharpClient.GetClient();
             InitializeComponent();
             teacherPeaker.ItemsSource = admin.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
@@ -31,8 +41,9 @@ namespace ClassAid.Views.AdminViews.Settings
                 StartTime = startDate.Time,
                 EndTime = endDate.Time,
                 Subject = subjectName.Text,
-                CourseCode = courseCode.Text
-            });
+                CourseCode = courseCode.Text,
+                DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
+        });
             await Navigation.PopAsync();
             await AdminDbHandler.UpdateAdmin(client, admin);
         }
