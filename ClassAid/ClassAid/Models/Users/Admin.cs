@@ -7,7 +7,7 @@ namespace ClassAid.Models.Users
     {
         public Admin(string Username, string Password)
         {
-            this.Username = Username;
+            this.Username = Username.ToLower();
             this.Password = Password;
             Key = Cryptography.EncryptString(this.Username, this.Password);
         }
