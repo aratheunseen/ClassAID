@@ -25,7 +25,7 @@ namespace ClassAid.Views.AdminViews.Settings
             this.client = App.fireSharpClient.GetClient();
         }
 
-        private async void saveEvent_Clicked(object sender, EventArgs e)
+        private async void saveEvent_Clicked()
         {
             await Navigation.PopAsync();
             if (admin.EventList == null)
@@ -40,6 +40,15 @@ namespace ClassAid.Views.AdminViews.Settings
                     Details = eventBody.Text
                 });
             await AdminDbHandler.UpdateAdmin(client, admin);
+        }
+
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(eventTitle.Text) ||
+                string.IsNullOrWhiteSpace(eventBody.Text))
+                saveEvent.Command = null;
+            else
+                saveEvent.Command = new Command(() => saveEvent_Clicked());
         }
     }
 }

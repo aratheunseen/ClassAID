@@ -17,10 +17,9 @@ namespace ClassAid.Views.AdminViews
         {
             InitializeComponent();
             this.admin = admin;
-            contToDashBtn.Command = new Command(() => completeSignUp_Clicked());
         }
 
-        private async void completeSignUp_Clicked()
+        private async void CompleteSignUp_Clicked()
         {
             admin.Name = userRealName.Text;
             admin.Phone = userPhone.Text;
@@ -52,6 +51,24 @@ namespace ClassAid.Views.AdminViews
             {
                 resultText.Text = "Something bad happened. Please check back in a short.";
             }         
+        }
+
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (userPhone.Text.Length < 6 ||
+                userRealName.Text.Length < 6 ||
+                string.IsNullOrWhiteSpace(instName.Text) ||
+                string.IsNullOrWhiteSpace(deptName.Text) ||
+                string.IsNullOrWhiteSpace(secName.Text) ||
+                string.IsNullOrWhiteSpace(secName.Text) ||
+                string.IsNullOrWhiteSpace(stuId.Text))
+            {
+                contToDashBtn.Command = null;
+            }
+            else
+            {
+                contToDashBtn.Command = new Command(() => CompleteSignUp_Clicked());
+            }
         }
     }
 }
