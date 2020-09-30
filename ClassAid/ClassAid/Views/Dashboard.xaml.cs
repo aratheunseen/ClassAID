@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +6,9 @@ using Xamarin.Forms.Xaml;
 using ClassAid.Models.Users;
 using ClassAid.Views.AdminViews.Settings;
 using Xamarin.Essentials;
+using ClassAid.DataContex;
+using System.Collections.ObjectModel;
+using ClassAid.Models.Schedule;
 
 namespace ClassAid.Views
 {
@@ -20,18 +19,15 @@ namespace ClassAid.Views
         private Admin admin;
         private Student student;
         private static string timeFormat = @"dd\:hh\:mm";
-        public Dashboard()
-        {
-            InitializeComponent();
-        }
+
         public Dashboard(Admin admin)
         {
             InitializeComponent();
             shared = admin;
             this.admin = admin;
             InitializeData();
-            addSchedule.Command = 
-                new Command(async () => 
+            addSchedule.Command =
+                new Command(async () =>
                 await Navigation.PushAsync(new AddSchedulePage(admin)));
             addNoticeBtn.Command =
                 new Command(async () =>
@@ -46,39 +42,82 @@ namespace ClassAid.Views
             this.student = student;
             InitializeData();
         }
-        void logout()
+        // TODO: Remove this section on shipment
+        // START
+        public Dashboard()
+        {
+            InitializeComponent();
+            addSchedule.Command =
+                new Command(async () =>
+                await Navigation.PushAsync(new AddSchedulePage(admin)));
+            addNoticeBtn.Command =
+                new Command(async () =>
+                await Navigation.PushAsync(new AddEventPage(admin)));
+            FetchData();
+        }
+        private async void FetchData()
+        {
+            // TODO: Replace this with local storage.
+            string key = Preferences.Get("adminKey", "");
+            admin = 
+                await AdminDbHandler
+                .GetAdmin(
+                    App.fireSharpClient.GetClient(), key);
+            shared = admin;
+            InitializeData();
+        }
+        // END
+        void Logout()
         {
             Preferences.Set("isLoggedin", "false");
-            Application.Current.MainPage = new StartPage();
+            Application.Current.MainPage =
+                new NavigationPage(new StartPage());
         }
         private void InitializeData()
         {
-            profileBtn.Command = new Command(() => logout());
+            if (shared.ScheduleList == null)
+            {
+                shared.ScheduleList = 
+                    new ObservableCollection<ScheduleModel>();
+            }
+            profileBtn.Command = new Command(() => Logout());
             try
             {
-                var d = shared.ScheduleList[0];
-                firstScheduleCourseCode.Text = d.CourseCode;
-                firstScheduleCourseName.Text = d.Subject;
-                firstScheduleStart.Text = d.StartTime.ToString(timeFormat);
-                firstScheduleEnd.Text = d.EndTime.ToString(timeFormat);
+                InitLabel();
+            }
+            catch (Exception)
+            {
 
-                d = shared.ScheduleList[1];
-                secondScheduleCourseCode.Text = d.CourseCode;
-                secondScheduleCourseName.Text = d.Subject;
-                secondScheduleStart.Text = d.StartTime.ToString(timeFormat);
-                secondScheduleEnd.Text = d.EndTime.ToString(timeFormat);
+            }
+            // TODO: Remove this section on shipment
+            // START
+            shared.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
+        }
+
+        private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            try
+            {
+
+                InitLabel();
             }
             catch (Exception)
             {
 
             }
         }
+        void InitLabel()
+        {
+            firstScheduleCourseCode.Text = shared.ScheduleList[0].CourseCode;
+            firstScheduleCourseName.Text = shared.ScheduleList[0].Subject;
+            firstScheduleStart.Text = shared.ScheduleList[0].StartTime.ToString(timeFormat);
+            firstScheduleEnd.Text = shared.ScheduleList[0].EndTime.ToString(timeFormat);
 
-        //private void profileBtn_Clicked(object sender, EventArgs e)
-        //{
-        //    Preferences.Set("isLoggedin", "false");
-        //    firstScheduleCourseCode.Text = "Success";
-        //    Application.Current.MainPage = new StartPage();
-        //}
+            secondScheduleCourseCode.Text = shared.ScheduleList[1].CourseCode;
+            secondScheduleCourseName.Text = shared.ScheduleList[1].Subject;
+            secondScheduleStart.Text = shared.ScheduleList[1].StartTime.ToString(timeFormat);
+            secondScheduleEnd.Text = shared.ScheduleList[1].EndTime.ToString(timeFormat);
+        }
+        // END
     }
 }

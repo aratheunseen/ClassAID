@@ -14,7 +14,7 @@ namespace ClassAid
         {
             InitializeComponent();
         }
-
+        
         private void adminBtn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AdminLoginPage());
