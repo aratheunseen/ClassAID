@@ -37,7 +37,8 @@ namespace ClassAid.Views.AdminViews.Settings
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
+            if (string.IsNullOrWhiteSpace(teacherName.Text) ||
+                string.IsNullOrWhiteSpace(teacherDesegnation.Text))
                 addTeacherBtn.Command= null;
             else
                 addTeacherBtn.Command = new Command(()=> AddTeacherBtn_Clicked());
