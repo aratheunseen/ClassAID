@@ -31,7 +31,7 @@
                        Opacity="1"></Label>
             </StackLayout>
             <Frame Style="{StaticResource ClassAidFrameDesign}">
-            <Components:ClassAidEntry Placeholder="Argent!!! Bad news."
+            <Components:ClassAidEntry Placeholder="Short title"
                                       x:Name="eventTitle"
                                       TextColor="#6264a7"
                                       Margin="15,3"
@@ -61,7 +61,7 @@
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
-                                Text="Add Schedule"/>
+                                Text="Add Notice"/>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
