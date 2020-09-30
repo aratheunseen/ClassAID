@@ -28,15 +28,13 @@ namespace ClassAid.Views.AdminViews
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await AdminDbHandler.GetAdmin(
-                        App.fireSharpClient.GetClient(), user.Key,user.IsAdmin);
+                    await FirebaseHandler.GetAdmin(user.Key,user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
                     await Navigation.PushAsync(
                         new AdditionalDetails(user));
-                    await AdminDbHandler.InsertData(
-                        App.fireSharpClient.GetClient(), user);
+                    await FirebaseHandler.InsertData(user);
                 }
                 else
                 {
