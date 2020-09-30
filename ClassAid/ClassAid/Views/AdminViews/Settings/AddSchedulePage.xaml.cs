@@ -33,7 +33,7 @@ namespace ClassAid.Views.AdminViews.Settings
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
-        private async void addScheduleBtn_Clicked(object sender, EventArgs e)
+        private async void AddScheduleBtn_Clicked()
         {
             admin.ScheduleList.Insert(0, new ScheduleModel()
             {
@@ -54,18 +54,18 @@ namespace ClassAid.Views.AdminViews.Settings
         }
 
         // TODO: Can not build after change the button to frame gesture
-
-        private void inputTextChanged(object sender, TextChangedEventArgs e)
-        {
-            //if (!string.IsNullOrWhiteSpace(courseCode.Text) && !string.IsNullOrWhiteSpace(subjectName.Text))
-            //    addTeacherBtn.IsEnabled = true;
-            //else
-            //    addTeacherBtn.IsEnabled = false;
-        }
-
-        private async void addTeacher_Clicked(object sender, EventArgs e)
+        private async void AddTeacher_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddTeacherPage(admin));
+        }
+
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(courseCode.Text) ||
+                string.IsNullOrWhiteSpace(subjectName.Text))
+                addTeacherBtn.Command = null;
+            else
+                addTeacherBtn.Command = new Command(()=> AddScheduleBtn_Clicked());
         }
     }
 }

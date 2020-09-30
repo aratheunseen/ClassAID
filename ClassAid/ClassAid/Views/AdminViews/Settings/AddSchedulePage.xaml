@@ -31,7 +31,7 @@
                 </StackLayout>
                 <Frame  Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="courseCode"
-                   TextChanged="form_TextChanged"
+                   TextChanged="Form_TextChanged"
                        Placeholder="Course Code"
                       Margin="15,3"
                                TextColor="#6264a7"/>
@@ -39,7 +39,7 @@
 
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="subjectName"
-                   TextChanged="form_TextChanged"
+                   TextChanged="Form_TextChanged"
                        Placeholder="Subject Name"
                                TextColor="#6264a7"
                         Margin="15,3"/>
@@ -57,7 +57,7 @@
                     <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,5,0" Grid.Column="4" x:Name="addTeacher"
                                  ImageSource="plus.png"
                                  BackgroundColor="Transparent"
-                             Clicked="addTeacher_Clicked"
+                             Clicked="AddTeacher_Clicked"
                                  WidthRequest="40"
                                  HeightRequest="40"
                              Text="Add Teacher"/>

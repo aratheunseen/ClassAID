@@ -19,32 +19,28 @@ namespace ClassAid.Views.AdminViews.Settings
         {
             InitializeComponent();
             this.admin = admin;
-            this.client = App.fireSharpClient.GetClient();
+            client = App.fireSharpClient.GetClient();
         }
-        private async void addTeacherBtn_Clicked(object sender, EventArgs e)
+        private async void AddTeacherBtn_Clicked()
         {
-            Teacher t = new Teacher() { Name = teacherName.Text, Designation = teacherDesegnation.Text };
-            //if (admin.TeacherList == null)
-            //{
-            //    admin.TeacherList = new ObservableCollection<Teacher>();
-            //}
+            Teacher t = new Teacher() 
+            { 
+                Name = teacherName.Text, 
+                Designation = teacherDesegnation.Text 
+            };
             admin.TeacherList.Add(t);
             await Navigation.PopAsync();
             await AdminDbHandler.UpdateAdmin(client, admin);            
         }
         
         // TODO: Can not build after change the button to frame gesture
-        private void inputField_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
-            //    addTeacherBtn.IsEnabled = true;
-            //else
-            //    addTeacherBtn.IsEnabled = false;
-        }
 
-        private void goBackBtn_Clicked(object sender, EventArgs e)
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Navigation.PopAsync();
+            if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
+                addTeacherBtn.Command= null;
+            else
+                addTeacherBtn.Command = new Command(()=> AddTeacherBtn_Clicked());
         }
     }
 }

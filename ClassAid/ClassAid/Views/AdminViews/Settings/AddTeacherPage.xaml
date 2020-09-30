@@ -33,7 +33,7 @@
             <StackLayout Padding="30">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherName" 
-                   TextChanged="form_TextChanged"
+                   TextChanged="Form_TextChanged"
                    Placeholder="Teacher Name"
                    TextColor="#6264a7"
                    Margin="15,3"/>
@@ -42,7 +42,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherDesegnation"
                    TextColor="#6264a7"
-                   TextChanged="form_TextChanged"
+                   TextChanged="Form_TextChanged"
                    Placeholder="Designation"
                    Margin="15,3"/>
                 </Frame>
@@ -50,13 +50,13 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherPhoneNumber"
                    TextColor="#6264a7"
-                   TextChanged="form_TextChanged"
+                   TextChanged="Form_TextChanged"
                    Placeholder="Phone Number"
                    Margin="15,3"/>
                 </Frame>
 
                 <Label Margin="30"/>
-                
+
                 <Frame BorderColor="#6264a7" 
                        BackgroundColor="#6264a7" 
                        Padding="15"
@@ -71,15 +71,6 @@
                                 HorizontalOptions="Center"
                                 Text="Add Teacher"/>
                 </Frame>
-                
-                <!--<Button x:Name="goBackBtn" 
-                        Clicked="goBackBtn_Clicked"
-                        Text="Back" 
-                        TextColor="#FFFFFF"
-                    Margin="30,5"
-                    BackgroundColor="#8576F5"
-                    Padding="15" 
-                    CornerRadius="30"/>-->
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
