@@ -36,13 +36,13 @@
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Username"
                        SelectionLength="6"
-                       TextChanged="form_TextChanged"/>
+                       TextChanged="Form_TextChanged"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userPass"
                        Style="{StaticResource ClassAidEntryDesign}"
                        Placeholder="Password" 
-                       TextChanged="form_TextChanged"
+                       TextChanged="Form_TextChanged"
                        SelectionLength="6"
                        IsPassword="True"/>
                 </Frame>

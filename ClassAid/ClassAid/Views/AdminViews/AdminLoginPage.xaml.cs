@@ -24,7 +24,7 @@ namespace ClassAid.Views.AdminViews
         {
             try
             {
-                Shared user = new Shared(userName.Text, userPass.Text);
+                Shared user = new Shared(userName.Text+"admin", userPass.Text);
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
@@ -52,7 +52,7 @@ namespace ClassAid.Views.AdminViews
             }
 
         }
-        private void form_TextChanged(object sender, TextChangedEventArgs e)
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) ||
                 string.IsNullOrWhiteSpace(userPass.Text)||
