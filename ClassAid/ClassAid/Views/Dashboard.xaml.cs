@@ -32,7 +32,6 @@ namespace ClassAid.Views
             addNoticeBtn.Command =
                 new Command(async () =>
                 await Navigation.PushAsync(new AddEventPage(admin)));
-
         }
         public Dashboard(Student student)
         {
@@ -57,16 +56,20 @@ namespace ClassAid.Views
         }
         private async void FetchData()
         {
-            // TODO: Replace this with local storage.
-            string key = Preferences.Get("adminKey", "");
-            admin = 
-                await AdminDbHandler
-                .GetAdmin(
-                    App.fireSharpClient.GetClient(), key);
+            try
+            {
+                admin = await LocalStorageEngine.ReadDataAsync<Admin>
+                    (FileType.Shared);
+            }
+            catch (Exception)
+            {
+                string key = Preferences.Get("adminKey", "");
+                admin = await AdminDbHandler
+                    .GetAdmin(App.fireSharpClient.GetClient(), key);
+            }
             shared = admin;
             InitializeData();
         }
-        // END
         void Logout()
         {
             Preferences.Set("isLoggedin", "false");
@@ -77,18 +80,11 @@ namespace ClassAid.Views
         {
             if (shared.ScheduleList == null)
             {
-                shared.ScheduleList = 
+                shared.ScheduleList =
                     new ObservableCollection<ScheduleModel>();
             }
             profileBtn.Command = new Command(() => Logout());
-            try
-            {
-                InitLabel();
-            }
-            catch (Exception)
-            {
-
-            }
+            InitLabel();
             // TODO: Remove this section on shipment
             // START
             shared.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
@@ -96,27 +92,23 @@ namespace ClassAid.Views
 
         private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            try
-            {
-
-                InitLabel();
-            }
-            catch (Exception)
-            {
-
-            }
+            InitLabel();
         }
         void InitLabel()
         {
-            firstScheduleCourseCode.Text = shared.ScheduleList[0].CourseCode;
-            firstScheduleCourseName.Text = shared.ScheduleList[0].Subject;
-            firstScheduleStart.Text = shared.ScheduleList[0].StartTime.ToString(timeFormat);
-            firstScheduleEnd.Text = shared.ScheduleList[0].EndTime.ToString(timeFormat);
+            try
+            {
+                firstScheduleCourseCode.Text = shared.ScheduleList[0].CourseCode;
+                firstScheduleCourseName.Text = shared.ScheduleList[0].Subject;
+                firstScheduleStart.Text = shared.ScheduleList[0].StartTime.ToString(timeFormat);
+                firstScheduleEnd.Text = shared.ScheduleList[0].EndTime.ToString(timeFormat);
 
-            secondScheduleCourseCode.Text = shared.ScheduleList[1].CourseCode;
-            secondScheduleCourseName.Text = shared.ScheduleList[1].Subject;
-            secondScheduleStart.Text = shared.ScheduleList[1].StartTime.ToString(timeFormat);
-            secondScheduleEnd.Text = shared.ScheduleList[1].EndTime.ToString(timeFormat);
+                secondScheduleCourseCode.Text = shared.ScheduleList[1].CourseCode;
+                secondScheduleCourseName.Text = shared.ScheduleList[1].Subject;
+                secondScheduleStart.Text = shared.ScheduleList[1].StartTime.ToString(timeFormat);
+                secondScheduleEnd.Text = shared.ScheduleList[1].EndTime.ToString(timeFormat);
+            }
+            catch (Exception){}
         }
         // END
     }
