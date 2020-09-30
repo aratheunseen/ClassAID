@@ -51,6 +51,7 @@
                        Placeholder="Phone Number" 
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"
+                       MaxLength="11"
                        Keyboard="Numeric"
                        IsPassword="True"/>
                 </Frame>

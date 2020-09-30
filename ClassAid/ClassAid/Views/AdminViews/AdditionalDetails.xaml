@@ -80,6 +80,7 @@
                        TextColor="#6264a7"
                        Placeholder="Phone Number"
                         Keyboard="Numeric"
+                        MaxLength="11"
                         TextChanged="Form_TextChanged"></Components:ClassAidEntry>
                     </Frame>
                     <Label/>
