@@ -68,7 +68,7 @@
                     </Frame.GestureRecognizers>
                     <Label x:Name="btnAdd"
                                 Margin="15,3"
-                               FontAttributes="Bold"
+                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
                                 Text="Add Teacher"/>
