@@ -53,6 +53,7 @@
                    TextChanged="Form_TextChanged"
                    Placeholder="Phone Number"
                    Keyboard="Numeric"
+                   MaxLength="11"
                    Margin="15,3"/>
                 </Frame>
 
