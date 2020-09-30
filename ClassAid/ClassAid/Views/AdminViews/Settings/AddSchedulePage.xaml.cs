@@ -13,7 +13,6 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSchedulePage : ContentPage
     {
-        private readonly FirebaseClient client;
         private readonly Shared user;
         public AddSchedulePage(Shared user)
         {
@@ -27,7 +26,6 @@ namespace ClassAid.Views.AdminViews.Settings
                     new ObservableCollection<ScheduleModel>();
             }
             this.user = user;
-            client = App.fireSharpClient.GetClient();
             InitializeComponent();
             teacherPeaker.ItemsSource = user.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
@@ -45,7 +43,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
         });
             await Navigation.PopAsync();
-            await AdminDbHandler.UpdateAdmin(client, user);
+            await FirebaseHandler.UpdateAdmin(user);
         }
 
         private void goBackBtn_Clicked(object sender, EventArgs e)

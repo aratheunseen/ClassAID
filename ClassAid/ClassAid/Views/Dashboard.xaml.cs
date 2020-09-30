@@ -43,8 +43,8 @@ namespace ClassAid.Views
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     string key = Preferences.Get("adminKey", "");
-                    user = await AdminDbHandler
-                    .GetAdmin(App.fireSharpClient.GetClient(), key,user.IsAdmin);
+                    user = await FirebaseHandler
+                    .GetAdmin(key,user.IsAdmin);
                 }
                 else
                 {

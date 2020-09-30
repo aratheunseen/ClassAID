@@ -35,7 +35,7 @@ namespace ClassAid.Views.AdminViews
             user.Phone = userPhone.Text;
             try
             {
-                await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), user);
+                await FirebaseHandler.UpdateAdmin(user);
                 Application.Current.MainPage = new NavigationPage(new Dashboard(user));
                 Preferences.Set(PrefKeys.isLoggedIn, true);
                 Preferences.Set(PrefKeys.adminKey, user.Key);
