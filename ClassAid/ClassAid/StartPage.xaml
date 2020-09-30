@@ -3,43 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.StartPage">
-    <ContentPage.Content>
+    
+<ContentPage.Content>
         <Grid BackgroundColor="#F7F7FF">
             <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <StackLayout HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     Margin="50">
-                <!--TODO: Fix Image-->
-                <Image x:Name="imgBanner" 
-                       Margin="50"
-                       Source="classaid_demo.png" 
-                       HeightRequest="200" 
-                       WidthRequest="200"></Image>
-
-                <StackLayout Grid.Row="1"
-                         Margin="20"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand">
+            <!--TODO: Fix Image-->
+            <StackLayout Grid.Row="0" Margin="50">
+                    <Image x:Name="imgBanner" 
+                           Margin="50"
+                           Source="classaid_demo.png" 
+                           HeightRequest="200" 
+                           WidthRequest="200"></Image>
                 </StackLayout>
-                
-                
+
                 <!--TODO: Redesign Buttons and labels-->
+            <StackLayout Grid.Row="1" Margin="15,0,15,50">
                 <Button x:Name="studentBtn" 
-                        Clicked="studentBtn_Clicked"
-                        Text="Continue as a Student"
-                        BackgroundColor="#8576F5"
-                        CornerRadius="25"/>
+                            Clicked="studentBtn_Clicked"
+                            Text="Continue as a Student"
+                            BackgroundColor="#6264a7"
+                            CornerRadius="15"/>
                 <Button x:Name="adminBtn" 
-                        Clicked="adminBtn_Clicked"
-                        Text="Continue as an Admin"
-                        BackgroundColor="#F7F7FF"
-                        TextColor="#565B6E"
-                        CornerRadius="25"
-                        BorderWidth="2"
-                        BorderColor="#8576F5"/>
+                            Clicked="adminBtn_Clicked"
+                            Text="Continue as an Admin"
+                            BackgroundColor="#F7F7FF"
+                            TextColor="#6264a7"
+                            CornerRadius="15"
+                            BorderWidth="1"
+                            BorderColor="#6264a7"/>
             </StackLayout>
             <!--<StackLayout Grid.Row="1"
                          Margin="20"
