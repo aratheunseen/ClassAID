@@ -96,7 +96,15 @@ namespace ClassAid.Views
 
         private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            InitLabel();
+            try
+            {
+
+                InitLabel();
+            }
+            catch (Exception)
+            {
+
+            }
         }
         void InitLabel()
         {
