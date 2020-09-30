@@ -65,6 +65,7 @@
                            Text="Sign In"
                            FontSize="14"
                            TextColor="#FFFFFF"
+                           FontAttributes="Bold"
                            Margin="15,3">
                     </Label>
                 </Frame>

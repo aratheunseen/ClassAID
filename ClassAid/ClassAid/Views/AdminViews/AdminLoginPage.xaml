@@ -57,6 +57,7 @@
                     <Label x:Name="btnAdd"
                                 Margin="15,3"
                                 TextColor="#FFFFFF"
+                                FontAttributes="Bold"
                                 HorizontalOptions="Center"
                                 Text="Get Started"/>
                 </Frame>

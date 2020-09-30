@@ -4,71 +4,89 @@
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.AdminViews.AdditionalDetails">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <StackLayout VerticalOptions="Center" BackgroundColor="#F7F7FF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" BackgroundColor="#F7F7FF">
                 <Label Margin="20" HorizontalOptions="Center"
                        Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
                        TextColor="Gray"
                        >
                 </Label>
                 <StackLayout Padding="30">
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="userRealName"
                        Placeholder="Full Name"
                        TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                     </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="instName"
                        Placeholder="Institute Name"
                        TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                     </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
 
                         <Components:ClassAidEntry x:Name="deptName"
                        Margin="15,3"
                        Placeholder="Department" 
                        TextColor="#AEB0BE"></Components:ClassAidEntry>
                     </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="semName" 
                        Margin="15,3"
                        TextColor="#AEB0BE"
                        Placeholder="Semester or Class"></Components:ClassAidEntry>
                     </Frame>
 
-                        <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                             <Components:ClassAidEntry x:Name="secName"
                        Placeholder="Section"
                        TextColor="#AEB0BE"
                        Margin="15,3"></Components:ClassAidEntry>
                         </Frame>
-                        <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="stuId" 
                        Margin="15,3"
                        TextColor="#AEB0BE"
                        Placeholder="Student ID or Roll Number"></Components:ClassAidEntry>
                     </Frame>
-                    <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="0" CornerRadius="30">
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="userPhone" 
                        Margin="15,3"
                        TextColor="#AEB0BE"
                        Placeholder="Phone Number"></Components:ClassAidEntry>
                     </Frame>
                     <Label/>
-                    <Frame BorderColor="#8576F5" 
-                       BackgroundColor="#8576F5" 
-                       HeightRequest="30"
+                        <Frame BorderColor="#6264a7" 
+                       BackgroundColor="#6264a7" 
                        Padding="15"
-                       CornerRadius="30">
+                       CornerRadius="15">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="contToDashBtn"/>
                         </Frame.GestureRecognizers>
                         <Label x:Name="btnAdd"
                                 Margin="15,3"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                                TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
                                 Text="Continue to Dashboard"/>
                     </Frame>
@@ -77,7 +95,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="By clicking Continue, you agree with our "/>
-                                    <Span Text="Privacy Policy" TextColor="#8576F5">
+                                    <Span Text="Privacy Policy" TextColor="#6264a7">
                                         <Span.GestureRecognizers>
                                             <TapGestureRecognizer x:Name="privacyURI"/>
                                         </Span.GestureRecognizers>
