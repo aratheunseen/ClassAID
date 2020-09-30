@@ -39,15 +39,7 @@ namespace ClassAid.Views.AdminViews.Settings
                     Title = eventTitle.Text,
                     Details = eventBody.Text
                 });
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                await FirebaseHandler.UpdateAdmin(user);
-            }
-            else
-            {
-                DependencyService.Get<Toast>().Show("No Internet connection. Saved for later syncing.");
-                Preferences.Set(PrefKeys.isSyncPending, true);
-            }
+            await FirebaseHandler.UpdateAdmin(user);
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)

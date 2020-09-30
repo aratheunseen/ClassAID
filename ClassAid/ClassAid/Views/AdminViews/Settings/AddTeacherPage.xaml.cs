@@ -1,10 +1,11 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using System;
 using System.Collections.ObjectModel;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +29,7 @@ namespace ClassAid.Views.AdminViews.Settings
             };
             user.TeacherList.Add(t);
             await Navigation.PopAsync();
-            await FirebaseHandler.UpdateAdmin(user);            
+            await FirebaseHandler.UpdateAdmin(user);
         }
         
         // TODO: Can not build after change the button to frame gesture

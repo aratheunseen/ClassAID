@@ -38,7 +38,7 @@ namespace ClassAid.Views
                 user = await LocalStorageEngine.ReadDataAsync<Shared>
                     (FileType.Shared);
             }
-            catch (Exception)
+            catch (Exception e)
             {                
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
@@ -48,7 +48,7 @@ namespace ClassAid.Views
                 }
                 else
                 {
-                    DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue.");
+                    DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue. " + e.Message);
                     Application.Current.MainPage = new StartPage();
                     return;
                 }
@@ -59,7 +59,7 @@ namespace ClassAid.Views
         void Logout()
         {
             Preferences.Set(PrefKeys.isLoggedIn, false);
-            LocalStorageEngine.ClearData(FileType.Admin);
+            LocalStorageEngine.ClearData(FileType.Shared);
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
         }
