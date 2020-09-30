@@ -43,7 +43,7 @@
                     <Components:ClassAidEntry x:Name="teacherDesegnation"
                    TextColor="#6264a7"
                    TextChanged="inputField_TextChanged"
-                   Placeholder="Desegnation"
+                   Placeholder="Designation"
                    Margin="15,3"/>
                 </Frame>
 
