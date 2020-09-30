@@ -9,10 +9,9 @@
              Title="Noticeboard">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <ListView x:Name="eventListView"
-                      SelectionMode="None"
-                      HasUnevenRows="True">
-                <ListView.ItemTemplate>
+            <CollectionView x:Name="eventListView"
+                      SelectionMode="None">
+                <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="schedule:EventModel">
                         <Frame Padding="0">
                             <Grid BackgroundColor="#F7F7FF">
@@ -69,8 +68,8 @@
                             </Grid>
                         </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

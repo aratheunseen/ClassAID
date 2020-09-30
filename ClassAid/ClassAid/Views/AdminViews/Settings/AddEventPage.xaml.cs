@@ -14,7 +14,6 @@ namespace ClassAid.Views.AdminViews.Settings
     public partial class AddEventPage : ContentPage
     {
         private readonly Shared user;
-        private readonly FirebaseClient client;
 
         public AddEventPage()
         {
@@ -24,7 +23,6 @@ namespace ClassAid.Views.AdminViews.Settings
         {
             InitializeComponent();
             this.user = user;
-            this.client = App.fireSharpClient.GetClient();
         }
 
         private async void saveEvent_Clicked()
@@ -43,7 +41,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 });
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                await AdminDbHandler.UpdateAdmin(client, user);
+                await FirebaseHandler.UpdateAdmin(user);
             }
             else
             {

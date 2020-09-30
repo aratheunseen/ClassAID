@@ -43,8 +43,8 @@ namespace ClassAid.Views
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     string key = Preferences.Get("adminKey", "");
-                    user = await AdminDbHandler
-                    .GetAdmin(App.fireSharpClient.GetClient(), key,user.IsAdmin);
+                    user = await FirebaseHandler
+                    .GetAdmin(key,user.IsAdmin);
                 }
                 else
                 {
@@ -59,11 +59,17 @@ namespace ClassAid.Views
         void Logout()
         {
             Preferences.Set(PrefKeys.isLoggedIn, false);
+            LocalStorageEngine.ClearData(FileType.Admin);
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
         }
         private void InitializeData()
         {
+            if (!user.IsAdmin)
+            {
+                addScheduleBtnImage.IsVisible = false;
+                addNoticeBtnImage.IsVisible = false;
+            }
             if (user.ScheduleList == null)            
                 user.ScheduleList =
                     new ObservableCollection<ScheduleModel>();

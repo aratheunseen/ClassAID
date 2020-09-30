@@ -22,20 +22,19 @@ namespace ClassAid.Views.AdminViews
         }
         private async void BtnAdd_Clicked()
         {
-            try
-            {
-                Shared user = new Shared(userName.Text, userPass.Text);
+            //try
+            //{
+                Shared user = new Shared(userName.Text+"admin", userPass.Text);
+                user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await AdminDbHandler.GetAdmin(
-                        App.fireSharpClient.GetClient(), user.Key,user.IsAdmin);
+                    await FirebaseHandler.GetAdmin(user.Key,user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
                     await Navigation.PushAsync(
                         new AdditionalDetails(user));
-                    await AdminDbHandler.InsertData(
-                        App.fireSharpClient.GetClient(), user);
+                    await FirebaseHandler.InsertData(user);
                 }
                 else
                 {
@@ -46,17 +45,19 @@ namespace ClassAid.Views.AdminViews
                     Preferences.Set(PrefKeys.isLoggedIn, true);
                     Preferences.Set(PrefKeys.adminKey, tempAdmin.Key);
                 }
-            }
-            catch (Exception e)
-            {
-                resultText.Text = "Sorry something bad happened. " + e.Message;
-            }
+            ////}
+            ////catch (Exception e)
+            ////{
+            ////    resultText.Text = "Sorry something bad happened. " + e.Message;
+            ////}
 
         }
-        private void form_TextChanged(object sender, TextChangedEventArgs e)
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) ||
-                string.IsNullOrWhiteSpace(userPass.Text))
+                string.IsNullOrWhiteSpace(userPass.Text)||
+                userName.Text.Length < 6 ||
+                userPass.Text.Length < 6 )
 
             {
                 signInBtn.Command = null;

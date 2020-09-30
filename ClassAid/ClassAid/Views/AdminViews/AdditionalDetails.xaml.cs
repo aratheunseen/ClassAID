@@ -35,7 +35,7 @@ namespace ClassAid.Views.AdminViews
             user.Phone = userPhone.Text;
             try
             {
-                await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), user);
+                await FirebaseHandler.UpdateAdmin(user);
                 Application.Current.MainPage = new NavigationPage(new Dashboard(user));
                 Preferences.Set(PrefKeys.isLoggedIn, true);
                 Preferences.Set(PrefKeys.adminKey, user.Key);
@@ -48,8 +48,8 @@ namespace ClassAid.Views.AdminViews
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (userPhone.Text.Length < 6 ||
-                userRealName.Text.Length < 6 ||
+            if (string.IsNullOrWhiteSpace(userPhone.Text) ||
+                string.IsNullOrWhiteSpace(userRealName.Text) || 
                 string.IsNullOrWhiteSpace(instName.Text) ||
                 string.IsNullOrWhiteSpace(deptName.Text) ||
                 string.IsNullOrWhiteSpace(secName.Text) ||
