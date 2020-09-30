@@ -28,6 +28,11 @@ namespace ClassAid.Views.AdminViews.Settings
         private async void saveEvent_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+            if (admin.EventList == null)
+            {
+                admin.EventList =
+                    new System.Collections.ObjectModel.ObservableCollection<EventModel>();
+            }
             admin.EventList.Add(
                 new EventModel()
                 {

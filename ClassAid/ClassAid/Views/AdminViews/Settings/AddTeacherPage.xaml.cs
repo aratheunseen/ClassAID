@@ -24,6 +24,10 @@ namespace ClassAid.Views.AdminViews.Settings
         private async void addTeacherBtn_Clicked(object sender, EventArgs e)
         {
             Teacher t = new Teacher() { Name = teacherName.Text, Designation = teacherDesegnation.Text };
+            //if (admin.TeacherList == null)
+            //{
+            //    admin.TeacherList = new ObservableCollection<Teacher>();
+            //}
             admin.TeacherList.Add(t);
             await Navigation.PopAsync();
             await AdminDbHandler.UpdateAdmin(client, admin);            
