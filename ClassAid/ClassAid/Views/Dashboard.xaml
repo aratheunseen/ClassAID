@@ -88,8 +88,7 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="MediumVioletRed"
-                     CornerRadius="30">
-            </BoxView>
+                     CornerRadius="30"/>
             <BoxView Grid.Row="1"
                      Grid.Column="1"
                      HorizontalOptions="Start"
@@ -97,8 +96,7 @@
                    Margin="5,60,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="MediumVioletRed">
-            </BoxView>
+                   BackgroundColor="MediumVioletRed"/>
             <Label x:Name="firstScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
@@ -143,9 +141,7 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="DarkCyan"
-                     CornerRadius="30"
-                     >
-            </BoxView>
+                     CornerRadius="30"/>
             <BoxView Grid.Row="1"
                      Grid.Column="1"
                HorizontalOptions="Start"
@@ -153,8 +149,7 @@
                    Margin="5,160,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="DarkCyan">
-            </BoxView>
+                   BackgroundColor="DarkCyan"/>
             <Label x:Name="secondScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
@@ -200,7 +195,7 @@
                HeightRequest="32"
                WidthRequest="32"
                HorizontalOptions="End"
-               VerticalOptions="Start"></Image>
+               VerticalOptions="Start"/>
 
             <Label Text="Notice"
                    Grid.Column="1"
@@ -234,9 +229,7 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="MediumVioletRed"
-                     CornerRadius="30"
-                     >
-            </BoxView>
+                     CornerRadius="30"/>
             <BoxView Grid.Row="2"
                      Grid.Column="1"
                HorizontalOptions="Start"
@@ -244,8 +237,8 @@
                    Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="MediumVioletRed">
-            </BoxView>
+                   BackgroundColor="MediumVioletRed"/>
+
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
                    Grid.Row="2"
@@ -264,9 +257,7 @@
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="DarkCyan"
-                     CornerRadius="30"
-                     >
-            </BoxView>
+                     CornerRadius="30"/>
             <BoxView Grid.Row="2"
                      Grid.Column="1"
                HorizontalOptions="Start"
@@ -274,8 +265,7 @@
                    Margin="5,150,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="DarkCyan">
-            </BoxView>
+                   BackgroundColor="DarkCyan"/>
             <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
                    Grid.Row="2"
@@ -300,10 +290,8 @@
                    Source="notice.png"
                    HeightRequest="32"
                    WidthRequest="32"
-                   BackgroundColor="Transparent"
-                   ></Image>
+                   BackgroundColor="Transparent"/>
             </Frame>
-
             <Frame Grid.Column="2"
                    Grid.Row="3"
                    BackgroundColor="Transparent">
@@ -317,7 +305,7 @@
                WidthRequest="32"
                BackgroundColor="Transparent"
                HorizontalOptions="Center"
-               VerticalOptions="Center"></Image>
+               VerticalOptions="Center"/>
             </Frame>
             <Frame Grid.Column="3"
                    Grid.Row="3"
@@ -332,7 +320,7 @@
                Source="schedule.png"
                HeightRequest="32"
                WidthRequest="32"
-               BackgroundColor="Transparent"></Image>
+               BackgroundColor="Transparent"/>
             </Frame>
         </Grid>
     </ContentPage.Content>

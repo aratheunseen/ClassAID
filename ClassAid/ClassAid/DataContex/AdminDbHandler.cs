@@ -10,18 +10,21 @@ namespace ClassAid.DataContex
 {
     public class AdminDbHandler
     {
-        public static async Task InsertData(FirebaseClient client, Admin admin)
-        {
-            await client.Child("Admin").Child(admin.Key).PostAsync(admin);
-            LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);            
-        }
-        public static async Task UpdateAdmin(FirebaseClient client, Admin newAdmin)
+        public static async Task InsertData(FirebaseClient client, Shared user)
         {
             await client
-              .Child("Admin")
-              .Child(newAdmin.Key)
-              .PutAsync(newAdmin);
-            LocalStorageEngine.SaveDataAsync(newAdmin, FileType.Admin);
+                .Child(TableName(user.IsAdmin))
+                .Child(user.Key)
+                .PostAsync(user);
+            LocalStorageEngine.SaveDataAsync(user, FileType.Admin);            
+        }
+        public static async Task UpdateAdmin(FirebaseClient client, Shared user)
+        {
+            await client
+              .Child(TableName(user.IsAdmin))
+              .Child(user.Key)
+              .PutAsync(user);
+            LocalStorageEngine.SaveDataAsync(user, FileType.Admin);
         }
         public static async Task<T> RealTimeConnection<T>(FirebaseClient client, string tablename, T data)
         {
@@ -32,29 +35,21 @@ namespace ClassAid.DataContex
                .Subscribe(d => respons = d.Object));
             return (T)Convert.ChangeType(respons, typeof(T));
         }
-        //public static async Task DeletePerson(FirebaseClient client, Admin removableAdmin)
-        //{
-        //    var toDeletePerson = (await client
-        //      .Child("Admin")
-        //      .OnceAsync<Admin>()).Where(a => a.Object.Key == removableAdmin.Key).FirstOrDefault();
-        //    await client.Child("Admin").Child(toDeletePerson.Key).DeleteAsync();
-        //}
-        //public async Task<Admin> GetPerson(string key)
-        //{
-        //    var allPersons = await GetAllPersons();
-        //    await firebase
-        //      .Child("Persons")
-        //      .OnceAsync<Person>();
-        //    return allPersons.Where(a => a.PersonId == personId).FirstOrDefault();
-        //}
-        public static async Task<Admin> GetAdmin(FirebaseClient client, string key)
+        public static async Task<Shared> GetAdmin(FirebaseClient client, string key, bool IsAdmin)
         {
-            Admin res = (await client
-              .Child("Admin")
-              .OnceAsync<Admin>()).Select(item => item.Object)
+            Shared res = (await client
+              .Child(TableName(IsAdmin))
+              .OnceAsync<Shared>()).Select(item => item.Object)
             .Where(item => item.Key == key).FirstOrDefault();
             LocalStorageEngine.SaveDataAsync(res, FileType.Admin);
             return res;
+        }
+        private static string TableName(bool IsAdmin)
+        {
+            if (IsAdmin)
+                return "Admin";
+            else
+                return "Student";
         }
     }
 }

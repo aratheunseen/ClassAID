@@ -12,17 +12,17 @@ namespace ClassAid.Views.AdminViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Admin admin;
-        public AdditionalDetails(Admin admin)
+        Shared user;
+        public AdditionalDetails(Shared admin)
         {
             InitializeComponent();
-            this.admin = admin;
+            this.user = admin;
         }
 
         private async void CompleteSignUp_Clicked()
         {
-            admin.Name = userRealName.Text;
-            admin.Phone = userPhone.Text;
+            user.Name = userRealName.Text;
+            user.Phone = userPhone.Text;
             BatchDetails batch = new BatchDetails()
             {
                 University = instName.Text,
@@ -30,22 +30,15 @@ namespace ClassAid.Views.AdminViews
                 Semester = semName.Text,
                 Section = secName.Text
             };
-            admin.BatchDetails = batch;
-            admin.ID = stuId.Text;
-            admin.Phone = userPhone.Text;
+            user.BatchDetails = batch;
+            user.ID = stuId.Text;
+            user.Phone = userPhone.Text;
             try
             {
-                await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), admin);
-                Application.Current.MainPage = new NavigationPage(new Dashboard(admin));
-                Preferences.Set("isLoggedin", "true");
-                Preferences.Set("adminKey", admin.Key);
-                LoginAuthModel authModel = new LoginAuthModel()
-                {
-                    isLoggedIn = true,
-                    key = admin.Key,
-                    User = UserType.Admin,
-                    AdminData = admin
-                };
+                await AdminDbHandler.UpdateAdmin(App.fireSharpClient.GetClient(), user);
+                Application.Current.MainPage = new NavigationPage(new Dashboard(user));
+                Preferences.Set(PrefKeys.isLoggedIn, true);
+                Preferences.Set(PrefKeys.adminKey, user.Key);
             }
             catch (Exception)
             {

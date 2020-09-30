@@ -18,24 +18,24 @@ namespace ClassAid.Views.AdminViews
             InitializeComponent();
             //privacyURI.Command = new Command(async () =>
             //await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
-            TapCommand = new Command(() => btnAdd_Clicked());
+            TapCommand = new Command(() => BtnAdd_Clicked());
         }
-        private async void btnAdd_Clicked()
+        private async void BtnAdd_Clicked()
         {
             try
             {
-                Admin admin = new Admin(userName.Text, userPass.Text);
+                Shared user = new Shared(userName.Text, userPass.Text);
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
                     await AdminDbHandler.GetAdmin(
-                        App.fireSharpClient.GetClient(), admin.Key);
+                        App.fireSharpClient.GetClient(), user.Key,user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
                     await Navigation.PushAsync(
-                        new AdditionalDetails(admin));
+                        new AdditionalDetails(user));
                     await AdminDbHandler.InsertData(
-                        App.fireSharpClient.GetClient(), admin);
+                        App.fireSharpClient.GetClient(), user);
                 }
                 else
                 {
@@ -43,8 +43,8 @@ namespace ClassAid.Views.AdminViews
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage = 
                         new NavigationPage(new Dashboard(tempAdmin));
-                    Preferences.Set("isLoggedin", "true");
-                    Preferences.Set("adminKey", tempAdmin.Key);
+                    Preferences.Set(PrefKeys.isLoggedIn, true);
+                    Preferences.Set(PrefKeys.adminKey, tempAdmin.Key);
                 }
             }
             catch (Exception e)
@@ -65,10 +65,10 @@ namespace ClassAid.Views.AdminViews
                 signInBtn.Command = TapCommand;
         }
 
-        private void adminLoginBypassBtn_Clicked(object sender, EventArgs e)
+        private void AdminLoginBypassBtn_Clicked(object sender, EventArgs e)
         {
-            Admin ad = new Admin("HolaSenorita", "ILoveYou");
-            Navigation.PushAsync(new AdditionalDetails(ad));
+            Shared us = new Shared("HolaSenorita", "ILoveYou");
+            Navigation.PushAsync(new AdditionalDetails(us));
         }
     }
 }
