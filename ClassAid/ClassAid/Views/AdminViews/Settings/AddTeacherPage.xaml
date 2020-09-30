@@ -33,7 +33,7 @@
             <StackLayout Padding="30">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherName" 
-                   TextChanged="inputField_TextChanged"
+                   TextChanged="form_TextChanged"
                    Placeholder="Teacher Name"
                    TextColor="#6264a7"
                    Margin="15,3"/>
@@ -42,7 +42,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherDesegnation"
                    TextColor="#6264a7"
-                   TextChanged="inputField_TextChanged"
+                   TextChanged="form_TextChanged"
                    Placeholder="Designation"
                    Margin="15,3"/>
                 </Frame>
@@ -50,7 +50,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="teacherPhoneNumber"
                    TextColor="#6264a7"
-                   TextChanged="inputField_TextChanged"
+                   TextChanged="form_TextChanged"
                    Placeholder="Phone Number"
                    Margin="15,3"/>
                 </Frame>
