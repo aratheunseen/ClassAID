@@ -53,12 +53,14 @@ namespace ClassAid.Views.AdminViews.Settings
             Navigation.PopAsync();
         }
 
+        // TODO: Can not build after change the button to frame gesture
+
         private void inputTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(courseCode.Text) && !string.IsNullOrWhiteSpace(subjectName.Text))
-                addTeacherBtn.IsEnabled = true;
-            else
-                addTeacherBtn.IsEnabled = false;
+            //if (!string.IsNullOrWhiteSpace(courseCode.Text) && !string.IsNullOrWhiteSpace(subjectName.Text))
+            //    addTeacherBtn.IsEnabled = true;
+            //else
+            //    addTeacherBtn.IsEnabled = false;
         }
 
         private async void addTeacher_Clicked(object sender, EventArgs e)

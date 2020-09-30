@@ -32,13 +32,14 @@ namespace ClassAid.Views.AdminViews.Settings
             await Navigation.PopAsync();
             await AdminDbHandler.UpdateAdmin(client, admin);            
         }
-
+        
+        // TODO: Can not build after change the button to frame gesture
         private void inputField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
-                addTeacherBtn.IsEnabled = true;
-            else
-                addTeacherBtn.IsEnabled = false;
+            //if (!string.IsNullOrWhiteSpace(teacherName.Text) && !string.IsNullOrWhiteSpace(teacherDesegnation.Text))
+            //    addTeacherBtn.IsEnabled = true;
+            //else
+            //    addTeacherBtn.IsEnabled = false;
         }
 
         private void goBackBtn_Clicked(object sender, EventArgs e)

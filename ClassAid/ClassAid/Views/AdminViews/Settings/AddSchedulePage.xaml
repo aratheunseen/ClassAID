@@ -56,14 +56,21 @@
                     <TimePicker x:Name="endDate" TextColor="#6264a7"/>
                 </Frame>
             </StackLayout>
-            <Button x:Name="addTeacherBtn" 
-                    IsEnabled="False"
-                    Text="Add  Schedule" 
-                    TextColor="#FFFFFF"
-                    Margin="0,50"
-                    BackgroundColor="#6264a7" 
-                    CornerRadius="30"
-                    Clicked="addScheduleBtn_Clicked"/>
+            <Label Margin="10"/>
+            <Frame BorderColor="#6264a7" 
+                       BackgroundColor="#6264a7" 
+                       Padding="15"
+                       CornerRadius="15">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="addTeacherBtn"/>
+                </Frame.GestureRecognizers>
+                <Label x:Name="btnAdd"
+                                Margin="15,3"
+                               FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                HorizontalOptions="Center"
+                                Text="Continue to Dashboard"/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

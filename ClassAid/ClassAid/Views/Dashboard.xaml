@@ -18,7 +18,7 @@
             <!-- Header -->
             <Label Text="ClassAiD"
                       FontSize="25"
-                       TextColor="#8576F5"
+                       TextColor="#6264a7"
                    HorizontalOptions="Start"
                    VerticalOptions="Start" 
                    Margin="20,20,0,0"
