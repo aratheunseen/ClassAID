@@ -61,7 +61,7 @@
                                FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 HorizontalOptions="Center"
-                                Text="Add Notice"/>
+                                Text="Publish"/>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
