@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using ClassAid.DataContex;
 using ClassAid.Models;
 using ClassAid.Models.Users;
+using System.Diagnostics;
 
 namespace ClassAid
 {
@@ -24,7 +25,10 @@ namespace ClassAid
             if (!loginState && current == NetworkAccess.Internet)
                 MainPage = new NavigationPage(new StartPage());
             else if (!loginState)
+            {
                 DependencyService.Get<Toast>().Show("No INTERNET connection.");
+                MainPage = new NavigationPage(new StartPage());
+            }
             else
                 MainPage = new NavigationPage(new Dashboard());
         }
@@ -40,9 +44,12 @@ namespace ClassAid
                         Shared admin = await LocalStorageEngine.ReadDataAsync<Shared>
                       (FileType.Shared);
                         await FirebaseHandler.UpdateAdmin(admin);
+                        DependencyService.Get<Toast>().Show("Synced successfully.");
+                        Preferences.Set(PrefKeys.isSyncPending, true);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        DependencyService.Get<Toast>().Show("Something Went wrong. " + ex.Message);
                         return;
                     }
                 }

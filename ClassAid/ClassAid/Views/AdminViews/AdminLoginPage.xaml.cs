@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.Diagnostics;
+using ClassAid.Models;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -22,13 +23,13 @@ namespace ClassAid.Views.AdminViews
         }
         private async void BtnAdd_Clicked()
         {
-            //try
-            //{
-                Shared user = new Shared(userName.Text+"admin", userPass.Text);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                Shared user = new Shared(userName.Text + "admin", userPass.Text);
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await FirebaseHandler.GetAdmin(user.Key,user.IsAdmin);
+                    await FirebaseHandler.GetAdmin(user.Key, user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
@@ -40,11 +41,16 @@ namespace ClassAid.Views.AdminViews
                 {
                     Debug.WriteLine(tempAdmin.Name);
                     activityIndicator.IsRunning = false;
-                    Application.Current.MainPage = 
+                    Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
                     Preferences.Set(PrefKeys.isLoggedIn, true);
                     Preferences.Set(PrefKeys.adminKey, tempAdmin.Key);
                 }
+            }
+            else
+            {
+                DependencyService.Get<Toast>().Show("No INTERNET connection.");
+            }
             ////}
             ////catch (Exception e)
             ////{
