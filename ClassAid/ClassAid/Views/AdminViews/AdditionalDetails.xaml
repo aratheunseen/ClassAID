@@ -79,6 +79,7 @@
                        Margin="15,3"
                        TextColor="#6264a7"
                        Placeholder="Phone Number"
+                        Keyboard="Numeric"
                         TextChanged="Form_TextChanged"></Components:ClassAidEntry>
                     </Frame>
                     <Label/>

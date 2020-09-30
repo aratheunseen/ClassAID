@@ -52,6 +52,7 @@
                    TextColor="#6264a7"
                    TextChanged="Form_TextChanged"
                    Placeholder="Phone Number"
+                   Keyboard="Numeric"
                    Margin="15,3"/>
                 </Frame>
 
