@@ -35,18 +35,21 @@
                     <Components:ClassAidEntry x:Name="fullName" 
                        Margin="15,3"
                        TextColor="#6264a7"
+                       TextChanged="form_TextChanged"
                        Placeholder="Full Name"></Components:ClassAidEntry>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userId" 
                        Placeholder="Student ID"
                        TextColor="#6264a7"
+                       TextChanged="form_TextChanged"
                        Margin="15,3"></Components:ClassAidEntry>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="phoneNumber"
                        Margin="15,3"
                        Placeholder="Phone Number" 
+                       TextChanged="form_TextChanged"
                        TextColor="#6264a7"
                        IsPassword="True"></Components:ClassAidEntry>
                 </Frame>
@@ -54,6 +57,7 @@
                     <Components:ClassAidEntry x:Name="teamCode" 
                        Margin="15,3"
                        TextColor="#6264a7"
+                       TextChanged="form_TextChanged"
                        Placeholder="Team Code"></Components:ClassAidEntry>
                 </Frame>
                 <Label/>
