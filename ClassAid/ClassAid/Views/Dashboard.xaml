@@ -23,12 +23,26 @@
                    VerticalOptions="Start" 
                    Margin="20,20,0,0"
                        Grid.ColumnSpan="4"/>
+            
+            <Image Grid.Column="3"
+                   Grid.ColumnSpan="1"
+                   Source="sync.png"
+               Margin="0,25,0,0"
+               HeightRequest="25"
+               WidthRequest="25"
+               HorizontalOptions="End"
+               VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="allSyncButton"/>
+                </Image.GestureRecognizers>
+            </Image>
+            
             <Image Grid.Column="4"
-                   Margin="0,20,20,0"
+                   Margin="15,20,0,0"
                    Source="avater.png"
                    HeightRequest="32"
                    WidthRequest="32"
-                   HorizontalOptions="End"
+                   HorizontalOptions="Start"
                    VerticalOptions="Start">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer x:Name="profileBtn"/>
@@ -56,9 +70,9 @@
             <Image Grid.Column="4"
                    Grid.Row="1"
                    Source="plus.png"
-               Margin="0,4,15,0"
-               HeightRequest="25"
-               WidthRequest="25"
+               Margin="0,5,15,0"
+               HeightRequest="24"
+               WidthRequest="24"
                HorizontalOptions="Center"
                VerticalOptions="Start">
                 <Image.GestureRecognizers>
