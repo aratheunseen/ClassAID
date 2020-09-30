@@ -2,63 +2,68 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.AdminViews.Settings.AddSchedulePage"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <ScrollView Orientation="Vertical">
-            <StackLayout  BackgroundColor="#F7F7FF" Padding="30">
-                <StackLayout>
-                    <StackLayout HorizontalOptions="Center"
+        <StackLayout  BackgroundColor="#F7F7FF" Padding="30">
+            <StackLayout>
+                <StackLayout HorizontalOptions="Center"
                          VerticalOptions="Center">
-                        <Label Text="Add Schedule"
-                       TextColor="#8576F5"
+                    <Label Text="Add Schedule"
+                       TextColor="#6264a7"
                        FontSize="25"
-                        Margin="0,10,0,30"></Label>
-                    </StackLayout>
-                    <Button  x:Name="addTeacher"
-                             Clicked="addTeacher_Clicked"
-                             Text="Add Teacher"/>
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
-                        <Entry x:Name="courseCode"
+                        Margin="0,30,0,60"></Label>
+                </StackLayout>
+                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="courseCode"
                    TextChanged="inputTextChanged"
                        Placeholder="Course Code"
                                TextColor="#8B84B9"/>
-                    </Frame>
+                </Frame>
 
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
-                        <Entry x:Name="subjectName"
+                <Frame BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Components:ClassAidEntry x:Name="subjectName"
                    TextChanged="inputTextChanged"
                        Placeholder="Subject Name"
-                               TextColor="#8B84B9"/>
-                    </Frame>
+                               TextColor="#6264a7"/>
+                </Frame>
 
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
+                <StackLayout Orientation="Horizontal">
+                    <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
                         <Picker Title="Select Teacher"
                         x:Name="teacherPeaker"
-                                TextColor="#8B84B9"
+                        TextColor="#6264a7"
+                        WidthRequest="100"
                         ItemDisplayBinding="{Binding Name}"/>
                     </Frame>
-
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
-                        <Picker Title="Select Day"
+                    <Button  x:Name="addTeacher"
+                                 ImageSource="plus.png"
+                                 BackgroundColor="Transparent"
+                             Clicked="addTeacher_Clicked"
+                                 WidthRequest="32"
+                                 HeightRequest="32"
+                             Text="Add Teacher"/>
+                </StackLayout>
+                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <Picker Title="Select Day"
                                 TextColor="#8B84B9"
                         x:Name="dayPeaker"/>
-                    </Frame>
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
-                        <TimePicker x:Name="startDate" TextColor="#8B84B9"/>
-                    </Frame>
-                    <Frame BorderColor="#C4C1DE" CornerRadius="20">
-                        <TimePicker x:Name="endDate" TextColor="#8B84B9"/>
-                    </Frame>
-                </StackLayout>
-                <Button x:Name="addTeacherBtn" 
+                </Frame>
+                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <TimePicker x:Name="startDate" TextColor="#6264a7"/>
+                </Frame>
+                <Frame  BorderColor="#8576F5" BackgroundColor="#F7F7FF" Padding="20,0,0,0" CornerRadius="30">
+                    <TimePicker x:Name="endDate" TextColor="#6264a7"/>
+                </Frame>
+            </StackLayout>
+            <Button x:Name="addTeacherBtn" 
                     IsEnabled="False"
                     Text="Add" 
                     TextColor="#FFFFFF"
                     Margin="0,50"
                     BackgroundColor="#8576F5" 
                     CornerRadius="30"
-                        Clicked="addScheduleBtn_Clicked"/>
-            </StackLayout>
-        </ScrollView>
+                    Clicked="addScheduleBtn_Clicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -55,10 +55,10 @@
                    Grid.ColumnSpan="2"/>
             <Image Grid.Column="4"
                    Grid.Row="1"
+                   Source="plus.png"
                Margin="0,4,15,0"
-               Source="plus.png"
-               HeightRequest="24"
-               WidthRequest="24"
+               HeightRequest="25"
+               WidthRequest="25"
                HorizontalOptions="Center"
                VerticalOptions="Start">
                 <Image.GestureRecognizers>
@@ -203,8 +203,8 @@
                    Grid.Row="2"
                Margin="0,4,15,0"
                Source="plus.png"
-               HeightRequest="24"
-               WidthRequest="24"
+               HeightRequest="25"
+               WidthRequest="25"
                HorizontalOptions="Center"
                VerticalOptions="Start">
                 <Image.GestureRecognizers>
