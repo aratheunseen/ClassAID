@@ -33,10 +33,13 @@
                        Padding="2"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
-                    <Components:ClassAidEntry Text="TEAMCODEXXXXX"
+                    <Label x:Name="teamCode"
                         FontSize="12"
-                       TextColor="#6264a7"
-                       IsReadOnly="True"/>
+                       TextColor="#6264a7">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="teamCodeCopyGesture"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Frame>
             
                 <Image Grid.Column="3"

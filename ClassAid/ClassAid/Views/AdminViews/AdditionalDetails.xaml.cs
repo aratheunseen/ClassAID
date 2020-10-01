@@ -30,6 +30,9 @@ namespace ClassAid.Views.AdminViews
                 Semester = semName.Text,
                 Section = secName.Text
             };
+            resultText.Text = "Creating Unique ID";
+            user.AdminKey = await FirebaseHandler.ValidateAdminCode(instName.Text);
+            resultText.Text = "Creating Profile";
             user.BatchDetails = batch;
             user.ID = stuId.Text;
             user.Phone = userPhone.Text;

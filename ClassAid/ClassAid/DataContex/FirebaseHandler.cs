@@ -1,7 +1,9 @@
 ﻿using ClassAid.Models;
+using ClassAid.Models.Engines;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,23 +51,38 @@ namespace ClassAid.DataContex
             }
         }
         #region RealTime
-        //public static async Task<T> RealTimeConnection<T>(string tablename, T data)
-        //{
-        //    object respons = null;
-        //    await Task.Run(() => client
-        //       .Child(tablename)
-        //       .AsObservable<T>()
-        //       .Subscribe(d => respons = d.Object));
-        //    return (T)Convert.ChangeType(respons, typeof(T));
-        //}
-        //public IDisposable StreamChat<T>(string table)
-        //{
-        //    IDisposable observable = client
-        //      .Child(table)
-        //      .AsObservable<T>()
-        //      .Subscribe();
-        //    return observable;
-        //}
+        public static async Task<T> RealTimeConnection<T>(string tablename, T data)
+        {
+            object respons = null;
+            await Task.Run(() => client
+               .Child(tablename)
+               .AsObservable<T>()
+               .Subscribe(d => respons = d.Object));
+            return (T)Convert.ChangeType(respons, typeof(T));
+        }
+        public async static Task<string> ValidateAdminCode(string universityName)
+        {
+            Start:
+            string res = "";
+            foreach (var item in universityName.Split())
+            {
+                res += item[0];
+            }
+            res += Adminkey.GetCode();
+            string validator = (await client
+              .Child("AdminCodeLookUp")
+              .OnceAsync<string>()).Select(item => item.Object)
+            .Where(item => item == res).FirstOrDefault();
+            if (validator == null)
+            {
+                await client
+                .Child("AdminCodeLookUp")
+                .PostAsync(JsonConvert.SerializeObject(res));
+                return res;
+            }
+            else
+                goto Start;
+        }
         #endregion
         public static async Task<Shared> GetAdmin(string key, bool IsAdmin)
         {

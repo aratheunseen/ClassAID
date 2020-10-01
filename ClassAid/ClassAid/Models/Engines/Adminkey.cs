@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Text;
 
-namespace ClassAid_Raw_Test
+namespace ClassAid.Models.Engines
 {
-    class Program
+    class Adminkey
     {
-        static void Main(string[] args)
-        {
-            for (int i = 0; i < 20; i++)Console.WriteLine(GetCode());
-        }
         public static string GetCode()
         {
             Random random = new Random();
@@ -21,4 +18,3 @@ namespace ClassAid_Raw_Test
         }
     }
 }
-//Hello World

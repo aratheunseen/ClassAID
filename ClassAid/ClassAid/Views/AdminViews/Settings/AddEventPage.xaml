@@ -40,15 +40,14 @@
                                       Margin="15,3"/>
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Editor x:Name="eventBody"  
+                    <Components:ClassAidEditor x:Name="eventBody"  
                     AutoSize="TextChanges" 
                     TextChanged="Form_TextChanged"
                     Keyboard="Chat"
                     Placeholder="Exam on friday. Oh nooo!!!"
                     TextColor="#6264a7"
                     Margin="15,3"
-                    HeightRequest="250">
-                    </Editor>
+                    HeightRequest="250"/>
                 </Frame>
                 <Label Margin="10"/>
                 <Frame BorderColor="#6264a7" 
