@@ -51,32 +51,13 @@
                        TextChanged="Form_TextChanged"
                        Margin="15,3"/>
                     </Frame>
-                    <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="phoneNumber"
-                       Margin="15,3"
-                       Placeholder="Phone Number" 
-                       TextChanged="Form_TextChanged"
-                       TextColor="#6264a7"
-                       MaxLength="11"
-                       Keyboard="Telephone"
-                       IsPassword="True"/>
-                    </Frame>
-                    <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="teamCode" 
-                       Margin="15,3"
-                       TextColor="#6264a7"
-                       TextChanged="Form_TextChanged"
-                       Placeholder="Team Code"
-                       SelectionLength="7"
-                       MaxLength="30"/>
-                    </Frame>
                     <Label/>
                     <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="studentSignIn"/>
                         </Frame.GestureRecognizers>
                         <Label HorizontalOptions="Center"
-                           Text="Sign In"
+                           Text="Get Started"
                            FontSize="14"
                            TextColor="#FFFFFF"
                            FontAttributes="Bold"
