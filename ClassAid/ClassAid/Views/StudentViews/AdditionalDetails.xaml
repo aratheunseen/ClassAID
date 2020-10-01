@@ -1,12 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentViews.AdditionalDetails">
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#F7F7FF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                    <Image x:Name="imgBanner" 
+                       Margin="0,70,0,50"
+                       Opacity="1"
+                       Source="classaid_demo.png" 
+                       HeightRequest="150" 
+                       WidthRequest="150"></Image>
+                </StackLayout>
+                <StackLayout Padding="30">
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="phoneNumber"
+                       Margin="15,3"
+                       Placeholder="Phone Number" 
+                       TextChanged="Form_TextChanged"
+                       TextColor="#6264a7"
+                       MaxLength="11"
+                       Keyboard="Telephone"
+                       IsPassword="True"/>
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="teamCode" 
+                       Margin="15,3"
+                       TextColor="#6264a7"
+                       TextChanged="Form_TextChanged"
+                       Placeholder="Team Code"
+                       SelectionLength="7"
+                       MaxLength="30"/>
+                    </Frame>
+                    <Label/>
+                    <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="studentSignIn"/>
+                        </Frame.GestureRecognizers>
+                        <Label HorizontalOptions="Center"
+                           Text="Sign In"
+                           FontSize="14"
+                           TextColor="#FFFFFF"
+                           FontAttributes="Bold"
+                           Margin="15,3">
+                        </Label>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                    </StackLayout>
+                    <Label HorizontalOptions="Center"
+                       x:Name="resultText"
+                       TextColor="GreenYellow">
+                    </Label>
+                    <ActivityIndicator x:Name="activityIndicator" 
+                                   IsRunning="False" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
