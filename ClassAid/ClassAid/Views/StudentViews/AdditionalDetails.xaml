@@ -33,14 +33,19 @@
                 </StackLayout>
                 <StackLayout Padding="30">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="studentName"
+                       Margin="15,3"
+                       Placeholder="Full Name" 
+                       TextChanged="Form_TextChanged"
+                       TextColor="#6264a7"/>
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="phoneNumber"
                        Margin="15,3"
-                       Placeholder="Phone Number" 
-                       TextChanged="Form_TextChanged"
+                       Placeholder="Phone Number (Optional)" 
                        TextColor="#6264a7"
                        MaxLength="11"
-                       Keyboard="Telephone"
-                       IsPassword="True"/>
+                       Keyboard="Telephone"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="teamCode" 
