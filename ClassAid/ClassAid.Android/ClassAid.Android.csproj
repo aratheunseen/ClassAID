@@ -77,6 +77,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentsRenderer\EditorRenderer.cs" />
     <Compile Include="ComponentsRenderer\EntryRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <AndroidResource Include="Resources\drawable\splash_screen.xml" />

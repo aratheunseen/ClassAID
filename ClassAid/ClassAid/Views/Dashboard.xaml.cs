@@ -69,6 +69,7 @@ namespace ClassAid.Views
             {
                 addScheduleBtnImage.IsVisible = false;
                 addNoticeBtnImage.IsVisible = false;
+                teamCode.IsVisible = false;
             }
             if (user.ScheduleList == null)            
                 user.ScheduleList =
@@ -104,6 +105,12 @@ namespace ClassAid.Views
             fullNotice.Command =
                 new Command(() => Navigation.PushAsync
                 (new ViewEventPage(user)));
+            teamCodeCopyGesture.Command =
+                new Command(async ()=>
+                { 
+                    await Clipboard.SetTextAsync(user.AdminKey);
+                    DependencyService.Get<Toast>().Show("Team code copied.");
+                });
 
             // TODO: Remove this section on shipment
             // START
@@ -118,6 +125,7 @@ namespace ClassAid.Views
         {
             try
             {
+                teamCode.Text = user.AdminKey;
                 firstScheduleCourseCode.Text = user.ScheduleList[0].CourseCode;
                 firstScheduleCourseName.Text = user.ScheduleList[0].Subject;
                 firstScheduleStart.Text = user.ScheduleList[0].StartTime.ToString(timeFormat);
