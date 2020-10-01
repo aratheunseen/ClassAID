@@ -156,7 +156,7 @@
                 <BoxView Grid.Row="1"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-                   Margin="0,165,15,0"
+                   Margin="0,140,15,0"
                    HeightRequest="10"
                    WidthRequest="10"
                    BackgroundColor="DarkCyan"
@@ -165,7 +165,7 @@
                      Grid.Column="1"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-                   Margin="5,160,0,0"
+                   Margin="5,135,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
                    BackgroundColor="DarkCyan"/>
@@ -176,7 +176,7 @@
                    TextColor="Gray"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-               Margin="15,155,10,0"
+               Margin="15,130,10,0"
                    Grid.ColumnSpan="4"/>
                 <Label x:Name="secondScheduleCourseName"
                    Grid.Column="1"
@@ -185,7 +185,7 @@
                    TextColor="Gray"
                HorizontalOptions="Start"
                VerticalOptions="Start" 
-               Margin="5,180,10,0"
+               Margin="5,155,10,0"
                    Grid.ColumnSpan="3"/>
                 <Label x:Name="secondScheduleStart"
                    Grid.Column="4"
@@ -194,7 +194,7 @@
                    TextColor="Black"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-               Margin="5,160,15,0"/>
+               Margin="5,135,15,0"/>
                 <Label x:Name="secondScheduleEnd"
                    Grid.Column="4"
                    Grid.Row="1"
@@ -202,7 +202,7 @@
                    TextColor="Black"
                HorizontalOptions="End"
                VerticalOptions="Start" 
-               Margin="5,180,15,0"/>
+               Margin="5,155,15,0"/>
 
 
 
