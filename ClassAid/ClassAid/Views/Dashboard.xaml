@@ -29,8 +29,8 @@
                        Grid.ColumnSpan="3"
                        BorderColor="Tomato"
                        BackgroundColor="Transparent"
-                       Margin="10,20,40,0"
-                       Padding="2"
+                       Margin="10,30,40,0"
+                       Padding="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
                     <Label x:Name="teamCode"
