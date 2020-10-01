@@ -17,5 +17,10 @@ namespace ClassAid.Views.StudentViews
         {
             InitializeComponent();
         }
+
+        private void Form_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
