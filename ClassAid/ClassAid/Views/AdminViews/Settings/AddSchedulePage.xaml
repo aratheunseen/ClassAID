@@ -48,7 +48,7 @@
 
                     <Grid>
                         <Frame Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource ClassAidFrameDesign}">
-                            <Picker Title="Select Teacher"
+                            <Components:ClassAidPicker Title="Select Teacher"
                         x:Name="teacherPeaker"
                         TextColor="#6264a7"
                                 Margin="15,3"
@@ -64,7 +64,7 @@
                              Text="Add Teacher"/>
                     </Grid>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Picker Title="Select Day"
+                        <Components:ClassAidPicker Title="Select Day"
                                 TextColor="#6264a7"
                             Margin="15,3"
                         x:Name="dayPeaker"/>
