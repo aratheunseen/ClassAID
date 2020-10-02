@@ -26,7 +26,7 @@
             <StackLayout BackgroundColor="#FFF">
             <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
-                       Margin="0,0,0,30" Opacity="1"
+                       Margin="0,50,0,25" Opacity="1"
                        Source="admin_login.png"/>
             </StackLayout>
             <StackLayout Padding="30">

@@ -25,11 +25,11 @@
             <StackLayout BackgroundColor="#FFF">
                 <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                     <Image x:Name="imgBanner" 
-                       Margin="0,0,0,30"
+                       Margin="0,50,0,30"
                        Opacity="1"
                        Source="profile_details.png"/>
                 </StackLayout>
-                <StackLayout Padding="30">
+                <StackLayout Padding="25">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="studentName"
                        Margin="15,3"
