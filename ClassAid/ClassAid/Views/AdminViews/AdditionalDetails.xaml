@@ -115,7 +115,7 @@
                     </StackLayout>
                     <Label HorizontalOptions="Center"
                        x:Name="resultText"
-                       TextColor="GreenYellow">
+                       TextColor="#6264a7">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
                 </StackLayout>
