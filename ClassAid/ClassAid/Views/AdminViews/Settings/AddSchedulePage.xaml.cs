@@ -61,9 +61,9 @@ namespace ClassAid.Views.AdminViews.Settings
         {
             if (string.IsNullOrWhiteSpace(courseCode.Text) ||
                 string.IsNullOrWhiteSpace(subjectName.Text))
-                addTeacherBtn.Command = null;
+                addSchedule.Command = null;
             else
-                addTeacherBtn.Command = new Command(()=> AddScheduleBtn_Clicked());
+                addSchedule.Command = new Command(()=> AddScheduleBtn_Clicked());
         }
     }
 }
