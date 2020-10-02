@@ -21,32 +21,21 @@
                 <StackLayout Grid.Row="1" Margin="30,0,30,50">
                     <Button x:Name="studentBtn" 
                             Clicked="StudentBtn_Clicked"
-                            Text="Continue as a Student"
+                            Text="Continue as Student"
                             BackgroundColor="#6264a7"
-                            CornerRadius="15"/>
+                            CornerRadius="15"
+                            TextTransform="None"/>
                     <Button x:Name="adminBtn" 
                             Clicked="AdminBtn_Clicked"
-                            Text="Continue as an Admin"
+                            Text="Continue as Representative"
                             BackgroundColor="#FFF"
                             TextColor="#6264a7"
                             CornerRadius="15"
                             BorderWidth="1"
-                            BorderColor="#6264a7"/>
+                            BorderColor="#6264a7"
+                            TextTransform="None"/>
                 </StackLayout>
-                <!--<StackLayout Grid.Row="1"
-                         Margin="20"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand">
-                <Button x:Name="gotoBtn" 
-                        HorizontalOptions="Center"
-                        Clicked="gotoBtn_Clicked"
-                        Text="Stu Dash Btn"/>
-                <Button x:Name="bypassBtn" 
-                        HorizontalOptions="Center"
-                        Clicked="bypassBtn_Clicked"
-                        Text="Bypass Btn"/>
-            </StackLayout>-->
-        </Grid>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
