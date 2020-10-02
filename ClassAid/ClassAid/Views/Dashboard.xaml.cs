@@ -26,7 +26,7 @@ namespace ClassAid.Views
             { 
                 return new Command(async () =>
                 {
-                    await Clipboard.SetTextAsync(user.AdminKey);
+                    await Clipboard.SetTextAsync(user.TeamCode);
                     DependencyService.Get<Toast>().Show("Team code copied.");
                 });
             } 
@@ -90,7 +90,7 @@ namespace ClassAid.Views
                 {
                     string key = Preferences.Get("adminKey", "");
                     user = await FirebaseHandler
-                    .GetAdmin(key, user.IsAdmin);
+                    .GetUser(key, user.IsAdmin);
                 }
                 else
                 {
@@ -109,29 +109,38 @@ namespace ClassAid.Views
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
         }
-        private void InitializeData()
+        private async void InitializeData()
         {
             if (!user.IsAdmin)
             {
                 addScheduleBtnImage.IsVisible = false;
                 addNoticeBtnImage.IsVisible = false;
                 teamCode.IsVisible = false;
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.ScheduleList,
+                    user.ScheduleList);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.StudentList,
+                    user.StudentList);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.EventList,
+                    user.EventList);
             }
-            if (user.ScheduleList == null)
-                user.ScheduleList =
-                    new ObservableCollection<ScheduleModel>();
+            ////if (user.ScheduleList == null)
+            ////    user.ScheduleList =
+            ////        new ObservableCollection<ScheduleModel>();
 
-            if (user.EventList == null)
-                user.EventList =
-                    new ObservableCollection<EventModel>();
+            ////if (user.EventList == null)
+            ////    user.EventList =
+            ////        new ObservableCollection<EventModel>();
 
-            if (user.TeacherList == null)
-                user.TeacherList =
-                    new ObservableCollection<Teacher>();
+            ////if (user.TeacherList == null)
+            ////    user.TeacherList =
+            ////        new ObservableCollection<Teacher>();
 
-            if (user.StudentList == null)
-                user.StudentList =
-                    new ObservableCollection<Shared>();
+            ////if (user.StudentList == null)
+            ////    user.StudentList =
+            ////        new ObservableCollection<Student>();
 
             profileBtn.Command = new Command(() => Logout());
             InitLabel();          
@@ -149,7 +158,7 @@ namespace ClassAid.Views
         {
             try
             {
-                teamCode.Text = user.AdminKey;
+                teamCode.Text = user.TeamCode;
                 firstScheduleCourseCode.Text = user.ScheduleList[0].CourseCode;
                 firstScheduleCourseName.Text = user.ScheduleList[0].Subject;
                 firstScheduleStart.Text = user.ScheduleList[0].StartTime.ToString(timeFormat);

@@ -5,6 +5,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using Newtonsoft.Json;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -36,7 +37,7 @@ namespace ClassAid.DataContex
                 .Child(user.Key)
                 .PostAsync(user);
         }
-        public static async Task UpdateAdmin(Shared user)
+        public static async Task UpdateUser(Shared user)
         {
             LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -51,16 +52,16 @@ namespace ClassAid.DataContex
             }
         }
         #region RealTime
-        public static async Task<T> RealTimeConnection<T>(string tablename, T data)
+        public static async Task RealTimeConnection<T>(CollectionTables collectionName,
+            ObservableCollection<T> collection, string tablename = "Admin")
         {
-            object respons = null;
             await Task.Run(() => client
-               .Child(tablename)
+               .Child(tablename).Child(collectionName.ToString())
                .AsObservable<T>()
-               .Subscribe(d => respons = d.Object));
-            return (T)Convert.ChangeType(respons, typeof(T));
+               .Subscribe(d => collection.Add(d.Object)));
+            //return (T)Convert.ChangeType(respons, typeof(T));
         }
-        public async static Task<string> ValidateAdminCode(string universityName)
+        public async static Task<string> GetTeamCode(string universityName)
         {
             Start:
             string res = "";
@@ -69,10 +70,7 @@ namespace ClassAid.DataContex
                 res += item[0];
             }
             res += Adminkey.GetCode();
-            string validator = (await client
-              .Child("AdminCodeLookUp")
-              .OnceAsync<string>()).Select(item => item.Object)
-            .Where(item => item == res).FirstOrDefault();
+            string validator = await ValidateTeamCode(res);
             if (validator == null)
             {
                 await client
@@ -84,12 +82,26 @@ namespace ClassAid.DataContex
                 goto Start;
         }
         #endregion
-        public static async Task<Shared> GetAdmin(string key, bool IsAdmin)
+        public static async Task<string> ValidateTeamCode(string teamCode)
         {
+            return (await client
+                .Child("AdminCodeLookUp")
+                .OnceAsync<string>()).Select(item => item.Object)
+                .Where(item => item == teamCode).FirstOrDefault();
+        }
+        public static async Task<Shared> GetUser(string key, bool IsAdmin,string teamcode = null)
+        {
+            string tempKey;
+            if (teamcode == null)
+            {
+                tempKey = key;
+            }
+            else
+                tempKey = teamcode;
             Shared res = (await client
               .Child(TableName(IsAdmin))
               .OnceAsync<Shared>()).Select(item => item.Object)
-            .Where(item => item.Key == key).FirstOrDefault();
+            .Where(item => item.Key == tempKey).FirstOrDefault();
             LocalStorageEngine.SaveDataAsync(res, FileType.Shared);
             return res;
         }
@@ -100,5 +112,9 @@ namespace ClassAid.DataContex
             else
                 return "Student";
         }
+    }
+    public enum CollectionTables
+    {
+        EventList, ScheduleList, TeacherList, StudentList
     }
 }

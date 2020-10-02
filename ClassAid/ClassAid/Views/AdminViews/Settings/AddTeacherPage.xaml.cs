@@ -29,7 +29,7 @@ namespace ClassAid.Views.AdminViews.Settings
             };
             user.TeacherList.Add(t);
             await Navigation.PopAsync();
-            await FirebaseHandler.UpdateAdmin(user);
+            await FirebaseHandler.UpdateUser(user);
         }
         
         // TODO: Can not build after change the button to frame gesture

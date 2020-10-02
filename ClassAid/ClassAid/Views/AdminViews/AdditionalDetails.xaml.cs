@@ -31,14 +31,14 @@ namespace ClassAid.Views.AdminViews
                 Section = secName.Text
             };
             resultText.Text = "Creating Unique ID";
-            user.AdminKey = await FirebaseHandler.ValidateAdminCode(instName.Text);
+            user.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text);
             resultText.Text = "Creating Profile";
             user.BatchDetails = batch;
             user.ID = stuId.Text;
             user.Phone = userPhone.Text;
             try
             {
-                await FirebaseHandler.UpdateAdmin(user);
+                await FirebaseHandler.UpdateUser(user);
                 Application.Current.MainPage = new NavigationPage(new Dashboard(user));
                 Preferences.Set(PrefKeys.isLoggedIn, true);
                 Preferences.Set(PrefKeys.adminKey, user.Key);

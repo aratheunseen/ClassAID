@@ -43,7 +43,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
         });
             await Navigation.PopAsync();
-            await FirebaseHandler.UpdateAdmin(user);
+            await FirebaseHandler.UpdateUser(user);
         }
 
         private void goBackBtn_Clicked(object sender, EventArgs e)

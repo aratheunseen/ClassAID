@@ -31,23 +31,23 @@
                 </StackLayout>
                 <StackLayout Padding="30">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="userName" 
-                       Margin="15,3"
-                       TextColor="#6264a7"
-                       SelectionLength="6"
-                       MaxLength="10"
-                       TextChanged="Form_TextChanged"
-                       Placeholder="Username"/>
+                        <Components:ClassAidEntry x:Name="userName"
+                                                  Margin="15,3"
+                                                  TextColor="#6264a7"
+                                                  SelectionLength="6"
+                                                  MaxLength="10"
+                                                  TextChanged="Form_TextChanged"
+                                                  Placeholder="Username"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="userPass" 
-                       Placeholder="Password"
-                       TextColor="#6264a7"
-                       SelectionLength="6"
-                       MaxLength="10"
-                       IsPassword="True"
-                       TextChanged="Form_TextChanged"
-                       Margin="15,3"/>
+                        <Components:ClassAidEntry x:Name="userPass"
+                                                  Placeholder="Password"
+                                                  TextColor="#6264a7"
+                                                  SelectionLength="6"
+                                                  MaxLength="10"
+                                                  IsPassword="True"
+                                                  TextChanged="Form_TextChanged"
+                                                  Margin="15,3"/>
                     </Frame>
                     <Label/>
                     <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">

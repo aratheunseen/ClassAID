@@ -39,7 +39,7 @@ namespace ClassAid.Views.AdminViews.Settings
                     Title = eventTitle.Text,
                     Details = eventBody.Text
                 });
-            await FirebaseHandler.UpdateAdmin(user);
+            await FirebaseHandler.UpdateUser(user);
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)

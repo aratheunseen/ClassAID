@@ -29,7 +29,7 @@ namespace ClassAid.Views.AdminViews
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await FirebaseHandler.GetAdmin(user.Key, user.IsAdmin);
+                    await FirebaseHandler.GetUser(user.Key, user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
