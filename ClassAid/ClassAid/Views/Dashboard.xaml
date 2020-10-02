@@ -24,16 +24,16 @@
                 <!-- Header -->
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
-                       Margin="30,30,0,0"
+                       Margin="25,18,0,0"
                        Source="logo.png"
-                       HeightRequest="32"
-                       WidthRequest="32"/>
+                       HeightRequest="50"
+                       WidthRequest="50"/>
 
                 <Frame Grid.Column="1"
                        Grid.ColumnSpan="3"
-                       BorderColor="Tomato"
+                       BorderColor="#6264a7"
                        BackgroundColor="Transparent"
-                       Margin="10,25,40,0"
+                       Margin="10,27,40,0"
                        Padding="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
@@ -110,7 +110,7 @@
                    Margin="0,65,15,0"
                    HeightRequest="10"
                    WidthRequest="10"
-                   BackgroundColor="MediumVioletRed"
+                   BackgroundColor="DarkRed"
                      CornerRadius="30"/>
                 <BoxView Grid.Row="1"
                      Grid.Column="1"
@@ -119,7 +119,7 @@
                    Margin="5,60,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="MediumVioletRed"/>
+                   BackgroundColor="DarkRed"/>
                 <Label x:Name="firstScheduleCourseCode"
                    Grid.Column="1"
                    Grid.Row="1"
@@ -251,7 +251,7 @@
                    Margin="0,60,15,0"
                    HeightRequest="10"
                    WidthRequest="10"
-                   BackgroundColor="MediumVioletRed"
+                   BackgroundColor="DarkRed"
                      CornerRadius="30"/>
                 <BoxView Grid.Row="2"
                      Grid.Column="1"
@@ -260,7 +260,7 @@
                    Margin="5,55,0,0"
                    HeightRequest="20"
                    WidthRequest="2"
-                   BackgroundColor="MediumVioletRed"/>
+                   BackgroundColor="DarkRed"/>
 
                 <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                    Grid.Column="1"
