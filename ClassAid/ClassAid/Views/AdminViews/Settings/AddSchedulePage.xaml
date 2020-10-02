@@ -89,7 +89,7 @@
                        Padding="15"
                        CornerRadius="15">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="addTeacherBtn"/>
+                        <TapGestureRecognizer x:Name="addSchedule"/>
                     </Frame.GestureRecognizers>
                     <Label x:Name="btnAdd"
                                 Margin="15,3"
