@@ -12,7 +12,7 @@
         </Style>
         <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
             <Setter Property="BorderColor" Value="#6264a7"/>
-            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="BackgroundColor" Value="#fff"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property ="CornerRadius" Value="30"/>
         </Style>
@@ -23,13 +23,11 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout BackgroundColor="#F7F7FF">
+            <StackLayout BackgroundColor="#FFF">
             <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                 <Image x:Name="imgBanner" 
-                       Margin="0,70,0,50" Opacity="1"
-                       Source="classaid_demo.png" 
-                       HeightRequest="150" 
-                       WidthRequest="150"/>
+                       Margin="0,50,0,25" Opacity="1"
+                       Source="admin_login.png"/>
             </StackLayout>
             <StackLayout Padding="30">
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -64,21 +62,12 @@
                                 HorizontalOptions="Center"
                                 Text="Get Started"/>
                 </Frame>
-                <Label HorizontalOptions="Center"
+                    <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        FontSize="Large"
                        TextColor="#1a1a1a">
-                </Label>
-                <!--<StackLayout Grid.Row="1"
-                         Margin="20"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand">
-                    <Button x:Name="bypassBtn" 
-                        HorizontalOptions="Center"
-                        Clicked="AdminLoginBypassBtn_Clicked"
-                        Text="After Login Bypass Btn"/>
-                </StackLayout>-->
-                <ActivityIndicator x:Name="activityIndicator" 
+                    </Label>
+                    <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="False" />
             </StackLayout>
         </StackLayout>
