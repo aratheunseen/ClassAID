@@ -125,6 +125,9 @@ namespace ClassAid.Views
                 await FirebaseHandler.RealTimeConnection(
                     CollectionTables.EventList,
                     user.EventList);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.TeacherList,
+                    user.TeacherList);
             }
             ////if (user.ScheduleList == null)
             ////    user.ScheduleList =

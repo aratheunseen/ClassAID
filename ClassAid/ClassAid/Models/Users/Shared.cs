@@ -29,7 +29,7 @@ namespace ClassAid.Models.Users
         public ObservableCollection<Student> StudentList { get; set; } = new ObservableCollection<Student>();
         public ObservableCollection<ScheduleModel> ScheduleList { get; set; } = new ObservableCollection<ScheduleModel>();
         public ObservableCollection<EventModel> EventList { get; set; } = new ObservableCollection<EventModel>();
-        public BatchDetails BatchDetails { get; set; }
+        public BatchDetails BatchDetails { get; set; } = new BatchDetails();
         public string TeamCode { get; set; }
         public bool IsActive { get; set; }
         public bool IsAdmin { get; set; }

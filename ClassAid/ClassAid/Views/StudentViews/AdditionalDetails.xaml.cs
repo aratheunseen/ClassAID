@@ -3,6 +3,8 @@ using ClassAid.Models.Users;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ClassAid.Models.Schedule;
+using System.Collections.ObjectModel;
 
 namespace ClassAid.Views.StudentViews
 {
@@ -43,22 +45,33 @@ namespace ClassAid.Views.StudentViews
             if (!string.IsNullOrWhiteSpace(validate))
             {
                 var tempAdmin = await FirebaseHandler.GetUser(null, true, user.TeamCode);
-                try
+                // try
+                // {
+                if (user.BatchDetails == null)
+                    user.BatchDetails = new BatchDetails();
+                if (user.TeacherList == null)
+                    user.TeacherList = new ObservableCollection<Teacher>();
+                if (user.StudentList == null)
+                    user.StudentList = new ObservableCollection<Student>();
+                if (user.ScheduleList == null)
+                    user.ScheduleList = new ObservableCollection<ScheduleModel>();
+                if (user.EventList == null)
+                    user.EventList = new ObservableCollection<EventModel>();
+                
+                user.BatchDetails = tempAdmin.BatchDetails;
+                user.TeacherList = tempAdmin.TeacherList;
+                user.StudentList = tempAdmin.StudentList;
+                user.ScheduleList = tempAdmin.ScheduleList;
+                user.EventList = tempAdmin.EventList;
+                tempAdmin.StudentList.Add(new Student() 
                 {
-                    user.BatchDetails = tempAdmin.BatchDetails;
-                    user.TeacherList = tempAdmin.TeacherList;
-                    user.StudentList = tempAdmin.StudentList;
-                    user.ScheduleList = tempAdmin.ScheduleList;
-                    user.EventList = tempAdmin.EventList;
-                    tempAdmin.StudentList.Add(new Student() 
-                    {
-                        Name = user.Name,
-                        Phone = user.Phone,
-                        ID = user.ID
-                    });
-                    await FirebaseHandler.UpdateUser(tempAdmin);
-                }
-                catch (Exception) { }
+                    Name = user.Name,
+                    Phone = user.Phone,
+                    ID = user.ID
+                });
+                await FirebaseHandler.UpdateUser(tempAdmin);
+                // }
+                // catch (Exception) { }
                 Application.Current.MainPage =
                     new NavigationPage(new Dashboard(user));
                 
