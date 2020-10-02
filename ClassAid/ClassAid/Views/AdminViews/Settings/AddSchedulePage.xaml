@@ -39,11 +39,11 @@
                                TextColor="#6264a7"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <forms:AutoSuggestBox PlaceholderText="Search" 
+                        <!--<forms:AutoSuggestBox PlaceholderText="Search" 
                                               WidthRequest="200"
                                               TextChanged="AutoSuggestBox_TextChanged"
                                               QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                                              SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+                                              SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>-->
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="subjectName"

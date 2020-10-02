@@ -9,7 +9,6 @@ using Xamarin.Essentials;
 using ClassAid.DataContex;
 using ClassAid.Models;
 using ClassAid.Models.Users;
-using System.Diagnostics;
 
 namespace ClassAid
 {
@@ -32,7 +31,6 @@ namespace ClassAid
             else
                 MainPage = new NavigationPage(new Dashboard());
         }
-
         private async void CheckConnection(object sender, ConnectivityChangedEventArgs e)
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
