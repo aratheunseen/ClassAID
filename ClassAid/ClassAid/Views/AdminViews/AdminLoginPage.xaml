@@ -62,21 +62,12 @@
                                 HorizontalOptions="Center"
                                 Text="Get Started"/>
                 </Frame>
-                <Label HorizontalOptions="Center"
+                    <Label HorizontalOptions="Center"
                        x:Name="resultText"
                        FontSize="Large"
                        TextColor="#1a1a1a">
-                </Label>
-                <!--<StackLayout Grid.Row="1"
-                         Margin="20"
-                         HorizontalOptions="CenterAndExpand"
-                         VerticalOptions="CenterAndExpand">
-                    <Button x:Name="bypassBtn" 
-                        HorizontalOptions="Center"
-                        Clicked="AdminLoginBypassBtn_Clicked"
-                        Text="After Login Bypass Btn"/>
-                </StackLayout>-->
-                <ActivityIndicator x:Name="activityIndicator" 
+                    </Label>
+                    <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="False" />
             </StackLayout>
         </StackLayout>
