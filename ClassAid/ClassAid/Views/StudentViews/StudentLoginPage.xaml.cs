@@ -40,7 +40,7 @@ namespace ClassAid.Views.StudentViews
                 };
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await FirebaseHandler.GetAdmin(user.Key, user.IsAdmin);
+                    await FirebaseHandler.GetUser(user.Key, user.IsAdmin);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
@@ -54,7 +54,7 @@ namespace ClassAid.Views.StudentViews
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
                     Preferences.Set(PrefKeys.isLoggedIn, true);
-                    Preferences.Set(PrefKeys.adminKey, tempAdmin.AdminKey);
+                    Preferences.Set(PrefKeys.adminKey, tempAdmin.TeamCode);
                 }
             }
             catch (Exception e)

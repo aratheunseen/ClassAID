@@ -2,10 +2,11 @@
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Engines;
+using System.Net.Http.Headers;
 
 namespace ClassAid.Models.Users
 {
-    public class Shared
+    public class Shared : Student
     {
         public Shared(string Username, string Password)
         {
@@ -19,18 +20,17 @@ namespace ClassAid.Models.Users
         }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Name { get; set; }
+
         public string Key { get; set; }
-        public string ID { get; set; }
-        public string Phone { get; set; }
+
         public DateTime JoinDate { get { return DateTime.Now; } }
         public string Email { get; set; }
-        public ObservableCollection<Teacher> TeacherList { get; set; }
-        public ObservableCollection<Shared> StudentList { get; set; }
-        public ObservableCollection<ScheduleModel> ScheduleList { get; set; }
-        public ObservableCollection<EventModel> EventList { get; set; }
+        public ObservableCollection<Teacher> TeacherList { get; set; } = new ObservableCollection<Teacher>();
+        public ObservableCollection<Student> StudentList { get; set; } = new ObservableCollection<Student>();
+        public ObservableCollection<ScheduleModel> ScheduleList { get; set; } = new ObservableCollection<ScheduleModel>();
+        public ObservableCollection<EventModel> EventList { get; set; } = new ObservableCollection<EventModel>();
         public BatchDetails BatchDetails { get; set; }
-        public string AdminKey { get; set; }
+        public string TeamCode { get; set; }
         public bool IsActive { get; set; }
         public bool IsAdmin { get; set; }
     }

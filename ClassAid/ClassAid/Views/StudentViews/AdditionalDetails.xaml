@@ -39,11 +39,19 @@
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="phoneNumber"
-                       Margin="15,3"
-                       Placeholder="Phone Number (Optional)" 
-                       TextColor="#6264a7"
-                       MaxLength="11"
-                       Keyboard="Telephone"/>
+                                                   Margin="15,3"
+                                                   Placeholder="Phone Number (Optional)" 
+                                                   TextColor="#6264a7"
+                                                   MaxLength="11"
+                                                   Keyboard="Telephone"/>
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <Components:ClassAidEntry x:Name="studentID"
+                                                   Margin="15,3"
+                                                   Placeholder="Student ID (Given from institute)" 
+                                                   TextColor="#6264a7"
+                                                   MaxLength="11"
+                                                   Keyboard="Chat"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="teamCode"
@@ -70,11 +78,12 @@
                     <StackLayout Orientation="Horizontal">
                     </StackLayout>
                     <Label HorizontalOptions="Center"
-                       x:Name="resultText"
-                       TextColor="GreenYellow">
+                           x:Name="resultText"
+                           FontSize="Medium"
+                           TextColor="#1a1a1a">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" 
-                                   IsRunning="False" />
+                                       IsRunning="False" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

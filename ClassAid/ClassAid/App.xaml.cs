@@ -41,7 +41,7 @@ namespace ClassAid
                     {
                         Shared admin = await LocalStorageEngine.ReadDataAsync<Shared>
                       (FileType.Shared);
-                        await FirebaseHandler.UpdateAdmin(admin);
+                        await FirebaseHandler.UpdateUser(admin);
                         DependencyService.Get<Toast>().Show("Synced successfully.");
                         Preferences.Set(PrefKeys.isSyncPending, true);
                     }
