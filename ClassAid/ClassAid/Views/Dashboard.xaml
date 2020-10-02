@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" 
                     VerticalScrollBarVisibility="Never">
-            <Grid BackgroundColor="#F7F7FF">
+            <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*" />
@@ -24,10 +24,10 @@
                 <!-- Header -->
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
-                       Margin="30,20,0,0"
-                       Source="classaid_demo.png"
-                       HeightRequest="40"
-                       WidthRequest="40"/>
+                       Margin="30,30,0,0"
+                       Source="logo.png"
+                       HeightRequest="32"
+                       WidthRequest="32"/>
 
                 <Frame Grid.Column="1"
                        Grid.ColumnSpan="3"
