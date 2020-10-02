@@ -11,7 +11,7 @@
         </Style>
         <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
             <Setter Property="BorderColor" Value="#6264a7"/>
-            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="BackgroundColor" Value="#fff"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property ="CornerRadius" Value="30"/>
         </Style>
@@ -22,14 +22,12 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout BackgroundColor="#F7F7FF">
+            <StackLayout BackgroundColor="#FFF">
                 <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
                     <Image x:Name="imgBanner" 
                        Margin="0,70,0,50"
                        Opacity="1"
-                       Source="classaid_demo.png" 
-                       HeightRequest="150" 
-                       WidthRequest="150"></Image>
+                       Source="student_login.png"></Image>
                 </StackLayout>
                 <StackLayout Padding="30">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -68,7 +66,7 @@
                     </StackLayout>
                     <Label HorizontalOptions="Center"
                        x:Name="resultText"
-                       TextColor="GreenYellow">
+                       TextColor="#6264a7">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="False" />
