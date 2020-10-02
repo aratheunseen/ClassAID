@@ -11,7 +11,7 @@
         </Style>
         <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
             <Setter Property="BorderColor" Value="#6264a7"/>
-            <Setter Property="BackgroundColor" Value="#f7f7ff"/>
+            <Setter Property="BackgroundColor" Value="#fff"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property ="CornerRadius" Value="30"/>
         </Style>
@@ -22,7 +22,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" BackgroundColor="#F7F7FF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}" BackgroundColor="#FFF">
                     <Label Margin="20" HorizontalOptions="Center"
                        Text="Gotcha! You have no account. Fill this form to create one. Remember that you can't recover your password and change this information later."
                        TextColor="Gray"
@@ -115,7 +115,7 @@
                     </StackLayout>
                     <Label HorizontalOptions="Center"
                        x:Name="resultText"
-                       TextColor="GreenYellow">
+                       TextColor="#6264a7">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
                 </StackLayout>

@@ -71,11 +71,5 @@ namespace ClassAid.Views.AdminViews
             else
                 signInBtn.Command = TapCommand;
         }
-
-        //private void AdminLoginBypassBtn_Clicked(object sender, EventArgs e)
-        //{
-        //    Shared us = new Shared("HolaSenorita", "ILoveYou");
-        //    Navigation.PushAsync(new AdditionalDetails(us));
-        //}
     }
 }
