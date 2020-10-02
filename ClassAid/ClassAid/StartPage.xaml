@@ -6,22 +6,19 @@
     
 <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <Grid BackgroundColor="#F7F7FF">
+            <Grid BackgroundColor="#FFF">
             <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="150"/>
                 </Grid.RowDefinitions>
                 <!--TODO: Fix Image-->
-                <StackLayout Grid.Row="0" Margin="50">
+                <StackLayout Grid.Row="0" Margin="0,100,0,0">
                     <Image x:Name="imgBanner" 
-                           Margin="50"
-                           Source="classaid_demo.png" 
-                           HeightRequest="200" 
-                           WidthRequest="200"></Image>
+                           Source="team.png"></Image>
                 </StackLayout>
 
                 <!--TODO: Redesign Buttons and labels-->
-                <StackLayout Grid.Row="1" Margin="15,0,15,50">
+                <StackLayout Grid.Row="1" Margin="30,0,30,50">
                     <Button x:Name="studentBtn" 
                             Clicked="StudentBtn_Clicked"
                             Text="Continue as a Student"
@@ -30,7 +27,7 @@
                     <Button x:Name="adminBtn" 
                             Clicked="AdminBtn_Clicked"
                             Text="Continue as an Admin"
-                            BackgroundColor="#F7F7FF"
+                            BackgroundColor="#FFF"
                             TextColor="#6264a7"
                             CornerRadius="15"
                             BorderWidth="1"
