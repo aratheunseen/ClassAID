@@ -10,6 +10,8 @@ using ClassAid.DataContex;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
 using ClassAid.Models;
+using System.Windows.Input;
+using Xamarin.Forms.Markup;
 
 namespace ClassAid.Views
 {
@@ -18,6 +20,50 @@ namespace ClassAid.Views
     {
         private Shared user;
         private static string timeFormat = @"dd\:hh\:mm";
+        public ICommand teamCodeCopyCommand 
+        { 
+            get 
+            { 
+                return new Command(async () =>
+                {
+                    await Clipboard.SetTextAsync(user.AdminKey);
+                    DependencyService.Get<Toast>().Show("Team code copied.");
+                });
+            } 
+        }
+        public ICommand addScheduleCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                await Navigation.PushAsync(new AddSchedulePage(user)));
+            }
+        }
+        public ICommand addEventCommand
+        {
+            get
+            {
+                return new Command(async ()=>
+                await Navigation.PushAsync(new AddEventPage(user)));
+            }
+        }
+        public ICommand fullScheduleCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                await Navigation.PushAsync(new ViewSchedulePage(user)));
+            }
+        }
+        public ICommand fullEventCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                await Navigation.PushAsync(new ViewEventPage(user)));
+            }
+        }
+        public static Command chatPageCommand;
         public Dashboard(Shared user)
         {
             InitializeComponent();
@@ -39,12 +85,12 @@ namespace ClassAid.Views
                     (FileType.Shared);
             }
             catch (Exception e)
-            {                
+            {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     string key = Preferences.Get("adminKey", "");
                     user = await FirebaseHandler
-                    .GetAdmin(key,user.IsAdmin);
+                    .GetAdmin(key, user.IsAdmin);
                 }
                 else
                 {
@@ -52,7 +98,7 @@ namespace ClassAid.Views
                     Application.Current.MainPage = new StartPage();
                     return;
                 }
-                
+
             }
             InitializeData();
         }
@@ -71,46 +117,24 @@ namespace ClassAid.Views
                 addNoticeBtnImage.IsVisible = false;
                 teamCode.IsVisible = false;
             }
-            if (user.ScheduleList == null)            
+            if (user.ScheduleList == null)
                 user.ScheduleList =
                     new ObservableCollection<ScheduleModel>();
-            
-            if (user.EventList == null)            
-                user.EventList = 
+
+            if (user.EventList == null)
+                user.EventList =
                     new ObservableCollection<EventModel>();
 
             if (user.TeacherList == null)
                 user.TeacherList =
                     new ObservableCollection<Teacher>();
 
-            if (user.StudentList == null)            
-                user.StudentList = 
+            if (user.StudentList == null)
+                user.StudentList =
                     new ObservableCollection<Shared>();
 
             profileBtn.Command = new Command(() => Logout());
-            InitLabel();
-
-            addSchedule.Command =
-                new Command(async () =>
-                await Navigation.PushAsync(
-                    new AddSchedulePage(user)));
-            addNoticeBtn.Command =
-                new Command(async () =>
-                await Navigation.PushAsync(
-                    new AddEventPage(user)));
-
-            fullSchedule.Command =
-                new Command(() => Navigation.PushAsync
-                (new ViewSchedulePage(user)));
-            fullNotice.Command =
-                new Command(() => Navigation.PushAsync
-                (new ViewEventPage(user)));
-            teamCodeCopyGesture.Command =
-                new Command(async ()=>
-                { 
-                    await Clipboard.SetTextAsync(user.AdminKey);
-                    DependencyService.Get<Toast>().Show("Team code copied.");
-                });
+            InitLabel();          
 
             // TODO: Remove this section on shipment
             // START
