@@ -59,8 +59,8 @@
                                  ImageSource="plus.png"
                                  BackgroundColor="Transparent"
                              Clicked="AddTeacher_Clicked"
-                                 WidthRequest="40"
-                                 HeightRequest="40"
+                                 WidthRequest="32"
+                                 HeightRequest="32"
                              Text="Add Teacher"/>
                     </Grid>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
