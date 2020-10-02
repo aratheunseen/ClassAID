@@ -33,12 +33,12 @@
                        Grid.ColumnSpan="3"
                        BorderColor="Tomato"
                        BackgroundColor="Transparent"
-                       Margin="10,30,40,0"
+                       Margin="10,25,40,0"
                        Padding="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
                     <Label x:Name="teamCode"
-                            FontSize="Large"
+                            FontSize="Medium"
                             TextColor="#6264a7">
                     </Label>
                     <Frame.GestureRecognizers>
