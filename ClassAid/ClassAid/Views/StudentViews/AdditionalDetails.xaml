@@ -29,7 +29,7 @@
                        Opacity="1"
                        Source="classaid_demo.png" 
                        HeightRequest="150" 
-                       WidthRequest="150"></Image>
+                       WidthRequest="150"/>
                 </StackLayout>
                 <StackLayout Padding="30">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
@@ -43,13 +43,13 @@
                        IsPassword="True"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <Components:ClassAidEntry x:Name="teamCode" 
-                       Margin="15,3"
-                       TextColor="#6264a7"
-                       TextChanged="Form_TextChanged"
-                       Placeholder="Team Code"
-                       SelectionLength="7"
-                       MaxLength="30"/>
+                        <Components:ClassAidEntry x:Name="teamCode"
+                                                  Margin="15,3"
+                                                  TextColor="#6264a7"
+                                                  TextChanged="Form_TextChanged"
+                                                  Placeholder="Team Code"
+                                                  SelectionLength="7"
+                                                  MaxLength="30"/>
                     </Frame>
                     <Label/>
                     <Frame BorderColor="#6264a7" BackgroundColor="#6264a7" Padding="15" CornerRadius="15">
