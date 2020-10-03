@@ -21,3 +21,10 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+    
+    <!--
+    https://github.com/jamesmontemagno/MediaPlugin
+    https://github.com/step-up-labs/firebase-storage-dotnet
+    https://github.com/xamarin/GooglePlayServicesComponents
+    
+    -->

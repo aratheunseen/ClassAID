@@ -1,9 +1,4 @@
-﻿using Android.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Plugin.FilePicker;
 
 using Xamarin.Forms;
@@ -18,7 +13,6 @@ namespace ClassAid.Views
         public SVG_Tester()
         {
             InitializeComponent();
-            Intent intent = new Intent();
             
         }
 
