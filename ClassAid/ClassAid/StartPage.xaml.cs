@@ -24,5 +24,10 @@ namespace ClassAid
         {
             Navigation.PushAsync(new StudentLoginPage());
         }
+
+        private void SvgBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new SVG_Tester());
+        }
     }
 }

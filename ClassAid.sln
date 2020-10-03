@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassAid Raw Test", "ClassAid Raw Test\ClassAid Raw Test.csproj", "{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassAid.Android", "ClassAid\ClassAid.Android\ClassAid.Android.csproj", "{3C49EB5F-E459-460B-8A58-D912957017E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassAid.iOS", "ClassAid\ClassAid.iOS\ClassAid.iOS.csproj", "{5AF641BF-DF1F-4305-9148-A6F3CFB3A748}"
@@ -21,18 +19,6 @@ Global
 		Release|iPhoneSimulator = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|iPhone.Build.0 = Release|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{2F84E39F-49CD-4CFF-AC60-EB78DB21626C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{3C49EB5F-E459-460B-8A58-D912957017E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3C49EB5F-E459-460B-8A58-D912957017E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C49EB5F-E459-460B-8A58-D912957017E6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
