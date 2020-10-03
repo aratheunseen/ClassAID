@@ -6,9 +6,16 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout>
-                <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                <Image Source="logo.png"
+               Margin="0,0,0,0"
+               HeightRequest="24"
+               WidthRequest="24"
+               HorizontalOptions="End"
+               VerticalOptions="Start">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="logoutBtn"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
