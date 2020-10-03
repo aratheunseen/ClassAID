@@ -6,18 +6,43 @@
              x:Class="ClassAid.Views.StudentProfile">
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout>
-                <Image Source="logo.png"
-               Margin="0,0,0,0"
+            <Grid BackgroundColor="#FFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                    <BoxView Color="pink"
+                             Grid.RowSpan="2" Grid.ColumnSpan="2"
+                               CornerRadius="30" 
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               HorizontalOptions="Start" 
+                               VerticalOptions="Start"
+                               Margin="50,40,0,0">
+                    </BoxView>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Student ID: 192311014" Margin="30,30,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Department: CSE" Margin="30,55,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Semester: 5th" Margin="30,80,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Section: A" Margin="30,105,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Phone: 01778547822" Margin="30,130,0,0" TextColor="#6264a7"/>
+                
+                <Grid Grid.Row="1" Grid.ColumnSpan="5">
+                    
+                </Grid>
+
+                <Image 
+                HorizontalOptions="End"
+               VerticalOptions="End" Source="plus.png"
                HeightRequest="24"
-               WidthRequest="24"
-               HorizontalOptions="End"
-               VerticalOptions="Start">
+               WidthRequest="24">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer x:Name="logoutBtn"/>
                     </Image.GestureRecognizers>
                 </Image>
-            </StackLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
