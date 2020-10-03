@@ -89,21 +89,21 @@ namespace ClassAid.DataContex
                 .OnceAsync<string>()).Select(item => item.Object)
                 .Where(item => item == teamCode).FirstOrDefault();
         }
-        public static async Task<Shared> GetUser(string key, bool IsAdmin,string teamcode = null)
+        public static async Task<Shared> GetUser(string key, bool IsAdmin)
         {
-            string tempKey;
-            if (teamcode == null)
-            {
-                tempKey = key;
-            }
-            else
-                tempKey = teamcode;
             Shared res = (await client
               .Child(TableName(IsAdmin))
               .OnceAsync<Shared>()).Select(item => item.Object)
-            .Where(item => item.Key == tempKey).FirstOrDefault();
+            .Where(item => item.Key == key).FirstOrDefault();
             LocalStorageEngine.SaveDataAsync(res, FileType.Shared);
             return res;
+        }
+        public static async Task<Shared> GetAdmin(string teamcode)
+        {
+            return (await client
+              .Child("Admin")
+              .OnceAsync<Shared>()).Select(item => item.Object)
+            .Where(item => item.TeamCode == teamcode).FirstOrDefault();
         }
         private static string TableName(bool IsAdmin)
         {

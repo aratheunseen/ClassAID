@@ -44,7 +44,7 @@ namespace ClassAid.Views.StudentViews
 
             if (!string.IsNullOrWhiteSpace(validate))
             {
-                var tempAdmin = await FirebaseHandler.GetUser(null, true, user.TeamCode);
+                var tempAdmin = await FirebaseHandler.GetAdmin(user.TeamCode);
                 // try
                 // {
                 if (user.BatchDetails == null)

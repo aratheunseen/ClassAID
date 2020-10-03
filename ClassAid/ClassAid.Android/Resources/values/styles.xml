@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <style name="MainTheme" parent="MainTheme.Base">
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+  <!--<style name="MainTheme" parent="MainTheme.Base">-->
     <item name="android:statusBarColor">#544054</item>
     <item name="android:windowBackground">@color/splash_background</item>
-    <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+    <!--<item name="android:actionBarStyle">@style/ActionBarTheme</item>-->
   </style>
-  <style name="ActionBarTheme" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+  <!--<style name="ActionBarTheme" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
     <item name="android:background">@color/color_action_bar</item>
-  </style>
+  </style>-->
   <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowBackground">@drawable/splash_screen</item>
     <item name="android:windowNoTitle">true</item>
@@ -15,4 +16,5 @@
     <item name="android:windowContentOverlay">@null</item>
     <item name="android:windowActionBar">true</item>
   </style>
+  
 </resources>
