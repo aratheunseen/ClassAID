@@ -4,7 +4,8 @@
              UserAppTheme="Light"
              x:Class="ClassAid.App">
     <!--
-        Define global resources and styles here, that apply to all pages in your app.
+        Define global resources and styles here, 
+        that apply to all pages in your app.
     -->
     <Application.Resources>
         <ResourceDictionary>

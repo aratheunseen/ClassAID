@@ -40,7 +40,6 @@
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-    <PackageReference Include="XamaRed.Forms.Svg" Version="1.1.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />  
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
   </ItemGroup>

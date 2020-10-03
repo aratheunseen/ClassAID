@@ -169,5 +169,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\svgfile.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\nature.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

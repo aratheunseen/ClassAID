@@ -17,7 +17,7 @@ namespace ClassAid.Views
     {
         private Shared user;
         private static string timeFormat = @"dd\:hh\:mm";
-        public ICommand teamCodeCopyCommand 
+        public ICommand TeamCodeCopyCommand 
         { 
             get 
             { 
@@ -28,7 +28,15 @@ namespace ClassAid.Views
                 });
             } 
         }
-        public ICommand addScheduleCommand
+        public ICommand GroupMessageCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                await Navigation.PushAsync(new SVG_Tester()));
+            }
+        }
+        public ICommand AddScheduleCommand
         {
             get
             {
@@ -36,7 +44,7 @@ namespace ClassAid.Views
                 await Navigation.PushAsync(new AddSchedulePage(user)));
             }
         }
-        public ICommand addEventCommand
+        public ICommand AddEventCommand
         {
             get
             {
@@ -44,7 +52,15 @@ namespace ClassAid.Views
                 await Navigation.PushAsync(new AddEventPage(user)));
             }
         }
-        public ICommand fullScheduleCommand
+        public ICommand ProfileBtnCommand
+        {
+            get
+            {
+                return new Command(() =>
+                Navigation.PushAsync(new StudentProfile()));
+            }
+        }
+        public ICommand FullScheduleCommand
         {
             get
             {
@@ -52,7 +68,7 @@ namespace ClassAid.Views
                 await Navigation.PushAsync(new ViewSchedulePage(user)));
             }
         }
-        public ICommand fullEventCommand
+        public ICommand FullEventCommand
         {
             get
             {
@@ -60,7 +76,6 @@ namespace ClassAid.Views
                 await Navigation.PushAsync(new ViewEventPage(user)));
             }
         }
-        public static Command chatPageCommand;
         public Dashboard(Shared user)
         {
             InitializeComponent();
@@ -137,8 +152,7 @@ namespace ClassAid.Views
             ////    user.StudentList =
             ////        new ObservableCollection<Student>();
 
-            profileBtn.Command = new Command(() => 
-            Navigation.PushAsync(new StudentProfile()));
+            
             InitLabel();
 
             // TODO: Remove this section on shipment
