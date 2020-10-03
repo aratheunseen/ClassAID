@@ -34,6 +34,15 @@
                             BorderWidth="1"
                             BorderColor="#6264a7"
                             TextTransform="None"/>
+                    <Button x:Name="svgBtn" 
+                            Clicked="SvgBtn_Clicked"
+                            Text="View SVG"
+                            BackgroundColor="#FFF"
+                            TextColor="#6264a7"
+                            CornerRadius="15"
+                            BorderWidth="1"
+                            BorderColor="#6264a7"
+                            TextTransform="None"/>
                 </StackLayout>
             </Grid>
         </ScrollView>
