@@ -72,6 +72,7 @@ namespace ClassAid.Views
         }
         // TODO: Remove this section on shipment
         // START
+
         public Dashboard()
         {
             InitializeComponent();
@@ -94,7 +95,7 @@ namespace ClassAid.Views
                 }
                 else
                 {
-                    DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue. " + e.Message);
+                    DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue.");
                     Application.Current.MainPage = new StartPage();
                     return;
                 }
