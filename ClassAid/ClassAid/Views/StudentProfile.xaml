@@ -8,40 +8,162 @@
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="260" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
-                    <BoxView Color="pink"
+                
+                <!--Profile Header-->
+                    <Image Source="avater.png"
                              Grid.RowSpan="2" Grid.ColumnSpan="2"
-                               CornerRadius="30" 
                                HeightRequest="100"
                                WidthRequest="100"
                                HorizontalOptions="Start" 
                                VerticalOptions="Start"
-                               Margin="50,40,0,0">
-                    </BoxView>
-                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Student ID: 192311014" Margin="30,30,0,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Department: CSE" Margin="30,55,0,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Semester: 5th" Margin="30,80,0,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Section: A" Margin="30,105,0,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" Text="Phone: 01778547822" Margin="30,130,0,0" TextColor="#6264a7"/>
-                
-                <Grid Grid.Row="1" Grid.ColumnSpan="5">
-                    
-                </Grid>
+                               Margin="30,40,0,0">
+                    </Image>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="16" Text="Student ID: 192311014" Margin="30,30,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="16" Text="Department: CSE" Margin="30,55,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="16" Text="Semester: 5th" Margin="30,80,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="16" Text="Section: A" Margin="30,105,0,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="3" FontSize="16" Text="Phone: 01778547822" Margin="30,130,0,0" TextColor="#6264a7"/>
 
-                <Image 
-                HorizontalOptions="End"
-               VerticalOptions="End" Source="plus.png"
-               HeightRequest="24"
-               WidthRequest="24">
+                <!--Name, University Name and Logout-->
+                <Label Grid.ColumnSpan="4" Text="Mahfujur Rahman Arnob" FontSize="20" Margin="30,180,0,0" TextColor="#6264a7"/>
+                <Label Grid.ColumnSpan="4" Text="Varendra University" FontSize="16" Margin="30,210,0,0" TextColor="#6264a7"/>
+                <Image  ></Image>
+                <Image Grid.Column="5"
+                 Source="schedule.png" 
+                       HeightRequest="32" 
+                       WidthRequest="32" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="End"
+                 Margin="0,0,30,40">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer x:Name="logoutBtn"/>
                     </Image.GestureRecognizers>
                 </Image>
+                
+                
+                <!-- Join Request Title -->
+                <Image Grid.Column="0"
+                   Grid.Row="1"
+               Margin="0,0,5,0"
+               Source="schedule.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               HorizontalOptions="End"
+               VerticalOptions="Start"></Image>
+                <Label Text="Join Request"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="22"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,0,0,0"
+                   Grid.ColumnSpan="2"/>
+
+                <!-- Join Request Content -->
+                <BoxView Grid.Row="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start" 
+                   Margin="0,65,15,0"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   BackgroundColor="Black"
+                     CornerRadius="30"/>
+                <BoxView Grid.Row="1"
+                     Grid.Column="1"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start" 
+                   Margin="5,60,0,0"
+                   HeightRequest="20"
+                   WidthRequest="2"
+                   BackgroundColor="Black"/>
+                <Label x:Name="studentId"
+                       Text="192311050"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   FontSize="18"
+                   TextColor="Gray"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start" 
+                   Margin="15,55,10,0"
+                   Grid.ColumnSpan="4"/>
+                <Label x:Name="studentName"
+                       Text="Abdur Rahman"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                  FontSize="14"
+                   TextColor="Gray"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,80,10,0"
+                   Grid.ColumnSpan="3"/>
+                <Label x:Name="firstScheduleStart" 
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+               HorizontalOptions="End"
+               VerticalOptions="Start" 
+               Margin="5,60,15,0"/>
+                <Label x:Name="firstScheduleEnd" 
+                   Grid.Column="4"
+                   Grid.Row="1"
+                  FontSize="12"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start" 
+                   Margin="5,80,15,0"/>
+
+
+                <!-- Teacher Title -->
+                <Image Grid.Column="0"
+                   Grid.Row="2"
+               Margin="0,0,5,0"
+               Source="schedule.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               HorizontalOptions="End"
+               VerticalOptions="Start"></Image>
+                <Label Text="Teacher"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                  FontSize="22"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,0,0,0"
+                   Grid.ColumnSpan="2"/>
+
+
+
+                <!-- Classmate Title -->
+                <Image Grid.Column="0"
+                   Grid.Row="3"
+               Margin="0,0,5,0"
+               Source="schedule.png"
+               HeightRequest="32"
+               WidthRequest="32"
+               HorizontalOptions="End"
+               VerticalOptions="Start"></Image>
+                <Label Text="Classmate"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                  FontSize="22"
+                   TextColor="Black"
+               HorizontalOptions="Start"
+               VerticalOptions="Start" 
+               Margin="5,0,0,0"
+                   Grid.ColumnSpan="2"/>
+
+
+
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>
