@@ -7,11 +7,8 @@ using ClassAid.Models.Users;
 using ClassAid.Views.AdminViews.Settings;
 using Xamarin.Essentials;
 using ClassAid.DataContex;
-using System.Collections.ObjectModel;
-using ClassAid.Models.Schedule;
 using ClassAid.Models;
 using System.Windows.Input;
-using Xamarin.Forms.Markup;
 
 namespace ClassAid.Views
 {
@@ -85,7 +82,7 @@ namespace ClassAid.Views
                 user = await LocalStorageEngine.ReadDataAsync<Shared>
                     (FileType.Shared);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
@@ -103,13 +100,7 @@ namespace ClassAid.Views
             }
             InitializeData();
         }
-        void Logout()
-        {
-            Preferences.Set(PrefKeys.isLoggedIn, false);
-            LocalStorageEngine.ClearData(FileType.Shared);
-            Application.Current.MainPage =
-                new NavigationPage(new StartPage());
-        }
+
         private async void InitializeData()
         {
             if (!user.IsAdmin)
@@ -146,8 +137,9 @@ namespace ClassAid.Views
             ////    user.StudentList =
             ////        new ObservableCollection<Student>();
 
-            profileBtn.Command = new Command(() => Logout());
-            InitLabel();          
+            profileBtn.Command = new Command(() => 
+            Navigation.PushAsync(new StudentProfile()));
+            InitLabel();
 
             // TODO: Remove this section on shipment
             // START
