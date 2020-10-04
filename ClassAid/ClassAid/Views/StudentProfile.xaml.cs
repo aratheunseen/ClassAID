@@ -15,8 +15,11 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentProfile : ContentPage
     {
-        public StudentProfile()
+        public Shared User { get; }
+        public StudentProfile(Shared user)
         {
+            User = user;
+            
             InitializeComponent();
             
             logoutBtn.Command = new Command(() => Logout());

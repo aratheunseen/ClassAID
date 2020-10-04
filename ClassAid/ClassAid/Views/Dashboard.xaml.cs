@@ -16,7 +16,7 @@ namespace ClassAid.Views
     public partial class Dashboard : ContentPage
     {
         private Shared user;
-        private static string timeFormat = @"dd\:hh\:mm";
+        private static readonly string timeFormat = @"dd\:hh\:mm";
         public ICommand TeamCodeCopyCommand 
         { 
             get 
@@ -57,7 +57,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(() =>
-                Navigation.PushAsync(new StudentProfile()));
+                Navigation.PushAsync(new StudentProfile(user)));
             }
         }
         public ICommand FullScheduleCommand
@@ -123,18 +123,18 @@ namespace ClassAid.Views
                 addScheduleBtnImage.IsVisible = false;
                 addNoticeBtnImage.IsVisible = false;
                 teamCode.IsVisible = false;
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.ScheduleList,
-                    user.ScheduleList);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.StudentList,
-                    user.StudentList);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.EventList,
-                    user.EventList);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.TeacherList,
-                    user.TeacherList);
+                //await FirebaseHandler.RealTimeConnection(
+                //    CollectionTables.ScheduleList,
+                //    user.ScheduleList,);
+                //await FirebaseHandler.RealTimeConnection(
+                //    CollectionTables.StudentList,
+                //    user.StudentList);
+                //await FirebaseHandler.RealTimeConnection(
+                //    CollectionTables.EventList,
+                //    user.EventList);
+                //await FirebaseHandler.RealTimeConnection(
+                //    CollectionTables.TeacherList,
+                //    user.TeacherList);
             }
             ////if (user.ScheduleList == null)
             ////    user.ScheduleList =
