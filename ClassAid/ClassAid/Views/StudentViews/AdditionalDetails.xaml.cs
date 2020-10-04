@@ -45,7 +45,7 @@ namespace ClassAid.Views.StudentViews
             if (validate != null)
             {
                 var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
-                user.AdminKey = tempAdmin.AdminKey;
+                
                 if (tempAdmin.BatchDetails == null)
                     user.BatchDetails = new BatchDetails();
                 else
@@ -86,6 +86,7 @@ namespace ClassAid.Views.StudentViews
                 await FirebaseHandler.UpdateUser(tempAdmin);
                 Application.Current.MainPage =
                     new NavigationPage(new Dashboard(user));
+                user.AdminKey = validate.AdminKey;
                 await FirebaseHandler.UpdateUser(user);
             }
             else
