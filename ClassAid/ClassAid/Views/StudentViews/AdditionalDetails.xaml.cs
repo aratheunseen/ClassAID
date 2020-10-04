@@ -5,6 +5,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using ClassAid.Models;
+using System.Diagnostics;
 
 namespace ClassAid.Views.StudentViews
 {
@@ -35,46 +38,59 @@ namespace ClassAid.Views.StudentViews
         {
             activityIndicator.IsRunning = true;
             user.IsAdmin = false;
+            user.IsActive = false;
             user.Name = studentName.Text.Trim();
             user.TeamCode = teamCode.Text.Trim();
             user.Phone = phoneNumber.Text.Trim();
             user.ID = studentID.Text.Trim();
-            string validate =
+            KeyVault validate =
                 await FirebaseHandler.ValidateTeamCode(user.TeamCode);
-
-            if (!string.IsNullOrWhiteSpace(validate))
+            Debug.WriteLine(validate.AdminKey);
+            Debug.WriteLine(validate.TeamCode);
+            if (validate != null)
             {
-                var tempAdmin = await FirebaseHandler.GetAdmin(user.TeamCode);
-                // try
-                // {
-                if (user.BatchDetails == null)
+                var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
+                Debug.WriteLine(tempAdmin.Name);
+                if (tempAdmin.BatchDetails == null)
                     user.BatchDetails = new BatchDetails();
-                if (user.TeacherList == null)
+                else
+                    user.BatchDetails = tempAdmin.BatchDetails;
+
+                if (tempAdmin.TeacherList == null)
                     user.TeacherList = new ObservableCollection<Teacher>();
-                if (user.StudentList == null)
+                else
+                    user.TeacherList = tempAdmin.TeacherList;
+
+                if (tempAdmin.StudentList == null)
+                {
                     user.StudentList = new ObservableCollection<Student>();
-                if (user.ScheduleList == null)
+                    tempAdmin.StudentList = new ObservableCollection<Student>();
+                }
+                else
+                    user.StudentList = tempAdmin.StudentList; 
+
+                if (tempAdmin.ScheduleList == null)
                     user.ScheduleList = new ObservableCollection<ScheduleModel>();
-                if (user.EventList == null)
+                else
+                    user.ScheduleList = tempAdmin.ScheduleList;
+
+                if (tempAdmin.EventList == null)
                     user.EventList = new ObservableCollection<EventModel>();
-                
-                user.BatchDetails = tempAdmin.BatchDetails;
-                user.TeacherList = tempAdmin.TeacherList;
-                user.StudentList = tempAdmin.StudentList;
-                user.ScheduleList = tempAdmin.ScheduleList;
-                user.EventList = tempAdmin.EventList;
+                else
+                    user.EventList = tempAdmin.EventList;
+
                 tempAdmin.StudentList.Add(new Student() 
                 {
                     Name = user.Name,
                     Phone = user.Phone,
-                    ID = user.ID
+                    ID = user.ID,
+                    Key = user.Key,
+                    IsActive = user.IsActive
                 });
+
                 await FirebaseHandler.UpdateUser(tempAdmin);
-                // }
-                // catch (Exception) { }
                 Application.Current.MainPage =
                     new NavigationPage(new Dashboard(user));
-                
                 await FirebaseHandler.UpdateUser(user);
             }
             else
