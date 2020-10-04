@@ -17,14 +17,14 @@
                VerticalOptions="Center"/>
                     <Label Text="File Is :" x:Name="lbl"/>
                 </StackLayout>
+                <ListView x:Name="adminCodeList"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
     
-    <!--
-    https://github.com/jamesmontemagno/MediaPlugin
-    https://github.com/step-up-labs/firebase-storage-dotnet
-    https://github.com/xamarin/GooglePlayServicesComponents
-    
-    -->
+<!--
+https://github.com/jamesmontemagno/MediaPlugin
+https://github.com/step-up-labs/firebase-storage-dotnet
+https://github.com/xamarin/GooglePlayServicesComponents
+-->
