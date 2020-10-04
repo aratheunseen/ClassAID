@@ -331,7 +331,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding fullScheduleCommand}"/>
+                        <TapGestureRecognizer Command="{Binding FullScheduleCommand}"/>
                     </Frame.GestureRecognizers>
                     <Image Source="schedule.png"
                            HeightRequest="32"

@@ -1,5 +1,6 @@
 ﻿using ClassAid.Models;
 using ClassAid.Models.Engines;
+using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -53,21 +54,20 @@ namespace ClassAid.DataContex
         }
         #region RealTime
         public static async Task RealTimeConnection<T>(CollectionTables collectionName,
-            ObservableCollection<T> collection, string tablename = "Admin")
+            ObservableCollection<T> collection, string key, string tablename = "Admin")
         {
             await Task.Run(() => client
-               .Child(tablename).Child(collectionName.ToString())
+               .Child(tablename).Child(key).Child(collectionName.ToString())
                .AsObservable<T>()
                .Subscribe(d => collection.Add(d.Object)));
             //return (T)Convert.ChangeType(respons, typeof(T));
         }
-        public static async Task ListOfAdmin(ObservableCollection<string> collection,
-            string tablename = "AdminCodeLookUp")
+        public static async Task UpdateShit(ScheduleModel model,string key)
         {
             await Task.Run(() => client
-               .Child(tablename)
-               .AsObservable<string>()
-               .Subscribe(d => collection.Add(d.Object)));
+               .Child("Admin").Child(key)
+               .Child(CollectionTables.ScheduleList.ToString())
+               .PostAsync(model));
             //return (T)Convert.ChangeType(respons, typeof(T));
         }
         public async static Task<string> GetTeamCode(string universityName)
@@ -109,10 +109,11 @@ namespace ClassAid.DataContex
         }
         public static async Task<Shared> GetAdmin(string teamcode)
         {
-            return (await client
+            Shared s= (await client
               .Child("Admin")
               .OnceAsync<Shared>()).Select(item => item.Object)
             .Where(item => item.TeamCode == teamcode).FirstOrDefault();
+            return s;
         }
         private static string TableName(bool IsAdmin)
         {
