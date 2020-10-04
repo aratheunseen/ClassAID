@@ -25,7 +25,7 @@ namespace ClassAid.DataContex
                   server,
                   new FirebaseOptions
                   {
-                      AuthTokenAsyncFactory = () => Task.FromResult(authKey)
+                      AuthTokenAsyncFactory = () => Task.FromResult(authKey),
                   });
             }
         }
@@ -58,6 +58,15 @@ namespace ClassAid.DataContex
             await Task.Run(() => client
                .Child(tablename).Child(collectionName.ToString())
                .AsObservable<T>()
+               .Subscribe(d => collection.Add(d.Object)));
+            //return (T)Convert.ChangeType(respons, typeof(T));
+        }
+        public static async Task ListOfAdmin(ObservableCollection<string> collection,
+            string tablename = "AdminCodeLookUp")
+        {
+            await Task.Run(() => client
+               .Child(tablename)
+               .AsObservable<string>()
                .Subscribe(d => collection.Add(d.Object)));
             //return (T)Convert.ChangeType(respons, typeof(T));
         }
