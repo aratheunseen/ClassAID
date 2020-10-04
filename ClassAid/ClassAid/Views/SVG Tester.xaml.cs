@@ -15,48 +15,21 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SVG_Tester : ContentPage
     {
-        public SVG_Tester()
+        Shared User;
+        public SVG_Tester(Shared user)
         {
-            InitializeComponent();
-            
+            User = user;
+            InitializeComponent();            
             ObservableCollection<ScheduleModel> coll;
             coll = new ObservableCollection<ScheduleModel>();
             Connection(coll);
             ScheduleList.ItemsSource = coll;
         }
 
-        private async static void Connection(ObservableCollection<ScheduleModel> coll)
+        private async void Connection(ObservableCollection<ScheduleModel> coll)
         {
-            Shared shared = await FirebaseHandler.GetAdmin("AHPUEQOYDI");
-            Debug.WriteLine(shared.Name);
             await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.ScheduleList, coll, shared.Key);
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            var file = await CrossFilePicker.Current.PickFile();
-
-            if (file != null)
-            {
-                //string url = await FirebaseStorageHandler.SaveFile(file.GetStream());
-                string url = await new FirebaseStorage("gs://classaidapp.appspot.com")
-                .Child("data")
-                .PutAsync(file.GetStream());
-                //lbl.Text = url;
-            }
-
-            //var result = await FilePicker.PickAsync();
-            //if (result != null)
-            //{
-            //    Text = $"File Name: {result.FileName}";
-            //    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-            //        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        var stream = await result.OpenReadAsync();
-            //        Image = ImageSource.FromStream(() => stream);
-            //    }
-            //}
+                    CollectionTables.ScheduleList, coll, User.Key);
         }
 
         private async void AddScheduleBtn_Clicked(object sender, EventArgs e)
@@ -66,7 +39,7 @@ namespace ClassAid.Views
                 CourseCode = courseCode.Text,
                 Subject = subjectName.Text
             };
-            var data = FirebaseHandler.GetAdmin("AHPUEQOYDI");
+            var data = FirebaseHandler.GetUser(User.Key,true);
             await FirebaseHandler.UpdateShit(schedule, data.Result.Key);
         }
     }
