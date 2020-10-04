@@ -47,7 +47,9 @@ namespace ClassAid.Views.StudentViews
                 await FirebaseHandler.ValidateTeamCode(user.TeamCode);
             if (validate != null)
             {
+                Debug.WriteLine(validate.AdminKey);
                 var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
+                user.AdminKey = tempAdmin.AdminKey;
                 if (tempAdmin.BatchDetails == null)
                     user.BatchDetails = new BatchDetails();
                 else
