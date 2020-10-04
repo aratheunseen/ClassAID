@@ -77,12 +77,12 @@
                 <Label Grid.ColumnSpan="4" 
                        Text="{Binding User.Name}" 
                        FontSize="Large" 
-                       Margin="30,180,0,0" 
+                       Margin="40,180,0,0" 
                        TextColor="#6264a7"/>
                 <Label Grid.ColumnSpan="4" 
                        Text="{Binding User.BatchDetails.University}" 
                        FontSize="Medium" 
-                       Margin="30,210,0,0" TextColor="#6264a7"/>
+                       Margin="40,210,0,0" TextColor="#6264a7"/>
                 <Image/>
                 <ImageButton x:Name="logoutBtn" Grid.Column="5"
                              BackgroundColor="Transparent"
@@ -181,7 +181,6 @@
                              HorizontalOptions="End" 
                              VerticalOptions="End"
                              Margin="0,0,30,40"/>
-
 
                 <!-- Teacher List Title -->
                 <Image Grid.Column="0"
@@ -312,7 +311,6 @@
                              HorizontalOptions="End" 
                              VerticalOptions="End"
                              Margin="0,0,30,40"/>
-                
             </Grid>
         </ScrollView>
     </ContentPage.Content>
