@@ -29,8 +29,35 @@ namespace ClassAid
                 MainPage = new NavigationPage(new StartPage());
             }
             else
-                MainPage = new NavigationPage(new Dashboard());
+            {
+                Shared user = new Shared();
+                try
+                {
+                  Action action = new Action(async ()=> 
+                  user = LocalStorageEngine.ReadDataAsync<Shared>
+                        (FileType.Shared));
+                    action.Invoke();
+                    MainPage = new NavigationPage(new Dashboard(user));
+                }
+                catch (Exception)
+                {
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        string key = Preferences.Get("adminKey", "");
+                        Action action = new Action(async()=> 
+                        user = await FirebaseHandler.GetUser(key, user.IsAdmin));
+                        action.Invoke();
+                    }
+                    else
+                    {
+                        DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue.");
+                        MainPage = new StartPage();
+                        return;
+                    }
+                }
+            }
         }
+
         private async void CheckConnection(object sender, ConnectivityChangedEventArgs e)
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -39,7 +66,7 @@ namespace ClassAid
                 {
                     try
                     {
-                        Shared admin = await LocalStorageEngine.ReadDataAsync<Shared>
+                        Shared admin = LocalStorageEngine.ReadDataAsync<Shared>
                       (FileType.Shared);
                         await FirebaseHandler.UpdateUser(admin);
                         DependencyService.Get<Toast>().Show("Synced successfully.");

@@ -17,7 +17,9 @@ namespace ClassAid.Droid.ComponentsRenderer
         }
 
         [System.Obsolete]
+#pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+#pragma warning restore CS0809 // Obsolete member overrides non-obsolete member
         {
             base.OnElementChanged(e);
 

@@ -24,7 +24,7 @@ namespace ClassAid.DataContex
             sm.Close();
             fileStream.Close();
         }
-        public async static Task<T> ReadDataAsync<T>(FileType fileType)
+        public static T ReadDataAsync<T>(FileType fileType)
         {
             fileName = Path.Combine(
                 Environment.GetFolderPath(
@@ -33,17 +33,16 @@ namespace ClassAid.DataContex
             
             if (File.Exists(fileName))
             {
-                FileStream fileStream = new FileStream(fileName,
+                FileStream fileStream = 
+                    new FileStream(fileName,
                                        FileMode.Open,
                                        FileAccess.Read,
                                        FileShare.ReadWrite);
                 StreamReader sm = new StreamReader(fileStream);
-                string result = null;
-                await Task.Run(() => result = sm.ReadToEnd());
+                string result = sm.ReadToEnd();
                 sm.Close();
                 fileStream.Close();
                 return JsonConvert.DeserializeObject<T>(result);
-
             }
             else
             {

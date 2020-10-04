@@ -64,14 +64,6 @@ namespace ClassAid.DataContex
                .AsObservable<T>()
                .Subscribe(d => collection.Add(d.Object)));
         }
-        public static async Task UpdateShit(ScheduleModel model,string key)
-        {
-            Debug.WriteLine(key);
-            await client
-               .Child("Admin").Child(key)
-               .Child(CollectionTables.ScheduleList.ToString())
-               .PostAsync(model);
-        }
         #endregion
         #region Teamcode
         public async static Task<string> GetTeamCode(string universityName,string key)

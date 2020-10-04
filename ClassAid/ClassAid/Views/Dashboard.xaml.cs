@@ -11,6 +11,7 @@ using ClassAid.Models;
 using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace ClassAid.Views
 {
@@ -90,31 +91,8 @@ namespace ClassAid.Views
         // START
         public Dashboard()
         {
-            FetchData();
+            //FetchData();
             InitializeComponent();
-        }
-        private async void FetchData()
-        {
-            try
-            {
-                user = await LocalStorageEngine.ReadDataAsync<Shared>
-                    (FileType.Shared);
-            }
-            catch (Exception)
-            {
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                {
-                    string key = Preferences.Get("adminKey", "");
-                    user = await FirebaseHandler
-                    .GetUser(key, user.IsAdmin);
-                }
-                else
-                {
-                    DependencyService.Get<Toast>().Show("ERROR. Please connect to Internet to resolve the issue.");
-                    Application.Current.MainPage = new StartPage();
-                    return;
-                }
-            }
             InitializeData();
         }
 
@@ -139,7 +117,7 @@ namespace ClassAid.Views
             {
                 addScheduleBtnImage.IsVisible = false;
                 addNoticeBtnImage.IsVisible = false;
-                teamCode.IsVisible = false;
+                teamCodeBox.IsVisible = false;
 
                 await FirebaseHandler.RealTimeConnection(
                     CollectionTables.ScheduleList,
@@ -160,7 +138,8 @@ namespace ClassAid.Views
             user.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
         }
 
-        private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void ScheduleList_CollectionChanged(object sender,
+            System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             InitLabel();
         }
@@ -184,3 +163,4 @@ namespace ClassAid.Views
         //  END
     }
 }
+
