@@ -20,9 +20,6 @@ namespace ClassAid.Models.Users
         }
         public string Username { get; set; }
         public string Password { get; set; }
-
-        public string Key { get; set; }
-
         public DateTime JoinDate { get { return DateTime.Now; } }
         public string Email { get; set; }
         public ObservableCollection<Teacher> TeacherList { get; set; } = new ObservableCollection<Teacher>();
@@ -31,7 +28,6 @@ namespace ClassAid.Models.Users
         public ObservableCollection<EventModel> EventList { get; set; } = new ObservableCollection<EventModel>();
         public BatchDetails BatchDetails { get; set; } = new BatchDetails();
         public string TeamCode { get; set; }
-        public bool IsActive { get; set; }
         public bool IsAdmin { get; set; }
     }
     public class PrefKeys

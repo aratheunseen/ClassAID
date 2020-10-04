@@ -70,7 +70,7 @@ namespace ClassAid.DataContex
                .PostAsync(model));
             //return (T)Convert.ChangeType(respons, typeof(T));
         }
-        public async static Task<string> GetTeamCode(string universityName)
+        public async static Task<string> GetTeamCode(string universityName,string key)
         {
             Start:
             string res = "";
@@ -79,24 +79,25 @@ namespace ClassAid.DataContex
                 res += item[0];
             }
             res += Adminkey.GetCode();
-            string validator = await ValidateTeamCode(res);
+            KeyVault validator = await ValidateTeamCode(res);
             if (validator == null)
             {
+                validator = new KeyVault() { TeamCode = res, AdminKey = key };
                 await client
                 .Child("AdminCodeLookUp")
-                .PostAsync(JsonConvert.SerializeObject(res));
+                .PostAsync(JsonConvert.SerializeObject(validator));
                 return res;
             }
             else
                 goto Start;
         }
         #endregion
-        public static async Task<string> ValidateTeamCode(string teamCode)
+        public static async Task<KeyVault> ValidateTeamCode(string teamCode)
         {
             return (await client
                 .Child("AdminCodeLookUp")
-                .OnceAsync<string>()).Select(item => item.Object)
-                .Where(item => item == teamCode).FirstOrDefault();
+                .OnceAsync<KeyVault>()).Select(item => item.Object)
+                .Where(item => item.TeamCode == teamCode).FirstOrDefault();
         }
         public static async Task<Shared> GetUser(string key, bool IsAdmin)
         {
