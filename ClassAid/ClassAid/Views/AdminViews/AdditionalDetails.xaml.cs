@@ -31,7 +31,7 @@ namespace ClassAid.Views.AdminViews
                 Section = secName.Text
             };
             resultText.Text = "Creating Unique ID";
-            user.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text);
+            user.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text,user.Key);
             resultText.Text = "Creating Profile";
             user.BatchDetails = batch;
             user.ID = stuId.Text;
