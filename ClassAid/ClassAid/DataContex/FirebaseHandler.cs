@@ -1,4 +1,5 @@
-﻿using ClassAid.Models;
+﻿using System.Diagnostics;
+using ClassAid.Models;
 using ClassAid.Models.Engines;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
@@ -30,6 +31,7 @@ namespace ClassAid.DataContex
                   });
             }
         }
+        #region Insertion and Update
         public static async Task InsertData(Shared user)
         {
             LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
@@ -52,6 +54,7 @@ namespace ClassAid.DataContex
                 Preferences.Set(PrefKeys.isSyncPending, true);
             }
         }
+        #endregion
         #region RealTime
         public static async Task RealTimeConnection<T>(CollectionTables collectionName,
             ObservableCollection<T> collection, string key, string tablename = "Admin")
@@ -68,8 +71,11 @@ namespace ClassAid.DataContex
                .Child("Admin").Child(key)
                .Child(CollectionTables.ScheduleList.ToString())
                .PostAsync(model));
+            Debug.WriteLine(key);
             //return (T)Convert.ChangeType(respons, typeof(T));
         }
+        #endregion
+        #region Teamcode
         public async static Task<string> GetTeamCode(string universityName,string key)
         {
             Start:
@@ -91,7 +97,6 @@ namespace ClassAid.DataContex
             else
                 goto Start;
         }
-        #endregion
         public static async Task<KeyVault> ValidateTeamCode(string teamCode)
         {
             return (await client
@@ -99,6 +104,7 @@ namespace ClassAid.DataContex
                 .OnceAsync<KeyVault>()).Select(item => item.Object)
                 .Where(item => item.TeamCode == teamCode).FirstOrDefault();
         }
+        #endregion
         public static async Task<Shared> GetUser(string key, bool IsAdmin)
         {
             Shared res = (await client
@@ -107,14 +113,6 @@ namespace ClassAid.DataContex
             .Where(item => item.Key == key).FirstOrDefault();
             LocalStorageEngine.SaveDataAsync(res, FileType.Shared);
             return res;
-        }
-        public static async Task<Shared> GetAdmin(string teamcode)
-        {
-            Shared s= (await client
-              .Child("Admin")
-              .OnceAsync<Shared>()).Select(item => item.Object)
-            .Where(item => item.TeamCode == teamcode).FirstOrDefault();
-            return s;
         }
         private static string TableName(bool IsAdmin)
         {

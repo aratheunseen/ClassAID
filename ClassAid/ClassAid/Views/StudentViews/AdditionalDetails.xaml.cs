@@ -45,12 +45,9 @@ namespace ClassAid.Views.StudentViews
             user.ID = studentID.Text.Trim();
             KeyVault validate =
                 await FirebaseHandler.ValidateTeamCode(user.TeamCode);
-            Debug.WriteLine(validate.AdminKey);
-            Debug.WriteLine(validate.TeamCode);
             if (validate != null)
             {
                 var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
-                Debug.WriteLine(tempAdmin.Name);
                 if (tempAdmin.BatchDetails == null)
                     user.BatchDetails = new BatchDetails();
                 else
