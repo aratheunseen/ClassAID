@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <!--Change the bg color to #FFF if requred-->
         <ScrollView HorizontalScrollBarVisibility="Never"
-                    BackgroundColor="#F2F3F4"
+                    BackgroundColor="#fff"
                     VerticalScrollBarVisibility="Never">
             <Grid>
                 <Grid.RowDefinitions>
