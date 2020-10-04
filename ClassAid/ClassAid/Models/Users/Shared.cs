@@ -29,6 +29,7 @@ namespace ClassAid.Models.Users
         public BatchDetails BatchDetails { get; set; } = new BatchDetails();
         public string TeamCode { get; set; }
         public bool IsAdmin { get; set; }
+        public string AdminKey { get; set; }
     }
     public class PrefKeys
     {

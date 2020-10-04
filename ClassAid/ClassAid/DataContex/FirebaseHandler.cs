@@ -63,16 +63,14 @@ namespace ClassAid.DataContex
                .Child(tablename).Child(key).Child(collectionName.ToString())
                .AsObservable<T>()
                .Subscribe(d => collection.Add(d.Object)));
-            //return (T)Convert.ChangeType(respons, typeof(T));
         }
         public static async Task UpdateShit(ScheduleModel model,string key)
         {
-            await Task.Run(() => client
+            Debug.WriteLine(key);
+            await client
                .Child("Admin").Child(key)
                .Child(CollectionTables.ScheduleList.ToString())
-               .PostAsync(model));
-            Debug.WriteLine(key);
-            //return (T)Convert.ChangeType(respons, typeof(T));
+               .PostAsync(model);
         }
         #endregion
         #region Teamcode

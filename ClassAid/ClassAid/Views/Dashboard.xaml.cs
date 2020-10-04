@@ -9,6 +9,8 @@ using Xamarin.Essentials;
 using ClassAid.DataContex;
 using ClassAid.Models;
 using System.Windows.Input;
+using ClassAid.Models.Schedule;
+using System.Collections.ObjectModel;
 
 namespace ClassAid.Views
 {
@@ -17,6 +19,7 @@ namespace ClassAid.Views
     {
         private Shared user;
         private static readonly string timeFormat = @"dd\:hh\:mm";
+        #region Declaration
         public ICommand TeamCodeCopyCommand 
         { 
             get 
@@ -76,19 +79,19 @@ namespace ClassAid.Views
                 await Navigation.PushAsync(new ViewEventPage(user)));
             }
         }
+        #endregion
         public Dashboard(Shared user)
         {
-            InitializeComponent();
             this.user = user;
+            InitializeComponent();
             InitializeData();
         }
         // TODO: Remove this section on shipment
         // START
-
         public Dashboard()
         {
-            InitializeComponent();
             FetchData();
+            InitializeComponent();
         }
         private async void FetchData()
         {
@@ -111,50 +114,47 @@ namespace ClassAid.Views
                     Application.Current.MainPage = new StartPage();
                     return;
                 }
-
             }
             InitializeData();
         }
 
         private async void InitializeData()
         {
+            if (user.ScheduleList == null)
+                user.ScheduleList =
+                    new ObservableCollection<ScheduleModel>();
+
+            if (user.EventList == null)
+                user.EventList =
+                    new ObservableCollection<EventModel>();
+
+            if (user.TeacherList == null)
+                user.TeacherList =
+                    new ObservableCollection<Teacher>();
+
+            if (user.StudentList == null)
+                user.StudentList =
+                    new ObservableCollection<Student>();
             if (!user.IsAdmin)
             {
                 addScheduleBtnImage.IsVisible = false;
                 addNoticeBtnImage.IsVisible = false;
                 teamCode.IsVisible = false;
-                //await FirebaseHandler.RealTimeConnection(
-                //    CollectionTables.ScheduleList,
-                //    user.ScheduleList,);
-                //await FirebaseHandler.RealTimeConnection(
-                //    CollectionTables.StudentList,
-                //    user.StudentList);
-                //await FirebaseHandler.RealTimeConnection(
-                //    CollectionTables.EventList,
-                //    user.EventList);
-                //await FirebaseHandler.RealTimeConnection(
-                //    CollectionTables.TeacherList,
-                //    user.TeacherList);
+
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.ScheduleList,
+                    user.ScheduleList,user.AdminKey);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.StudentList,
+                    user.StudentList, user.AdminKey);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.EventList,
+                    user.EventList, user.AdminKey);
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.TeacherList,
+                    user.TeacherList, user.AdminKey);
             }
-            ////if (user.ScheduleList == null)
-            ////    user.ScheduleList =
-            ////        new ObservableCollection<ScheduleModel>();
-
-            ////if (user.EventList == null)
-            ////    user.EventList =
-            ////        new ObservableCollection<EventModel>();
-
-            ////if (user.TeacherList == null)
-            ////    user.TeacherList =
-            ////        new ObservableCollection<Teacher>();
-
-            ////if (user.StudentList == null)
-            ////    user.StudentList =
-            ////        new ObservableCollection<Student>();
-
-            
             InitLabel();
-
             // TODO: Remove this section on shipment
             // START
             user.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
@@ -181,6 +181,6 @@ namespace ClassAid.Views
             }
             catch (Exception) { }
         }
-        // END
+        //  END
     }
 }

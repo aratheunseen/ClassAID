@@ -39,8 +39,8 @@ namespace ClassAid.Views
                 CourseCode = courseCode.Text,
                 Subject = subjectName.Text
             };
-            var data = FirebaseHandler.GetUser(User.Key,true);
-            await FirebaseHandler.UpdateShit(schedule, data.Result.Key);
+            Shared data = await FirebaseHandler.GetUser(User.Key,true);            
+            await FirebaseHandler.UpdateShit(schedule, data.Key);
         }
     }
 }
