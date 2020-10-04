@@ -18,6 +18,7 @@ namespace ClassAid.Models.Users
         {
 
         }
+        public string AdminKey { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime JoinDate { get { return DateTime.Now; } }
@@ -29,7 +30,6 @@ namespace ClassAid.Models.Users
         public BatchDetails BatchDetails { get; set; } = new BatchDetails();
         public string TeamCode { get; set; }
         public bool IsAdmin { get; set; }
-        public string AdminKey { get; set; }
     }
     public class PrefKeys
     {

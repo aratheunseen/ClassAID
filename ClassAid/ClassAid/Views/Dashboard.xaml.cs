@@ -121,7 +121,7 @@ namespace ClassAid.Views
 
                 await FirebaseHandler.RealTimeConnection(
                     CollectionTables.ScheduleList,
-                    user.ScheduleList,user.AdminKey);
+                    user.ScheduleList, user.AdminKey);
                 await FirebaseHandler.RealTimeConnection(
                     CollectionTables.StudentList,
                     user.StudentList, user.AdminKey);

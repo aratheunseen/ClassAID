@@ -59,10 +59,14 @@ namespace ClassAid.DataContex
         public static async Task RealTimeConnection<T>(CollectionTables collectionName,
             ObservableCollection<T> collection, string key, string tablename = "Admin")
         {
-            await Task.Run(() => client
-               .Child(tablename).Child(key).Child(collectionName.ToString())
-               .AsObservable<T>()
-               .Subscribe(d => collection.Add(d.Object)));
+            _ = await Task.Run(() => client
+                 .Child(tablename).Child(key).Child(collectionName.ToString())
+                 .AsObservable<T>()
+                 .Subscribe(d =>
+                 {
+                     collection.Add(d.Object);
+                     Debug.WriteLine(d.Object.ToString());
+                 }));
         }
         #endregion
         #region Teamcode
