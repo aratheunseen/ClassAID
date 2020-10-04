@@ -33,7 +33,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new SVG_Tester()));
+                await Navigation.PushAsync(new SVG_Tester(user)));
             }
         }
         public ICommand AddScheduleCommand

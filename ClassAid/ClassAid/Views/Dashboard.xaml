@@ -47,20 +47,17 @@
                         <TapGestureRecognizer Command="{Binding TeamCodeCopyCommand}"/>
                     </Frame.GestureRecognizers>
                 </Frame>
-            
-                <Image Grid.Column="3"
-                       Grid.ColumnSpan="1"
-                       Source="sync.png"
-                       Margin="0,32,0,0"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer x:Name="allSyncButton"/>
-                    </Image.GestureRecognizers>
-                </Image>
 
+                <ImageButton x:Name="allSyncButton"
+                             Grid.Column="3"
+                             Grid.ColumnSpan="1"
+                             Source="sync.png"
+                             Margin="0,32,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             HorizontalOptions="End"
+                             VerticalOptions="Start"
+                             BackgroundColor="Transparent"/>
                 <Image Grid.Column="4"
                        Margin="15,25,15,0"
                        Source="avater.png"
