@@ -31,7 +31,8 @@
                        HeightRequest="50"
                        WidthRequest="50"/>
 
-                <Frame Grid.Column="1"
+                <Frame x:Name="teamCodeBox"
+                       Grid.Column="1"
                        Grid.ColumnSpan="3"
                        BorderColor="#6264a7"
                        BackgroundColor="Transparent"

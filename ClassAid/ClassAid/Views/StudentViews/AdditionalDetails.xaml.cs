@@ -1,13 +1,10 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models.Users;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using ClassAid.Models;
-using System.Diagnostics;
 
 namespace ClassAid.Views.StudentViews
 {
@@ -47,7 +44,6 @@ namespace ClassAid.Views.StudentViews
                 await FirebaseHandler.ValidateTeamCode(user.TeamCode);
             if (validate != null)
             {
-                Debug.WriteLine(validate.AdminKey);
                 var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
                 user.AdminKey = tempAdmin.AdminKey;
                 if (tempAdmin.BatchDetails == null)
