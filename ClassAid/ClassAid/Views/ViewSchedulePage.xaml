@@ -6,7 +6,8 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <Expander>
+            <Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+          ExpandAnimationLength="500">
                 <Expander.Header>
                     <Label Text="Saturday"
                        Grid.Column="0"
