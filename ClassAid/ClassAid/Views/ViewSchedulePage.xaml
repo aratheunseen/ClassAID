@@ -6,8 +6,20 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <CollectionView x:Name="ScheduleList">
-                <CollectionView.ItemTemplate>
+            <Expander>
+                <Expander.Header>
+                    <Label Text="Saturday"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,0,0,0"
+                       Grid.ColumnSpan="4"/>
+                </Expander.Header>
+                <Expander.ContentTemplate>
+
                     <DataTemplate x:DataType="y:ScheduleModel">
                         <StackLayout Padding="5"
                                          Margin="5">
@@ -65,9 +77,8 @@
                        Margin="5,80,15,0"/>
                         </StackLayout>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+                </Expander.ContentTemplate>
+                </Expander>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

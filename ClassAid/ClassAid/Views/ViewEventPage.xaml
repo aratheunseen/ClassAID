@@ -9,20 +9,22 @@
              Title="Noticeboard">
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <StackLayout Orientation="Vertical">
+
+            <Grid BackgroundColor="#FFF">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Vertical">
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="schedule:EventModel">
                             <Frame Padding="0">
-                                <Grid BackgroundColor="#FFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <BoxView HorizontalOptions="End"
+                                    <Grid>
+                                        <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,20,15,0"
                                         HeightRequest="10"
@@ -59,8 +61,8 @@
                                        VerticalOptions="Start" 
                                        Margin="5,70,10,0"
                                        Grid.ColumnSpan="4"/>
-                                </Grid>
-                            </Frame>
+                                        </Grid>
+                                </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -73,6 +75,7 @@
                                        Grid.ColumnSpan="5"/>
                 </Grid>
             </StackLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
