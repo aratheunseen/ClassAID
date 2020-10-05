@@ -23,5 +23,10 @@ namespace ClassAid.Views
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
         }
+
+        private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)
+        {
+
+        }
     }
 }

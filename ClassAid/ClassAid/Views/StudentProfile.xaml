@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ClassAid.Views"
+             xmlns:local="clr-namespace:ClassAid.Views" xmlns:system="clr-namespace:System;assembly=System.Runtime"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
              x:Name="This">
@@ -113,10 +113,10 @@
                        Grid.ColumnSpan="2"/>
                 
                 <!-- Join Request Content -->
-                <CollectionView x:Name="Name"
+                <CollectionView Scrolled="Name_Scrolled" x:Name="Name"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="Type">
+                        <DataTemplate x:DataType="system:Type">
                             <Frame Padding="0">
                                 <Grid BackgroundColor="#F7F7FF">
                                     <Grid.RowDefinitions>
@@ -222,7 +222,7 @@
                 <CollectionView x:Name="Namex"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="Type">
+                        <DataTemplate x:DataType="system:Type">
                             <Frame Padding="0">
                                 <Grid BackgroundColor="#F7F7FF">
                                     <Grid.RowDefinitions>
@@ -305,7 +305,7 @@
                 <CollectionView x:Name="Namey"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="Type">
+                        <DataTemplate x:DataType="system:Type">
                             <Frame Padding="0">
                                 <Grid BackgroundColor="#F7F7FF">
                                     <Grid.RowDefinitions>
