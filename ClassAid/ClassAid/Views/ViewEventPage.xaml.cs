@@ -19,5 +19,10 @@ namespace ClassAid.Views
                 eventListView.ItemsSource = admin.EventList;
             }
         }
+
+        private void OnCollectionViewScrolled(object sender, ItemsViewScrolledEventArgs e)
+        {
+
+        }
     }
 }
