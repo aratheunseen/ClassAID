@@ -10,18 +10,18 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout Orientation="Vertical">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="schedule:EventModel">
                             <Frame Padding="0">
                                 <Grid BackgroundColor="#FFF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
                                     <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,20,15,0"
@@ -64,12 +64,14 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Grid>
                 <Label Text="No More Notice"
-                                       FontSize="50"
+                                       FontSize="24"
                                        TextColor="Gray"
                                        HorizontalOptions="Center"
                                        VerticalOptions="End" 
                                        Grid.ColumnSpan="5"/>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
