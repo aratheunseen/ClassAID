@@ -18,10 +18,6 @@ namespace ClassAid.Views
         public ViewSchedulePage(Shared user)
         {
             InitializeComponent();
-            if (user.ScheduleList != null)
-            {
-                ScheduleList.ItemsSource = user.ScheduleList;
-            }
         }
     }
 }
