@@ -95,5 +95,10 @@ namespace ClassAid.Views.StudentViews
             }
             activityIndicator.IsRunning = false;
         }
+
+        private void studentName_Focused(object sender, FocusEventArgs e)
+        {
+
+        }
     }
 }

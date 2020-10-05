@@ -71,5 +71,10 @@ namespace ClassAid.Views.AdminViews
             else
                 signInBtn.Command = TapCommand;
         }
+
+        private void userName_Focused(object sender, FocusEventArgs e)
+        {
+
+        }
     }
 }
