@@ -31,6 +31,7 @@
                     <StackLayout Padding="30">
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                             <Components:ClassAidEntry x:Name="userRealName"
+                         Focused="userRealName_Focused" 
                        Placeholder="Full Name"
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"
@@ -117,8 +118,10 @@
                        x:Name="resultText"
                        TextColor="#6264a7">
                     </Label>
-                    <ActivityIndicator x:Name="activityIndicator" IsRunning="False" />
-                </StackLayout>
+                <ActivityIndicator x:Name="activityIndicator" 
+                                   IsRunning="false" 
+                                       Color="#6264a7"/>
+            </StackLayout>
             </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -66,5 +66,10 @@ namespace ClassAid.Views.AdminViews
                 contToDashBtn.Command = new Command(() => CompleteSignUp_Clicked());
             }
         }
+
+        private void userRealName_Focused(object sender, FocusEventArgs e)
+        {
+
+        }
     }
 }

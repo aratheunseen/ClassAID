@@ -33,6 +33,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
+                       Focused="userName_Focused"
                        Placeholder="Username"
                        SelectionLength="6"
                        MaxLength="10"
@@ -68,7 +69,8 @@
                        TextColor="#1a1a1a">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" 
-                                   IsRunning="False" />
+                                   IsRunning="false" 
+                                       Color="#6264a7"/>
             </StackLayout>
         </StackLayout>
             </ScrollView>
