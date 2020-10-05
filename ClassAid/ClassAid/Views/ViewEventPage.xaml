@@ -10,18 +10,18 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <StackLayout Orientation="Vertical">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="schedule:EventModel">
                             <Frame Padding="0">
-                                <Grid BackgroundColor="#F7F7FF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                                <Grid BackgroundColor="#FFF">
                                     <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,20,15,0"
@@ -40,7 +40,7 @@
                                          HorizontalOptions="Start"
                                          VerticalOptions="Start"
                                          Margin="5,15,0,0"
-                                         HeightRequest="50"
+                                         HeightRequest="18"
                                          WidthRequest="2"
                                          BackgroundColor="MediumVioletRed"/>
                                     <Label Text="{Binding Title}"
@@ -64,6 +64,12 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Label Text="No More Notice"
+                                       FontSize="50"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="End" 
+                                       Grid.ColumnSpan="5"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
