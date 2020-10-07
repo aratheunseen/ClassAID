@@ -137,6 +137,26 @@
                        Grid.ColumnSpan="2"/>
                 
                 <!-- Join Request Content -->
+                <!-- Try this Madafaka
+                <Expander>
+                    <Expander.Header>
+                        <Label FontAttributes="Bold"
+                               FontSize="Medium" 
+                               Text="{Binding Name}"/>
+                    </Expander.Header>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1"
+                               Text="{Binding ID}"
+                               FontAttributes="Bold" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Phone}"/>
+                    </Grid>
+                </Expander>
+                -->
                 <CollectionView x:Name="RequestCollectionView"
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
