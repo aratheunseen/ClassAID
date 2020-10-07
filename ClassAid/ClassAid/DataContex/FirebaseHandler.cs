@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace ClassAid.DataContex
 {
@@ -114,9 +115,18 @@ namespace ClassAid.DataContex
             else
                 return "Student";
         }
+        public static async Task<IEnumerable<Shared>> GetPendingStudents(string key)
+        {
+           IEnumerable<Shared> shared = (await client
+                .Child("Student")
+                .OnceAsync<Shared>()).Select(item => item.Object)
+                .Where(i => i.IsActive == false && i.AdminKey == key);
+            return shared;
+        }
     }
     public enum CollectionTables
     {
         EventList, ScheduleList, TeacherList, StudentList
     }
+
 }

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ClassAid.Views" 
-             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime" xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
              x:Name="This">
@@ -137,10 +137,10 @@
                        Grid.ColumnSpan="2"/>
                 
                 <!-- Join Request Content -->
-                <CollectionView Scrolled="Name_Scrolled" x:Name="Name"
-                      SelectionMode="None">
+                <CollectionView x:Name="RequestCollectionView"
+                                SelectionMode="None">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="system:Type">
+                        <DataTemplate x:DataType="users:Shared">
                             <Frame Padding="0">
                                 <Grid BackgroundColor="#F7F7FF">
                                     <Grid.RowDefinitions>
@@ -166,7 +166,7 @@
                                              WidthRequest="2"
                                              BackgroundColor="Black"/>
                                     <Label x:Name="studentId"
-                                           Text="192311050"
+                                           Text="{Binding ID}"
                                            Grid.Column="1"
                                            Grid.Row="1"
                                            FontSize="18"
@@ -176,7 +176,7 @@
                                            Margin="15,55,10,0"
                                            Grid.ColumnSpan="4"/>
                                     <Label x:Name="studentName"
-                                           Text="Abdur Rahman"
+                                           Text="{Binding Name}"
                                            Grid.Column="1"
                                            Grid.Row="1"
                                            FontSize="14"
@@ -186,6 +186,7 @@
                                            Margin="5,80,10,0"
                                            Grid.ColumnSpan="3"/>
                                     <Label x:Name="firstScheduleStart" 
+                                           Text="{Binding Phone}"
                                            Grid.Column="4"
                                            Grid.Row="1"
                                            FontSize="12"
@@ -193,15 +194,16 @@
                                            HorizontalOptions="End"
                                            VerticalOptions="Start" 
                                            Margin="5,60,15,0"/>
-                                    <Label x:Name="firstScheduleEnd" 
+                                    <!--<Label x:Name="firstScheduleEnd" 
                                            Grid.Column="4"
                                            Grid.Row="1"
                                            FontSize="12"
                                            TextColor="Black"
                                            HorizontalOptions="End"
                                            VerticalOptions="Start"
-                                           Margin="5,80,15,0"/>
+                                           Margin="5,80,15,0"/>-->
                                     <ImageButton x:Name="acceptBtn" 
+                                                 Clicked="AcceptBtn_Clicked"
                                                  Grid.Column="4" Grid.Row="1"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
@@ -211,6 +213,7 @@
                                                  VerticalOptions="End"
                                                  Margin="0,0,0,40"/>
                                     <ImageButton x:Name="rejectBtn" 
+                                                 Clicked="RejectBtn_Clicked"
                                                  Grid.Column="5" Grid.Row="1"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
