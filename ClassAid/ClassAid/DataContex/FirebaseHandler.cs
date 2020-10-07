@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using ClassAid.Models;
 using ClassAid.Models.Engines;
-using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using Firebase.Database.Query;
