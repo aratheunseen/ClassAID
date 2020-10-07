@@ -14,8 +14,8 @@
                     VerticalScrollBarVisibility="Never">
             <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="300" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="270" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -24,8 +24,8 @@
                 <!--Profile Header-->
                 <Image Source="avater.png"
                        Grid.RowSpan="2" Grid.ColumnSpan="2"
-                       HeightRequest="100"
-                       WidthRequest="100"
+                       HeightRequest="80"
+                       WidthRequest="80"
                        HorizontalOptions="Start" 
                        VerticalOptions="Start"
                        Margin="30,40,0,0"/>
@@ -35,35 +35,30 @@
                        FontSize="14" Text="ID" 
                        Margin="5,30,0,0" 
                        TextColor="#6264a7"/>
-                <Label Grid.Column="2" 
-                       Grid.ColumnSpan="2" 
-                       FontSize="14" Text="Dept" 
-                       Margin="5,55,0,0" 
-                       TextColor="#6264a7"/>
                 <Label Grid.Column="2"
                        Grid.ColumnSpan="2" 
                        FontSize="14" 
                        Text="Semester" 
-                       Margin="5,105,0,0" 
+                       Margin="5,55,0,0" 
                        TextColor="#6264a7"/>
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
                        FontSize="14" 
                        Text="Section" 
-                       Margin="5,130,0,0" 
+                       Margin="5,80,0,0" 
                        TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2"
                        FontSize="14" 
                        Text="Phone" 
-                       Margin="5,155,0,0" 
+                       Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
 
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,30,48,0" TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,55,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,80,48,0" TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,105,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,130,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,155,48,0" TextColor="#6264a7"/>
-                
+
+
                 <Label Grid.Column="3" 
                        Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
@@ -71,41 +66,39 @@
                        Text="{Binding User.ID}" 
                        Margin="30,30,0,0"
                        TextColor="#6264a7"/>
-                <Label Grid.Column="3"
-                       Grid.RowSpan="2"
-                       Grid.ColumnSpan="3"
-                       FontSize="14"
-                       Text="{Binding User.BatchDetails.Department}"
-                       Margin="30,55,0,0"
-                       TextColor="#6264a7"/>
                 <Label Grid.Column="3" Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        FontSize="14"
                        Text="{Binding User.BatchDetails.Semester}"
-                       Margin="30,80,0,0"
+                       Margin="30,55,0,0"
                        TextColor="#6264a7"/>
                 <Label Grid.Column="3"
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
                        FontSize="14" 
                        Text="{Binding User.BatchDetails.Section}" 
-                       Margin="30,105,0,0" TextColor="#6264a7"/>
+                       Margin="30,80,0,0" TextColor="#6264a7"/>
                 <Label Grid.Column="3" 
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
                        FontSize="16" Text="{Binding User.Phone}" 
-                       Margin="30,130,0,0" TextColor="#6264a7"/>
+                       Margin="30,105,0,0" TextColor="#6264a7"/>
 
                 <!--Name, University Name and Logout-->
                 <Label Grid.ColumnSpan="4" 
                        Text="{Binding User.Name}" 
                        FontSize="Large" 
-                       Margin="40,205,0,0" 
+                       Margin="40,150,0,0" 
+                       TextColor="#6264a7"/>
+                <Label Grid.ColumnSpan="4" 
+                       FontSize="Small"
+                       Text="{Binding User.BatchDetails.Department}"
+                       Margin="40,185,0,0"
                        TextColor="#6264a7"/>
                 <Label Grid.ColumnSpan="4" 
                        Text="{Binding User.BatchDetails.University}" 
                        FontSize="Small" 
-                       Margin="40,235,0,0" TextColor="#6264a7"/>
+                       Margin="40,210,0,0" TextColor="#6264a7"/>
                 <Image/>
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
@@ -120,7 +113,7 @@
                 <!-- Join Request Title -->
                 <Image Grid.Column="0"
                        Grid.Row="1"
-                       Margin="0,0,5,0"
+                       Margin="0"
                        Source="schedule.png"
                        HeightRequest="24"
                        WidthRequest="24"
@@ -137,8 +130,7 @@
                        Grid.ColumnSpan="2"/>
                 
                 <!-- Join Request Content -->
-                <!-- Try this Madafaka
-                <Expander>
+                <!--<Expander>
                     <Expander.Header>
                         <Label FontAttributes="Bold"
                                FontSize="Medium" 
@@ -155,101 +147,82 @@
                         <Label Grid.Column="1"
                                Text="{Binding Phone}"/>
                     </Grid>
-                </Expander>
-                -->
+                </Expander>-->
+                
                 <CollectionView x:Name="RequestCollectionView"
-                                SelectionMode="None">
+                                SelectionMode="None"
+                                   Grid.Row="1"
+                                    Grid.ColumnSpan="6"
+                                Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users:Shared">
-                            <Frame Padding="0">
-                                <Grid BackgroundColor="#F7F7FF">
+                            <DataTemplate x:DataType="users:Shared">
+                            <Frame Grid.Row="1"  Grid.ColumnSpan="6">
+                                <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="1"
-                                             HorizontalOptions="End"
+                                    <BoxView Grid.Row="0"
+                                             HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="0,65,15,0"
+                                             Margin="25,5,0,0"
                                              HeightRequest="10"
                                              WidthRequest="10"
                                              BackgroundColor="Black"
                                              CornerRadius="30"/>
-                                    <BoxView Grid.Row="1"
+                                    <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="5,60,0,0"
                                              HeightRequest="20"
                                              WidthRequest="2"
                                              BackgroundColor="Black"/>
                                     <Label x:Name="studentId"
                                            Text="{Binding ID}"
                                            Grid.Column="1"
-                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
                                            FontSize="18"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Margin="15,55,10,0"
-                                           Grid.ColumnSpan="4"/>
+                                           Grid.ColumnSpan="3"/>
                                     <Label x:Name="studentName"
                                            Text="{Binding Name}"
+                                           Margin="0,25,0,0"
                                            Grid.Column="1"
-                                           Grid.Row="1"
                                            FontSize="14"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Margin="5,80,10,0"
                                            Grid.ColumnSpan="3"/>
-                                    <Label x:Name="firstScheduleStart" 
-                                           Text="{Binding Phone}"
-                                           Grid.Column="4"
-                                           Grid.Row="1"
-                                           FontSize="12"
-                                           TextColor="Black"
-                                           HorizontalOptions="End"
-                                           VerticalOptions="Start" 
-                                           Margin="5,60,15,0"/>
-                                    <!--<Label x:Name="firstScheduleEnd" 
-                                           Grid.Column="4"
-                                           Grid.Row="1"
-                                           FontSize="12"
-                                           TextColor="Black"
-                                           HorizontalOptions="End"
-                                           VerticalOptions="Start"
-                                           Margin="5,80,15,0"/>-->
                                     <ImageButton x:Name="acceptBtn" 
-                                                 Clicked="AcceptBtn_Clicked"
-                                                 Grid.Column="4" Grid.Row="1"
+                                                 Grid.Column="4"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
-                                                 VerticalOptions="End"
-                                                 Margin="0,0,0,40"/>
+                                                 VerticalOptions="Center"
+                                                 Margin="0"/>
+
                                     <ImageButton x:Name="rejectBtn" 
-                                                 Clicked="RejectBtn_Clicked"
-                                                 Grid.Column="5" Grid.Row="1"
+                                                 Grid.Column="5"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
-                                                 VerticalOptions="End"
-                                                 Margin="0,0,30,40"/>
+                                                 VerticalOptions="Center"
+                                                 Margin="0,0,15,0"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
                 <!-- Teacher List Title -->
-                <Image Grid.Column="0"
+                <!--<Image Grid.Column="0"
                        Grid.Row="2"
                        Margin="0,0,5,0"
                        Source="schedule.png"
@@ -267,7 +240,7 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                <!-- Teacher List Content -->
+                --><!-- Teacher List Content --><!--
                 <CollectionView x:Name="Namex"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -332,7 +305,7 @@
                 </CollectionView>
                 
 
-                <!-- Classmate Title -->
+                --><!-- Classmate Title --><!--
                 <Image Grid.Column="0"
                        Grid.Row="3"
                        Margin="0,0,5,0"
@@ -351,7 +324,7 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                <!-- Classmate Content -->
+                --><!-- Classmate Content --><!--
                 <CollectionView x:Name="Namey"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -413,7 +386,7 @@
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>
+                </CollectionView>-->
             </Grid>
         </ScrollView>
     </ContentPage.Content>

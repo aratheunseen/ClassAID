@@ -27,10 +27,10 @@ namespace ClassAid.Views
             //    RequestCollectionView.ItemsSource = data.ToList();
             List<Shared> shareds = new List<Shared>()
             {
-                new Shared() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
+                new Shared() { Name = "Shaikh Hasina", ID = "192311048", Phone = "0123567890" },
                 new Shared() { Name = "Mahmud", ID = "192311002", Phone = "0123567891" },
-                new Shared() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                new Shared() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
+                new Shared() { Name = "Alif", ID = "192311018", Phone = "0123567892" },
+                new Shared() { Name = "Khaleda Jia", ID = "19221148", Phone = "0123567893" },
             };
             RequestCollectionView.ItemsSource = shareds;
         }
