@@ -13,8 +13,8 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSchedulePage : ContentPage
     {
-        private readonly Shared user;
-        public AddSchedulePage(Shared user)
+        private readonly Admin user;
+        public AddSchedulePage(Admin user)
         {
             if (user.TeacherList == null)
             {

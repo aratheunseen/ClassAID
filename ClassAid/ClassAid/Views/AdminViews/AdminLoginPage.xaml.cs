@@ -25,7 +25,7 @@ namespace ClassAid.Views.AdminViews
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Shared user = new Shared(userName.Text + "admin", userPass.Text);
+                Admin user = new Admin(userName.Text + "admin", userPass.Text);
                 user.IsAdmin = true;
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
@@ -43,8 +43,8 @@ namespace ClassAid.Views.AdminViews
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
-                    Preferences.Set(PrefKeys.isLoggedIn, true);
-                    Preferences.Set(PrefKeys.adminKey, tempAdmin.Key);
+                    Preferences.Set(PrefKeys.IsLoggedIn, true);
+                    Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
                 }
             }
             else

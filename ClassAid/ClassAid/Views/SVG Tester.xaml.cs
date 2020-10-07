@@ -12,8 +12,8 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SVG_Tester : ContentPage
     {
-        readonly Shared User;
-        public SVG_Tester(Shared user)
+        readonly Admin User;
+        public SVG_Tester(Admin user)
         {
             User = user;
             InitializeComponent();            

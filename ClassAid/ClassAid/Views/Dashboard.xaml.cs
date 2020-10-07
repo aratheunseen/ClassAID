@@ -18,7 +18,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Dashboard : ContentPage
     {
-        private Shared user;
+        private Admin user;
         private static readonly string timeFormat = @"dd\:hh\:mm";
         #region Declaration
         public ICommand TeamCodeCopyCommand 
@@ -81,7 +81,7 @@ namespace ClassAid.Views
             }
         }
         #endregion
-        public Dashboard(Shared user)
+        public Dashboard(Admin user)
         {
             this.user = user;
             InitializeComponent();

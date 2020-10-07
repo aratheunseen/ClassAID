@@ -13,13 +13,13 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEventPage : ContentPage
     {
-        private readonly Shared user;
+        private readonly Admin user;
 
         public AddEventPage()
         {
         }
 
-        public AddEventPage(Shared user)
+        public AddEventPage(Admin user)
         {
             InitializeComponent();
             this.user = user;

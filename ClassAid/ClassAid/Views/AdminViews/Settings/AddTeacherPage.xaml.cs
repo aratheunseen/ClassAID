@@ -14,8 +14,8 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTeacherPage : ContentPage
     {
-        readonly Shared user;
-        public AddTeacherPage(Shared user)
+        readonly Admin user;
+        public AddTeacherPage(Admin user)
         {
             InitializeComponent();
             this.user = user;
