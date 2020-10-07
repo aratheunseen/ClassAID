@@ -18,7 +18,7 @@ namespace ClassAid
         public App()
         {
             InitializeComponent();
-            bool loginState = Preferences.Get(PrefKeys.isLoggedIn, false);
+            bool loginState = Preferences.Get(PrefKeys.IsLoggedIn, false);
             var current = Connectivity.NetworkAccess;
             Connectivity.ConnectivityChanged += CheckConnection;
             if (!loginState && current == NetworkAccess.Internet)
@@ -30,11 +30,11 @@ namespace ClassAid
             }
             else
             {
-                Shared user = new Shared();
+                Admin user = new Admin();
                 try
                 {
                   Action action = new Action(async ()=> 
-                  user = LocalStorageEngine.ReadDataAsync<Shared>
+                  user = LocalStorageEngine.ReadDataAsync<Admin>
                         (FileType.Shared));
                     action.Invoke();
                     MainPage = new NavigationPage(new Dashboard(user));
@@ -62,15 +62,15 @@ namespace ClassAid
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                if (Preferences.Get(PrefKeys.isSyncPending, false))
+                if (Preferences.Get(PrefKeys.IsSyncPending, false))
                 {
                     try
                     {
-                        Shared admin = LocalStorageEngine.ReadDataAsync<Shared>
+                        Admin admin = LocalStorageEngine.ReadDataAsync<Admin>
                       (FileType.Shared);
                         await FirebaseHandler.UpdateUser(admin);
                         DependencyService.Get<Toast>().Show("Synced successfully.");
-                        Preferences.Set(PrefKeys.isSyncPending, true);
+                        Preferences.Set(PrefKeys.IsSyncPending, true);
                     }
                     catch (Exception ex)
                     {

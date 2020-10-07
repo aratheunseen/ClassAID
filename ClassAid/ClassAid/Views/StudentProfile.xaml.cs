@@ -2,6 +2,7 @@
 using ClassAid.Models.Users;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -12,8 +13,8 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentProfile : ContentPage
     {
-        public Shared User { get; }
-        public StudentProfile(Shared user)
+        public Admin User { get; }
+        public StudentProfile(Admin user)
         {
             User = user;
             InitializeComponent();
@@ -25,18 +26,18 @@ namespace ClassAid.Views
             //var data = await FirebaseHandler.GetPendingStudents(key);
             //if (data!=null)
             //    RequestCollectionView.ItemsSource = data.ToList();
-            List<Shared> shareds = new List<Shared>()
+            List<Admin> shareds = new List<Admin>()
             {
-                new Shared() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
-                new Shared() { Name = "Mahmud", ID = "192311002", Phone = "0123567891" },
-                new Shared() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                new Shared() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
+                new Admin() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
+                new Admin() { Name = "Mahmud", ID = "192311002", Phone = "0123567891" },
+                new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
+                new Admin() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
             };
             RequestCollectionView.ItemsSource = shareds;
         }
         private void Logout()
         {
-            Preferences.Set(PrefKeys.isLoggedIn, false);
+            Preferences.Set(PrefKeys.IsLoggedIn, false);
             LocalStorageEngine.ClearData(FileType.Shared);
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
@@ -47,12 +48,12 @@ namespace ClassAid.Views
 
         }
 
-        private void AcceptBtn_Clicked(object sender, System.EventArgs e)
+        private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
 
         }
 
-        private void RejectBtn_Clicked(object sender, System.EventArgs e)
+        private void RejectBtn_Clicked(object sender, EventArgs e)
         {
 
         }

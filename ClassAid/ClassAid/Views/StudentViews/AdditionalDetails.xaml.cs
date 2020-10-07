@@ -11,8 +11,8 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Shared user;
-        public AdditionalDetails(Shared user)
+        Admin user;
+        public AdditionalDetails(Admin user)
         {
             this.user = user;
             InitializeComponent();

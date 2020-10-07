@@ -34,7 +34,7 @@ namespace ClassAid.Views.StudentViews
         {
             try
             {
-                Shared user = new Shared(userName.Text + "student", userPass.Text)
+                Admin user = new Admin(userName.Text + "student", userPass.Text)
                 {
                     IsAdmin = false
                 };
@@ -53,8 +53,8 @@ namespace ClassAid.Views.StudentViews
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
-                    Preferences.Set(PrefKeys.isLoggedIn, true);
-                    Preferences.Set(PrefKeys.adminKey, tempAdmin.TeamCode);
+                    Preferences.Set(PrefKeys.IsLoggedIn, true);
+                    Preferences.Set(PrefKeys.AdminKey, tempAdmin.TeamCode);
                 }
             }
             catch (Exception e)

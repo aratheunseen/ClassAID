@@ -32,7 +32,7 @@ namespace ClassAid.DataContex
             }
         }
         #region Insertion and Update
-        public static async Task InsertData(Shared user)
+        public static async Task InsertData(Admin user)
         {
             LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
             await client
@@ -40,7 +40,7 @@ namespace ClassAid.DataContex
                 .Child(user.Key)
                 .PostAsync(user);
         }
-        public static async Task UpdateUser(Shared user)
+        public static async Task UpdateUser(Admin user)
         {
             LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -51,7 +51,7 @@ namespace ClassAid.DataContex
             else
             {
                 DependencyService.Get<Toast>().Show("No Internet connection. Saved for later syncing.");
-                Preferences.Set(PrefKeys.isSyncPending, true);
+                Preferences.Set(PrefKeys.IsSyncPending, true);
             }
         }
         #endregion
@@ -99,11 +99,11 @@ namespace ClassAid.DataContex
                 .Where(item => item.TeamCode == teamCode).FirstOrDefault();
         }
         #endregion
-        public static async Task<Shared> GetUser(string key, bool IsAdmin)
+        public static async Task<Admin> GetUser(string key, bool IsAdmin)
         {
-            Shared res = (await client
+            Admin res = (await client
               .Child(TableName(IsAdmin))
-              .OnceAsync<Shared>()).Select(item => item.Object)
+              .OnceAsync<Admin>()).Select(item => item.Object)
             .Where(item => item.Key == key).FirstOrDefault();
             LocalStorageEngine.SaveDataAsync(res, FileType.Shared);
             return res;
@@ -115,11 +115,11 @@ namespace ClassAid.DataContex
             else
                 return "Student";
         }
-        public static async Task<IEnumerable<Shared>> GetPendingStudents(string key)
+        public static async Task<IEnumerable<Admin>> GetPendingStudents(string key)
         {
-           IEnumerable<Shared> shared = (await client
+           IEnumerable<Admin> shared = (await client
                 .Child("Student")
-                .OnceAsync<Shared>()).Select(item => item.Object)
+                .OnceAsync<Admin>()).Select(item => item.Object)
                 .Where(i => i.IsActive == false && i.AdminKey == key);
             return shared;
         }

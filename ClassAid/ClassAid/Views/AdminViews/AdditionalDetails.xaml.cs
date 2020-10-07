@@ -12,8 +12,8 @@ namespace ClassAid.Views.AdminViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Shared user;
-        public AdditionalDetails(Shared admin)
+        Admin user;
+        public AdditionalDetails(Admin admin)
         {
             InitializeComponent();
             this.user = admin;
@@ -40,8 +40,8 @@ namespace ClassAid.Views.AdminViews
             {
                 await FirebaseHandler.UpdateUser(user);
                 Application.Current.MainPage = new NavigationPage(new Dashboard(user));
-                Preferences.Set(PrefKeys.isLoggedIn, true);
-                Preferences.Set(PrefKeys.adminKey, user.Key);
+                Preferences.Set(PrefKeys.IsLoggedIn, true);
+                Preferences.Set(PrefKeys.AdminKey, user.Key);
             }
             catch (Exception)
             {

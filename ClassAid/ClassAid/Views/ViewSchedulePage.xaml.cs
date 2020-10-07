@@ -15,7 +15,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewSchedulePage : ContentPage
     {
-        public ViewSchedulePage(Shared user)
+        public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
         }
