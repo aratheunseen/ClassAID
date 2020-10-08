@@ -11,7 +11,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewEventPage : ContentPage
     {
-        public ViewEventPage(Shared admin)
+        public ViewEventPage(Admin admin)
         {
             InitializeComponent();
             if (admin.EventList != null)

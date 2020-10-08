@@ -32,10 +32,10 @@
                 <StackLayout Padding="25">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="studentName"
-                       Margin="15,3"
-                       Placeholder="Full Name" 
-                       TextChanged="Form_TextChanged"
-                       TextColor="#6264a7"/>
+                                                   Margin="15,3"
+                                                   Placeholder="Full Name" 
+                                                   TextChanged="Form_TextChanged"
+                                                   TextColor="#6264a7"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="phoneNumber"

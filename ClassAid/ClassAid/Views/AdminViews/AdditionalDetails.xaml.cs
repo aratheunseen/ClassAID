@@ -12,17 +12,17 @@ namespace ClassAid.Views.AdminViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Shared user;
-        public AdditionalDetails(Shared admin)
+        Admin admin;
+        public AdditionalDetails(Admin admin)
         {
             InitializeComponent();
-            this.user = admin;
+            this.admin = admin;
         }
 
         private async void CompleteSignUp_Clicked()
         {
-            user.Name = userRealName.Text;
-            user.Phone = userPhone.Text;
+            admin.Name = userRealName.Text;
+            admin.Phone = userPhone.Text;
             BatchDetails batch = new BatchDetails()
             {
                 University = instName.Text,
@@ -31,17 +31,19 @@ namespace ClassAid.Views.AdminViews
                 Section = secName.Text
             };
             resultText.Text = "Creating Unique ID";
-            user.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text,user.Key);
+            admin.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text,admin.Key);
             resultText.Text = "Creating Profile";
-            user.BatchDetails = batch;
-            user.ID = stuId.Text;
-            user.Phone = userPhone.Text;
+            admin.BatchDetails = batch;
+            admin.ID = stuId.Text;
+            admin.Phone = userPhone.Text;
             try
             {
-                await FirebaseHandler.UpdateUser(user);
-                Application.Current.MainPage = new NavigationPage(new Dashboard(user));
-                Preferences.Set(PrefKeys.isLoggedIn, true);
-                Preferences.Set(PrefKeys.adminKey, user.Key);
+                Preferences.Set(PrefKeys.IsLoggedIn, true);
+                Preferences.Set(PrefKeys.AdminKey, admin.Key);
+                Preferences.Set(PrefKeys.Key, admin.Key);
+                Preferences.Set(PrefKeys.IsAdmin, true);
+                FirebaseHandler.UpdateAdmin(admin);
+                Application.Current.MainPage = new NavigationPage(new Dashboard(admin));
             }
             catch (Exception)
             {

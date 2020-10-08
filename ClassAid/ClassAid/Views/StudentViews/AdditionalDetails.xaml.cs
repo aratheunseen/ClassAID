@@ -2,26 +2,25 @@
 using ClassAid.Models.Users;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ClassAid.Models.Schedule;
-using System.Collections.ObjectModel;
 using ClassAid.Models;
+using Xamarin.Essentials;
 
 namespace ClassAid.Views.StudentViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Shared user;
-        public AdditionalDetails(Shared user)
+        Student student;
+        public AdditionalDetails(Student student)
         {
-            this.user = user;
+            this.student = student;
             InitializeComponent();
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(studentName.Text) &&
-                !string.IsNullOrWhiteSpace(teamCode.Text) && 
+                !string.IsNullOrWhiteSpace(teamCode.Text) &&
                 !string.IsNullOrWhiteSpace(studentID.Text))
             {
                 studentSignIn.Command = new Command(() => Button_Clicked());
@@ -34,72 +33,39 @@ namespace ClassAid.Views.StudentViews
         public async void Button_Clicked()
         {
             activityIndicator.IsRunning = true;
-            user.IsAdmin = false;
-            user.IsActive = false;
-            user.Name = studentName.Text.Trim();
-            user.TeamCode = teamCode.Text.Trim();
-            user.Phone = phoneNumber.Text.Trim();
-            user.ID = studentID.Text.Trim();
-            KeyVault validate =
-                await FirebaseHandler.ValidateTeamCode(user.TeamCode);
-            if (validate != null)
+            student.TeamCode = teamCode.Text.Trim();
+            KeyVault keyVault = await FirebaseHandler.ValidateTeamCode(student.TeamCode);
+            if (keyVault != null)
             {
-                var tempAdmin = await FirebaseHandler.GetUser(validate.AdminKey,true);
-                
-                if (tempAdmin.BatchDetails == null)
-                    user.BatchDetails = new BatchDetails();
-                else
-                    user.BatchDetails = tempAdmin.BatchDetails;
-
-                if (tempAdmin.TeacherList == null)
-                    user.TeacherList = new ObservableCollection<Teacher>();
-                else
-                    user.TeacherList = tempAdmin.TeacherList;
-
-                if (tempAdmin.StudentList == null)
+                student.IsAdmin = false;
+                student.IsActive = false;
+                student.Name = studentName.Text.Trim();
+                student.Phone = phoneNumber.Text.Trim();
+                student.ID = studentID.Text.Trim();
+                var tempAdmin = await FirebaseHandler.GetAdminAsync(keyVault.AdminKey);
+                tempAdmin.StudentList.Add(new Student()
                 {
-                    user.StudentList = new ObservableCollection<Student>();
-                    tempAdmin.StudentList = new ObservableCollection<Student>();
-                }
-                else
-                    user.StudentList = tempAdmin.StudentList; 
-
-                if (tempAdmin.ScheduleList == null)
-                    user.ScheduleList = new ObservableCollection<ScheduleModel>();
-                else
-                    user.ScheduleList = tempAdmin.ScheduleList;
-
-                if (tempAdmin.EventList == null)
-                    user.EventList = new ObservableCollection<EventModel>();
-                else
-                    user.EventList = tempAdmin.EventList;
-
-                tempAdmin.StudentList.Add(new Student() 
-                {
-                    Name = user.Name,
-                    Phone = user.Phone,
-                    ID = user.ID,
-                    Key = user.Key,
-                    IsActive = user.IsActive
+                    Name = student.Name,
+                    Phone = student.Phone,
+                    ID = student.ID,
+                    Key = student.Key,
+                    IsActive = student.IsActive
                 });
-
-                await FirebaseHandler.UpdateUser(tempAdmin);
+                Preferences.Set(PrefKeys.IsLoggedIn, true);
+                Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
+                Preferences.Set(PrefKeys.IsAdmin, false);
+                Preferences.Set(PrefKeys.Key, student.Key);
                 Application.Current.MainPage =
-                    new NavigationPage(new Dashboard(user));
-                user.AdminKey = validate.AdminKey;
-                await FirebaseHandler.UpdateUser(user);
+                    new NavigationPage(new Dashboard(student));
+                student.AdminKey = keyVault.AdminKey;
+                FirebaseHandler.UpdateAdmin(tempAdmin);
+                FirebaseHandler.UpdateStudent(student);
             }
             else
             {
                 resultText.Text = "Invalid team code. Please try again.";
             }
             activityIndicator.IsRunning = false;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            studentName.Focus();
         }
     }
 }

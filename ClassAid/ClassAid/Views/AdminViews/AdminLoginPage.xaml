@@ -40,12 +40,12 @@
                 </Frame>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userPass"
-                       Style="{StaticResource ClassAidEntryDesign}"
-                       Placeholder="Password" 
-                       TextChanged="Form_TextChanged"
-                       SelectionLength="6"
-                       MaxLength="10"
-                       IsPassword="True"/>
+                                              Style="{StaticResource ClassAidEntryDesign}"
+                                              Placeholder="Password" 
+                                              TextChanged="Form_TextChanged"
+                                              SelectionLength="6"
+                                              MaxLength="10"
+                                              IsPassword="True"/>
                 </Frame>
                 <Label/>
                 <Frame BorderColor="#6264a7" 
