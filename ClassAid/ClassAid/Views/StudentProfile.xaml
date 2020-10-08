@@ -15,7 +15,7 @@
             <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="270" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -153,10 +153,11 @@
                                 SelectionMode="None"
                                    Grid.Row="1"
                                     Grid.ColumnSpan="6"
-                                Margin="0,35,0,0">
+                                Margin="0,35,0,0"
+                                BackgroundColor="Yellow">
                     <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="users:Shared">
-                            <Frame Grid.Row="1"  Grid.ColumnSpan="6">
+                            <Frame BackgroundColor="red">
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -167,9 +168,9 @@
                                     <BoxView Grid.Row="0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="25,5,0,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
+                                             Margin="30,8,0,0"
+                                             HeightRequest="5"
+                                             WidthRequest="5"
                                              BackgroundColor="Black"
                                              CornerRadius="30"/>
                                     <BoxView Grid.Row="0"
@@ -177,12 +178,12 @@
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
-                                             WidthRequest="2"
+                                             WidthRequest="1"
                                              BackgroundColor="Black"/>
                                     <Label x:Name="studentId"
                                            Text="{Binding ID}"
                                            Grid.Column="1"
-                                           Margin="10,0,0,0"
+                                           Margin="5,0,0,0"
                                            FontSize="18"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
@@ -221,8 +222,10 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                
+                
                 <!-- Teacher List Title -->
-                <!--<Image Grid.Column="0"
+                <Image Grid.Column="0"
                        Grid.Row="2"
                        Margin="0,0,5,0"
                        Source="schedule.png"
@@ -240,72 +243,82 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                --><!-- Teacher List Content --><!--
-                <CollectionView x:Name="Namex"
-                      SelectionMode="None">
+                <!-- Teacher List Content -->
+                <CollectionView x:Name="TeacherCollectionView"
+                                SelectionMode="None"
+                                   Grid.Row="2"
+                                    Grid.ColumnSpan="6"
+                                Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="system:Type">
-                            <Frame Padding="0">
-                                <Grid BackgroundColor="#F7F7FF">
+                        <DataTemplate x:DataType="users:Shared">
+                            <Frame Grid.Row="2"  Grid.ColumnSpan="6">
+                                <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="2"
-                                             HorizontalOptions="End"
+                                    <BoxView Grid.Row="0"
+                                             HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="0,65,15,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
+                                             Margin="30,8,0,0"
+                                             HeightRequest="5"
+                                             WidthRequest="5"
                                              BackgroundColor="Black"
                                              CornerRadius="30"/>
-                                    <BoxView Grid.Row="2"
+                                    <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="5,60,0,0"
                                              HeightRequest="20"
-                                             WidthRequest="2"
+                                             WidthRequest="1"
                                              BackgroundColor="Black"/>
-                                    <Label x:Name="teacherNameBtn"
-                                           Text="Mizanur Rahman"
+                                    <Label x:Name="studentId"
+                                           Text="{Binding ID}"
                                            Grid.Column="1"
-                                           Grid.Row="2"
+                                           Margin="5,0,0,0"
                                            FontSize="18"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Margin="15,55,10,0"
-                                           Grid.ColumnSpan="4"/>
-                                    <Label x:Name="designationBtn"
-                                           Text="Lecturer"
+                                           Grid.ColumnSpan="3"/>
+                                    <Label x:Name="studentName"
+                                           Text="{Binding Name}"
+                                           Margin="0,25,0,0"
                                            Grid.Column="1"
-                                           Grid.Row="2"
                                            FontSize="14"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Margin="5,80,10,0"
                                            Grid.ColumnSpan="3"/>
-                                    <ImageButton x:Name="callBtn"
-                                                 Grid.Column="5" Grid.Row="2"
+                                    <ImageButton x:Name="acceptBtn" 
+                                                 Grid.Column="4"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
-                                                 VerticalOptions="End"
-                                                 Margin="0,0,30,40"/>
+                                                 VerticalOptions="Center"
+                                                 Margin="0"/>
+
+                                    <ImageButton x:Name="rejectBtn" 
+                                                 Grid.Column="5"
+                                                 BackgroundColor="Transparent"
+                                                 Source="schedule.png"
+                                                 HeightRequest="24" 
+                                                 WidthRequest="24" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center"
+                                                 Margin="0,0,15,0"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                
 
-                --><!-- Classmate Title --><!--
+
+                <!-- Classmate Title --><!--
                 <Image Grid.Column="0"
                        Grid.Row="3"
                        Margin="0,0,5,0"
