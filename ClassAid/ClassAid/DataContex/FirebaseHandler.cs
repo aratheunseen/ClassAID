@@ -17,62 +17,62 @@ namespace ClassAid.DataContex
 {
     public class FirebaseHandler
     {
-        private static FirebaseClient client
+        private static FirebaseClient GetClient()
         {
-            get
-            {
-                string server = "https://classaidapp.firebaseio.com/";
-                string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
-                return new FirebaseClient(
-                  server,
-                  new FirebaseOptions
-                  {
-                      AuthTokenAsyncFactory = () => Task.FromResult(authKey),
-                  });
-            }
+            string server = "https://classaidapp.firebaseio.com/";
+            string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";
+            return new FirebaseClient(
+              server,
+              new FirebaseOptions
+              {
+                  AuthTokenAsyncFactory = () => Task.FromResult(authKey),
+              });
         }
-        #region Insertion and Update
-        public static async Task InsertData(Shared user)
+        #region AdminArea
+        public static async void InsertAdmin(Admin admin)
         {
-            LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
-            await client
-                .Child(TableName(user.IsAdmin))
-                .Child(user.Key)
-                .PostAsync(user);
+            await GetClient().Child(admin.Key).PostAsync(admin);
         }
-        public static async Task UpdateUser(Shared user)
+        public static async Task<Admin> GetAdminAsync(string key)
         {
-            LocalStorageEngine.SaveDataAsync(user, FileType.Shared);
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                await client
-              .Child(TableName(user.IsAdmin)).Child(user.Key).PutAsync(user);
-            }
-            else
-            {
-                DependencyService.Get<Toast>().Show("No Internet connection. Saved for later syncing.");
-                Preferences.Set(PrefKeys.isSyncPending, true);
-            }
+            return await GetClient().Child(key).OnceSingleAsync<Admin>();
+        }
+        public static async void UpdateAdmin(Admin admin)
+        {
+            await GetClient().Child(admin.Key).PutAsync(admin);
+        }
+        #endregion
+        #region StudentArea
+        public static async void InsertStudent(Student student)
+        {
+            await GetClient().Child(student.Key).PostAsync(student);
+        }
+        public static async Task<Student> GetStudentAsync(string key)
+        {
+            return await GetClient().Child(key).OnceSingleAsync<Student>();
+        }
+        public static async void UpdateStudent(Student student)
+        {
+            await GetClient().Child(student.Key).PutAsync(student);
         }
         #endregion
         #region RealTime
         public static async Task RealTimeConnection<T>(CollectionTables collectionName,
-            ObservableCollection<T> collection, string key, string tablename = "Admin")
+            ObservableCollection<T> collection, string key)
         {
-            _ = await Task.Run(() => client
-                 .Child(tablename).Child(key).Child(collectionName.ToString())
+            _ = await Task.Run(() => GetClient()
+                 .Child(key).Child(collectionName.ToString())
                  .AsObservable<T>()
                  .Subscribe(d =>
                  {
                      collection.Add(d.Object);
-                     Debug.WriteLine(d.Object.ToString());
                  }));
         }
         #endregion
         #region Teamcode
-        public async static Task<string> GetTeamCode(string universityName,string key)
+        public async static Task<string> GetTeamCode(string universityName, string key)
         {
-            Start:
+        Start:
             string res = "";
             foreach (var item in universityName.Split())
             {
@@ -83,7 +83,7 @@ namespace ClassAid.DataContex
             if (validator == null)
             {
                 validator = new KeyVault() { TeamCode = res, AdminKey = key };
-                await client
+                await GetClient()
                 .Child("AdminCodeLookUp")
                 .PostAsync(JsonConvert.SerializeObject(validator));
                 return res;
@@ -93,40 +93,22 @@ namespace ClassAid.DataContex
         }
         public static async Task<KeyVault> ValidateTeamCode(string teamCode)
         {
-            return (await client
+            return (await GetClient()
                 .Child("AdminCodeLookUp")
                 .OnceAsync<KeyVault>()).Select(item => item.Object)
                 .Where(item => item.TeamCode == teamCode).FirstOrDefault();
         }
         #endregion
-        public static async Task<Shared> GetUser(string key, bool IsAdmin)
+        public static async Task<IEnumerable<Student>> GetPendingStudents(string key)
         {
-            Shared res = (await client
-              .Child(TableName(IsAdmin))
-              .OnceAsync<Shared>()).Select(item => item.Object)
-            .Where(item => item.Key == key).FirstOrDefault();
-            LocalStorageEngine.SaveDataAsync(res, FileType.Shared);
-            return res;
-        }
-        private static string TableName(bool IsAdmin)
-        {
-            if (IsAdmin)
-                return "Admin";
-            else
-                return "Student";
-        }
-        public static async Task<IEnumerable<Shared>> GetPendingStudents(string key)
-        {
-           IEnumerable<Shared> shared = (await client
-                .Child("Student")
-                .OnceAsync<Shared>()).Select(item => item.Object)
-                .Where(i => i.IsActive == false && i.AdminKey == key);
-            return shared;
+            return (await GetClient()
+                 .Child(key).Child("StudentList")
+                 .OnceAsync<Student>()).Select(p => p.Object)
+                 .Where(p => p.IsActive == false);
         }
     }
     public enum CollectionTables
     {
         EventList, ScheduleList, TeacherList, StudentList
     }
-
 }

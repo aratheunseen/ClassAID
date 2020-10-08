@@ -69,7 +69,7 @@
                        TextColor="#6264a7">
                     </Label>
                     <ActivityIndicator x:Name="activityIndicator" 
-                                   IsRunning="false" 
+                                       IsRunning="false" 
                                        Color="#6264a7"/>
                 </StackLayout>
             </StackLayout>

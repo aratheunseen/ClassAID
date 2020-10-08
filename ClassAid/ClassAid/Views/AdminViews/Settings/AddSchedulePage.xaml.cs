@@ -13,27 +13,21 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSchedulePage : ContentPage
     {
-        private readonly Shared user;
-        public AddSchedulePage(Shared user)
+        private readonly Admin admin;
+        public AddSchedulePage(Admin admin)
         {
-            if (user.TeacherList == null)
-            {
-                user.TeacherList = new ObservableCollection<Teacher>();
-            }
-            if (user.ScheduleList == null)
-            {
-                user.ScheduleList =
-                    new ObservableCollection<ScheduleModel>();
-            }
-            this.user = user;
+            this.admin = admin;
+
             InitializeComponent();
-            teacherPeaker.ItemsSource = user.TeacherList;
+            teacherPeaker.ItemsSource = admin.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
         private async void AddScheduleBtn_Clicked()
         {
-            user.ScheduleList.Insert(0, new ScheduleModel()
+            if (admin.ScheduleList == null)
+                admin.ScheduleList = new ObservableCollection<ScheduleModel>();
+            admin.ScheduleList.Insert(0, new ScheduleModel()
             {
                 Teacher = (Teacher)teacherPeaker.SelectedItem,
                 StartTime = startDate.Time,
@@ -41,20 +35,15 @@ namespace ClassAid.Views.AdminViews.Settings
                 Subject = subjectName.Text,
                 CourseCode = courseCode.Text,
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
-        });
+            });
             await Navigation.PopAsync();
-            await FirebaseHandler.UpdateUser(user);
-        }
-
-        private void goBackBtn_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PopAsync();
+            FirebaseHandler.UpdateAdmin(admin);
         }
 
         // TODO: Can not build after change the button to frame gesture
         private async void AddTeacher_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddTeacherPage(user));
+            await Navigation.PushAsync(new AddTeacherPage(admin));
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
@@ -63,7 +52,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 string.IsNullOrWhiteSpace(subjectName.Text))
                 addSchedule.Command = null;
             else
-                addSchedule.Command = new Command(()=> AddScheduleBtn_Clicked());
+                addSchedule.Command = new Command(() => AddScheduleBtn_Clicked());
         }
     }
 }
