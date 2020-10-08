@@ -96,9 +96,10 @@ namespace ClassAid.Views.StudentViews
             activityIndicator.IsRunning = false;
         }
 
-        private void studentName_Focused(object sender, FocusEventArgs e)
+        protected override void OnAppearing()
         {
-
+            base.OnAppearing();
+            studentName.Focus();
         }
     }
 }

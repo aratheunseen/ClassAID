@@ -32,7 +32,6 @@
                 <StackLayout Padding="25">
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="studentName"
-                        Focused="studentName_Focused"
                        Margin="15,3"
                        Placeholder="Full Name" 
                        TextChanged="Form_TextChanged"

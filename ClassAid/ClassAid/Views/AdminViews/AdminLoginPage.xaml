@@ -33,7 +33,6 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
-                       Focused="userName_Focused"
                        Placeholder="Username"
                        SelectionLength="6"
                        MaxLength="10"

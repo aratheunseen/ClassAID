@@ -64,14 +64,11 @@ namespace ClassAid.Views.StudentViews
 
         }
 
-        private void userName_Focused(object sender, FocusEventArgs e)
+        protected override void OnAppearing()
         {
-
+            base.OnAppearing();
+            userName.Focus();
         }
 
-        private void userPass_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
     }
 }

@@ -67,9 +67,10 @@ namespace ClassAid.Views.AdminViews
             }
         }
 
-        private void userRealName_Focused(object sender, FocusEventArgs e)
+        protected override void OnAppearing()
         {
-
+            base.OnAppearing();
+            userRealName.Focus();
         }
     }
 }
