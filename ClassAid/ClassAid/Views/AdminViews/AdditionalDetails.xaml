@@ -31,7 +31,6 @@
                     <StackLayout Padding="30">
                         <Frame Style="{StaticResource ClassAidFrameDesign}">
                             <Components:ClassAidEntry x:Name="userRealName"
-                         Focused="userRealName_Focused" 
                        Placeholder="Full Name"
                        TextChanged="Form_TextChanged"
                        TextColor="#6264a7"

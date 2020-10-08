@@ -72,9 +72,10 @@ namespace ClassAid.Views.AdminViews
                 signInBtn.Command = TapCommand;
         }
 
-        private void userName_Focused(object sender, FocusEventArgs e)
+        protected override void OnAppearing()
         {
-
+            base.OnAppearing();
+            userName.Focus();
         }
     }
 }
