@@ -1,35 +1,43 @@
-﻿using ClassAid.DataContex;
-using ClassAid.Models;
+﻿using Android.Telecom;
+using ClassAid.DataContex;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
-using Firebase.Database;
-using System;
 using System.Collections.ObjectModel;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+using ClassAid.Models;
 
 namespace ClassAid.Views.AdminViews.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddTeacherPage : ContentPage
     {
-        readonly Admin user;
-        public AddTeacherPage(Admin user)
+        private readonly Admin admin;
+        public AddTeacherPage(Admin admin)
         {
             InitializeComponent();
-            this.user = user;
+            this.admin = admin;
         }
         private async void AddTeacherBtn_Clicked()
         {
-            Teacher t = new Teacher() 
-            { 
-                Name = teacherName.Text, 
-                Designation = teacherDesegnation.Text 
-            };
-            user.TeacherList.Add(t);
+            if (admin.TeacherList == null)
+                admin.TeacherList = new ObservableCollection<Teacher>();
+            admin.TeacherList.Add(new Teacher()
+            {
+                Name = teacherName.Text,
+                Designation = teacherDesegnation.Text,
+                Phone = teacherPhoneNumber.Text
+            });
             await Navigation.PopAsync();
-            await FirebaseHandler.UpdateUser(user);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                FirebaseHandler.UpdateAdmin(admin);
+            else 
+            {
+                Preferences.Set(PrefKeys.IsSyncPending, true);
+                LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);
+                DependencyService.Get<Toast>().Show("No internet access. Sync pending.");
+            }
         }
         
         // TODO: Can not build after change the button to frame gesture

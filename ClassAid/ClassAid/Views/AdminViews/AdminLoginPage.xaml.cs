@@ -25,38 +25,35 @@ namespace ClassAid.Views.AdminViews
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Admin user = new Admin(userName.Text + "admin", userPass.Text);
-                user.IsAdmin = true;
+                Admin admin = new Admin(userName.Text + "admin", userPass.Text)
+                {
+                    IsAdmin = true
+                };
                 activityIndicator.IsRunning = true;
                 var tempAdmin =
-                    await FirebaseHandler.GetUser(user.Key, user.IsAdmin);
+                    await FirebaseHandler.GetAdminAsync(admin.Key);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
                     await Navigation.PushAsync(
-                        new AdditionalDetails(user));
-                    await FirebaseHandler.InsertData(user);
+                        new AdditionalDetails(admin));
+                    FirebaseHandler.InsertAdmin(admin);
                 }
                 else
                 {
-                    Debug.WriteLine(tempAdmin.Name);
+                    Preferences.Set(PrefKeys.IsLoggedIn, true);
+                    Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
+                    Preferences.Set(PrefKeys.IsAdmin, true);
+                    Preferences.Set(PrefKeys.Key, tempAdmin.Key);
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
-                    Preferences.Set(PrefKeys.IsLoggedIn, true);
-                    Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
                 }
             }
             else
             {
                 DependencyService.Get<Toast>().Show("No INTERNET connection.");
             }
-            ////}
-            ////catch (Exception e)
-            ////{
-            ////    resultText.Text = "Sorry something bad happened. " + e.Message;
-            ////}
-
         }
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -70,11 +67,6 @@ namespace ClassAid.Views.AdminViews
             }
             else
                 signInBtn.Command = TapCommand;
-        }
-
-        private void userName_Focused(object sender, FocusEventArgs e)
-        {
-
         }
     }
 }

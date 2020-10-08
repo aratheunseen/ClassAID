@@ -6,93 +6,81 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-            <Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
-          ExpandAnimationLength="500">
-                <Expander.Header>
-                    <Label Text="Saturday"
-                       Grid.Column="0"
-                       Grid.Row="2"
-                       FontSize="20"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="4"/>
-                </Expander.Header>
-                <SwipeView>
-                    <SwipeView.LeftItems>
-                        <SwipeItems>
-                            <SwipeItem Text="Edit"
-                       IconImageSource="edit.png"
-                       BackgroundColor="LightGreen"
-                       Invoked="SwipeItem_Invoked" />
-                            <SwipeItem Text="Delete"
-                       IconImageSource="delete.png"
-                       BackgroundColor="LightPink"
-                       Invoked="SwipeItem_Invoked" />
-                        </SwipeItems>
-                    </SwipeView.LeftItems>
-                    <Expander.ContentTemplate>
-                        <DataTemplate x:DataType="y:ScheduleModel">
+            <CollectionView x:Name="scheduleCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="y:ScheduleModel">
+                        <Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+                                  ExpandAnimationLength="500">
+                            <Expander.Header>
+                                <Label Text="Saturday"
+                                       Grid.Column="0"
+                                       Grid.Row="2"
+                                       FontSize="20"
+                                       TextColor="Black"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start" 
+                                       Margin="5,0,0,0"
+                                       Grid.ColumnSpan="4"/>
+                            </Expander.Header>
                             <StackLayout Padding="5"
                                          Margin="5">
                                 <BoxView Grid.Row="1"
-                         HorizontalOptions="End"
-                         VerticalOptions="Start" 
-                         Margin="0,65,15,0"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         BackgroundColor="DarkRed"
-                         CornerRadius="30"/>
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Start" 
+                                                 Margin="0,65,15,0"
+                                                 HeightRequest="10"
+                                                 WidthRequest="10"
+                                                 BackgroundColor="DarkRed"
+                                                 CornerRadius="30"/>
                                 <BoxView Grid.Row="1"
-                         Grid.Column="1"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Start" 
-                         Margin="5,60,0,0"
-                         HeightRequest="20"
-                         WidthRequest="2"
-                         BackgroundColor="DarkRed"/>
+                                                 Grid.Column="1"
+                                                 HorizontalOptions="Start"
+                                                 VerticalOptions="Start" 
+                                                 Margin="5,60,0,0"
+                                                 HeightRequest="20"
+                                                 WidthRequest="2"
+                                                 BackgroundColor="DarkRed"/>
                                 <Label x:Name="ScheduleCourseCode"
-                       Grid.Column="1"
-                                   Text="{Binding CourseCode}"
-                       Grid.Row="1"
-                       FontSize="18"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="15,55,10,0"
-                       Grid.ColumnSpan="4"/>
+                                               Grid.Column="1"
+                                               Text="{Binding CourseCode}"
+                                               Grid.Row="1"
+                                               FontSize="18"
+                                               TextColor="Gray"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Start" 
+                                               Margin="15,55,10,0"
+                                               Grid.ColumnSpan="4"/>
                                 <Label x:Name="ScheduleCourseName"
-                       Text="{Binding Subject}"
-                                   Grid.Column="1"
-                       Grid.Row="1"
-                       FontSize="14"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,80,10,0"
-                       Grid.ColumnSpan="3"/>
+                                               Text="{Binding Subject}"
+                                               Grid.Column="1"
+                                               Grid.Row="1"
+                                               FontSize="14"
+                                               TextColor="Gray"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Start" 
+                                               Margin="5,80,10,0"
+                                               Grid.ColumnSpan="3"/>
                                 <Label x:Name="ScheduleStart" 
-                       Grid.Column="4"
-                       Grid.Row="1"
-                       FontSize="12"
-                       TextColor="Black"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start" 
-                       Margin="5,60,15,0"/>
+                                               Grid.Column="4"
+                                               Grid.Row="1"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start" 
+                                               Margin="5,60,15,0"/>
                                 <Label x:Name="ScheduleEnd"
-                       Grid.Column="4"
-                       Grid.Row="1"
-                       FontSize="12"
-                       TextColor="Black"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start" 
-                       Margin="5,80,15,0"/>
+                                               Grid.Column="4"
+                                               Grid.Row="1"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start" 
+                                               Margin="5,80,15,0"/>
                             </StackLayout>
-                        </DataTemplate>
-                    </Expander.ContentTemplate>
-                </SwipeView>
-            </Expander>
+                        </Expander>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

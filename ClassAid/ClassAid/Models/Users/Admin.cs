@@ -29,5 +29,7 @@ namespace ClassAid.Models.Users
         public static string IsSyncPending { get { return "isSyncPending"; } }
         public static string IsLoggedIn { get { return "isLoggedIn"; } }
         public static string AdminKey { get { return "adminKey"; } }
+        public static string IsAdmin { get { return "isAdmin"; } }
+        public static string Key { get { return "key"; } }
     }
 }
