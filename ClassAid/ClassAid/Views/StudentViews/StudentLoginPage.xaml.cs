@@ -16,14 +16,18 @@ namespace ClassAid.Views.StudentViews
             InitializeComponent();
             TapCommand = new Command(() => ProceedBtn());
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            userName.Focus();
+        }
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
+            userName.Text.Replace(" ", "");
             if (string.IsNullOrWhiteSpace(userName.Text) ||
                 string.IsNullOrWhiteSpace(userPass.Text) ||
                 userName.Text.Length < 6 ||
                 userPass.Text.Length < 6)
-
             {
                 studentSignIn.Command = null;
             }
@@ -34,43 +38,35 @@ namespace ClassAid.Views.StudentViews
         {
             try
             {
-                Admin user = new Admin(userName.Text + "student", userPass.Text)
+                Student student = new Student(userName.Text + "student", userPass.Text)
                 {
                     IsAdmin = false
                 };
                 activityIndicator.IsRunning = true;
-                var tempAdmin =
-                    await FirebaseHandler.GetUser(user.Key, user.IsAdmin);
-                if (tempAdmin == null)
+                var tempStudent =
+                    await FirebaseHandler.GetStudentAsync(student.Key);
+                if (tempStudent == null)
                 {
                     activityIndicator.IsRunning = false;
                     await Navigation.PushAsync(
-                        new AdditionalDetails(user));
-                    await FirebaseHandler.InsertData(user);
+                        new AdditionalDetails(student));
+                    FirebaseHandler.InsertStudent(student);
                 }
                 else
                 {
                     activityIndicator.IsRunning = false;
-                    Application.Current.MainPage =
-                        new NavigationPage(new Dashboard(tempAdmin));
                     Preferences.Set(PrefKeys.IsLoggedIn, true);
-                    Preferences.Set(PrefKeys.AdminKey, tempAdmin.TeamCode);
+                    Preferences.Set(PrefKeys.AdminKey, tempStudent.TeamCode);
+                    Preferences.Set(PrefKeys.IsAdmin, false);
+                    Preferences.Set(PrefKeys.Key, student.Key);
+                    Application.Current.MainPage =
+                        new NavigationPage(new Dashboard(tempStudent));
                 }
             }
             catch (Exception e)
             {
                 resultText.Text = "Sorry something bad happened. " + e.Message;
             }
-
-        }
-
-        private void userName_Focused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void userPass_Unfocused(object sender, FocusEventArgs e)
-        {
 
         }
     }

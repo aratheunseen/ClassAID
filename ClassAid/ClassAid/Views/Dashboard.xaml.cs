@@ -11,33 +11,35 @@ using ClassAid.Models;
 using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace ClassAid.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Dashboard : ContentPage
     {
-        private Admin user;
+        private Admin admin;
+        private Student student;
+        public ObservableCollection<EventModel> EventModels { get; set; }
+        public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
         private static readonly string timeFormat = @"dd\:hh\:mm";
         #region Declaration
-        public ICommand TeamCodeCopyCommand 
-        { 
-            get 
-            { 
+        public ICommand TeamCodeCopyCommand
+        {
+            get
+            {
                 return new Command(async () =>
                 {
-                    await Clipboard.SetTextAsync(user.TeamCode);
+                    await Clipboard.SetTextAsync(admin.TeamCode);
                     DependencyService.Get<Toast>().Show("Team code copied.");
                 });
-            } 
+            }
         }
         public ICommand GroupMessageCommand
         {
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new SVG_Tester(user)));
+                await Navigation.PushAsync(new SVG_Tester(admin)));
             }
         }
         public ICommand AddScheduleCommand
@@ -45,15 +47,15 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new AddSchedulePage(user)));
+                await Navigation.PushAsync(new AddSchedulePage(admin)));
             }
         }
         public ICommand AddEventCommand
         {
             get
             {
-                return new Command(async ()=>
-                await Navigation.PushAsync(new AddEventPage(user)));
+                return new Command(async () =>
+                await Navigation.PushAsync(new AddEventPage(admin)));
             }
         }
         public ICommand ProfileBtnCommand
@@ -61,7 +63,8 @@ namespace ClassAid.Views
             get
             {
                 return new Command(() =>
-                Navigation.PushAsync(new StudentProfile(user)));
+                Navigation.PushAsync( Preferences.Get(PrefKeys.IsAdmin,false) ?
+                    new StudentProfile(admin) : new StudentProfile(student)));
             }
         }
         public ICommand FullScheduleCommand
@@ -69,7 +72,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewSchedulePage(user)));
+                await Navigation.PushAsync(new ViewSchedulePage(admin)));
             }
         }
         public ICommand FullEventCommand
@@ -77,88 +80,52 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewEventPage(user)));
+                await Navigation.PushAsync(new ViewEventPage(admin)));
             }
         }
         #endregion
         public Dashboard(Admin user)
         {
-            this.user = user;
             InitializeComponent();
-            InitializeData();
+            this.admin = user;
+            teamCode.Text = user.TeamCode;
         }
-        // TODO: Remove this section on shipment
-        // START
+        public Dashboard(Student student)
+        {
+            InitializeComponent();
+            this.student = student;
+            StudentInit();
+        }
+        private async void StudentInit()
+        {
+            addScheduleBtnImage.IsVisible =
+                addNoticeBtnImage.IsVisible =
+                teamCodeBox.IsVisible = false;
+            await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
+            await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
+        }
         public Dashboard()
         {
-            //FetchData();
             InitializeComponent();
             InitializeData();
         }
 
         private async void InitializeData()
         {
-            if (user.ScheduleList == null)
-                user.ScheduleList =
-                    new ObservableCollection<ScheduleModel>();
-
-            if (user.EventList == null)
-                user.EventList =
-                    new ObservableCollection<EventModel>();
-
-            if (user.TeacherList == null)
-                user.TeacherList =
-                    new ObservableCollection<Teacher>();
-
-            if (user.StudentList == null)
-                user.StudentList =
-                    new ObservableCollection<Student>();
-            if (!user.IsAdmin)
+            if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
-                addScheduleBtnImage.IsVisible = false;
-                addNoticeBtnImage.IsVisible = false;
-                teamCodeBox.IsVisible = false;
-
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.ScheduleList,
-                    user.ScheduleList, user.AdminKey);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.StudentList,
-                    user.StudentList, user.AdminKey);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.EventList,
-                    user.EventList, user.AdminKey);
-                await FirebaseHandler.RealTimeConnection(
-                    CollectionTables.TeacherList,
-                    user.TeacherList, user.AdminKey);
+                Admin admin =
+                    await FirebaseHandler.GetAdminAsync(Preferences.Get(PrefKeys.Key, ""));
+                this.admin = admin;
+                teamCode.Text = admin.TeamCode;
             }
-            InitLabel();
-            // TODO: Remove this section on shipment
-            // START
-            user.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
-        }
-
-        private void ScheduleList_CollectionChanged(object sender,
-            System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            InitLabel();
-        }
-        void InitLabel()
-        {
-            try
+            else
             {
-                teamCode.Text = user.TeamCode;
-                firstScheduleCourseCode.Text = user.ScheduleList[0].CourseCode;
-                firstScheduleCourseName.Text = user.ScheduleList[0].Subject;
-                firstScheduleStart.Text = user.ScheduleList[0].StartTime.ToString(timeFormat);
-                firstScheduleEnd.Text = user.ScheduleList[0].EndTime.ToString(timeFormat);
-
-                secondScheduleCourseCode.Text = user.ScheduleList[1].CourseCode;
-                secondScheduleCourseName.Text = user.ScheduleList[1].Subject;
-                secondScheduleStart.Text = user.ScheduleList[1].StartTime.ToString(timeFormat);
-                secondScheduleEnd.Text = user.ScheduleList[1].EndTime.ToString(timeFormat);
+                Student student =
+                    await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
+                this.student = student;
+                StudentInit();
             }
-            catch (Exception) { }
         }
         //  END
     }

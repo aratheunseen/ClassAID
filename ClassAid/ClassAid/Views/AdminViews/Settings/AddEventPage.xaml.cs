@@ -1,10 +1,7 @@
 ﻿using ClassAid.DataContex;
-using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
-using Firebase.Database;
 using System;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,33 +10,34 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddEventPage : ContentPage
     {
-        private readonly Admin user;
+        private readonly Admin admin;
 
         public AddEventPage()
         {
         }
 
-        public AddEventPage(Admin user)
+        public AddEventPage(Admin admin)
         {
             InitializeComponent();
-            this.user = user;
+            this.admin = admin;
         }
 
-        private async void saveEvent_Clicked()
+        private async void SaveEvent_Clicked()
         {
             await Navigation.PopAsync();
-            if (user.EventList == null)
+            if (admin.EventList == null)
             {
-                user.EventList =
+                admin.EventList =
                     new System.Collections.ObjectModel.ObservableCollection<EventModel>();
             }
-            user.EventList.Add(
+            admin.EventList.Add(
                 new EventModel()
                 {
                     Title = eventTitle.Text,
-                    Details = eventBody.Text
+                    Details = eventBody.Text,
+                    Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
                 });
-            await FirebaseHandler.UpdateUser(user);
+            FirebaseHandler.UpdateAdmin(admin);
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
@@ -48,7 +46,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 string.IsNullOrWhiteSpace(eventBody.Text))
                 saveEvent.Command = null;
             else
-                saveEvent.Command = new Command(() => saveEvent_Clicked());
+                saveEvent.Command = new Command(() => SaveEvent_Clicked());
         }
     }
 }

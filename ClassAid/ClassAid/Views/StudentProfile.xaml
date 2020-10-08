@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ClassAid.Views" 
-             xmlns:system="clr-namespace:System;assembly=System.Runtime" xmlns:users="clr-namespace:ClassAid.Models.Users"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime" 
+             xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
              x:Name="This">
@@ -63,40 +64,40 @@
                        Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        FontSize="14"
-                       Text="{Binding User.ID}" 
+                       Text="{Binding Admin.ID}" 
                        Margin="30,30,0,0"
                        TextColor="#6264a7"/>
                 <Label Grid.Column="3" Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        FontSize="14"
-                       Text="{Binding User.BatchDetails.Semester}"
+                       Text="{Binding Admin.BatchDetails.Semester}"
                        Margin="30,55,0,0"
                        TextColor="#6264a7"/>
                 <Label Grid.Column="3"
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
                        FontSize="14" 
-                       Text="{Binding User.BatchDetails.Section}" 
+                       Text="{Binding Admin.BatchDetails.Section}" 
                        Margin="30,80,0,0" TextColor="#6264a7"/>
                 <Label Grid.Column="3" 
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
-                       FontSize="16" Text="{Binding User.Phone}" 
+                       FontSize="16" Text="{Binding Admin.Phone}" 
                        Margin="30,105,0,0" TextColor="#6264a7"/>
 
                 <!--Name, University Name and Logout-->
                 <Label Grid.ColumnSpan="4" 
-                       Text="{Binding User.Name}" 
+                       Text="{Binding Admin.Name}" 
                        FontSize="Large" 
                        Margin="40,150,0,0" 
                        TextColor="#6264a7"/>
                 <Label Grid.ColumnSpan="4" 
                        FontSize="Small"
-                       Text="{Binding User.BatchDetails.Department}"
+                       Text="{Binding Admin.BatchDetails.Department}"
                        Margin="40,185,0,0"
                        TextColor="#6264a7"/>
                 <Label Grid.ColumnSpan="4" 
-                       Text="{Binding User.BatchDetails.University}" 
+                       Text="{Binding Admin.BatchDetails.University}" 
                        FontSize="Small" 
                        Margin="40,210,0,0" TextColor="#6264a7"/>
                 <Image/>
@@ -151,11 +152,11 @@
                 
                 <CollectionView x:Name="RequestCollectionView"
                                 SelectionMode="None"
-                                   Grid.Row="1"
-                                    Grid.ColumnSpan="6"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="users:Shared">
+                            <DataTemplate x:DataType="users:Admin">
                             <Frame Grid.Row="1"  Grid.ColumnSpan="6">
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>

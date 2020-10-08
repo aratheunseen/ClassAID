@@ -1,4 +1,5 @@
-﻿using ClassAid.Models.Schedule;
+﻿using ClassAid.DataContex;
+using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,26 @@ namespace ClassAid.Views
         public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
+            scheduleCollectionView.ItemsSource = user.ScheduleList;
         }
-
-        private void SwipeItem_Invoked(object sender, EventArgs e)
+        public ViewSchedulePage(string adminKey)
+        {
+            InitializeComponent();
+            var ScheduleModels = new ObservableCollection<ScheduleModel>();
+            Action action =
+                new Action(async () =>
+                await FirebaseHandler.RealTimeConnection(
+                    CollectionTables.ScheduleList, ScheduleModels, adminKey));
+            action.Invoke();
+        }
+        private void DeleteSipeBtn_Invoked(object sender, EventArgs e)
         {
 
+        }
+
+        private void EditSwipeBtn_Invoked(object sender, EventArgs e)
+        {
+            
         }
     }
 }

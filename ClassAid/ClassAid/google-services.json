@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "48971108098",
+    "firebase_url": "https://classaidapp.firebaseio.com",
+    "project_id": "classaidapp",
+    "storage_bucket": "classaidapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48971108098:android:01596782bae97c0a587c1b",
+        "android_client_info": {
+          "package_name": "com.pienteger.classaid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48971108098-qbfs96r0gb1hk4pjsn2mo3dg36tcru04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnzPz5RDsgo1jmSVzEy6m_wRdIZNdXApM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48971108098-qbfs96r0gb1hk4pjsn2mo3dg36tcru04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
