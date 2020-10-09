@@ -19,12 +19,14 @@ namespace ClassAid.Views
         public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
-            scheduleCollectionView.ItemsSource = user.ScheduleList;
+            //scheduleCollectionView.ItemsSource = user.ScheduleList;
+            scheduleCollectionView.ItemsSource = LocalDbContex.LoadSchedules();
         }
         public ViewSchedulePage(string adminKey)
         {
             InitializeComponent();
             var ScheduleModels = new ObservableCollection<ScheduleModel>();
+            
             Action action =
                 new Action(async () =>
                 await FirebaseHandler.RealTimeConnection(

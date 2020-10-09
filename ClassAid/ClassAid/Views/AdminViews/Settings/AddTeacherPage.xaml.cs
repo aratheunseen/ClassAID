@@ -23,13 +23,16 @@ namespace ClassAid.Views.AdminViews.Settings
         {
             if (admin.TeacherList == null)
                 admin.TeacherList = new ObservableCollection<Teacher>();
-            admin.TeacherList.Add(new Teacher()
+            var t = (new Teacher()
             {
                 Name = teacherName.Text,
                 Designation = teacherDesegnation.Text,
                 Phone = teacherPhoneNumber.Text
             });
             await Navigation.PopAsync();
+            LocalDbContex localDb = new LocalDbContex();
+            localDb.AddTeacher(t);
+            admin.TeacherList.Add(t);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 FirebaseHandler.UpdateAdmin(admin);
             else 

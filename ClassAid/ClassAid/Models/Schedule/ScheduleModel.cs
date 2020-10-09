@@ -10,7 +10,7 @@ namespace ClassAid.Models.Schedule
     public class ScheduleModel
     {
         public string Subject { get; set; }
-        public Teacher Teacher { get; set; }
+        public string Teacher { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public string CourseCode { get; set; }
