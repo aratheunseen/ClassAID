@@ -27,16 +27,18 @@ namespace ClassAid.Views.AdminViews.Settings
         {
             if (admin.ScheduleList == null)
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>();
-            admin.ScheduleList.Insert(0, new ScheduleModel()
+            var sc = new ScheduleModel()
             {
-                Teacher = (Teacher)teacherPeaker.SelectedItem,
+                Teacher = ((Teacher)teacherPeaker.SelectedItem).Name,
                 StartTime = startDate.Time,
                 EndTime = endDate.Time,
                 Subject = subjectName.Text,
                 CourseCode = courseCode.Text,
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
-            });
+            };
+            admin.ScheduleList.Insert(0, sc);
             await Navigation.PopAsync();
+            LocalDbContex.SaveSchedules(sc);
             FirebaseHandler.UpdateAdmin(admin);
         }
 
