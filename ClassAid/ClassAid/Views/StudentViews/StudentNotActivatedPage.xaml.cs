@@ -14,14 +14,14 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentNotActivatedPage : ContentPage
     {
-        Student admin = LocalDbContex.GetAdmin();
-        public Student student{ get; }
+        readonly Student admin = LocalDbContex.GetAdmin();
+        public Student Student{ get; }
         public StudentNotActivatedPage(Student student)
         {
-            this.student = student;
+            Student = student;
             InitializeComponent();
             LogOut.Command = new Command(() => App.LogOut());
-            ErrorText.Text = "Opps " + student.Name + "! Your Account hasn't been activated yet. " +
+            ErrorText.Text = "Opps " + student.Name.Split(" ")[0] + "! Your Account hasn't been activated yet. " +
                 "Please re-log in if you think this is an mistake or call your corresponding class representative.";
         }
 
