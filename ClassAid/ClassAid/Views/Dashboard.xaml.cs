@@ -11,6 +11,7 @@ using ClassAid.Models;
 using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace ClassAid.Views
 {
@@ -98,12 +99,25 @@ namespace ClassAid.Views
         }
         private async void StudentInit()
         {
+            EventModels.CollectionChanged += EventModels_CollectionChanged;
+            ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
             addScheduleBtnImage.IsVisible =
                 addNoticeBtnImage.IsVisible =
                 teamCodeBox.IsVisible = false;
             await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
             await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
         }
+
+        private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            LocalDbContex.SaveSchedules(ScheduleModels[0]);
+        }
+
+        private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            LocalDbContex.SaveEvents(EventModels[0]);
+        }
+
         public Dashboard()
         {
             InitializeComponent();

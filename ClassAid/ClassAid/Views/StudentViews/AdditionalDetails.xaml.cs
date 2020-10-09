@@ -60,6 +60,9 @@ namespace ClassAid.Views.StudentViews
                 student.AdminKey = keyVault.AdminKey;
                 FirebaseHandler.UpdateAdmin(tempAdmin);
                 FirebaseHandler.UpdateStudent(student);
+                LocalDbContex.CreateTables();
+                LocalDbContex.SaveUser(student);
+                LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
             }
             else
             {

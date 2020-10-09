@@ -65,7 +65,7 @@ namespace ClassAid.DataContex
                  .AsObservable<T>()
                  .Subscribe(d =>
                  {
-                     collection.Add(d.Object);
+                     collection.Insert(0,d.Object);
                  }));
         }
         #endregion

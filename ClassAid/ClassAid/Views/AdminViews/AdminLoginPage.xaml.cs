@@ -48,6 +48,15 @@ namespace ClassAid.Views.AdminViews
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempAdmin));
+                    LocalDbContex.CreateTables();
+                    LocalDbContex.SaveUser(tempAdmin);
+                    LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                    foreach (var item in tempAdmin.EventList)
+                        LocalDbContex.SaveEvents(item);
+                    foreach (var item in tempAdmin.TeacherList)
+                        LocalDbContex.SaveTeacher(item);
+                    foreach (var item in tempAdmin.ScheduleList)
+                        LocalDbContex.SaveSchedules(item);
                 }
             }
             else

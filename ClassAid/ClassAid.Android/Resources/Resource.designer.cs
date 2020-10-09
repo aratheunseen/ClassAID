@@ -9113,25 +9113,28 @@ namespace ClassAid.Droid
 			public const int design_tab_indicator_anim_duration_ms = 2131296263;
 			
 			// aapt resource value: 0x7F090008
-			public const int hide_password_duration = 2131296264;
+			public const int google_play_services_version = 2131296264;
 			
 			// aapt resource value: 0x7F090009
-			public const int mtrl_btn_anim_delay_ms = 2131296265;
+			public const int hide_password_duration = 2131296265;
 			
 			// aapt resource value: 0x7F09000A
-			public const int mtrl_btn_anim_duration_ms = 2131296266;
+			public const int mtrl_btn_anim_delay_ms = 2131296266;
 			
 			// aapt resource value: 0x7F09000B
-			public const int mtrl_chip_anim_duration = 2131296267;
+			public const int mtrl_btn_anim_duration_ms = 2131296267;
 			
 			// aapt resource value: 0x7F09000C
-			public const int mtrl_tab_indicator_anim_duration_ms = 2131296268;
+			public const int mtrl_chip_anim_duration = 2131296268;
 			
 			// aapt resource value: 0x7F09000D
-			public const int show_password_duration = 2131296269;
+			public const int mtrl_tab_indicator_anim_duration_ms = 2131296269;
 			
 			// aapt resource value: 0x7F09000E
-			public const int status_bar_notification_info_maxnum = 2131296270;
+			public const int show_password_duration = 2131296270;
+			
+			// aapt resource value: 0x7F09000F
+			public const int status_bar_notification_info_maxnum = 2131296271;
 			
 			static Integer()
 			{
@@ -9549,40 +9552,67 @@ namespace ClassAid.Droid
 			public const int character_counter_pattern = 2131558442;
 			
 			// aapt resource value: 0x7F0D002B
-			public const int fab_transformation_scrim_behavior = 2131558443;
+			public const int common_google_play_services_unknown_issue = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public const int fab_transformation_sheet_behavior = 2131558444;
+			public const int default_web_client_id = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public const int hide_bottom_view_on_scroll_behavior = 2131558445;
+			public const int fab_transformation_scrim_behavior = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public const int mtrl_chip_close_icon_content_description = 2131558446;
+			public const int fab_transformation_sheet_behavior = 2131558446;
 			
 			// aapt resource value: 0x7F0D002F
-			public const int overflow_tab_title = 2131558447;
+			public const int firebase_database_url = 2131558447;
 			
 			// aapt resource value: 0x7F0D0030
-			public const int password_toggle_content_description = 2131558448;
+			public const int gcm_defaultSenderId = 2131558448;
 			
 			// aapt resource value: 0x7F0D0031
-			public const int path_password_eye = 2131558449;
+			public const int google_api_key = 2131558449;
 			
 			// aapt resource value: 0x7F0D0032
-			public const int path_password_eye_mask_strike_through = 2131558450;
+			public const int google_app_id = 2131558450;
 			
 			// aapt resource value: 0x7F0D0033
-			public const int path_password_eye_mask_visible = 2131558451;
+			public const int google_crash_reporting_api_key = 2131558451;
 			
 			// aapt resource value: 0x7F0D0034
-			public const int path_password_strike_through = 2131558452;
+			public const int google_storage_bucket = 2131558452;
 			
 			// aapt resource value: 0x7F0D0035
-			public const int search_menu_title = 2131558453;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public const int status_bar_notification_info_overflow = 2131558454;
+			public const int mtrl_chip_close_icon_content_description = 2131558454;
+			
+			// aapt resource value: 0x7F0D0037
+			public const int overflow_tab_title = 2131558455;
+			
+			// aapt resource value: 0x7F0D0038
+			public const int password_toggle_content_description = 2131558456;
+			
+			// aapt resource value: 0x7F0D0039
+			public const int path_password_eye = 2131558457;
+			
+			// aapt resource value: 0x7F0D003A
+			public const int path_password_eye_mask_strike_through = 2131558458;
+			
+			// aapt resource value: 0x7F0D003B
+			public const int path_password_eye_mask_visible = 2131558459;
+			
+			// aapt resource value: 0x7F0D003C
+			public const int path_password_strike_through = 2131558460;
+			
+			// aapt resource value: 0x7F0D003D
+			public const int project_id = 2131558461;
+			
+			// aapt resource value: 0x7F0D003E
+			public const int search_menu_title = 2131558462;
+			
+			// aapt resource value: 0x7F0D003F
+			public const int status_bar_notification_info_overflow = 2131558463;
 			
 			static String()
 			{

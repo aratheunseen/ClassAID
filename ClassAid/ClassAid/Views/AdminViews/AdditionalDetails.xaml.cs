@@ -44,6 +44,9 @@ namespace ClassAid.Views.AdminViews
                 Preferences.Set(PrefKeys.IsAdmin, true);
                 FirebaseHandler.UpdateAdmin(admin);
                 Application.Current.MainPage = new NavigationPage(new Dashboard(admin));
+                LocalDbContex.CreateTables();
+                LocalDbContex.SaveUser(admin);
+                LocalDbContex.SaveBatchDetails(admin.BatchDetails);
             }
             catch (Exception)
             {

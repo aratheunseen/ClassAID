@@ -1,7 +1,9 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -30,14 +32,22 @@ namespace ClassAid.Views.AdminViews.Settings
                 admin.EventList =
                     new System.Collections.ObjectModel.ObservableCollection<EventModel>();
             }
-            admin.EventList.Add(
-                new EventModel()
+            var e = new EventModel()
                 {
                     Title = eventTitle.Text,
                     Details = eventBody.Text,
                     Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
-                });
-            FirebaseHandler.UpdateAdmin(admin);
+                };
+            admin.EventList.Add(e);
+            LocalDbContex.SaveEvents(e);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                FirebaseHandler.UpdateAdmin(admin);
+            else
+            {
+                Preferences.Set(PrefKeys.IsSyncPending, true);
+                LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);
+                DependencyService.Get<Toast>().Show("No internet access. Sync pending.");
+            }
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
