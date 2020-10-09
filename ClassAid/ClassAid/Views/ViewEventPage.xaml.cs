@@ -1,4 +1,5 @@
 ﻿
+using ClassAid.DataContex;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System.Collections.ObjectModel;
@@ -14,10 +15,8 @@ namespace ClassAid.Views
         public ViewEventPage(Admin admin)
         {
             InitializeComponent();
-            if (admin.EventList != null)
-            {
-                eventListView.ItemsSource = admin.EventList;
-            }
+            eventListView.ItemsSource = LocalDbContex.GetEvents();
+            
         }
 
         private void OnCollectionViewScrolled(object sender, ItemsViewScrolledEventArgs e)

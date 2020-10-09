@@ -30,8 +30,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 Phone = teacherPhoneNumber.Text
             });
             await Navigation.PopAsync();
-            LocalDbContex localDb = new LocalDbContex();
-            localDb.AddTeacher(t);
+            LocalDbContex.SaveTeacher(t);
             admin.TeacherList.Add(t);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 FirebaseHandler.UpdateAdmin(admin);

@@ -46,9 +46,9 @@ namespace ClassAid.Views
         private void Logout()
         {
             Preferences.Set(PrefKeys.IsLoggedIn, false);
-            LocalStorageEngine.ClearData(FileType.Admin);
             Application.Current.MainPage =
                 new NavigationPage(new StartPage());
+            LocalDbContex.DropTables();
         }
 
         private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)

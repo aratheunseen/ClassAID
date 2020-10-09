@@ -1,10 +1,12 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,9 +39,17 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
             admin.ScheduleList.Insert(0, sc);
+            LocalDbContex.SaveSchedules(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedules(sc);
-            FirebaseHandler.UpdateAdmin(admin);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                FirebaseHandler.UpdateAdmin(admin);
+            else
+            {
+                Preferences.Set(PrefKeys.IsSyncPending, true);
+                LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);
+                DependencyService.Get<Toast>().Show("No internet access. Sync pending.");
+            }
         }
 
         // TODO: Can not build after change the button to frame gesture

@@ -61,11 +61,15 @@ namespace ClassAid.Views.StudentViews
                     Preferences.Set(PrefKeys.Key, student.Key);
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard(tempStudent));
+                    LocalDbContex.CreateTables();
+                    LocalDbContex.SaveUser(student);
+                    var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                    LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                 }
             }
             catch (Exception e)
             {
-                resultText.Text = "Sorry something bad happened. " + e.Message;
+                resultText.Text = "Sorry something bad happened.";
             }
 
         }
