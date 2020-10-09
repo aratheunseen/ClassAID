@@ -62,6 +62,7 @@ namespace ClassAid.Views.StudentViews
                 FirebaseHandler.UpdateStudent(student);
                 LocalDbContex.CreateTables();
                 LocalDbContex.SaveUser(student);
+                LocalDbContex.SaveUser(tempAdmin);
                 LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
             }
             else

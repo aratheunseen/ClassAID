@@ -110,12 +110,12 @@ namespace ClassAid.Views
 
         private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            LocalDbContex.SaveSchedules(ScheduleModels[0]);
+            LocalDbContex.SaveSchedule(ScheduleModels[0]);
         }
 
         private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            LocalDbContex.SaveEvents(EventModels[0]);
+            LocalDbContex.SaveEvent(EventModels[0]);
         }
 
         public Dashboard()

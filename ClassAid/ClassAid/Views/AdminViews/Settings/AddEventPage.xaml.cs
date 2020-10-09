@@ -39,7 +39,7 @@ namespace ClassAid.Views.AdminViews.Settings
                     Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
                 };
             admin.EventList.Add(e);
-            LocalDbContex.SaveEvents(e);
+            LocalDbContex.SaveEvent(e);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 FirebaseHandler.UpdateAdmin(admin);
             else

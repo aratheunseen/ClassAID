@@ -19,7 +19,7 @@ namespace ClassAid.Views
         {
             Admin = admin;
             InitializeComponent();
-            logoutBtn.Command = new Command(() => Logout());
+            logoutBtn.Command = new Command(() => App.LogOut());
             AllocateRequestList(admin.AdminKey);
         }
         public StudentProfile(Student admin)
@@ -43,14 +43,6 @@ namespace ClassAid.Views
                 RequestCollectionView.ItemsSource = sample;
             }
         }
-        private void Logout()
-        {
-            Preferences.Set(PrefKeys.IsLoggedIn, false);
-            Application.Current.MainPage =
-                new NavigationPage(new StartPage());
-            LocalDbContex.DropTables();
-        }
-
         private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)
         {
 
