@@ -21,10 +21,19 @@ namespace ClassAid.DataContex
                 return Path.Combine("Data Source=" + basePath + "/classaid.db3");
             }
         }
-        public static void SaveSchedules(ScheduleModel schedules)
+        public static void SaveSchedule(ScheduleModel schedule)
         {
             using (IDbConnection db = new SqliteConnection(ConectionString))
             {              
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
+                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
+            }
+        }
+        public static void SaveSchedules(IEnumerable<ScheduleModel> schedules)
+        {
+            using (IDbConnection db = new SqliteConnection(ConectionString))
+            {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Data", JsonConvert.SerializeObject(schedules));
                 db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
@@ -46,12 +55,28 @@ namespace ClassAid.DataContex
                     "Values (@Name, @Designation, @Phone);", teacher);
             }
         }
-        public static void SaveEvents(EventModel eventModel)
+        public static void SaveTeachers(IEnumerable<Teacher> teachers)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.ExecuteAsync("INSERT OR REPLACE INTO teachers (Name, Designation, Phone) " +
+                    "Values (@Name, @Designation, @Phone);", teachers);
+            }
+        }
+        public static void SaveEvent(EventModel eventModel)
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO events (Details, Title, Time) " +
                     "Values (@Details, @Title, @Time);", eventModel);
+            }
+        }
+        public static void SaveEvents(IEnumerable<EventModel> eventModels)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.ExecuteAsync("INSERT OR REPLACE INTO events (Details, Title, Time) " +
+                    "Values (@Details, @Title, @Time);", eventModels);
             }
         }
         public static void SaveUser<T>(T user)
@@ -62,6 +87,24 @@ namespace ClassAid.DataContex
                             ID, Phone, Key, IsActive, IsAdmin) " +
                     "Values (@TeamCode, @AdminKey, @Name," +
                     "@ID, @Phone, @Key, @IsActive, @IsAdmin);", user);
+            }
+        }
+        public static void UpdateStudent(Student student)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.ExecuteAsync(@"UPDATE students set IsActive =" +
+                    "@IsActive WHERE Key = @Key;", student);
+            }
+        }
+        public static void SaveStudents(IEnumerable<Student> students)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.ExecuteAsync(@"INSERT OR REPLACE INTO students (TeamCode, AdminKey, Name,
+                            ID, Phone, Key, IsActive, IsAdmin) " +
+                    "Values (@TeamCode, @AdminKey, @Name," +
+                    "@ID, @Phone, @Key, @IsActive, @IsAdmin);", students);
             }
         }
         public static IEnumerable<Teacher> GetTeachers()
@@ -106,6 +149,22 @@ namespace ClassAid.DataContex
                 return user;
             }
         }
+        public static Student GetAdmin()
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                var user = cnn.Query<Student>("SELECT * FROM user").ToList();
+                return user[1];
+            }
+        }
+        public static IEnumerable<Student> GetStudents()
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                var students = cnn.Query<Student>("SELECT * FROM students");
+                return students;
+            }
+        }
         public static void CreateTables()
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
@@ -127,6 +186,11 @@ namespace ClassAid.DataContex
                             ID text, Phone text, Key text, IsActive boolean, 
                             IsAdmin boolean)";
                 cnn.Execute(createTable);
+                createTable = @"CREATE TABLE IF NOT EXISTS students (
+                            TeamCode text, AdminKey text, Name text,
+                            ID text, Phone text, Key text, IsActive boolean, 
+                            IsAdmin boolean)";
+                cnn.Execute(createTable);
             }
         }
         public static void DropTables()
@@ -142,6 +206,8 @@ namespace ClassAid.DataContex
                 sql = "DROP TABLE IF EXISTS teachers;";
                 cnn.ExecuteAsync(sql);
                 sql = "DROP TABLE IF EXISTS user;";
+                cnn.ExecuteAsync(sql);
+                sql = "DROP TABLE IF EXISTS students;";
                 cnn.ExecuteAsync(sql);
             }
         }

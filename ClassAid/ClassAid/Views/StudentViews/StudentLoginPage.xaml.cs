@@ -54,17 +54,28 @@ namespace ClassAid.Views.StudentViews
                 }
                 else
                 {
-                    activityIndicator.IsRunning = false;
-                    Preferences.Set(PrefKeys.IsLoggedIn, true);
-                    Preferences.Set(PrefKeys.AdminKey, tempStudent.TeamCode);
-                    Preferences.Set(PrefKeys.IsAdmin, false);
-                    Preferences.Set(PrefKeys.Key, student.Key);
-                    Application.Current.MainPage =
-                        new NavigationPage(new Dashboard(tempStudent));
-                    LocalDbContex.CreateTables();
-                    LocalDbContex.SaveUser(student);
                     var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
-                    LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                    activityIndicator.IsRunning = false;
+                    if (student.IsActive)
+                    {
+                        Preferences.Set(PrefKeys.IsLoggedIn, true);
+                        Preferences.Set(PrefKeys.AdminKey, tempStudent.TeamCode);
+                        Preferences.Set(PrefKeys.IsAdmin, false);
+                        Preferences.Set(PrefKeys.Key, student.Key);
+                        Application.Current.MainPage =
+                            new NavigationPage(new Dashboard(tempStudent));
+                        LocalDbContex.CreateTables();
+                        LocalDbContex.SaveUser(student);                        
+                        LocalDbContex.SaveUser(tempAdmin);
+                        LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new StudentNotActivatedPage(student);
+                        LocalDbContex.CreateTables();
+                        LocalDbContex.SaveUser(student);
+                        LocalDbContex.SaveUser(tempAdmin);
+                    }
                 }
             }
             catch (Exception e)

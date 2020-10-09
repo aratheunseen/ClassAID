@@ -39,9 +39,9 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
             admin.ScheduleList.Insert(0, sc);
-            LocalDbContex.SaveSchedules(sc);
+            LocalDbContex.SaveSchedule(sc);
             await Navigation.PopAsync();
-            LocalDbContex.SaveSchedules(sc);
+            LocalDbContex.SaveSchedule(sc);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 FirebaseHandler.UpdateAdmin(admin);
             else

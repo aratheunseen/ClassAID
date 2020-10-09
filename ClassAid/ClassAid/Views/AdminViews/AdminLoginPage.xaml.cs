@@ -51,12 +51,10 @@ namespace ClassAid.Views.AdminViews
                     LocalDbContex.CreateTables();
                     LocalDbContex.SaveUser(tempAdmin);
                     LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
-                    foreach (var item in tempAdmin.EventList)
-                        LocalDbContex.SaveEvents(item);
-                    foreach (var item in tempAdmin.TeacherList)
-                        LocalDbContex.SaveTeacher(item);
-                    foreach (var item in tempAdmin.ScheduleList)
-                        LocalDbContex.SaveSchedules(item);
+                    LocalDbContex.SaveEvents(tempAdmin.EventList);
+                    LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
+                    LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
+                    LocalDbContex.SaveStudents(tempAdmin.StudentList);
                 }
             }
             else

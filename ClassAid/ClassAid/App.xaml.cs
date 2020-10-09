@@ -72,5 +72,12 @@ namespace ClassAid
         protected override void OnResume()
         {
         }
+        public static void LogOut()
+        {
+            Preferences.Set(PrefKeys.IsLoggedIn, false);
+            Application.Current.MainPage =
+                new NavigationPage(new StartPage());
+            LocalDbContex.DropTables();
+        }
     }
 }
