@@ -1,5 +1,4 @@
-﻿using Android.Telecom;
-using ClassAid.DataContex;
+﻿using ClassAid.DataContex;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System.Collections.ObjectModel;
@@ -42,8 +41,6 @@ namespace ClassAid.Views.AdminViews.Settings
             }
         }
         
-        // TODO: Can not build after change the button to frame gesture
-
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(teacherName.Text) ||
