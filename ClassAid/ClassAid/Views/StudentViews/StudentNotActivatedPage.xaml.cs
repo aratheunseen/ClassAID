@@ -14,7 +14,7 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentNotActivatedPage : ContentPage
     {
-        readonly Student admin = LocalDbContex.GetAdmin();
+        readonly Student admin = LocalDbContex.GetAdminInfo();
         public Student Student{ get; }
         public StudentNotActivatedPage(Student student)
         {

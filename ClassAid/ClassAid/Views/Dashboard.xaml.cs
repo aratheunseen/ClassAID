@@ -12,6 +12,7 @@ using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace ClassAid.Views
 {
@@ -128,18 +129,32 @@ namespace ClassAid.Views
         {
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
-                Admin admin =
-                    await FirebaseHandler.GetAdminAsync(Preferences.Get(PrefKeys.Key, ""));
-                this.admin = admin;
+                admin = LocalDbContex.GetAdmin();
                 teamCode.Text = admin.TeamCode;
+                admin.BatchDetails = LocalDbContex.GetBatchDetails();
+                admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
+                admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
+                admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
+                admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
             }
             else
             {
-                Student student =
+                student = LocalDbContex.GetUser();
+                
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    student =
                     await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
-                this.student = student;
-                StudentInit();
+                    StudentInit();
+                }
+                Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             }
+        }
+
+        private async void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            student = await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
+            StudentInit();
         }
         //  END
     }

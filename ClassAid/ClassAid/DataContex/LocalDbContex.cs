@@ -8,6 +8,7 @@ using System.Data;
 using Newtonsoft.Json;
 using System.Linq;
 using ClassAid.Models.Users;
+using System.Runtime.InteropServices;
 
 namespace ClassAid.DataContex
 {
@@ -24,7 +25,7 @@ namespace ClassAid.DataContex
         public static void SaveSchedule(ScheduleModel schedule)
         {
             using (IDbConnection db = new SqliteConnection(ConectionString))
-            {              
+            {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
                 db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
@@ -34,15 +35,18 @@ namespace ClassAid.DataContex
         {
             using (IDbConnection db = new SqliteConnection(ConectionString))
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@Data", JsonConvert.SerializeObject(schedules));
-                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
+                foreach (var item in schedules)
+                {
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@Data", JsonConvert.SerializeObject(item));
+                    db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
+                }
             }
         }
         public static void SaveBatchDetails(BatchDetails batchDetails)
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
-            {               
+            {
                 cnn.Execute("INSERT OR REPLACE INTO batchdetails (Department,Semester,Section,University) " +
                     "Values (@Department,@Semester,@Section,@University);", batchDetails);
             }
@@ -127,7 +131,7 @@ namespace ClassAid.DataContex
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
-                BatchDetails batch = cnn.Query<BatchDetails>("SELECT * FROM schedule")
+                BatchDetails batch = cnn.Query<BatchDetails>("SELECT * FROM batchdetails")
                     .FirstOrDefault();
                 return batch;
             }
@@ -149,12 +153,20 @@ namespace ClassAid.DataContex
                 return user;
             }
         }
-        public static Student GetAdmin()
+        public static Student GetAdminInfo()
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 var user = cnn.Query<Student>("SELECT * FROM user").ToList();
                 return user[1];
+            }
+        }
+        public static Admin GetAdmin()
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                var user = cnn.Query<Admin>("SELECT * FROM user").FirstOrDefault();
+                return user;
             }
         }
         public static IEnumerable<Student> GetStudents()

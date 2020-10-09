@@ -41,6 +41,7 @@
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="3.1.8" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
