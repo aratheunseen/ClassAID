@@ -22,7 +22,76 @@
                                        Margin="5,0,0,0"
                                        Grid.ColumnSpan="4"/>
                             </Expander.Header>
-                            <StackLayout Padding="5"
+                            <CollectionView x:Name="RequestCollectionView"
+                                SelectionMode="None"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="6"
+                                Margin="0,35,0,0">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="y:ScheduleModel">
+                                        <Frame>
+                                            <Grid BackgroundColor="#FFF">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <BoxView Grid.Row="0"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Start" 
+                                             Margin="25,5,0,0"
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                                             BackgroundColor="Black"
+                                             CornerRadius="30"/>
+                                                <BoxView Grid.Row="0"
+                                             Grid.Column="1"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Start" 
+                                             HeightRequest="20"
+                                             WidthRequest="2"
+                                             BackgroundColor="Black"/>
+                                                <Label x:Name="ScheduleCourseCode"
+                                           Text="{Binding CourseCode}"
+                                           Grid.Column="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="18"
+                                           TextColor="Gray"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start" 
+                                           Grid.ColumnSpan="3"/>
+                                                <Label x:Name="ScheduleCourseName"
+                                               Text="{Binding Subject}"
+                                           Margin="0,25,0,0"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="Gray"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start" 
+                                           Grid.ColumnSpan="3"/>
+                                                <Label x:Name="ScheduleStart" 
+                                               Grid.Column="4"
+                                               Grid.Row="1"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start" 
+                                               Margin="0,5,15,0"/>
+                                                <Label x:Name="ScheduleEnd"
+                                               Grid.Column="4"
+                                               Grid.Row="1"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start" 
+                                               Margin="0,30,15,0"/>
+                                            </Grid>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <!--<StackLayout Padding="5"
                                          Margin="5">
                                 <BoxView Grid.Row="1"
                                                  HorizontalOptions="End"
@@ -76,7 +145,7 @@
                                                HorizontalOptions="End"
                                                VerticalOptions="Start" 
                                                Margin="5,80,15,0"/>
-                            </StackLayout>
+                            </StackLayout>-->
                         </Expander>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
