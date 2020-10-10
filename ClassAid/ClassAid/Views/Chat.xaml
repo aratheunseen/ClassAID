@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:y="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:Component="clr-namespace:ClassAid.CustomComponents" xmlns:models="clr-namespace:ClassAid.Models"
+             x:Class="ClassAid.Views.ChatHub">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollView VerticalScrollBarVisibility="Never"
+                        Grid.ColumnSpan="4"
+                        Padding="10"
+                        VerticalOptions="StartAndExpand"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalScrollBarVisibility="Never">
+                <StackLayout>
+                    <CollectionView x:Name="ChatViewBox">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ChatModel">
+                                <StackLayout Padding="3">
+                                    <Label Text="{Binding Sender}"
+                                           FontSize="Title"/>
+                                    <Label Text="{Binding Message}"
+                                           FontSize="Body"/>
+                                    <Label Text="{Binding Time}"
+                                           FontSize="Small"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="1"
+                         Padding="5"
+                         Margin="5">
+                <Entry x:Name="messageBox" 
+                       Placeholder="Message"
+                       VerticalOptions="End"
+                       HorizontalOptions="StartAndExpand"
+                       Margin="2"
+                       Grid.ColumnSpan="3"/>
+                <Button x:Name="sendButton"
+                        Clicked="SendButton_Clicked"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+                        Margin="2"
+                        Grid.Column="3"
+                        Text="Send"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
+<!--
+https://github.com/jamesmontemagno/MediaPlugin
+https://github.com/step-up-labs/firebase-storage-dotnet
+https://github.com/xamarin/GooglePlayServicesComponents
+-->
