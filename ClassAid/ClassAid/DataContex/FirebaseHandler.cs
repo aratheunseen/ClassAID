@@ -41,6 +41,10 @@ namespace ClassAid.DataContex
         {
             await GetClient().Child(admin.Key).PutAsync(admin);
         }
+        public static async void AddRetake(RetakeStudentModel retakeStudent)
+        {
+            await GetClient().Child(retakeStudent.AdminKey).Child("RetakeStudentList").PutAsync(retakeStudent);
+        }
         #endregion
         #region StudentArea
         public static async void InsertStudent(Student student)

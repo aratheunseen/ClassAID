@@ -21,7 +21,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Profile Header-->
                 <Image Source="avater.png"
                        Grid.RowSpan="2" Grid.ColumnSpan="2"
@@ -110,7 +110,7 @@
                              HorizontalOptions="End" 
                              VerticalOptions="End"
                              Margin="0,0,30,60"/>
-                
+
                 <!-- Join Request Title -->
                 <Image Grid.Column="0"
                        Grid.Row="1"
@@ -129,7 +129,7 @@
                        VerticalOptions="Start" 
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
-                
+
                 <!-- Join Request Content -->
                 <!--<Expander>
                     <Expander.Header>
@@ -149,14 +149,14 @@
                                Text="{Binding Phone}"/>
                     </Grid>
                 </Expander>-->
-                
+
                 <CollectionView x:Name="RequestCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="1"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="users:Admin">
+                        <DataTemplate x:DataType="users:Admin">
                             <Frame Grid.Row="1"  Grid.ColumnSpan="6">
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
@@ -241,7 +241,9 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                --><!-- Teacher List Content --><!--
+                -->
+                <!-- Teacher List Content -->
+                <!--
                 <CollectionView x:Name="Namex"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -306,7 +308,9 @@
                 </CollectionView>
                 
 
-                --><!-- Classmate Title --><!--
+                -->
+                <!-- Classmate Title -->
+                <!--
                 <Image Grid.Column="0"
                        Grid.Row="3"
                        Margin="0,0,5,0"
@@ -325,7 +329,9 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                --><!-- Classmate Content --><!--
+                -->
+                <!-- Classmate Content -->
+                <!--
                 <CollectionView x:Name="Namey"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -388,6 +394,15 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>-->
+                <StackLayout x:Name="RetakeStudentArea">
+                    <Label Text="Add anothre CR"
+                           FontSize="Medium"/>
+                    <Entry x:Name="anotherTeamCode"
+                           Placeholder="Teamcode"/>
+                    <Button x:Name="addAnotherAdmin"
+                            Text="Add another CR"
+                            Clicked="addAnotherAdmin_Clicked"/>
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

@@ -1,5 +1,6 @@
 ﻿using ClassAid.Models.Engines;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ClassAid.Models.Users
 {
@@ -27,5 +28,6 @@ namespace ClassAid.Models.Users
         public string Key { get; set; }
         public bool IsActive { get; set; }
         public bool IsAdmin { get; set; }
+        public List<RetakeStudentModel> RetakeModels { get; set; }
     }
 }

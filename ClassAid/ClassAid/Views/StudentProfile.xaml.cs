@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using ClassAid.Models;
 
 namespace ClassAid.Views
 {
@@ -17,10 +18,12 @@ namespace ClassAid.Views
     public partial class StudentProfile : ContentPage
     {
         public Admin Admin { get; set; }
+        public Student Student { get; set; }
         public StudentProfile(Admin admin)
         {
             Admin = admin;
             InitializeComponent();
+            RetakeStudentArea.IsVisible = false;
             logoutBtn.Command = new Command(() => App.LogOut());
             AllocateRequestList(admin.AdminKey);
         }
@@ -31,14 +34,15 @@ namespace ClassAid.Views
             Admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-               Task.Run(async ()=> Admin = await FirebaseHandler.GetAdminAsync(student.AdminKey));
+                Task.Run(async () => Admin = await FirebaseHandler.GetAdminAsync(student.AdminKey));
             }
             else
             {
                 Admin.BatchDetails = LocalDbContex.GetBatchDetails();
-                Admin.StudentList = 
+                Admin.StudentList =
                     new ObservableCollection<Student>(LocalDbContex.GetStudents());
             }
+            Student = student;
         }
         private async void AllocateRequestList(string key)
         {
@@ -70,6 +74,27 @@ namespace ClassAid.Views
         private void RejectBtn_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void addAnotherAdmin_Clicked(object sender, EventArgs e)
+        {
+            KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
+            if (key != null)
+            {
+                var retake = new RetakeStudentModel()
+                {
+                    TeamCode = anotherTeamCode.Text,
+                    AdminKey = key.AdminKey,
+                    IsActive = false
+                };
+                if (Student.RetakeModels == null)
+                {
+                    Student.RetakeModels = new List<RetakeStudentModel>();
+                }
+                Student.RetakeModels.Add(retake);
+                FirebaseHandler.UpdateStudent(Student);
+                FirebaseHandler.AddRetake(retake);
+            }
         }
     }
 }
