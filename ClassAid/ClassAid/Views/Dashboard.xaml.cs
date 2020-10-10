@@ -41,7 +41,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new SVG_Tester(admin)));
+                await Navigation.PushAsync(new ChatHub(Preferences.Get(PrefKeys.AdminKey, ""), Preferences.Get(PrefKeys.IsAdmin, false) ? admin.Name : student.Name)));
             }
         }
         public ICommand AddScheduleCommand
@@ -65,7 +65,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(() =>
-                Navigation.PushAsync( Preferences.Get(PrefKeys.IsAdmin,false) ?
+                Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
                     new StudentProfile(admin) : new StudentProfile(student)));
             }
         }
@@ -96,7 +96,7 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             this.student = student;
-            
+
             StudentInit();
         }
         private async void StudentInit()
@@ -149,7 +149,7 @@ namespace ClassAid.Views
             else
             {
                 student = LocalDbContex.GetUser();
-                
+
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
                     student =

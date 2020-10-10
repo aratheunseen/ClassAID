@@ -69,8 +69,15 @@ namespace ClassAid.DataContex
                  .AsObservable<T>()
                  .Subscribe(d =>
                  {
-                     collection.Insert(0,d.Object);
+                     collection.Insert(0, d.Object);
                  }));
+        }
+        public static async void RealTimeChat(ObservableCollection<ChatModel> collection)
+        {
+           _ = await Task.Run(()=> GetClient().Child("Chat")
+                .Child(Preferences.Get(PrefKeys.AdminKey, ""))
+                .AsObservable<ChatModel>().Subscribe(d=> collection.Add(d.Object)));
+            
         }
         #endregion
         #region Teamcode
@@ -109,6 +116,17 @@ namespace ClassAid.DataContex
                  .Child(key).Child("StudentList")
                  .OnceAsync<Student>()).Select(p => p.Object)
                  .Where(p => p.IsActive == false);
+        }
+        public static async Task<IEnumerable<RetakeStudentModel>> GetRetakeStudents(string key)
+        {
+            return (await GetClient()
+                 .Child(key).Child("RetakeStudentList")
+                 .OnceAsync<RetakeStudentModel>()).Select(p => p.Object)
+                 .Where(p => p.IsActive == false);
+        }
+        public static void SendMessage(ChatModel chat)
+        {
+            GetClient().Child("Chat").Child(Preferences.Get(PrefKeys.AdminKey,"")).PostAsync(chat);
         }
     }
     public enum CollectionTables

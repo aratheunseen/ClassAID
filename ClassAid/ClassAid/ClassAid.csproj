@@ -97,7 +97,7 @@
     <EmbeddedResource Update="Views\StudentViews\StudentNotActivatedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SVG Tester.xaml">
+    <EmbeddedResource Update="Views\Chat.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ViewEventPage.xaml">
@@ -117,6 +117,9 @@
     </Compile>
     <Compile Update="Views\StudentProfile.xaml.cs">
       <DependentUpon>StudentProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Chat.xaml.cs">
+      <DependentUpon>Chat.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
