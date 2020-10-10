@@ -22,6 +22,7 @@ namespace ClassAid.Models.Users
         public ObservableCollection<Student> StudentList { get; set; } = new ObservableCollection<Student>();
         public ObservableCollection<ScheduleModel> ScheduleList { get; set; } = new ObservableCollection<ScheduleModel>();
         public ObservableCollection<EventModel> EventList { get; set; } = new ObservableCollection<EventModel>();
+        public ObservableCollection<RetakeStudentModel> RetakeStudentList { get; set; }
         public BatchDetails BatchDetails { get; set; } = new BatchDetails();
     }
     public class PrefKeys

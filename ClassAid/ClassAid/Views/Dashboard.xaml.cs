@@ -96,10 +96,19 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             this.student = student;
+            
             StudentInit();
         }
         private async void StudentInit()
         {
+            foreach (var item in student.RetakeModels)
+            {
+                if (item.IsActive)
+                {
+                    await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, item.AdminKey);
+                    await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, item.AdminKey);
+                }
+            }
             EventModels.CollectionChanged += EventModels_CollectionChanged;
             ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
             addScheduleBtnImage.IsVisible =
