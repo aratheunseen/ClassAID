@@ -62,7 +62,7 @@
                         WidthRequest="100"
                         ItemDisplayBinding="{Binding Name}"/>
                         </Frame>
-                        <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,10,0" Grid.Column="4" x:Name="addTeacher"
+                        <Button HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,5,0" Grid.Column="4" x:Name="addTeacher"
                                  ImageSource="add.png"
                                  BackgroundColor="Transparent"
                              Clicked="AddTeacher_Clicked"
