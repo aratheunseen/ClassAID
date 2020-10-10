@@ -22,14 +22,7 @@
                                        Margin="5,0,0,0"
                                        Grid.ColumnSpan="4"/>
                             </Expander.Header>
-                            <CollectionView x:Name="RequestCollectionView"
-                                SelectionMode="None"
-                                Grid.Row="0"
-                                Grid.ColumnSpan="6"
-                                Margin="0,35,0,0">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="y:ScheduleModel">
-                                        <Frame>
+                           
                                             <Grid BackgroundColor="#FFF">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
@@ -87,10 +80,7 @@
                                                VerticalOptions="Start" 
                                                Margin="0,30,15,0"/>
                                             </Grid>
-                                        </Frame>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                                       
                             <!--<StackLayout Padding="5"
                                          Margin="5">
                                 <BoxView Grid.Row="1"
