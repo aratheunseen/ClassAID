@@ -178,7 +178,7 @@
                                 SelectionMode="None"
                                 Margin="0,35,0,0">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="users:Admin">
+                            <DataTemplate x:DataType="users:Student">
                                 <Frame>
                                     <Grid BackgroundColor="#FFF">
                                         <Grid.RowDefinitions>

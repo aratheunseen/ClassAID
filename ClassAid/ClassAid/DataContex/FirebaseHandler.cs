@@ -119,13 +119,19 @@ namespace ClassAid.DataContex
                 .Where(item => item.TeamCode == teamCode).FirstOrDefault();
         }
         #endregion
-        public static async Task<IEnumerable<Student>> GetPendingStudents(string key)
+        public static async Task<ObservableCollection<Student>> GetPendingStudents(string key)
         {
-            //TODO: Fix this shit
-            var data = (await GetClient()
-                 .Child(key).Child("StudentList")
-                 .OnceAsync<string>());
-            return null ;
+            var students = new ObservableCollection<Student>();
+            _ = await Task.Run(() => GetClient()
+            .Child(key)
+            .Child("StudentList")
+            .AsObservable<Student>().Subscribe(
+                p => 
+                {
+                    if(p.Object.IsActive == false)
+                        students.Insert(0, p.Object); 
+                }));
+            return students ;
         }
         public static async Task<IEnumerable<RetakeStudentModel>> GetRetakeStudents(string key)
         {
