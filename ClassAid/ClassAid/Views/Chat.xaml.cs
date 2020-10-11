@@ -4,8 +4,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ClassAid.DataContex;
 using System.Collections.ObjectModel;
-using ClassAid.Models.Schedule;
-using ClassAid.Models.Users;
 using ClassAid.Models;
 using System.Collections.Specialized;
 
@@ -14,9 +12,9 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChatHub : ContentPage
     {
-        private string key;
-        private string Name;
-        private ObservableCollection<ChatModel> chats;
+        private readonly string key;
+        private readonly string Name;
+        private readonly ObservableCollection<ChatModel> chats;
         public ChatHub(string key, string Name)
         {
             InitializeComponent();
