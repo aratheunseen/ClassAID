@@ -50,7 +50,7 @@ namespace ClassAid.Views
         }
         private async void AllocateRequestList(string key)
         {
-            string data = null;
+            var data = await FirebaseHandler.GetPendingStudents(key);
             if (data != null)
                 RequestCollectionView.ItemsSource = data;
             else
