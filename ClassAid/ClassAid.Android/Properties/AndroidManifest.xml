@@ -1,7 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="3.0" package="com.pienteger.classaid" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-	<application android:label="ClassAiD" android:theme="@style/MainTheme"></application>
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+  <permission android:name="com.pienteger.classaid.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+  <uses-permission android:name="com.pienteger.classaid.permission.C2D_MESSAGE" />
+	<application android:label="ClassAiD" android:theme="@style/MainTheme">
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="com.pienteger.classaid" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.onesignal.GcmBroadcastReceiver"
+          android:permission="com.google.android.c2dm.permission.SEND" >
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <category android:name="com.pienteger.classaid" />
+      </intent-filter>
+    </receiver>
+  </application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

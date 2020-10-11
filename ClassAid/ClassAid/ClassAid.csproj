@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Com.OneSignal" Version="3.10.1" />
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="dotMorten.Xamarin.Forms.AutoSuggestBox" Version="1.1.1" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
