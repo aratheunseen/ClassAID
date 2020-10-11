@@ -2,6 +2,7 @@
 using ClassAid.Models.Users;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,13 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentNotActivatedPage : ContentPage
     {
-        readonly Student admin = LocalDbContex.GetAdminInfo();
+        readonly Student admin;
         public Student Student{ get; }
         public StudentNotActivatedPage(Student student)
         {
             Student = student;
+            admin = LocalDbContex.GetAdminInfo();
+            Debug.WriteLine(admin.Key);
             InitializeComponent();
             LogOut.Command = new Command(() => App.LogOut());
             ErrorText.Text = "Opps " + student.Name.Split(" ")[0] + "! Your Account hasn't been activated yet. " +

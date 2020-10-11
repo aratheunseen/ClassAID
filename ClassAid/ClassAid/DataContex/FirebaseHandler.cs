@@ -121,10 +121,11 @@ namespace ClassAid.DataContex
         #endregion
         public static async Task<IEnumerable<Student>> GetPendingStudents(string key)
         {
-            return (await GetClient()
+            //TODO: Fix this shit
+            var data = (await GetClient()
                  .Child(key).Child("StudentList")
-                 .OnceAsync<Student>()).Select(p => p.Object)
-                 .Where(p => p.IsActive == false);
+                 .OnceAsync<string>());
+            return null ;
         }
         public static async Task<IEnumerable<RetakeStudentModel>> GetRetakeStudents(string key)
         {

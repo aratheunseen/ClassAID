@@ -125,7 +125,7 @@
                             Text="Add"
                             CornerRadius="30"
                             BackgroundColor="#6264a7"
-                            Clicked="addAnotherAdmin_Clicked"
+                            Clicked="AddAnotherAdmin_Clicked"
                             Grid.Column="4"
                             Grid.ColumnSpan="2"
                             Margin="0,0,30,5"/>
@@ -170,22 +170,24 @@
                     </Grid>
                 </Expander>-->
 
-                <CollectionView x:Name="RequestCollectionView"
+                <ScrollView MinimumHeightRequest="1"
+                            HeightRequest="300"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="6">
+                    <CollectionView x:Name="RequestCollectionView"
                                 SelectionMode="None"
-                                Grid.Row="2"
-                                Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users:Admin">
-                            <Frame>
-                                <Grid BackgroundColor="#FFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="0"
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="users:Admin">
+                                <Frame>
+                                    <Grid BackgroundColor="#FFF">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView Grid.Row="0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              Margin="25,5,0,0"
@@ -193,14 +195,14 @@
                                              WidthRequest="10"
                                              BackgroundColor="Black"
                                              CornerRadius="30"/>
-                                    <BoxView Grid.Row="0"
+                                        <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
                                              WidthRequest="2"
                                              BackgroundColor="Black"/>
-                                    <Label x:Name="studentId"
+                                        <Label x:Name="studentId"
                                            Text="{Binding ID}"
                                            Grid.Column="1"
                                            Margin="10,0,0,0"
@@ -209,7 +211,7 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-                                    <Label x:Name="studentName"
+                                        <Label x:Name="studentName"
                                            Text="{Binding Name}"
                                            Margin="0,25,0,0"
                                            Grid.Column="1"
@@ -218,7 +220,7 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-                                    <ImageButton x:Name="acceptBtn" 
+                                        <ImageButton x:Name="acceptBtn" 
                                                  Grid.Column="4"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
@@ -228,7 +230,7 @@
                                                  VerticalOptions="Center"
                                                  Margin="0"/>
 
-                                    <ImageButton x:Name="rejectBtn" 
+                                        <ImageButton x:Name="rejectBtn" 
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
@@ -237,11 +239,12 @@
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  Margin="0,0,15,0"/>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
                 <!-- Teacher List Title -->
                 <Image Grid.Column="0"
                        Grid.Row="3"
@@ -262,7 +265,7 @@
                        Grid.ColumnSpan="2"/>
 
                 <!-- Teacher List Content -->
-                <CollectionView x:Name="RequestTeacherCollectionView"
+                <CollectionView x:Name="TeacherCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="3"
                                 Grid.ColumnSpan="6"
@@ -346,7 +349,7 @@
 
                 <!-- Classmate Content -->
 
-                <CollectionView x:Name="RequestClassmateCollectionView"
+                <CollectionView x:Name="ClassmateCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="4"
                                 Grid.ColumnSpan="6"

@@ -57,7 +57,8 @@ namespace ClassAid.Views.StudentViews
                 }
                 else
                 {
-                    Admin tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                    //Debug.WriteLine(student.AdminKey);
+                    Admin tempAdmin = await FirebaseHandler.GetAdminAsync(tempStudent.AdminKey);
                     OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
@@ -77,9 +78,9 @@ namespace ClassAid.Views.StudentViews
                     {
                         Debug.WriteLine(tempStudent.Name);
                         Debug.WriteLine(tempAdmin.Name);
-                        LocalDbContex.SaveUser(student);
+                        LocalDbContex.SaveUser(tempStudent);
                         LocalDbContex.SaveUser(tempAdmin);
-                        Application.Current.MainPage = new StudentNotActivatedPage(student);
+                        Application.Current.MainPage = new StudentNotActivatedPage(tempStudent);
                     }
                 }
             }
