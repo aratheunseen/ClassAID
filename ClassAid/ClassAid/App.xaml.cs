@@ -8,7 +8,6 @@ using Xamarin.Essentials;
 using ClassAid.DataContex;
 using ClassAid.Models;
 using ClassAid.Models.Users;
-using System.Threading.Tasks;
 using Com.OneSignal;
 using Com.OneSignal.Abstractions;
 using System.Collections.Generic;
@@ -35,18 +34,25 @@ namespace ClassAid
                 MainPage = new NavigationPage(new Dashboard());
             }
             //Remove this method to stop OneSignal Debugging  
-            OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
+            //OneSignal.Current.SetLogLevel(LOG_LEVEL.VERBOSE, LOG_LEVEL.NONE);
 
             OneSignal.Current.StartInit("7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f")
-            .Settings(new Dictionary<string, bool>() {
-    { IOSSettings.kOSSettingsKeyAutoPrompt, false },
-    { IOSSettings.kOSSettingsKeyInAppLaunchURL, false } })
+            .Settings(new Dictionary<string, bool>()
+            {
+                {
+                    IOSSettings.kOSSettingsKeyAutoPrompt, false
+                },
+                {
+                    IOSSettings.kOSSettingsKeyInAppLaunchURL, false
+                }
+            })
             .InFocusDisplaying(OSInFocusDisplayOption.Notification)
             .EndInit();
 
-            // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+            // The promptForPushNotificationsWithUserResponse function will show the iOS 
+            // push notification prompt. We recommend removing the following code and 
+            // instead using an In-App Message to prompt for notification permission (See step 7)
             OneSignal.Current.RegisterForPushNotifications();
-
         }
 
         private void CheckConnection(object sender, ConnectivityChangedEventArgs e)

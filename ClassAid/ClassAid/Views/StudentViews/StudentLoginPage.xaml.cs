@@ -1,5 +1,6 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models.Users;
+using Com.OneSignal;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -42,6 +43,7 @@ namespace ClassAid.Views.StudentViews
                 {
                     IsAdmin = false
                 };
+                
                 activityIndicator.IsRunning = true;
                 var tempStudent =
                     await FirebaseHandler.GetStudentAsync(student.Key);
@@ -55,6 +57,7 @@ namespace ClassAid.Views.StudentViews
                 else
                 {
                     var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                    OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                     activityIndicator.IsRunning = false;
                     if (student.IsActive)
                     {

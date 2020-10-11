@@ -62,44 +62,44 @@
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,105,48,0" TextColor="#6264a7"/>
 
 
-                <Label Grid.Column="3" 
+                <Label x:Name="userID" 
+                       Grid.Column="3" 
                        Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        FontSize="14"
-                       Text="{Binding Admin.ID}" 
                        Margin="30,30,0,0"
                        TextColor="#6264a7"/>
-                <Label Grid.Column="3" Grid.RowSpan="2"
+                <Label x:Name="userSemester" 
+                       Grid.Column="3" Grid.RowSpan="2"
                        Grid.ColumnSpan="3"
                        FontSize="14"
-                       Text="{Binding Admin.BatchDetails.Semester}"
                        Margin="30,55,0,0"
                        TextColor="#6264a7"/>
-                <Label Grid.Column="3"
+                <Label x:Name="userSection" 
+                       Grid.Column="3"
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
-                       FontSize="14" 
-                       Text="{Binding Admin.BatchDetails.Section}" 
+                       FontSize="14"
                        Margin="30,80,0,0" TextColor="#6264a7"/>
-                <Label Grid.Column="3" 
+                <Label x:Name="userPhone" Grid.Column="3" 
                        Grid.RowSpan="2" 
                        Grid.ColumnSpan="3" 
-                       FontSize="16" Text="{Binding Admin.Phone}" 
+                       FontSize="16"
                        Margin="30,105,0,0" TextColor="#6264a7"/>
 
                 <!--Name, University Name and Logout-->
-                <Label Grid.ColumnSpan="4" 
-                       Text="{Binding Admin.Name}" 
+                <Label x:Name="userName" 
+                       Grid.ColumnSpan="4"
                        FontSize="17" 
                        Margin="40,150,0,0" 
                        TextColor="#6264a7"/>
-                <Label Grid.ColumnSpan="5" 
+                <Label x:Name="userDepartment" 
+                       Grid.ColumnSpan="5" 
                        FontSize="12"
-                       Text="{Binding Admin.BatchDetails.Department}"
                        Margin="40,175,0,0"
                        TextColor="#6264a7"/>
-                <Label Grid.ColumnSpan="4" 
-                       Text="{Binding Admin.BatchDetails.University}" 
+                <Label x:Name="userUniversity" 
+                       Grid.ColumnSpan="4"
                        FontSize="14" 
                        Margin="40,195,0,0" TextColor="#6264a7"/>
                 <Image/>
@@ -352,7 +352,7 @@
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users:Admin">
+                        <DataTemplate x:DataType="users:Student">
                             <Frame>
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>

@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using ClassAid.Models;
+using ClassAid.Models.Schedule;
 
 namespace ClassAid.Views
 {
@@ -19,6 +20,7 @@ namespace ClassAid.Views
     {
         public Admin Admin { get; set; }
         public Student Student { get; set; }
+        private static BatchDetails BatchDetails;
         public StudentProfile(Admin admin)
         {
             Admin = admin;
@@ -26,23 +28,27 @@ namespace ClassAid.Views
             RetakeStudentArea.IsVisible = false;
             logoutBtn.Command = new Command(() => App.LogOut());
             AllocateRequestList(admin.AdminKey);
+            addAnotherAdmin.IsVisible = false;
+            anotherTeamCode.IsVisible = false;
         }
         public StudentProfile(Student student)
         {
+            BatchDetails = LocalDbContex.GetBatchDetails();
+            Student = student;
             InitializeComponent();
             logoutBtn.Command = new Command(() => App.LogOut());
-            Admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                Task.Run(async () => Admin = await FirebaseHandler.GetAdminAsync(student.AdminKey));
-            }
-            else
-            {
-                Admin.BatchDetails = LocalDbContex.GetBatchDetails();
-                Admin.StudentList =
-                    new ObservableCollection<Student>(LocalDbContex.GetStudents());
-            }
-            Student = student;
+            BindData();
+            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            //{
+            //    Task.Run(async () => Admin = await FirebaseHandler.GetAdminAsync(student.AdminKey));
+            //}
+            //else
+            //{
+            //    //Admin.BatchDetails = LocalDbContex.GetBatchDetails();
+            //    Admin.StudentList =
+            //        new ObservableCollection<Student>(LocalDbContex.GetStudents());
+            //}
+            
         }
         private async void AllocateRequestList(string key)
         {
@@ -60,6 +66,21 @@ namespace ClassAid.Views
                 };
                 RequestCollectionView.ItemsSource = sample;
             }
+        }
+        private void BindData()
+        {
+            userName.Text = Student.Name;
+            userPhone.Text = Student.Phone;
+            userID.Text = Student.ID;
+            userDepartment.Text = BatchDetails.Department;
+            userSection.Text = BatchDetails.Section;
+            userSemester.Text = BatchDetails.Semester;
+            List<Student> students = new List<Student>();
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+
+            }
+            RequestClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
         }
         private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)
         {

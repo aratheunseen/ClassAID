@@ -13,6 +13,7 @@ using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Diagnostics;
 
 namespace ClassAid.Views
 {
@@ -99,42 +100,38 @@ namespace ClassAid.Views
 
             StudentInit();
         }
-        private async void StudentInit()
-        {
-            foreach (var item in student.RetakeModels)
-            {
-                if (item.IsActive)
-                {
-                    await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, item.AdminKey);
-                    await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, item.AdminKey);
-                }
-            }
-            EventModels.CollectionChanged += EventModels_CollectionChanged;
-            ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
-            addScheduleBtnImage.IsVisible =
-                addNoticeBtnImage.IsVisible =
-                teamCodeBox.IsVisible = false;
-            await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
-            await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
-        }
-
-        private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            LocalDbContex.SaveSchedule(ScheduleModels[0]);
-        }
-
-        private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            LocalDbContex.SaveEvent(EventModels[0]);
-        }
-
         public Dashboard()
         {
             InitializeComponent();
             InitializeData();
         }
+        private async void StudentInit()
+        {
+            if (student.RetakeModels != null)
+                foreach (var item in student.RetakeModels)
+                {
+                    if (item.IsActive)
+                    {
+                        await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, item.AdminKey);
+                        await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, item.AdminKey);
+                    }
+                }
 
-        private async void InitializeData()
+            addScheduleBtnImage.IsVisible =
+                addNoticeBtnImage.IsVisible =
+                teamCodeBox.IsVisible = false;
+            if (EventModels == null)
+                EventModels = new ObservableCollection<EventModel>();
+            if (ScheduleModels == null)
+                ScheduleModels = new ObservableCollection<ScheduleModel>();
+            Debug.WriteLine("Here");
+            Debug.WriteLine(student.AdminKey);
+            await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
+            await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
+            EventModels.CollectionChanged += EventModels_CollectionChanged;
+            ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
+        }
+        private void InitializeData()
         {
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
@@ -149,23 +146,27 @@ namespace ClassAid.Views
             else
             {
                 student = LocalDbContex.GetUser();
-
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 {
-                    student =
-                    await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
+                    //student = await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
                     StudentInit();
                 }
                 Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             }
         }
-
         private async void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
             student = await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
             StudentInit();
         }
-        //  END
+        private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            LocalDbContex.SaveSchedule(ScheduleModels[0]);
+        }
+        private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            LocalDbContex.SaveEvent(EventModels[0]);
+        }
     }
 }
 
