@@ -1,5 +1,6 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models;
+using ClassAid.Models.Engines;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
@@ -33,15 +34,18 @@ namespace ClassAid.Views.AdminViews.Settings
                     new System.Collections.ObjectModel.ObservableCollection<EventModel>();
             }
             var e = new EventModel()
-                {
-                    Title = eventTitle.Text,
-                    Details = eventBody.Text,
-                    Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
-                };
+            {
+                Title = eventTitle.Text,
+                Details = eventBody.Text,
+                Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
+            };
             admin.EventList.Add(e);
             LocalDbContex.SaveEvent(e);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
                 FirebaseHandler.UpdateAdmin(admin);
+                PushNotification.Send(e.Title, e.Details, admin.Key);
+            }
             else
             {
                 Preferences.Set(PrefKeys.IsSyncPending, true);
