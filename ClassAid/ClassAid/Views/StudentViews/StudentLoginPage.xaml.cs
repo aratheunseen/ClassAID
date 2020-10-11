@@ -2,6 +2,7 @@
 using ClassAid.Models.Users;
 using Com.OneSignal;
 using System;
+using System.Diagnostics;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -56,9 +57,10 @@ namespace ClassAid.Views.StudentViews
                 }
                 else
                 {
-                    var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                    Admin tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
                     OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                     activityIndicator.IsRunning = false;
+                    LocalDbContex.CreateTables();
                     if (student.IsActive)
                     {
                         Preferences.Set(PrefKeys.IsLoggedIn, true);
@@ -66,24 +68,24 @@ namespace ClassAid.Views.StudentViews
                         Preferences.Set(PrefKeys.IsAdmin, false);
                         Preferences.Set(PrefKeys.Key, student.Key);
                         Application.Current.MainPage =
-                            new NavigationPage(new Dashboard(tempStudent));
-                        LocalDbContex.CreateTables();
+                            new NavigationPage(new Dashboard(tempStudent));                        
                         LocalDbContex.SaveUser(student);                        
                         LocalDbContex.SaveUser(tempAdmin);
                         LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     }
                     else
                     {
-                        Application.Current.MainPage = new StudentNotActivatedPage(student);
-                        LocalDbContex.CreateTables();
+                        Debug.WriteLine(tempStudent.Name);
+                        Debug.WriteLine(tempAdmin.Name);
                         LocalDbContex.SaveUser(student);
                         LocalDbContex.SaveUser(tempAdmin);
+                        Application.Current.MainPage = new StudentNotActivatedPage(student);
                     }
                 }
             }
             catch (Exception e)
             {
-                resultText.Text = "Sorry something bad happened.";
+                resultText.Text = "Sorry something bad happened. " + e.Message;
             }
 
         }
