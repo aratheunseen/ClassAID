@@ -33,7 +33,8 @@
                        Opacity="1"/>
                 </StackLayout>
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
-                    <Components:ClassAidEntry Placeholder="Short title"
+                    <Components:ClassAidEntry Placeholder="Short title (135 characters)"
+                                      MaxLength="135"
                                       x:Name="eventTitle"
                                       TextChanged="Form_TextChanged"
                                       TextColor="#6264a7"
@@ -44,7 +45,7 @@
                     AutoSize="TextChanges" 
                     TextChanged="Form_TextChanged"
                     Keyboard="Chat"
-                    Placeholder="Exam on friday. Oh nooo!!!"
+                    Placeholder="Write your full notice here"
                     TextColor="#6264a7"
                     Margin="15,3"
                     HeightRequest="250"/>
