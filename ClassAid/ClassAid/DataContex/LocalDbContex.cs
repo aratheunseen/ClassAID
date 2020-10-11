@@ -29,7 +29,7 @@ namespace ClassAid.DataContex
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
-                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data) WHERE NOT EXISTS;", parameters);
+                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
             }
         }
         public static void SaveSchedules(IEnumerable<ScheduleModel> schedules)
@@ -40,7 +40,7 @@ namespace ClassAid.DataContex
                 {
                     DynamicParameters parameters = new DynamicParameters();
                     parameters.Add("@Data", JsonConvert.SerializeObject(item));
-                    db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data) WHERE NOT EXISTS;", parameters);
+                    db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace ClassAid.DataContex
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.Execute("INSERT OR REPLACE INTO batchdetails (Department,Semester,Section,University) " +
-                    "Values (@Department,@Semester,@Section,@University) WHERE NOT EXISTS;", batchDetails);
+                    "Values (@Department,@Semester,@Section,@University);", batchDetails);
             }
         }
         public static void SaveTeacher(Teacher teacher)
@@ -57,7 +57,7 @@ namespace ClassAid.DataContex
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO teachers (Name, Designation, Phone) " +
-                    "Values (@Name, @Designation, @Phone) WHERE NOT EXISTS;", teacher);
+                    "Values (@Name, @Designation, @Phone);", teacher);
             }
         }
         public static void SaveTeachers(IEnumerable<Teacher> teachers)
@@ -65,7 +65,7 @@ namespace ClassAid.DataContex
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO teachers (Name, Designation, Phone) " +
-                    "Values (@Name, @Designation, @Phone) WHERE NOT EXISTS;", teachers);
+                    "Values (@Name, @Designation, @Phone);", teachers);
             }
         }
         public static void SaveEvent(EventModel eventModel)
@@ -73,7 +73,7 @@ namespace ClassAid.DataContex
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO events (Details, Title, Time) " +
-                    "Values (@Details, @Title, @Time) WHERE NOT EXISTS;", eventModel);
+                    "Values (@Details, @Title, @Time);", eventModel);
             }
         }
         public static void SaveEvents(IEnumerable<EventModel> eventModels)
@@ -81,7 +81,7 @@ namespace ClassAid.DataContex
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO events (Details, Title, Time) " +
-                    "Values (@Details, @Title, @Time) WHERE NOT EXISTS;", eventModels);
+                    "Values (@Details, @Title, @Time);", eventModels);
             }
         }
         public static void SaveUser<T>(T user)
@@ -91,7 +91,7 @@ namespace ClassAid.DataContex
                 cnn.ExecuteAsync(@"INSERT OR REPLACE INTO user (TeamCode, AdminKey, Name,
                             ID, Phone, Key, IsActive, IsAdmin) " +
                     "Values (@TeamCode, @AdminKey, @Name," +
-                    "@ID, @Phone, @Key, @IsActive, @IsAdmin) WHERE NOT EXISTS;", user);
+                    "@ID, @Phone, @Key, @IsActive, @IsAdmin);", user);
             }
         }
         public static void UpdateStudent(Student student)
@@ -109,7 +109,7 @@ namespace ClassAid.DataContex
                 cnn.ExecuteAsync(@"INSERT OR REPLACE INTO students (TeamCode, AdminKey, Name,
                             ID, Phone, Key, IsActive, IsAdmin) " +
                     "Values (@TeamCode, @AdminKey, @Name," +
-                    "@ID, @Phone, @Key, @IsActive, @IsAdmin) WHERE NOT EXISTS;", students);
+                    "@ID, @Phone, @Key, @IsActive, @IsAdmin);", students);
             }
         }
         public static void SaveStudent(Student student)
@@ -119,7 +119,7 @@ namespace ClassAid.DataContex
                 cnn.ExecuteAsync(@"INSERT OR REPLACE INTO students (TeamCode, AdminKey, Name,
                             ID, Phone, Key, IsActive, IsAdmin) " +
                     "Values (@TeamCode, @AdminKey, @Name," +
-                    "@ID, @Phone, @Key, @IsActive, @IsAdmin) WHERE NOT EXISTS;", student);
+                    "@ID, @Phone, @Key, @IsActive, @IsAdmin);", student);
             }
         }
         public static IEnumerable<Teacher> GetTeachers()
@@ -234,5 +234,17 @@ namespace ClassAid.DataContex
                 cnn.ExecuteAsync(sql);
             }
         }
+        public static void ClearTable(TableList table)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                string sql = $"TRUNCATE TABLE IF EXISTS {table.ToString()};";
+                cnn.ExecuteAsync(sql);
+            }
+        }
+    }
+    public enum TableList
+    {
+        batchdetails, schedule, events, teachers, user, students
     }
 }

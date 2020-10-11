@@ -27,32 +27,30 @@ namespace ClassAid.Views
             InitializeComponent();
             RetakeStudentArea.IsVisible = false;
             logoutBtn.Command = new Command(() => App.LogOut());
-            AllocateRequestList(admin.AdminKey);
             addAnotherAdmin.IsVisible = false;
             anotherTeamCode.IsVisible = false;
+            BindData();
+            AllocateRequestList(admin.Key);
         }
         public StudentProfile(Student student)
         {
-            BatchDetails = LocalDbContex.GetBatchDetails();
             Student = student;
             InitializeComponent();
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
-            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            //{
-            //    Task.Run(async () => Admin = await FirebaseHandler.GetAdminAsync(student.AdminKey));
-            //}
-            //else
-            //{
-            //    //Admin.BatchDetails = LocalDbContex.GetBatchDetails();
-            //    Admin.StudentList =
-            //        new ObservableCollection<Student>(LocalDbContex.GetStudents());
-            //}
-            
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                ObservableCollection<Student> students = new ObservableCollection<Student>();
+                FirebaseHandler.GetStudentList(students, Student.AdminKey);
+                students.CollectionChanged += Students_CollectionChanged;
+                LocalDbContex.ClearTable(TableList.students);
+                LocalDbContex.SaveStudents(students);
+                ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            }
         }
         private async void AllocateRequestList(string key)
         {
-            var data = await FirebaseHandler.GetPendingStudents(key);
+            string data = null;
             if (data != null)
                 RequestCollectionView.ItemsSource = data;
             else
@@ -69,21 +67,25 @@ namespace ClassAid.Views
         }
         private void BindData()
         {
-            userName.Text = Student.Name;
-            userPhone.Text = Student.Phone;
-            userID.Text = Student.ID;
+            if (Student == null)
+            {
+                userName.Text = Admin.Name;
+                userPhone.Text = Admin.Phone;
+                userID.Text = Admin.ID;
+            }
+            else
+            {
+                userName.Text = Student.Name;
+                userPhone.Text = Student.Phone;
+                userID.Text = Student.ID;
+            }
+            BatchDetails = LocalDbContex.GetBatchDetails();
             userDepartment.Text = BatchDetails.Department;
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
-            ObservableCollection<Student> students = new ObservableCollection<Student>();
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                FirebaseHandler.GetStudentList(students, Student.AdminKey);
-                students.CollectionChanged += Students_CollectionChanged;
-                RequestClassmateCollectionView.ItemsSource = students;
-            }
-            else
-                RequestClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+
+            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
         }
 
         private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -106,7 +108,7 @@ namespace ClassAid.Views
 
         }
 
-        private async void addAnotherAdmin_Clicked(object sender, EventArgs e)
+        private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
         {
             KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
             if (key != null)
