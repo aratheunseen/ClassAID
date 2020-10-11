@@ -17,7 +17,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Margin="0,30,0,0">
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -26,24 +26,26 @@
                                     <Grid>
                                         <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
-                                        Margin="0,20,15,0"
-                                        HeightRequest="10"
-                                        WidthRequest="10"
+                                        Margin="25,20,15,0"
+                                        HeightRequest="5"
+                                        WidthRequest="5"
                                         BackgroundColor="MediumVioletRed"
                                         CornerRadius="30"/>
-                                    <!--<Label Text="{Binding StartDate}"
+
+                                        <Label Text="{Binding StartDate}"
                                        Grid.Column="0"
                                        FontSize="14"
                                        TextColor="Black"
                                        HorizontalOptions="End"
                                        VerticalOptions="Start" 
-                                       Margin="0,40,10,0"/>-->
-                                    <BoxView Grid.Column="1"
+                                       Margin="0,40,10,0"/>
+                                        
+                                        <BoxView Grid.Column="1"
                                          HorizontalOptions="Start"
                                          VerticalOptions="Start"
                                          Margin="5,15,0,0"
                                          HeightRequest="18"
-                                         WidthRequest="2"
+                                         WidthRequest="1"
                                          BackgroundColor="MediumVioletRed"/>
                                     <Label Text="{Binding Title}"
                                        Grid.Column="1"
@@ -68,6 +70,8 @@
                 </CollectionView>
                 <Grid>
                 <Label Text="No More Notice"
+                       Margin="0,100,0,0"
+                       BackgroundColor="Transparent"
                                        FontSize="24"
                                        TextColor="Gray"
                                        HorizontalOptions="Center"
