@@ -53,7 +53,9 @@ namespace ClassAid.DataContex
         }
         public static async Task<Student> GetStudentAsync(string key)
         {
-            return await GetClient().Child(key).OnceSingleAsync<Student>();
+            var d = await GetClient().Child(key).OnceSingleAsync<Student>();
+            Debug.WriteLine(d.Name);
+            return d;
         }
         public static async void UpdateStudent(Student student)
         {
@@ -78,6 +80,13 @@ namespace ClassAid.DataContex
                 .Child(Preferences.Get(PrefKeys.AdminKey, ""))
                 .AsObservable<ChatModel>().Subscribe(d=> collection.Add(d.Object)));
             
+        }
+        public static async void GetStudentList(ObservableCollection<Student> studentColl, string adminkey)
+        {
+            _ = await Task.Run(() => GetClient()
+            .Child(adminkey)
+            .Child("StudentList")
+            .AsObservable<Student>().Subscribe(p=> { studentColl.Add(p.Object);}));
         }
         #endregion
         #region Teamcode
