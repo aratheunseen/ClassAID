@@ -136,7 +136,8 @@ namespace ClassAid.Views
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 admin = LocalDbContex.GetAdmin();
-                teamCode.Text = admin.TeamCode;
+                string teamCode1 = admin.TeamCode;
+                teamCode.Text = teamCode1;
                 admin.BatchDetails = LocalDbContex.GetBatchDetails();
                 admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
