@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ClassAid.Views" 
-             xmlns:system="clr-namespace:System;assembly=System.Runtime" 
              xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
@@ -23,7 +21,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                <!--#region Profile Heade-->
                 <!--Profile Header-->
                 <Image Source="avater.png"
                        Grid.RowSpan="2" Grid.ColumnSpan="2"
@@ -112,25 +110,8 @@
                              HorizontalOptions="End" 
                              VerticalOptions="End"
                              Margin="0,0,30,40"/>
-
-
-                <Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
-                    <Components:ClassAidEntry x:Name="anotherTeamCode"
-                           Placeholder="New CR Teamcode"
-                           WidthRequest="110"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="4"
-                            Margin="40,0,0,0"/>
-                    <Button x:Name="addAnotherAdmin"
-                            Text="Add"
-                            CornerRadius="30"
-                            BackgroundColor="#6264a7"
-                            Clicked="AddAnotherAdmin_Clicked"
-                            Grid.Column="4"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,30,5"/>
-                </Grid>
-
+                <!--#endregion-->
+                <!--#region Join Request area-->
                 <!-- Join Request Title -->
                 <Image Grid.Column="0"
                        Grid.Row="2"
@@ -151,25 +132,6 @@
                        Grid.ColumnSpan="2"/>
 
                 <!-- Join Request Content -->
-                <!--<Expander>
-                    <Expander.Header>
-                        <Label FontAttributes="Bold"
-                               FontSize="Medium" 
-                               Text="{Binding Name}"/>
-                    </Expander.Header>
-                    <Grid Padding="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1"
-                               Text="{Binding ID}"
-                               FontAttributes="Bold" />
-                        <Label Grid.Column="1"
-                               Text="{Binding Phone}"/>
-                    </Grid>
-                </Expander>-->
-
                 <ScrollView MinimumHeightRequest="1"
                             HeightRequest="300"
                             Grid.Row="2"
@@ -245,6 +207,8 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </ScrollView>
+                <!--#endregion-->
+                <!--#region Teacher-->
                 <!-- Teacher List Title -->
                 <Image Grid.Column="0"
                        Grid.Row="3"
@@ -328,6 +292,8 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!--#endregion-->
+                <!--#region Classmate -->
                 <!-- Classmate Title -->
                 <Image Grid.Column="0"
                        Grid.Row="4"
@@ -348,7 +314,7 @@
                        Grid.ColumnSpan="2"/>
 
                 <!-- Classmate Content -->
-
+                
                 <CollectionView x:Name="ClassmateCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="4"
@@ -412,7 +378,26 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <!--#endregion-->
+                <!--#region Retake -->
+                <Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
+                    <Components:ClassAidEntry x:Name="anotherTeamCode"
+                           Placeholder="New CR Teamcode"
+                           WidthRequest="110"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="4"
+                            Margin="40,0,0,0"/>
+                    <Button x:Name="addAnotherAdmin"
+                            Text="Add"
+                            CornerRadius="30"
+                            BackgroundColor="#6264a7"
+                            Clicked="AddAnotherAdmin_Clicked"
+                            Grid.Column="4"
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,30,5"/>
+                </Grid>
             </Grid>
+            <!--#endregion-->
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
