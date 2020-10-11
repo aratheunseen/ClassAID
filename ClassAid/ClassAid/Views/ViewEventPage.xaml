@@ -31,14 +31,7 @@
                                         WidthRequest="5"
                                         BackgroundColor="MediumVioletRed"
                                         CornerRadius="30"/>
-                                        <Label Text="{Binding StartDate}"
-                                               Grid.Column="0"
-                                               FontSize="14"
-                                               TextColor="Black"
-                                               HorizontalOptions="End"
-                                               VerticalOptions="Start" 
-                                               Margin="0,40,10,0"/>
-                                        
+
                                         <BoxView Grid.Column="1"
                                          HorizontalOptions="Start"
                                          VerticalOptions="Start"
