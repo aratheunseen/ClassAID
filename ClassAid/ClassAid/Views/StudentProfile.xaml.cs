@@ -75,13 +75,22 @@ namespace ClassAid.Views
             userDepartment.Text = BatchDetails.Department;
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
-            List<Student> students = new List<Student>();
+            ObservableCollection<Student> students = new ObservableCollection<Student>();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-
+                FirebaseHandler.GetStudentList(students, Student.AdminKey);
+                students.CollectionChanged += Students_CollectionChanged;
+                RequestClassmateCollectionView.ItemsSource = students;
             }
-            RequestClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            else
+                RequestClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
         }
+
+        private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            LocalDbContex.SaveStudent(((ObservableCollection<Student>)sender)[e.NewStartingIndex]);
+        }
+
         private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)
         {
 

@@ -86,7 +86,7 @@ namespace ClassAid.DataContex
             _ = await Task.Run(() => GetClient()
             .Child(adminkey)
             .Child("StudentList")
-            .AsObservable<Student>().Subscribe(p=> { studentColl.Add(p.Object);}));
+            .AsObservable<Student>().Subscribe(p=> { studentColl.Insert(0,p.Object);}));
         }
         #endregion
         #region Teamcode
