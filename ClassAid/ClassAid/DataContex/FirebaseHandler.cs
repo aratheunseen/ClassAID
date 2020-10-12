@@ -54,7 +54,6 @@ namespace ClassAid.DataContex
         public static async Task<Student> GetStudentAsync(string key)
         {
             var d = await GetClient().Child(key).OnceSingleAsync<Student>();
-            Debug.WriteLine(d.Name);
             return d;
         }
         public static async void UpdateStudent(Student student)
@@ -128,7 +127,8 @@ namespace ClassAid.DataContex
             .AsObservable<Student>().Subscribe(
                 p => 
                 {
-                    if(p.Object.IsActive == false && p.Object.IsRejected == false)
+                    if(p.Object.IsActive == false && p.Object.IsRejected == false &&
+                    !students.Contains(p.Object))
                         students.Insert(0, p.Object); 
                 }));
             return students ;

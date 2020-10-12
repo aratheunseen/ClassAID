@@ -129,6 +129,8 @@ namespace ClassAid.Views
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
                 FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
+                Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
+                FirebaseHandler.UpdateAdmin(Admin);
                 requestList.Remove(student);
             }
         }
@@ -141,6 +143,8 @@ namespace ClassAid.Views
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
                 FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
+                Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsRejected = true;
+                FirebaseHandler.UpdateAdmin(Admin);
                 requestList.Remove(student);
             }
         }

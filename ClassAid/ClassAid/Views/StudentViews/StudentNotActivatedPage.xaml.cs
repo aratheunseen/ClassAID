@@ -1,5 +1,6 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models.Users;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,13 +16,10 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentNotActivatedPage : ContentPage
     {
-        readonly Student student;
         public Student Student { get; }
         public StudentNotActivatedPage(Student student)
         {
             Student = student;
-            this.student = LocalDbContex.GetAdminInfo();
-            Debug.WriteLine(this.student.Key);
             InitializeComponent();
             LogOut.Command = new Command(() => App.LogOut());
             if (student.IsRejected == true)
@@ -38,17 +36,22 @@ namespace ClassAid.Views.StudentViews
 
         private void Call_Clicked(object sender, EventArgs e)
         {
-            Launcher.OpenAsync(CreateNSUri(student.Phone));
+            Launcher.OpenAsync(CreateNSUri(Student.Phone));
         }
         private Uri CreateNSUri(string phoneNumber)
         {
             return new Uri($"tel:{phoneNumber}");
         }
 
-        private void SendRequest_Clicked(object sender, EventArgs e)
+        private async void SendRequest_Clicked(object sender, EventArgs e)
         {
-            student.IsRejected = false;
+            Student.IsRejected = false;
             FirebaseHandler.UpdateStudent(Student);
+            var admin = await FirebaseHandler.GetAdminAsync(Student.AdminKey);
+            var obj = admin.StudentList.FirstOrDefault(x => x.Key == Student.Key);
+            obj.IsRejected = false;
+            obj.IsActive = false;
+            FirebaseHandler.UpdateAdmin(admin);
         }
     }
 }
