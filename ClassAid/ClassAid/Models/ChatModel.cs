@@ -12,9 +12,7 @@ namespace ClassAid.Models
         public string Message { get; set; }
         public string Sender { get; set; }
         public string SenderKey { get; set; }
-        public string AdminKey
-        {
-            get { return Preferences.Get(PrefKeys.AdminKey, ""); } }
-        public string Time { get { return DateTime.Now.ToString("M hh/mm/tt"); } }
+        public string AdminKey { get; set; }
+        public string Time { get; set; }
     }
 }
