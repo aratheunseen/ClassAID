@@ -374,16 +374,13 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-                <Label Text="Classmate"
-                       Grid.Column="1"
-                       Grid.Row="4"
-                       FontSize="20"
+                <Label Text="Name"
+                       Grid.Row="1" Grid.ColumnSpan="6"  Margin="40,0,0,15"
+                       FontSize="Header"
                        TextColor="Black"
                        HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="2"/>
-                <Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
+                       VerticalOptions="Start"/>
+                <!--<Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
                            WidthRequest="110"
@@ -398,7 +395,7 @@
                             Grid.Column="4"
                             Grid.ColumnSpan="2"
                             Margin="0,0,30,5"/>
-                </Grid>
+                </Grid>-->
             </Grid>
             <!--#endregion-->
         </ScrollView>
