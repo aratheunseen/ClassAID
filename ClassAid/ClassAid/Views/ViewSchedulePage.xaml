@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:y="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:y="clr-namespace:ClassAid.Models.Schedule" xmlns:converter="clr-namespace:ClassAid.Models.Converter"
              x:Class="ClassAid.Views.ViewSchedulePage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <converter:TimeToStringConverter x:Key="timeFormatter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
             <CollectionView x:Name="scheduleCollectionView">
@@ -64,7 +67,7 @@
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
                                 <Label x:Name="ScheduleStart" 
-                                                Text="{Binding StartTime}"
+                                                Text="{Binding StartTime, Converter={StaticResource timeFormatter}}"
                                                Grid.Column="4"
                                                Grid.ColumnSpan="2"
                                                Grid.Row="0"
@@ -74,7 +77,7 @@
                                                VerticalOptions="Start" 
                                                Margin="0,5,30,0"/>
                                 <Label x:Name="ScheduleEnd"
-                                                Text="{Binding EndTime}"
+                                                Text="{Binding EndTime, Converter={StaticResource timeFormatter}}"
                                                Grid.Column="4"
                                                Grid.ColumnSpan="2"
                                                Grid.Row="0"

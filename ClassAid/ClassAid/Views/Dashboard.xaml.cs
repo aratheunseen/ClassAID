@@ -24,7 +24,7 @@ namespace ClassAid.Views
         private Student student;
         public ObservableCollection<EventModel> EventModels { get; set; }
         public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
-        private static readonly string timeFormat = @"dd\:hh\:mm";
+        
         #region Declaration
         public ICommand TeamCodeCopyCommand
         {
