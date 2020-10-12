@@ -16,6 +16,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewSchedulePage : ContentPage
     {
+        public IValueConverter Converter { get; set; }
         private string _adminkey;
         public ViewSchedulePage(Admin user)
         {
