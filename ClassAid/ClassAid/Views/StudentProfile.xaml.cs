@@ -50,11 +50,11 @@ namespace ClassAid.Views
         }
         private async void AllocateRequestList(string key)
         {
-            var data = await FirebaseHandler.GetPendingStudents(key);
-            if (data != null)
-                RequestCollectionView.ItemsSource = data;
-            else
-            {
+            //var data = await FirebaseHandler.GetPendingStudents(key);
+            //if (data != null)
+            //    RequestCollectionView.ItemsSource = data;
+            //else
+            //{
                 List<Student> sample = new List<Student>()
                 {
                     new Admin() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
@@ -86,7 +86,7 @@ namespace ClassAid.Views
                     new Admin() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
                 };
                 RequestCollectionView.ItemsSource = sample;
-            }
+            //}
         }
         private void BindData()
         {
@@ -124,8 +124,8 @@ namespace ClassAid.Views
 
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
-            //requestTextSample.Text =
-            //    ((Student)RequestCollectionView.SelectedItem).TeamCode;
+            userUniversity.Text =
+                ((Student)RequestCollectionView.SelectedItem).TeamCode;
         }
 
         private void RejectBtn_Clicked(object sender, EventArgs e)
