@@ -50,11 +50,11 @@ namespace ClassAid.Views
         }
         private async void AllocateRequestList(string key)
         {
-            //var data = await FirebaseHandler.GetPendingStudents(key);
-            //if (data != null)
-            //    RequestCollectionView.ItemsSource = data;
-            //else
-            //{
+            var data = await FirebaseHandler.GetPendingStudents(key);
+            if (data != null)
+                RequestCollectionView.ItemsSource = data;
+            else
+            {
                 List<Student> sample = new List<Student>()
                 {
                     new Admin() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
@@ -86,8 +86,8 @@ namespace ClassAid.Views
                     new Admin() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
                 };
                 RequestCollectionView.ItemsSource = sample;
-            //}
         }
+    }
         private void BindData()
         {
             if (Student == null)
@@ -124,14 +124,21 @@ namespace ClassAid.Views
 
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
-            userUniversity.Text =
-                ((Student)RequestCollectionView.SelectedItem).TeamCode;
+            if (sender is ImageButton b && b.CommandParameter is Student student)
+            {
+                userName.Text = student.Name;
+            }
         }
 
         private void RejectBtn_Clicked(object sender, EventArgs e)
         {
-            //requestTextSample.Text =
-            //    ((Student)RequestCollectionView.SelectedItem).TeamCode;
+            //ImageButton btn = (ImageButton)sender;
+            //var student = (Student)btn.BindingContext;
+            //userUniversity.Text = student.Name;
+            if (sender is ImageButton b && b.CommandParameter is Student student)
+            {
+                userUniversity.Text = student.ID;
+            }
         }
 
         private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
