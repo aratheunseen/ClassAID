@@ -67,15 +67,15 @@
                        Margin="5"
                        Grid.ColumnSpan="5"/>
                 <ImageButton x:Name="sendButton"
-                        HeightRequest="25"
-                        WidthRequest="25"
+                            HeightRequest="25"
+                            WidthRequest="25"
                              Margin="40,15,0,0"
-                        CornerRadius="10"
-                        Clicked="SendButton_Clicked"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Start"
-                        Grid.Column="5"
-                        Source="logo.png"/>
+                            CornerRadius="10"
+                            Clicked="SendButton_Clicked"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"
+                            Grid.Column="5"
+                            Source="logo.png"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
