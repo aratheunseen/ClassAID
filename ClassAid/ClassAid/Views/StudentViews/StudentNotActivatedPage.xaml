@@ -10,6 +10,10 @@
             <Button x:Name="Call"
                     Text="Call"
                     Clicked="Call_Clicked"/>
+            <Button x:Name="SendRequest"
+                    IsVisible="false"
+                    Text="Send Request"
+                    Clicked="SendRequest_Clicked"/>
             <Button x:Name="LogOut"
                     Text="Log Out"/>
         </StackLayout>

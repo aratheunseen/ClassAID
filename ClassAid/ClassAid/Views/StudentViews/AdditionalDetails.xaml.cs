@@ -40,6 +40,7 @@ namespace ClassAid.Views.StudentViews
             {
                 student.IsAdmin = false;
                 student.IsActive = false;
+                student.IsRejected = false;
                 student.Name = studentName.Text.Trim();
                 student.Phone = phoneNumber.Text.Trim();
                 student.ID = studentID.Text.Trim();
@@ -50,7 +51,8 @@ namespace ClassAid.Views.StudentViews
                     Phone = student.Phone,
                     ID = student.ID,
                     Key = student.Key,
-                    IsActive = student.IsActive
+                    IsActive = student.IsActive,
+                    IsRejected = student.IsRejected
                 });
                 Preferences.Set(PrefKeys.IsLoggedIn, true);
                 Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
