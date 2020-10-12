@@ -24,28 +24,27 @@
                         VerticalOptions="StartAndExpand"
                         HorizontalOptions="StartAndExpand"
                         HorizontalScrollBarVisibility="Never">
-                <StackLayout>
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
                     <CollectionView x:Name="ChatViewBox">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel">
-                                <Grid BackgroundColor="#FFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Sender}"
+                                <Grid Grid.RowSpan="3">
+                                    <Label Text="{Binding Sender}"
+                                               Margin="20,0,0,0"
                                            TextColor="Black"
-                                           FontSize="Title"/>
-                                        <Label Text="{Binding Time}"
+                                           FontSize="Caption"/>
+                                    <Label Text="{Binding Message}"
+                                           BackgroundColor="AntiqueWhite"
                                            TextColor="Black"
-                                           FontSize="Small"/>
-                                        <Label Text="{Binding Message}"
-                                           TextColor="Black"
-                                           FontSize="Body"/>
-                                    </StackLayout>
+                                           Margin="20,20,0,45"
+                                           Padding="15"
+                                           FontSize="Default"/>
+                                    <Label Text="{Binding Time}"
+                                           Margin="0,0,0,30"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="End"
+                                           TextColor="Gray"
+                                           FontSize="Micro"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
