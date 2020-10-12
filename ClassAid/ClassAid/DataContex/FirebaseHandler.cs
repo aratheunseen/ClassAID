@@ -128,7 +128,7 @@ namespace ClassAid.DataContex
             .AsObservable<Student>().Subscribe(
                 p => 
                 {
-                    if(p.Object.IsActive == false)
+                    if(p.Object.IsActive == false && p.Object.IsRejected == false)
                         students.Insert(0, p.Object); 
                 }));
             return students ;
