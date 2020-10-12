@@ -20,6 +20,7 @@ namespace ClassAid.Views
     public partial class StudentProfile : ContentPage
     {
         public Admin Admin { get; set; }
+        private ObservableCollection<Student> requestList;
         public Student Student { get; set; }
         private static BatchDetails BatchDetails;
         public StudentProfile(Admin admin)
@@ -51,9 +52,9 @@ namespace ClassAid.Views
         }
         private async void AllocateRequestList(string key)
         {
-            var data = await FirebaseHandler.GetPendingStudents(key);
-            if (data != null)
-                RequestCollectionView.ItemsSource = data;
+            requestList = await FirebaseHandler.GetPendingStudents(key);
+            if (requestList != null)
+                RequestCollectionView.ItemsSource = requestList;
             else
             {
                 List<Student> sample = new List<Student>()
@@ -128,6 +129,7 @@ namespace ClassAid.Views
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
                 FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
+                requestList.Remove(student);
             }
         }
 
@@ -138,7 +140,8 @@ namespace ClassAid.Views
             //userUniversity.Text = student.Name;
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
-                FirebaseHandler.GetClient().Child(student.AdminKey).Child("IsRejected").PostAsync(true);
+                FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
+                requestList.Remove(student);
             }
         }
 
