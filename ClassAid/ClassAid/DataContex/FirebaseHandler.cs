@@ -17,7 +17,7 @@ namespace ClassAid.DataContex
 {
     public class FirebaseHandler
     {
-        private static FirebaseClient GetClient()
+        public static FirebaseClient GetClient()
         {
             string server = "https://classaidapp.firebaseio.com/";
             string authKey = "q4ckBo2jl1p2EB0qg9eTnAwXwPKYwt2DbcSCOc5V";

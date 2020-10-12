@@ -62,7 +62,7 @@ namespace ClassAid.Views.StudentViews
                     OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
-                    if (student.IsActive)
+                    if (tempStudent.IsActive)
                     {
                         Preferences.Set(PrefKeys.IsLoggedIn, true);
                         Preferences.Set(PrefKeys.AdminKey, tempStudent.TeamCode);
