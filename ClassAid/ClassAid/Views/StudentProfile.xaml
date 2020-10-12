@@ -144,21 +144,23 @@
                             <Frame>
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
+                                    <BoxView HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              Margin="25,5,0,0"
                                              HeightRequest="10"
                                              WidthRequest="10"
                                              BackgroundColor="Black"
                                              CornerRadius="30"/>
-                                    <BoxView Grid.Row="0"
-                                             Grid.Column="1"
+                                    <BoxView Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
@@ -166,7 +168,6 @@
                                              BackgroundColor="Black"/>
                                     <Label x:Name="studentId"
                                            Text="{Binding ID}"
-                                           Grid.Column="1"
                                            Margin="10,0,0,0"
                                            FontSize="18"
                                            TextColor="Gray"
@@ -176,32 +177,36 @@
                                     <Label x:Name="studentName"
                                            Text="{Binding Name}"
                                            Margin="0,25,0,0"
-                                           Grid.Column="1"
+                                           Grid.Row="1"
                                            FontSize="14"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
                                     <ImageButton x:Name="acceptBtn" 
-                                                 Grid.Column="4"
+                                                 Clicked="AcceptBtn_Clicked"
+                                                 Grid.Row="2"
+                                                 Grid.Column="1"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
-                                                 Margin="0"/>
-
+                                                 CommandParameter="{Binding .}"
+                                                 Margin="5"/>
                                     <ImageButton x:Name="rejectBtn" 
                                                  Clicked="RejectBtn_Clicked"
-                                                 Grid.Column="5"
+                                                 Grid.Row="2"
+                                                 Grid.Column="2"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
-                                                 Margin="0,0,15,0"/>
+                                                 CommandParameter="{Binding .}"
+                                                 Margin="5"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>

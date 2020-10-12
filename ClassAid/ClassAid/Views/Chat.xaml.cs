@@ -47,6 +47,7 @@ namespace ClassAid.Views
                 Time = DateTime.Now.ToString("MMM dd, hh:mm tt"),
                 AdminKey = Preferences.Get(PrefKeys.AdminKey, "")
             };
+            messageBox.Text = string.Empty;
             FirebaseHandler.SendMessage(chat);
         }
     }
