@@ -52,7 +52,7 @@
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
-            <Frame BackgroundColor="#EEF0F3" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
+            <Frame BackgroundColor="white" BorderColor="#6264a7" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
             <Components:ClassAidEntry x:Name="messageBox" 
                                       Grid.Row="1"
                        WidthRequest="300"
