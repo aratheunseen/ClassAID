@@ -6,6 +6,8 @@ using ClassAid.DataContex;
 using System.Collections.ObjectModel;
 using ClassAid.Models;
 using System.Collections.Specialized;
+using Xamarin.Essentials;
+using ClassAid.Models.Users;
 
 namespace ClassAid.Views
 {
@@ -41,7 +43,9 @@ namespace ClassAid.Views
             {
                 Message = messageBox.Text,
                 SenderKey = key,
-                Sender = Name
+                Sender = Name,
+                Time = DateTime.Now.ToString("MMM dd, hh:mm tt"),
+                AdminKey = Preferences.Get(PrefKeys.AdminKey, "")
             };
             FirebaseHandler.SendMessage(chat);
         }

@@ -59,7 +59,6 @@
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,80,48,0" TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,105,48,0" TextColor="#6264a7"/>
 
-
                 <Label x:Name="userID" 
                        Grid.Column="3" 
                        Grid.RowSpan="2"
@@ -189,6 +188,7 @@
                                                  Margin="0"/>
 
                                     <ImageButton x:Name="rejectBtn" 
+                                                 Clicked="RejectBtn_Clicked"
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
