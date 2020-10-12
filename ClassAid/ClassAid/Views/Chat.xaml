@@ -57,7 +57,7 @@
                         Clicked="SendButton_Clicked"
                         VerticalOptions="End"
                         HorizontalOptions="End"
-                        Margin="2"
+                        Margin="0"
                         Grid.Column="3"
                         Text="Send"/>
             </StackLayout>
