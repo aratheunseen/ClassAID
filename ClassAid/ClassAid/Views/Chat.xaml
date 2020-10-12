@@ -20,12 +20,13 @@
             </Grid.ColumnDefinitions>
             <ScrollView VerticalScrollBarVisibility="Never"
                         Grid.ColumnSpan="6"
-                        Padding="10"
-                        VerticalOptions="StartAndExpand"
-                        HorizontalOptions="StartAndExpand"
+                        Padding="15"
                         HorizontalScrollBarVisibility="Never">
-                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                    <CollectionView x:Name="ChatViewBox">
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,200">
+                    <CollectionView x:Name="ChatViewBox"
+                                    Grid.Row="0"
+                                    HeightRequest="555"
+                                    ItemsUpdatingScrollMode="KeepLastItemInView">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel">
                                 <Grid Grid.RowSpan="3">
@@ -35,7 +36,7 @@
                                            FontSize="Caption"/>
                                     <Label Text="{Binding Message}"
                                            BackgroundColor="#F4F4F4"
-                                           TextColor="Black"
+                                           TextColor="#6264a7"
                                            Margin="30,20,30,45"
                                            Padding="15"
                                            FontSize="Default"/>
@@ -51,33 +52,27 @@
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
-            <BoxView HeightRequest="1"
-                     Grid.Row="1"
-                     Grid.ColumnSpan="6"
-                     BackgroundColor="#EEF0F3"
-                     WidthRequest="350"></BoxView>
-            <StackLayout Orientation="Horizontal"
-                         Grid.Row="1"
-                         Padding="10">
-                <Components:ClassAidEntry x:Name="messageBox" 
+            <Frame BackgroundColor="#EEF0F3" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
+            <Components:ClassAidEntry x:Name="messageBox" 
+                                      Grid.Row="1"
                        WidthRequest="300"
-                       TextColor="#979CB2"
+                       TextColor="#6264a7"
                        Placeholder="Type your message here!!!"
                        VerticalOptions="End"
                        HorizontalOptions="Start"
-                       Margin="5"
+                       Margin="30,10,0,10"
                        Grid.ColumnSpan="5"/>
-                <ImageButton x:Name="sendButton"
-                            HeightRequest="25"
-                            WidthRequest="25"
-                             Margin="40,15,0,0"
+            <ImageButton x:Name="sendButton"
+                         Grid.Row="1"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                             Margin="0,0,30,15"
                             CornerRadius="10"
                             Clicked="SendButton_Clicked"
-                            VerticalOptions="Start"
-                            HorizontalOptions="Start"
+                            VerticalOptions="End"
+                            HorizontalOptions="End"
                             Grid.Column="5"
                             Source="logo.png"/>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
