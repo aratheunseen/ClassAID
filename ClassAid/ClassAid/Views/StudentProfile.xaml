@@ -4,7 +4,7 @@
              xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
-             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents" xmlns:users1="clr-namespace:ClassAid.Models.Schedule"
              x:Name="This">
     <ContentPage.BindingContext>
         <x:Reference Name="This"/>
@@ -230,7 +230,7 @@
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users:Admin">
+                        <DataTemplate x:DataType="users1:Teacher">
                             <Frame>
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
@@ -374,12 +374,7 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-                <Label Text="Name"
-                       Grid.Row="1" Grid.ColumnSpan="6"  Margin="40,0,0,15"
-                       FontSize="Large"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start"/>
+                
                 <!--<Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
