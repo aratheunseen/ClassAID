@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using ClassAid.Models;
 using ClassAid.Models.Schedule;
+using Firebase.Database.Query;
 
 namespace ClassAid.Views
 {
@@ -126,7 +127,7 @@ namespace ClassAid.Views
         {
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
-                userName.Text = student.Name;
+                FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
             }
         }
 
@@ -137,7 +138,7 @@ namespace ClassAid.Views
             //userUniversity.Text = student.Name;
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
-                userUniversity.Text = student.ID;
+                FirebaseHandler.GetClient().Child(student.AdminKey).Child("IsRejected").PostAsync(true);
             }
         }
 
