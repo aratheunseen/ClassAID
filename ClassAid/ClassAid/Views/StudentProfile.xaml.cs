@@ -103,6 +103,7 @@ namespace ClassAid.Views
                 userID.Text = Student.ID;
             }
             BatchDetails = LocalDbContex.GetBatchDetails();
+            userUniversity.Text = BatchDetails.University;
             userDepartment.Text = BatchDetails.Department;
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
