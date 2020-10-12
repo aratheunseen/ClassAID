@@ -60,56 +60,21 @@
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,105,48,0" TextColor="#6264a7"/>
 
 
-                <Label x:Name="userID" 
-                       Grid.Column="3" 
-                       Grid.RowSpan="2"
-                       Grid.ColumnSpan="3"
-                       FontSize="14"
-                       Margin="30,30,0,0"
-                       TextColor="#6264a7"/>
-                <Label x:Name="userSemester" 
-                       Grid.Column="3" Grid.RowSpan="2"
-                       Grid.ColumnSpan="3"
-                       FontSize="14"
-                       Margin="30,55,0,0"
-                       TextColor="#6264a7"/>
-                <Label x:Name="userSection" 
-                       Grid.Column="3"
-                       Grid.RowSpan="2" 
-                       Grid.ColumnSpan="3" 
-                       FontSize="14"
-                       Margin="30,80,0,0" TextColor="#6264a7"/>
+                <Label x:Name="userID" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="3"
+                       FontSize="14" Margin="30,30,0,0" TextColor="#6264a7"/>
+                <Label x:Name="userSemester" Grid.Column="3" Grid.RowSpan="2"
+                       Grid.ColumnSpan="3" FontSize="14" Margin="30,55,0,0" TextColor="#6264a7"/>
+                <Label x:Name="userSection" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="3" 
+                       FontSize="14" Margin="30,80,0,0" TextColor="#6264a7"/>
                 <Label x:Name="userPhone" Grid.Column="3" 
-                       Grid.RowSpan="2" 
-                       Grid.ColumnSpan="3" 
-                       FontSize="16"
-                       Margin="30,105,0,0" TextColor="#6264a7"/>
+                       Grid.RowSpan="2" Grid.ColumnSpan="3" 
+                       FontSize="16" Margin="30,105,0,0" TextColor="#6264a7"/>
 
                 <!--Name, University Name and Logout-->
-                <Label x:Name="userName" 
-                       Grid.ColumnSpan="4"
-                       FontSize="17" 
-                       Margin="40,150,0,0" 
-                       TextColor="#6264a7"/>
-                <Label x:Name="userDepartment" 
-                       Grid.ColumnSpan="5" 
-                       FontSize="12"
-                       Margin="40,175,0,0"
-                       TextColor="#6264a7"/>
-                <Label x:Name="userUniversity" 
-                       Grid.ColumnSpan="4"
-                       FontSize="14" 
-                       Margin="40,195,0,0" TextColor="#6264a7"/>
-                <Image/>
-                <ImageButton x:Name="logoutBtn" 
-                             Grid.Column="5"
-                             BackgroundColor="Transparent"
-                             Source="schedule.png"
-                             HeightRequest="24" 
-                             WidthRequest="24" 
-                             HorizontalOptions="End" 
-                             VerticalOptions="End"
-                             Margin="0,0,30,40"/>
+                <Label x:Name="userName" Grid.ColumnSpan="4" FontSize="17" Margin="40,150,0,0" TextColor="#6264a7"/>
+                <Label x:Name="userDepartment" Grid.ColumnSpan="5" FontSize="12" Margin="40,175,0,0" TextColor="#6264a7"/>
+                <Label x:Name="userUniversity" Grid.ColumnSpan="4" FontSize="14" Margin="40,195,0,0" TextColor="#6264a7"/>
+                <ImageButton x:Name="logoutBtn" Grid.Column="5" BackgroundColor="Transparent" Source="schedule.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,30,40"/>
                 <!--#endregion-->
                 <!--#region Join Request area-->
                 <!-- Join Request Title -->
@@ -130,87 +95,39 @@
                        VerticalOptions="Start" 
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
-
                 <!-- Join Request Content -->
-                <ScrollView MinimumHeightRequest="1"
-                            HeightRequest="300"
-                            Grid.Row="2"
-                            Grid.ColumnSpan="6">
-                    <CollectionView x:Name="RequestCollectionView"
-                                SelectionMode="None"
-                                Margin="0,35,0,0">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="users:Student">
-                                <Frame>
-                                    <Grid BackgroundColor="#FFF">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             Margin="25,5,0,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                             BackgroundColor="Black"
-                                             CornerRadius="30"/>
-                                        <BoxView Grid.Row="0"
-                                             Grid.Column="1"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             HeightRequest="20"
-                                             WidthRequest="2"
-                                             BackgroundColor="Black"/>
-                                        <Label x:Name="studentId"
-                                           Text="{Binding ID}"
-                                           Grid.Column="1"
-                                           Margin="10,0,0,0"
-                                           FontSize="18"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
-                                        <Label x:Name="studentName"
-                                           Text="{Binding Name}"
-                                           Margin="0,25,0,0"
-                                           Grid.Column="1"
-                                           FontSize="14"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
-                                        <ImageButton x:Name="acceptBtn" 
-                                                 Grid.Column="4"
-                                                 BackgroundColor="Transparent"
-                                                 Source="schedule.png"
-                                                 HeightRequest="24" 
-                                                 WidthRequest="24" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 Margin="0"/>
-
-                                        <ImageButton x:Name="rejectBtn" 
-                                                 Grid.Column="5"
-                                                 BackgroundColor="Transparent"
-                                                 Source="schedule.png"
-                                                 HeightRequest="24" 
-                                                 WidthRequest="24" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 Margin="0,0,15,0"/>
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </ScrollView>
+                <CollectionView x:Name="RequestCollectionView" 
+                                HorizontalScrollBarVisibility="Default"
+                                HeightRequest="200"
+                                Margin="0,35,0,0"
+                                Grid.Row="2"
+                                Grid.ColumnSpan="6">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="users:Student">
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold" />
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Text="{Binding ID}"
+                                       VerticalOptions="End" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
                 <!--#endregion-->
                 <!--#region Teacher-->
                 <!-- Teacher List Title -->
-                <Image Grid.Column="0"
+                <!--<Image Grid.Column="0"
                        Grid.Row="3"
                        Margin="0,0,5,0"
                        Source="schedule.png"
@@ -228,9 +145,8 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                <!-- Teacher List Content -->
-                <ScrollView MinimumHeightRequest="1"
-                            HeightRequest="300"
+                --><!-- Teacher List Content --><!--
+                <ScrollView HeightRequest="300"
                             Grid.Row="2"
                             Grid.ColumnSpan="6">
                     <CollectionView x:Name="TeacherCollectionView"
@@ -297,9 +213,9 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </ScrollView>
-                <!--#endregion-->
+                --><!--#endregion-->
                 <!--#region Classmate -->
-                <!-- Classmate Title -->
+                <!-- Classmate Title --><!--
                 <Image Grid.Column="0"
                        Grid.Row="4"
                        Margin="0,0,5,0"
@@ -318,9 +234,8 @@
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
 
-                <!-- Classmate Content -->
-                <ScrollView MinimumHeightRequest="1"
-                            HeightRequest="300"
+                --><!-- Classmate Content --><!--
+                <ScrollView HeightRequest="300"
                             Grid.Row="2"
                             Grid.ColumnSpan="6">
                     <CollectionView x:Name="ClassmateCollectionView"
@@ -387,8 +302,8 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </ScrollView>
-                <!--#endregion-->
-                <!--#region Retake -->
+                --><!--#endregion-->
+                <!--#region Retake --><!--
                 <Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
@@ -404,7 +319,7 @@
                             Grid.Column="4"
                             Grid.ColumnSpan="2"
                             Margin="0,0,30,5"/>
-                </Grid>
+                </Grid>-->
             </Grid>
             <!--#endregion-->
         </ScrollView>
