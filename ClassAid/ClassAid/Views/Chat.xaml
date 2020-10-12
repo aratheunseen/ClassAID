@@ -25,7 +25,10 @@
                         HorizontalOptions="StartAndExpand"
                         HorizontalScrollBarVisibility="Never">
                 <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                    <CollectionView x:Name="ChatViewBox">
+                    <CollectionView x:Name="ChatViewBox"
+                                    VerticalScrollBarVisibility="Default"
+                                    HeightRequest="200"
+                                    ItemsUpdatingScrollMode="KeepLastItemInView">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel">
                                 <Grid Grid.RowSpan="3">
