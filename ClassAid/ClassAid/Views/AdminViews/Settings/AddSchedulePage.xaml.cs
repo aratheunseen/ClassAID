@@ -39,7 +39,6 @@ namespace ClassAid.Views.AdminViews.Settings
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
             admin.ScheduleList.Insert(0, sc);
-            LocalDbContex.SaveSchedule(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedule(sc);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
