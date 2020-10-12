@@ -374,6 +374,15 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
+                <Label Text="Classmate"
+                       Grid.Column="1"
+                       Grid.Row="4"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,0,0,0"
+                       Grid.ColumnSpan="2"/>
                 <Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
