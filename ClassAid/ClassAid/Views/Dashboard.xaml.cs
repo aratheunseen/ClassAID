@@ -24,7 +24,7 @@ namespace ClassAid.Views
         private Student student;
         public ObservableCollection<EventModel> EventModels { get; set; }
         public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
-        
+
         #region Declaration
         public ICommand TeamCodeCopyCommand
         {
@@ -162,7 +162,8 @@ namespace ClassAid.Views
         }
         private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            LocalDbContex.SaveSchedule(ScheduleModels[0]);
+            if (!ScheduleModels.Contains(ScheduleModels[0]))
+                LocalDbContex.SaveSchedule(ScheduleModels[0]);
         }
         private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

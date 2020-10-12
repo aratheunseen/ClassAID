@@ -29,7 +29,7 @@ namespace ClassAid.DataContex
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
-                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data) WHERE NOT EXISTS;", parameters);
+                db.Execute("INSERT OR REPLACE INTO schedule (Data) Values (@Data);", parameters);
             }
         }
         public static void SaveSchedules(IEnumerable<ScheduleModel> schedules)
