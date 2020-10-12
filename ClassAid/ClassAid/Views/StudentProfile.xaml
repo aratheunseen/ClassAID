@@ -15,7 +15,7 @@
             <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="240" />
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="200" /> <!--60-->
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -376,7 +376,7 @@
                 <!--#region Retake -->
                 <Label Text="Name"
                        Grid.Row="1" Grid.ColumnSpan="6"  Margin="40,0,0,15"
-                       FontSize="Header"
+                       FontSize="Large"
                        TextColor="Black"
                        HorizontalOptions="Start"
                        VerticalOptions="Start"/>
