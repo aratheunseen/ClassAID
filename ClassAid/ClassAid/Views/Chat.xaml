@@ -29,10 +29,13 @@
                             <DataTemplate x:DataType="models:ChatModel">
                                 <StackLayout Padding="3">
                                     <Label Text="{Binding Sender}"
+                                           TextColor="Black"
                                            FontSize="Title"/>
                                     <Label Text="{Binding Message}"
+                                           TextColor="Black"
                                            FontSize="Body"/>
                                     <Label Text="{Binding Time}"
+                                           TextColor="Black"
                                            FontSize="Small"/>
                                 </StackLayout>
                             </DataTemplate>
