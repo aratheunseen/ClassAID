@@ -15,8 +15,10 @@
             <Grid BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="240" />
-                    <RowDefinition Height="200" /> <!--60-->
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -110,10 +112,11 @@
                              VerticalOptions="End"
                              Margin="0,0,30,40"/>
                 <!--#endregion-->
+
                 <!--#region Join Request area-->
                 <!-- Join Request Title -->
                 <Image Grid.Column="0"
-                       Grid.Row="2"
+                       Grid.Row="1"
                        Margin="0,0,0,0"
                        Source="schedule.png"
                        HeightRequest="24"
@@ -122,7 +125,7 @@
                        VerticalOptions="Start"/>
                 <Label Text="Request"
                        Grid.Column="1"
-                       Grid.Row="2"
+                       Grid.Row="1"
                        FontSize="20"
                        TextColor="Black"
                        HorizontalOptions="Start"
@@ -132,6 +135,8 @@
 
                 <!-- Join Request Content -->
                 <CollectionView x:Name="RequestCollectionView"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="6"
                                 SelectionMode="None"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -206,7 +211,7 @@
                 <!--#region Teacher-->
                 <!-- Teacher List Title -->
                 <Image Grid.Column="0"
-                       Grid.Row="3"
+                       Grid.Row="2"
                        Margin="0,0,5,0"
                        Source="schedule.png"
                        HeightRequest="24"
@@ -215,7 +220,7 @@
                        VerticalOptions="Start"/>
                 <Label Text="Teacher"
                        Grid.Column="1"
-                       Grid.Row="3"
+                       Grid.Row="2"
                        FontSize="20"
                        TextColor="Black"
                        HorizontalOptions="Start"
@@ -226,7 +231,7 @@
                 <!-- Teacher List Content -->
                 <CollectionView x:Name="TeacherCollectionView"
                                 SelectionMode="None"
-                                Grid.Row="3"
+                                Grid.Row="2"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -291,7 +296,7 @@
                 <!--#region Classmate -->
                 <!-- Classmate Title -->
                 <Image Grid.Column="0"
-                       Grid.Row="4"
+                       Grid.Row="3"
                        Margin="0,0,5,0"
                        Source="schedule.png"
                        HeightRequest="24"
@@ -300,7 +305,7 @@
                        VerticalOptions="Start"/>
                 <Label Text="Classmate"
                        Grid.Column="1"
-                       Grid.Row="4"
+                       Grid.Row="3"
                        FontSize="20"
                        TextColor="Black"
                        HorizontalOptions="Start"
@@ -311,7 +316,7 @@
                 <!-- Classmate Content -->
                 <CollectionView x:Name="ClassmateCollectionView"
                                 SelectionMode="None"
-                                Grid.Row="4"
+                                Grid.Row="3"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -374,8 +379,8 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-                
-                <!--<Grid x:Name="RetakeStudentArea" Grid.Row="1" Grid.ColumnSpan="6"  Margin="0,0,0,15">
+
+                <Grid x:Name="RetakeStudentArea" Grid.Row="4" Grid.ColumnSpan="6"  Margin="0,0,0,15">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
                            WidthRequest="110"
@@ -390,7 +395,7 @@
                             Grid.Column="4"
                             Grid.ColumnSpan="2"
                             Margin="0,0,30,5"/>
-                </Grid>-->
+                </Grid>
             </Grid>
             <!--#endregion-->
         </ScrollView>
