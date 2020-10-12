@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:y="clr-namespace:ClassAid.Models.Schedule"
-             xmlns:Component="clr-namespace:ClassAid.CustomComponents" xmlns:models="clr-namespace:ClassAid.Models"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             xmlns:models="clr-namespace:ClassAid.Models"
              x:Class="ClassAid.Views.ChatHub">
     <ContentPage.Content>
         <Grid>
@@ -27,39 +28,55 @@
                     <CollectionView x:Name="ChatViewBox">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel">
-                                <StackLayout Padding="3">
-                                    <Label Text="{Binding Sender}"
+                                <Grid BackgroundColor="#FFF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Sender}"
                                            TextColor="Black"
                                            FontSize="Title"/>
-                                    <Label Text="{Binding Message}"
-                                           TextColor="Black"
-                                           FontSize="Body"/>
-                                    <Label Text="{Binding Time}"
+                                        <Label Text="{Binding Time}"
                                            TextColor="Black"
                                            FontSize="Small"/>
-                                </StackLayout>
+                                        <Label Text="{Binding Message}"
+                                           TextColor="Black"
+                                           FontSize="Body"/>
+                                    </StackLayout>
+                                </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
+            <BoxView HeightRequest="1"
+                     Grid.Row="1"
+                     Grid.ColumnSpan="6"
+                     BackgroundColor="#6264a7"
+                     WidthRequest="350"></BoxView>
             <StackLayout Orientation="Horizontal"
                          Grid.Row="1"
-                         Padding="5"
-                         Margin="5">
-                <Entry x:Name="messageBox" 
-                       Placeholder="Message"
+                         Padding="10">
+                <Components:ClassAidEntry x:Name="messageBox" 
+                       WidthRequest="300"
+                       Placeholder="Aa"
                        VerticalOptions="End"
-                       HorizontalOptions="StartAndExpand"
-                       Margin="2"
-                       Grid.ColumnSpan="3"/>
-                <Button x:Name="sendButton"
+                       HorizontalOptions="Start"
+                       Margin="5"
+                       Grid.ColumnSpan="5"/>
+                <ImageButton x:Name="sendButton"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                             Margin="40,15,0,0"
+                        CornerRadius="10"
                         Clicked="SendButton_Clicked"
-                        VerticalOptions="End"
-                        HorizontalOptions="End"
-                        Margin="0"
-                        Grid.Column="3"
-                        Text="Send"/>
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Grid.Column="5"
+                        Source="logo.png"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
