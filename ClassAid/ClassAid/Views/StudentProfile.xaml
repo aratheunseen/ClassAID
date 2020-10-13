@@ -25,13 +25,13 @@
                 </Grid.ColumnDefinitions>
                 <!--#region Profile Heade-->
                 <!--Profile Header-->
-                <Image Source="avater.png"
+                <Image Source="edit_profile.png"
                        Grid.RowSpan="2" Grid.ColumnSpan="2"
-                       HeightRequest="80"
-                       WidthRequest="80"
+                       HeightRequest="60"
+                       WidthRequest="60"
                        HorizontalOptions="Start" 
                        VerticalOptions="Start"
-                       Margin="30,40,0,0"/>
+                       Margin="50,55,0,0"/>
 
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
@@ -44,37 +44,12 @@
                        Text="Semester" 
                        Margin="5,55,0,0" 
                        TextColor="#6264a7"/>
-
-                <ImageButton x:Name="editSemester"
-                                        Grid.Column="2"
-                       Grid.ColumnSpan="3" 
-                             Margin="135,60,0,0" 
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                        Source="edit.png"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start"
-                                             BackgroundColor="Transparent"/>
-
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
                        FontSize="14" 
                        Text="Section" 
                        Margin="5,80,0,0" 
                        TextColor="#6264a7"/>
-
-                <ImageButton x:Name="editSection"
-                                        Grid.Column="2"
-                       Grid.ColumnSpan="3" 
-                             Margin="130,85,0,0" 
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                        Source="edit.png"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start"
-                                             BackgroundColor="Transparent"/>
-
-
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2"
                        FontSize="14" 
