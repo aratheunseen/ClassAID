@@ -86,11 +86,22 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,25,30,0"/>
-                                <Button x:Name="editSchedule"
-                                        Text="Edit Me"
-                                        Clicked="EditSchedule_Invoked"/>
-                                <Button Text="Edit Me"
-                                        Clicked="DeleteSchedule_Button"/>
+                                <ImageButton x:Name="editSchedule"
+                                        Grid.Column="6"
+                                             HeightRequest="20"
+                                             WidthRequest="20"
+                                        Source="edit.png"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                             BackgroundColor="Transparent"/>
+                                <ImageButton x:Name="deleteSchedule"
+                                        Grid.Column="7"
+                                             HeightRequest="20"
+                                             WidthRequest="20"
+                                       Source="delete.png"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                             BackgroundColor="Transparent"/>
                             </Grid>
                         </Expander>
                     </DataTemplate>

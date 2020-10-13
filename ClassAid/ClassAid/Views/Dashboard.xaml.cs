@@ -171,6 +171,7 @@ namespace ClassAid.Views
         {
             LocalDbContex.SaveEvent(EventModels[0]);
         }
+        
     }
 }
 
