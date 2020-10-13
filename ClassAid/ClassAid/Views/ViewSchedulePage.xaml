@@ -86,10 +86,29 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,25,30,0"/>
-                                <Button x:Name="editSchedule"
-                                        Text="Edit Me"
+                                <Label x:Name="editSchedule"
+                                        Text="Edit"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Column="6"
+                                        FontSize="14"
+                                        Padding="0"
+                                        TextColor="green"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start" 
+                                        Margin="0,5,40,0"
+                                             BackgroundColor="Transparent"
+                                             
                                         Clicked="EditSchedule_Invoked"/>
-                                <Button Text="Edit Me"
+                                <Label x:Name="deleteSchedule"
+                                        Text="Delete"
+                                        Grid.Column="6"
+                                        Grid.ColumnSpan="2"
+                                        FontSize="14"
+                                        TextColor="red"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start" 
+                                        Margin="0,25,30,0"
+                                             BackgroundColor="Transparent"
                                         Clicked="DeleteSchedule_Button"/>
                             </Grid>
                         </Expander>
