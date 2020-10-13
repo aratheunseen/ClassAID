@@ -9,9 +9,9 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="1"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -54,7 +54,7 @@
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
-            <Frame BackgroundColor="white" BorderColor="#6264a7" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
+            <Frame BackgroundColor="white" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
             <Components:ClassAidEntry x:Name="messageBox" 
                                       Grid.Row="2"
                                       TextChanged="MessageBox_TextChanged"
