@@ -145,30 +145,30 @@
                             <Frame>
                                 <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <BoxView HorizontalOptions="Start"
+                                    <BoxView Grid.Row="0"
+                                             HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="25,5,0,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                             BackgroundColor="Black"
+                                             Margin="30,10,0,0"
+                                             HeightRequest="5"
+                                             WidthRequest="5"
+                                             BackgroundColor="#6264a7"
                                              CornerRadius="30"/>
-                                    <BoxView Grid.Column="1"
+                                    <BoxView Grid.Row="0"
+                                             Grid.Column="1"
+                                             Margin="0,2,0,0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
-                                             WidthRequest="2"
-                                             BackgroundColor="Black"/>
+                                             WidthRequest="1"
+                                             BackgroundColor="#6264a7"/>
                                     <Label x:Name="studentId"
                                            Text="{Binding ID}"
+                                           Grid.Column="1"
                                            Margin="10,0,0,0"
                                            FontSize="18"
                                            TextColor="Gray"
@@ -178,16 +178,26 @@
                                     <Label x:Name="studentName"
                                            Text="{Binding Name}"
                                            Margin="0,25,0,0"
-                                           Grid.Row="1"
+                                           Grid.Column="1"
                                            FontSize="14"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
+                                    <ImageButton x:Name="rejectBtn" 
+                                                 Clicked="RejectBtn_Clicked"
+                                                 Grid.Column="5"
+                                                 BackgroundColor="Transparent"
+                                                 Source="reject.png"
+                                                 HeightRequest="26" 
+                                                 WidthRequest="26" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center"
+                                                 CommandParameter="{Binding .}"
+                                                 Margin="0,0,0,0"/>
                                     <ImageButton x:Name="acceptBtn" 
                                                  Clicked="AcceptBtn_Clicked"
-                                                 Grid.Row="2"
-                                                 Grid.Column="1"
+                                                 Grid.Column="6"
                                                  BackgroundColor="Transparent"
                                                  Source="accept.png"
                                                  HeightRequest="24" 
@@ -195,19 +205,7 @@
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  CommandParameter="{Binding .}"
-                                                 Margin="5"/>
-                                    <ImageButton x:Name="rejectBtn" 
-                                                 Clicked="RejectBtn_Clicked"
-                                                 Grid.Row="2"
-                                                 Grid.Column="2"
-                                                 BackgroundColor="Transparent"
-                                                 Source="reject.png"
-                                                 HeightRequest="24" 
-                                                 WidthRequest="24" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 CommandParameter="{Binding .}"
-                                                 Margin="5"/>
+                                                 Margin="0,0,15,0"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -238,6 +236,7 @@
                 <CollectionView x:Name="TeacherCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="2"
+                                MinimumHeightRequest="1"
                                 HeightRequest="300"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
@@ -254,18 +253,19 @@
                                     <BoxView Grid.Row="0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="25,5,0,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                             BackgroundColor="Black"
+                                             Margin="30,10,0,0"
+                                             HeightRequest="5"
+                                             WidthRequest="5"
+                                             BackgroundColor="#6264a7"
                                              CornerRadius="30"/>
                                     <BoxView Grid.Row="0"
                                              Grid.Column="1"
+                                             Margin="0,2,0,0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
-                                             WidthRequest="2"
-                                             BackgroundColor="Black"/>
+                                             WidthRequest="1"
+                                             BackgroundColor="#6264a7"/>
                                     <Label x:Name="teacherName"
                                            Text="{Binding Name}"
                                            Grid.Column="1"
@@ -276,7 +276,7 @@
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
                                     <Label x:Name="teacherDesignation"
-                                           Text=""
+                                           Text="Lecturer"
                                            Margin="0,25,0,0"
                                            Grid.Column="1"
                                            FontSize="14"
@@ -289,8 +289,8 @@
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
                                                  Source="call.png"
-                                                 HeightRequest="24" 
-                                                 WidthRequest="24" 
+                                                 HeightRequest="20" 
+                                                 WidthRequest="20" 
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  Margin="0,0,15,0"/>
