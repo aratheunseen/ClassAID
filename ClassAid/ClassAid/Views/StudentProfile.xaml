@@ -44,17 +44,53 @@
                        Text="Semester" 
                        Margin="5,55,0,0" 
                        TextColor="#6264a7"/>
+
+                <ImageButton x:Name="editSemester"
+                                        Grid.Column="2"
+                       Grid.ColumnSpan="3" 
+                             Margin="130,60,0,0" 
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                                        Source="edit.png"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                             BackgroundColor="Transparent"/>
+
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
                        FontSize="14" 
                        Text="Section" 
                        Margin="5,80,0,0" 
                        TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2"
+
+                <ImageButton x:Name="editSection"
+                                        Grid.Column="2"
+                       Grid.ColumnSpan="3" 
+                             Margin="130,85,0,0" 
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                                        Source="edit.png"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                             BackgroundColor="Transparent"/>
+                
+                
+                <Label Grid.Column="2" 
+                       Grid.ColumnSpan="2"
                        FontSize="14" 
                        Text="Phone" 
                        Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
+
+                <ImageButton x:Name="editPhone"
+                                        Grid.Column="5"
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                             Margin="5,110,0,0"
+                                        Source="edit.png"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start"
+                                             BackgroundColor="Transparent"/>
 
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,30,48,0" TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,55,48,0" TextColor="#6264a7"/>
@@ -97,10 +133,28 @@
                        FontSize="12"
                        Margin="40,175,0,0"
                        TextColor="#6264a7"/>
+                <ImageButton x:Name="editDepartment"
+                                        Grid.Column="4"
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                             Margin="0,180,20,0"
+                                        Source="edit.png"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                             BackgroundColor="Transparent"/>
                 <Label x:Name="userUniversity" 
                        Grid.ColumnSpan="4"
                        FontSize="14" 
                        Margin="40,195,0,0" TextColor="#6264a7"/>
+                <ImageButton x:Name="editUniversity"
+                                        Grid.Column="4"
+                                             HeightRequest="10"
+                                             WidthRequest="10"
+                             Margin="0,195,20,0"
+                                        Source="edit.png"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start"
+                                             BackgroundColor="Transparent"/>
                 <Image/>
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
@@ -110,7 +164,7 @@
                              WidthRequest="24" 
                              HorizontalOptions="End" 
                              VerticalOptions="End"
-                             Margin="0,0,30,40"/>
+                             Margin="0,0,30,35"/>
                 <!--#endregion-->
 
                 <!--#region Join Request area-->
