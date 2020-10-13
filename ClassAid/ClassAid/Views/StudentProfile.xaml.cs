@@ -78,7 +78,8 @@ namespace ClassAid.Views
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
 
-            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents()
+                .Select(item=>item.IsActive == true);
             TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
         }
 
