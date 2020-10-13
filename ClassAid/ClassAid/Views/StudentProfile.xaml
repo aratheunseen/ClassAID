@@ -73,24 +73,14 @@
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start"
                                              BackgroundColor="Transparent"/>
-                
-                
+
+
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2"
                        FontSize="14" 
                        Text="Phone" 
                        Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
-
-                <ImageButton x:Name="editPhone"
-                                        Grid.Column="5"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                             Margin="5,110,0,0"
-                                        Source="edit.png"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start"
-                                             BackgroundColor="Transparent"/>
 
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,30,48,0" TextColor="#6264a7"/>
                 <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,55,48,0" TextColor="#6264a7"/>
@@ -133,28 +123,10 @@
                        FontSize="12"
                        Margin="40,175,0,0"
                        TextColor="#6264a7"/>
-                <ImageButton x:Name="editDepartment"
-                                        Grid.Column="4"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                             Margin="0,180,20,0"
-                                        Source="edit.png"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                             BackgroundColor="Transparent"/>
                 <Label x:Name="userUniversity" 
                        Grid.ColumnSpan="4"
                        FontSize="14" 
                        Margin="40,195,0,0" TextColor="#6264a7"/>
-                <ImageButton x:Name="editUniversity"
-                                        Grid.Column="4"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                             Margin="0,195,20,0"
-                                        Source="edit.png"
-                                        HorizontalOptions="End"
-                                        VerticalOptions="Start"
-                                             BackgroundColor="Transparent"/>
                 <Image/>
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
@@ -169,9 +141,13 @@
 
                 <!--#region Join Request area-->
                 <!-- Join Request Title -->
+                <StackLayout x:Name="addUserList"
+                             Grid.Row="1"
+                             Grid.ColumnSpan="6"
+                             Margin="40,0,0,0"
+                             Orientation="Horizontal">
                 <Image Grid.Column="0"
                        Grid.Row="1"
-                       Margin="0,0,0,0"
                        Source="add_user.png"
                        HeightRequest="24"
                        WidthRequest="24"
@@ -186,7 +162,7 @@
                        VerticalOptions="Start" 
                        Margin="5,0,0,0"
                        Grid.ColumnSpan="2"/>
-
+                </StackLayout>
                 <!-- Join Request Content -->
                 <CollectionView x:Name="RequestCollectionView"
                                 Grid.Row="1"
