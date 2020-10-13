@@ -3,6 +3,7 @@ using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,16 +19,16 @@ namespace ClassAid.Views
     public partial class ViewSchedulePage : ContentPage
     {
         public IValueConverter Converter { get; set; }
-        private string _adminkey;
-        private static List<ScheduleModel> ScheduleList;
-        private static Admin admin;
+        private string _adminkey { get; set; }
+        private static List<ScheduleModel> ScheduleList { get; set; }
+        private static ObservableCollection<ScheduleModel> ScheduleListForStudent { get; set; }
+        private static Admin Admin { get; set; }
         public bool IsAdmin { get; set; }
         public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
             IsAdmin = true;
-            admin = user;
-            //scheduleCollectionView.ItemsSource = user.ScheduleList;
+            Admin = user;
             ScheduleList = LocalDbContex.GetSchedules().ToList();
             scheduleCollectionView.ItemsSource = ScheduleList;
         }
@@ -37,28 +38,38 @@ namespace ClassAid.Views
             IsAdmin = false;
             _adminkey = adminKey;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
-            scheduleCollectionView.ItemsSource = LocalDbContex.GetSchedules();
-            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            //{
-            //    var ScheduleModels = new ObservableCollection<ScheduleModel>();
-            //    Action action =
-            //        new Action(async () =>
-            //        await FirebaseHandler.RealTimeConnection(
-            //            CollectionTables.ScheduleList, ScheduleModels, adminKey));
-            //    action.Invoke();
-            //}
-        }
+            ScheduleListForStudent = new ObservableCollection<ScheduleModel>
+                (LocalDbContex.GetSchedules());
+            scheduleCollectionView.ItemsSource = ScheduleListForStudent;
 
-        private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        {
-            scheduleCollectionView.ItemsSource = LocalDbContex.GetSchedules();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                var ScheduleModels = new ObservableCollection<ScheduleModel>();
                 Action action =
-                    new Action(async () =>
-                    await FirebaseHandler.RealTimeConnection(
-                        CollectionTables.ScheduleList, ScheduleModels, _adminkey));
+                    new Action(async () => {
+                        var tempAdmin = await FirebaseHandler.GetAdminAsync(adminKey);
+                        LocalDbContex.ClearTable(TableList.schedule);
+                        LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
+                        ScheduleListForStudent = tempAdmin.ScheduleList;
+                        await FirebaseHandler.RealTimeConnection(
+                            CollectionTables.ScheduleList, ScheduleListForStudent, adminKey);
+                    });
+                action.Invoke();
+            }
+        }
+        private void Connectivity_ConnectivityChanged(object sender,
+            ConnectivityChangedEventArgs e)
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                Action action =
+                    new Action(async () => {
+                        var tempAdmin = await FirebaseHandler.GetAdminAsync(_adminkey);
+                        LocalDbContex.ClearTable(TableList.schedule);
+                        LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
+                        ScheduleListForStudent = tempAdmin.ScheduleList;
+                        await FirebaseHandler.RealTimeConnection(
+                            CollectionTables.ScheduleList, ScheduleListForStudent, _adminkey);
+                    });
                 action.Invoke();
             }
         }
@@ -71,27 +82,11 @@ namespace ClassAid.Views
                 var d = (ScheduleModel)button.BindingContext;
                 ScheduleList.Remove(d);
                 LocalDbContex.DeleteSchedule(d);
-                admin.ScheduleList = new ObservableCollection<ScheduleModel>(ScheduleList);
-                FirebaseHandler.UpdateAdmin(admin);
+                Admin.ScheduleList = new ObservableCollection<ScheduleModel>(ScheduleList);
+                FirebaseHandler.UpdateAdmin(Admin);
             }
             else
                 DependencyService.Get<Toast>().Show("You are not authorized.");
         }
-
-        private void EditSchedule_Invoked(object sender, EventArgs e)
-        {
-            if (IsAdmin)
-            {
-                // TODO : Impliment func
-
-            }
-            else
-                DependencyService.Get<Toast>().Show("You are not authorized.");
-        }
-    }
-    public class TempScheduleData
-    {
-        public bool IsAdmin { get; set; }
-        public IEnumerable<ScheduleModel> schedules { get; set; }
     }
 }
