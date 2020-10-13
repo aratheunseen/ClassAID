@@ -36,7 +36,6 @@ namespace ClassAid.Views
         }
         public StudentProfile(Student student)
         {
-            // TODO: Fix collection binding and saving
             Student = student;
             InitializeComponent();
             mainGrid.Children.Remove(RequestCollectionView);
@@ -58,7 +57,7 @@ namespace ClassAid.Views
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
                 RequestCollectionView.ItemsSource = requestList;
-            else
+            else if(requestList.Count == 0)
             {
                 mainGrid.Children.Remove(RequestCollectionView);
                 mainGrid.Children.Remove(RequestListTitle);
