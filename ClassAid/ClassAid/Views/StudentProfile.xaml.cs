@@ -21,7 +21,6 @@ namespace ClassAid.Views
     {
         public Admin Admin { get; set; }
         private ObservableCollection<Student> requestList;
-        private ObservableCollection<Teacher> teacherList;
         private ObservableCollection<Student> studentList;
         public Student Student { get; set; }
         private static BatchDetails BatchDetails;
@@ -59,12 +58,16 @@ namespace ClassAid.Views
         {
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
-                RequestCollectionView.ItemsSource = requestList;
-            else if (requestList.Count == 0)
             {
-                mainGrid.Children.Remove(RequestCollectionView);
-                mainGrid.Children.Remove(RequestListTitle);
+                if (requestList.Count == 0)
+                {
+                    mainGrid.Children.Remove(RequestCollectionView);
+                    mainGrid.Children.Remove(RequestListTitle);
+                }
+                else
+                RequestCollectionView.ItemsSource = requestList;
             }
+            
         }
         private void BindData()
         {
