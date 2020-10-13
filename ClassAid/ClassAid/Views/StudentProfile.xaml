@@ -12,12 +12,12 @@
     <ContentPage.Content>
         <ScrollView HorizontalScrollBarVisibility="Never"
                     VerticalScrollBarVisibility="Never">
-            <Grid BackgroundColor="#FFF">
+            <Grid BackgroundColor="#FFF" x:Name="mainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="240" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -137,6 +137,7 @@
                 <CollectionView x:Name="RequestCollectionView"
                                 Grid.Row="1"
                                 Grid.ColumnSpan="6"
+                                HeightRequest="300"
                                 SelectionMode="None"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -237,6 +238,7 @@
                 <CollectionView x:Name="TeacherCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="2"
+                                HeightRequest="300"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -282,8 +284,8 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-
                                     <ImageButton x:Name="teacherCallBtn" 
+                                                 Clicked="TeacherCallBtn_Clicked"
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
@@ -322,6 +324,7 @@
                 <CollectionView x:Name="ClassmateCollectionView"
                                 SelectionMode="None"
                                 Grid.Row="3"
+                                HeightRequest="300"
                                 Grid.ColumnSpan="6"
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
@@ -368,8 +371,10 @@
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
 
-                                    <ImageButton x:Name="callBtn" 
+                                    <ImageButton x:Name="classMateCallBtn" 
+                                                 Clicked="ClassMateCallBtn_Clicked"
                                                  Grid.Column="5"
+                                                 CommandParameter="{Binding .}"
                                                  BackgroundColor="Transparent"
                                                  Source="schedule.png"
                                                  HeightRequest="24" 

@@ -12,7 +12,7 @@
         <ScrollView HorizontalScrollBarVisibility="Never"
                     BackgroundColor="#fff"
                     VerticalScrollBarVisibility="Never">
-            <Grid>
+            <Grid x:Name="mainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="*" />

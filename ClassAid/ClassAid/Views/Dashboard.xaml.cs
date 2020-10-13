@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Diagnostics;
+using Firebase.Database.Query;
 
 namespace ClassAid.Views
 {
@@ -116,20 +117,19 @@ namespace ClassAid.Views
                         await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, item.AdminKey);
                     }
                 }
-
-            addScheduleBtnImage.IsVisible =
-                addNoticeBtnImage.IsVisible =
-                teamCodeBox.IsVisible = false;
+            mainGrid.Children.Remove(addScheduleBtnImage);
+            mainGrid.Children.Remove(addScheduleBtnImage);
+            mainGrid.Children.Remove(teamCodeBox);
             if (EventModels == null)
                 EventModels = new ObservableCollection<EventModel>();
             if (ScheduleModels == null)
                 ScheduleModels = new ObservableCollection<ScheduleModel>();
-            Debug.WriteLine("Here");
-            Debug.WriteLine(student.AdminKey);
             await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
             await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
             EventModels.CollectionChanged += EventModels_CollectionChanged;
             ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
+            //var t = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+            //LocalDbContex.SaveTeachers(t.TeacherList);
         }
         private void InitializeData()
         {
