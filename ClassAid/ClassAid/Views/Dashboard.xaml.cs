@@ -15,6 +15,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Diagnostics;
 using Firebase.Database.Query;
+using Com.OneSignal;
 
 namespace ClassAid.Views
 {
@@ -98,7 +99,8 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             this.student = student;
-
+            OneSignal.Current.SendTag("AdminKey", student.AdminKey);
+            OneSignal.Current.RegisterForPushNotifications();
             StudentInit();
         }
         public Dashboard()

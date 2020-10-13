@@ -59,7 +59,7 @@ namespace ClassAid.Views.StudentViews
                 {
                     //Debug.WriteLine(student.AdminKey);
                     Admin tempAdmin = await FirebaseHandler.GetAdminAsync(tempStudent.AdminKey);
-                    OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
+                    
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
                     if (tempStudent.IsActive)
