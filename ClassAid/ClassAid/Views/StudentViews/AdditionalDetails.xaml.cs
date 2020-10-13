@@ -64,7 +64,7 @@ namespace ClassAid.Views.StudentViews
                 Preferences.Set(PrefKeys.Key, student.Key);
                 Application.Current.MainPage =
                     new NavigationPage(new StudentNotActivatedPage(student));
-                OneSignal.Current.SendTag("AdminKey", student.AdminKey);
+                //OneSignal.Current.SendTag("AdminKey", student.AdminKey);
                 student.AdminKey = keyVault.AdminKey;
                 FirebaseHandler.UpdateAdmin(tempAdmin);
                 FirebaseHandler.UpdateStudent(student);

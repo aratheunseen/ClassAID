@@ -29,6 +29,12 @@ namespace ClassAid.Views
             ChatViewBox.ItemsSource = chats;
             messageBox.Completed += SendButton_Clicked;
             chats.CollectionChanged += Chats_CollectionChanged;
+            ChatViewBox.ChildAdded += ChatViewBox_ChildAdded;
+        }
+
+        private void ChatViewBox_ChildAdded(object sender, ElementEventArgs e)
+        {
+           //chatBoxGrid.Bindings.
         }
 
         private void Chats_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
