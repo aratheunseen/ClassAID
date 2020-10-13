@@ -68,14 +68,15 @@
             <ImageButton x:Name="sendButton"
                          Grid.Row="2"
                             HeightRequest="30"
+                         BackgroundColor="Transparent"
                             WidthRequest="30"
-                             Margin="0,0,30,15"
+                            Margin="0,0,30,15"
                             CornerRadius="10"
                             Clicked="SendButton_Clicked"
                             VerticalOptions="End"
                             HorizontalOptions="End"
                             Grid.Column="5"
-                            Source="logo.png"/>
+                            Source="send.png"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

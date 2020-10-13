@@ -18,7 +18,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="70" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -105,7 +106,7 @@
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
                              BackgroundColor="Transparent"
-                             Source="schedule.png"
+                             Source="logout.png"
                              HeightRequest="24" 
                              WidthRequest="24" 
                              HorizontalOptions="End" 
@@ -118,12 +119,12 @@
                 <Image Grid.Column="0"
                        Grid.Row="1"
                        Margin="0,0,0,0"
-                       Source="schedule.png"
+                       Source="add_user.png"
                        HeightRequest="24"
                        WidthRequest="24"
                        HorizontalOptions="End"
                        VerticalOptions="Start"/>
-                <Label Text="Request"
+                <Label Text="Add User"
                        Grid.Column="1"
                        Grid.Row="1"
                        FontSize="20"
@@ -189,7 +190,7 @@
                                                  Grid.Row="2"
                                                  Grid.Column="1"
                                                  BackgroundColor="Transparent"
-                                                 Source="schedule.png"
+                                                 Source="accept.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
@@ -201,7 +202,7 @@
                                                  Grid.Row="2"
                                                  Grid.Column="2"
                                                  BackgroundColor="Transparent"
-                                                 Source="schedule.png"
+                                                 Source="reject.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
@@ -218,8 +219,8 @@
                 <!-- Teacher List Title -->
                 <Image Grid.Column="0"
                        Grid.Row="2"
-                       Margin="0,0,5,0"
-                       Source="schedule.png"
+                       Margin="0,0,0,0"
+                       Source="teacher.png"
                        HeightRequest="24"
                        WidthRequest="24"
                        HorizontalOptions="End"
@@ -288,7 +289,7 @@
                                                  Clicked="TeacherCallBtn_Clicked"
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
-                                                 Source="schedule.png"
+                                                 Source="call.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
@@ -304,8 +305,8 @@
                 <!-- Classmate Title -->
                 <Image Grid.Column="0"
                        Grid.Row="3"
-                       Margin="0,0,5,0"
-                       Source="schedule.png"
+                       Margin="0,0,0,0"
+                       Source="group.png"
                        HeightRequest="24"
                        WidthRequest="24"
                        HorizontalOptions="End"
@@ -376,7 +377,7 @@
                                                  Grid.Column="5"
                                                  CommandParameter="{Binding .}"
                                                  BackgroundColor="Transparent"
-                                                 Source="schedule.png"
+                                                 Source="call.png"
                                                  HeightRequest="24" 
                                                  WidthRequest="24" 
                                                  HorizontalOptions="End" 
@@ -389,22 +390,22 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-
-                <Grid x:Name="RetakeStudentArea" Grid.Row="4" Grid.ColumnSpan="6"  Margin="0,0,0,15">
+                <Frame BackgroundColor="#6264a7" Grid.Row="4" Grid.ColumnSpan="6"></Frame>
+                <Grid x:Name="RetakeStudentArea" Grid.Row="5" Grid.ColumnSpan="6" Margin="10">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
                            WidthRequest="110"
                             Grid.Column="0"
                             Grid.ColumnSpan="4"
-                            Margin="40,0,0,0"/>
+                            Margin="15,0,0,0"/>
                     <Button x:Name="addAnotherAdmin"
-                            Text="Add"
+                            Text="Join"
                             CornerRadius="30"
                             BackgroundColor="#6264a7"
                             Clicked="AddAnotherAdmin_Clicked"
-                            Grid.Column="4"
+                            Grid.Column="5"
                             Grid.ColumnSpan="2"
-                            Margin="0,0,30,5"/>
+                            Margin="0,0,15,5"/>
                 </Grid>
             </Grid>
             <!--#endregion-->
