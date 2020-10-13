@@ -30,7 +30,7 @@ namespace ClassAid.Views
             IsAdmin = true;
             Admin = user;
             ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
-            scheduleCollectionView.ItemsSource = ScheduleList;
+            scheduleCollectionView.ItemsSource = ScheduleList.OrderBy(p => p.DayOfWeek); ;
         }
         public ViewSchedulePage(string adminKey)
         {
@@ -40,7 +40,8 @@ namespace ClassAid.Views
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             ScheduleListForStudent = new ObservableCollection<ScheduleModel>
                 (LocalDbContex.GetSchedules());
-            scheduleCollectionView.ItemsSource = ScheduleListForStudent;
+            scheduleCollectionView.ItemsSource = 
+                ScheduleListForStudent.OrderBy(p=>p.DayOfWeek);
 
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {

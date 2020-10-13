@@ -257,8 +257,9 @@ namespace ClassAid.DataContex
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
-                string sql = $"TRUNCATE TABLE IF EXISTS {table.ToString()};";
-                cnn.ExecuteAsync(sql);
+                string sql = $"DELETE FROM {table};";
+                var d = cnn.Execute(sql);
+                Debug.WriteLine(d);
             }
         }
     }

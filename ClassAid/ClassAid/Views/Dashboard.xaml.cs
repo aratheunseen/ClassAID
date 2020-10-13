@@ -12,6 +12,7 @@ using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Com.OneSignal;
+using System;
 
 namespace ClassAid.Views
 {
@@ -77,8 +78,8 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ? 
-                new ViewSchedulePage(admin): new ViewSchedulePage(student.AdminKey)));
+                await Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
+                new ViewSchedulePage(admin) : new ViewSchedulePage(student.AdminKey)));
             }
         }
         public ICommand FullEventCommand
@@ -109,28 +110,16 @@ namespace ClassAid.Views
         }
         private async void StudentInit()
         {
-            if (student.RetakeModels != null)
-                foreach (var item in student.RetakeModels)
-                {
-                    if (item.IsActive)
-                    {
-                        await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, item.AdminKey);
-                        await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, item.AdminKey);
-                    }
-                }
             mainGrid.Children.Remove(addScheduleBtnImage);
             mainGrid.Children.Remove(addScheduleBtnImage);
             mainGrid.Children.Remove(teamCodeBox);
-            if (EventModels == null)
-                EventModels = new ObservableCollection<EventModel>();
-            if (ScheduleModels == null)
-                ScheduleModels = new ObservableCollection<ScheduleModel>();
-            await FirebaseHandler.RealTimeConnection(CollectionTables.EventList, EventModels, student.AdminKey);
-            await FirebaseHandler.RealTimeConnection(CollectionTables.ScheduleList, ScheduleModels, student.AdminKey);
-            EventModels.CollectionChanged += EventModels_CollectionChanged;
-            ScheduleModels.CollectionChanged += ScheduleModels_CollectionChanged;
-            //var t = await FirebaseHandler.GetAdminAsync(student.AdminKey);
-            //LocalDbContex.SaveTeachers(t.TeacherList);
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                LocalDbContex.SaveStudents(tempAdmin.StudentList);
+                LocalDbContex.ClearTable(TableList.teachers);
+                LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
+            }
         }
         private void InitializeData()
         {
