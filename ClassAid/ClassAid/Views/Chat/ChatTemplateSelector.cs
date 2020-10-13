@@ -1,9 +1,5 @@
-﻿using Android.Preferences;
-using ClassAid.Models;
+﻿using ClassAid.Models;
 using ClassAid.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
