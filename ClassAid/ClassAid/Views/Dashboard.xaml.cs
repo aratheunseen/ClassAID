@@ -77,7 +77,8 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewSchedulePage(admin)));
+                await Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ? 
+                new ViewSchedulePage(admin): new ViewSchedulePage(student.AdminKey)));
             }
         }
         public ICommand FullEventCommand

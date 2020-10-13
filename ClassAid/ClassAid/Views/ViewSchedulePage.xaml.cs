@@ -20,7 +20,7 @@ namespace ClassAid.Views
     {
         public IValueConverter Converter { get; set; }
         private string _adminkey { get; set; }
-        private static List<ScheduleModel> ScheduleList { get; set; }
+        private static ObservableCollection<ScheduleModel> ScheduleList { get; set; }
         private static ObservableCollection<ScheduleModel> ScheduleListForStudent { get; set; }
         private static Admin Admin { get; set; }
         public bool IsAdmin { get; set; }
@@ -29,7 +29,7 @@ namespace ClassAid.Views
             InitializeComponent();
             IsAdmin = true;
             Admin = user;
-            ScheduleList = LocalDbContex.GetSchedules().ToList();
+            ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
             scheduleCollectionView.ItemsSource = ScheduleList;
         }
         public ViewSchedulePage(string adminKey)

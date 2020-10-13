@@ -95,6 +95,8 @@
                                              Source="delete.png"
                                              HorizontalOptions="Center"
                                              VerticalOptions="Center"
+                                             CommandParameter="{Binding .}"
+                                             Clicked="DeleteSchedule_Button"
                                              BackgroundColor="Transparent"/>
                             </Grid>
                         </Expander>
