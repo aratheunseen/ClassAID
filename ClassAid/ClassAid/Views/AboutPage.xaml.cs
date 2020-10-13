@@ -15,6 +15,8 @@ namespace ClassAid.Views
         public AboutPage()
         {
             InitializeComponent();
+            yearText.Text = DateTime.Now.Year.ToString();
+
         }
     }
 }

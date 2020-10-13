@@ -94,6 +94,8 @@ namespace ClassAid.Views
             InitializeComponent();
             this.admin = user;
             teamCode.Text = user.TeamCode;
+            firstEventBody.Text = admin.EventList[0].Details;
+            secondEventBody.Text = admin.EventList[1].Details;
         }
         public Dashboard(Student student)
         {
@@ -137,8 +139,7 @@ namespace ClassAid.Views
                 teamCode.Text = teamCode1;
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
                 admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
-                firstEventBody.Text = admin.EventList[0].Details;
-                secondEventBody.Text = admin.EventList[1].Details;
+
                 //scheduleView.ItemsSource = admin.ScheduleList.Where(p=>
                 //p.DayOfWeek == DateTime.Now.DayOfWeek);
             }
