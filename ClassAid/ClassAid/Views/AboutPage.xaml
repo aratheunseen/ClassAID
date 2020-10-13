@@ -1,12 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ClassAid.Views.AboutPage">
+             x:Class="ClassAid.Views.AboutPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView VerticalScrollBarVisibility="Never"
+                    HorizontalScrollBarVisibility="Never">
+        <Grid x:Name="mainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"
+                HorizontalOptions="Center"
+                         VerticalOptions="Start"
+                         Margin="0,30,0,30">
+                <Image Source="logo.png"
+                       HeightRequest="200"
+                       WidthRequest="200"></Image>
+
+                <Label Text="Version: 1.0 (Beta)"
+                       HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                       Margin="0,160,0,0"></Label>
+            </Grid>
+            <Grid>
+                <Label Text="About Us"
+                       Margin="40,320,0,0"
+                       FontSize="20"
+                       TextColor="#6264a7"></Label>
+                <Label Text="Privacy Policy"
+                       Margin="40,370,0,0"
+                       FontSize="20"
+                       TextColor="#6264a7"></Label>
+                <Label Text="Terms and Conditions"
+                       Margin="40,420,0,0"
+                       FontSize="20"
+                       TextColor="#6264a7"></Label>
+                <Label Text="Help Center"
+                       Margin="40,470,0,0"
+                       FontSize="20"
+                       TextColor="#6264a7"></Label>
+            </Grid>
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="End"
+                         Margin="0,0,0,25">
+                <Label Text=""
+                       TextColor="#6264a7"
+                       FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="© "/>
+                                <Span Text="2020"/>
+                                <Span Text=" Pienteger Inc"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+            </StackLayout>
+        </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
