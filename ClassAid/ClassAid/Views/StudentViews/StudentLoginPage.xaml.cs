@@ -44,7 +44,7 @@ namespace ClassAid.Views.StudentViews
                 {
                     IsAdmin = false
                 };
-                
+
                 activityIndicator.IsRunning = true;
                 var tempStudent =
                     await FirebaseHandler.GetStudentAsync(student.Key);
@@ -59,7 +59,7 @@ namespace ClassAid.Views.StudentViews
                 {
                     //Debug.WriteLine(student.AdminKey);
                     Admin tempAdmin = await FirebaseHandler.GetAdminAsync(tempStudent.AdminKey);
-                    
+
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
                     if (tempStudent.IsActive)
@@ -69,10 +69,20 @@ namespace ClassAid.Views.StudentViews
                         Preferences.Set(PrefKeys.IsAdmin, false);
                         Preferences.Set(PrefKeys.Key, student.Key);
                         Application.Current.MainPage =
-                            new NavigationPage(new Dashboard(tempStudent));                        
-                        LocalDbContex.SaveUser(tempStudent);                        
+                            new NavigationPage(new Dashboard(tempStudent));
+                        LocalDbContex.SaveUser(tempStudent);
                         LocalDbContex.SaveUser(tempAdmin);
                         LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                        if (tempAdmin.EventList != null)
+                            LocalDbContex.SaveEvents(tempAdmin.EventList);
+                        if (tempAdmin.TeacherList != null)
+                            LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
+                        if (tempAdmin.ScheduleList != null)
+                            LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
+                        if (tempAdmin.StudentList != null)
+                            LocalDbContex.SaveStudents(tempAdmin.StudentList);
+                        OneSignal.Current.SendTag("AdminKey", student.AdminKey);
+                        OneSignal.Current.RegisterForPushNotifications();
                     }
                     else
                     {

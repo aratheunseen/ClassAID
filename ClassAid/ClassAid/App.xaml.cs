@@ -97,9 +97,10 @@ namespace ClassAid
         public static void LogOut()
         {
             Preferences.Set(PrefKeys.IsLoggedIn, false);
-            Application.Current.MainPage =
+            Current.MainPage =
                 new NavigationPage(new StartPage());
             LocalDbContex.DropTables();
+            OneSignal.Current.DeleteTag("AdminKey");
         }
     }
 }
