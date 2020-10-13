@@ -21,31 +21,31 @@
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="schedule:EventModel">
-                            <Frame Padding="0">
-                                    <Grid>
-                                        <BoxView HorizontalOptions="End"
+                            <DataTemplate x:DataType="schedule:EventModel">
+                                <Grid>
+                                    <BoxView HorizontalOptions="End"
                                         VerticalOptions="Start" 
-                                        Margin="25,20,15,0"
-                                        HeightRequest="5"
-                                        WidthRequest="5"
-                                        BackgroundColor="MediumVioletRed"
+                                        Margin="0,20,15,0"
+                                        HeightRequest="10"
+                                        WidthRequest="10"
+                                        BackgroundColor="#6264a7"
                                         CornerRadius="30"/>
 
-                                        <BoxView Grid.Column="1"
-                                         HorizontalOptions="Start"
+                                    <BoxView Grid.Column="0"
+                                         HorizontalOptions="End"
                                          VerticalOptions="Start"
-                                         Margin="5,15,0,0"
+                                         Margin="0,15,0,0"
                                          HeightRequest="18"
                                          WidthRequest="1"
-                                         BackgroundColor="MediumVioletRed"/>
+                                         BackgroundColor="#6264a7"/>
+
                                     <Label Text="{Binding Title}"
                                        Grid.Column="1"
                                        FontSize="14"
                                        TextColor="Black"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="15,15,10,0"
+                                       Margin="5,13,30,0"
                                        Grid.ColumnSpan="4"/>
                                     <Label Text="{Binding Details}"
                                        Grid.Column="1"
@@ -53,19 +53,18 @@
                                        TextColor="Gray"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="5,70,10,0"
+                                       Margin="0,80,30,20"
                                        Grid.ColumnSpan="4"/>
-                                        </Grid>
-                                </Frame>
-                        </DataTemplate>
+                                </Grid>
+                            </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Grid>
                 <Label Text="No More Notice"
-                       Margin="0,100,0,0"
+                       Margin="0,0,0,30"
                        BackgroundColor="Transparent"
                                        FontSize="24"
-                                       TextColor="Gray"
+                                       TextColor="LightGray"
                                        HorizontalOptions="Center"
                                        VerticalOptions="End" 
                                        Grid.ColumnSpan="5"/>
