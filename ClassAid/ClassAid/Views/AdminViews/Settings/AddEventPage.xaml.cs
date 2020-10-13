@@ -40,6 +40,10 @@ namespace ClassAid.Views.AdminViews.Settings
                 Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
             };
             admin.EventList.Add(e);
+
+            if (admin.EventList.Count > 10)
+                admin.EventList.RemoveAt(10);
+
             LocalDbContex.SaveEvent(e);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
