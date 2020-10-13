@@ -18,7 +18,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="1" />
                     <RowDefinition Height="70" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -390,7 +389,6 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-                <Frame BackgroundColor="#6264a7" Grid.Row="4" Grid.ColumnSpan="6"></Frame>
                 <Grid x:Name="RetakeStudentArea" Grid.Row="5" Grid.ColumnSpan="6" Margin="10">
                     <Components:ClassAidEntry x:Name="anotherTeamCode"
                            Placeholder="New CR Teamcode"
