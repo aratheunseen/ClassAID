@@ -19,18 +19,17 @@ namespace ClassAid.Views
     {
         public IValueConverter Converter { get; set; }
         private string _adminkey;
+        private static List<ScheduleModel> ScheduleList;
+        private static Admin admin;
         public bool IsAdmin { get; set; }
         public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
             IsAdmin = true;
+            admin = user;
             //scheduleCollectionView.ItemsSource = user.ScheduleList;
-            TempScheduleData scheduleData = new TempScheduleData()
-            {
-                IsAdmin = true,
-                schedules = LocalDbContex.GetSchedules()
-            };
-            scheduleCollectionView.ItemsSource = LocalDbContex.GetSchedules();
+            ScheduleList = LocalDbContex.GetSchedules().ToList();
+            scheduleCollectionView.ItemsSource = ScheduleList;
         }
         public ViewSchedulePage(string adminKey)
         {
@@ -68,7 +67,12 @@ namespace ClassAid.Views
         {
             if (IsAdmin)
             {
-                // TODO : Impliment func
+                ImageButton button = sender as ImageButton;
+                var d = (ScheduleModel)button.BindingContext;
+                ScheduleList.Remove(d);
+                LocalDbContex.DeleteSchedule(d);
+                admin.ScheduleList = new ObservableCollection<ScheduleModel>(ScheduleList);
+                FirebaseHandler.UpdateAdmin(admin);
             }
             else
                 DependencyService.Get<Toast>().Show("You are not authorized.");
@@ -79,7 +83,7 @@ namespace ClassAid.Views
             if (IsAdmin)
             {
                 // TODO : Impliment func
-                
+
             }
             else
                 DependencyService.Get<Toast>().Show("You are not authorized.");
