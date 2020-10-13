@@ -21,23 +21,25 @@ namespace ClassAid.Views
     {
         public Admin Admin { get; set; }
         private ObservableCollection<Student> requestList;
+        private ObservableCollection<Teacher> teacherList;
+        private ObservableCollection<Student> studentList;
         public Student Student { get; set; }
         private static BatchDetails BatchDetails;
         public StudentProfile(Admin admin)
         {
             Admin = admin;
             InitializeComponent();
-            //RetakeStudentArea.IsVisible = false;
+            mainGrid.Children.Remove(RetakeStudentArea);
             logoutBtn.Command = new Command(() => App.LogOut());
-            //addAnotherAdmin.IsVisible = false;
-            //anotherTeamCode.IsVisible = false;
             BindData();
             AllocateRequestList(admin.Key);
         }
         public StudentProfile(Student student)
         {
+            // TODO: Fix collection binding and saving
             Student = student;
             InitializeComponent();
+            mainGrid.Children.Remove(RequestCollectionView);
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -55,41 +57,7 @@ namespace ClassAid.Views
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
                 RequestCollectionView.ItemsSource = requestList;
-            else
-            {
-                List<Student> sample = new List<Student>()
-                {
-                    new Admin() { Name = "Hasina", ID = "192311001", Phone = "0123567890" },
-                    new Admin() { Name = "Mahmud", ID = "192311002", Phone = "0123567891" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Alif", ID = "192311003", Phone = "0123567892" },
-                    new Admin() { Name = "Khaleda", ID = "19231104", Phone = "0123567893" }
-                };
-                RequestCollectionView.ItemsSource = sample;
         }
-    }
         private void BindData()
         {
             if (Student == null)
@@ -110,20 +78,14 @@ namespace ClassAid.Views
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
 
-            //ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
-            //TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
+            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
         }
 
         private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             LocalDbContex.SaveStudent(((ObservableCollection<Student>)sender)[e.NewStartingIndex]);
         }
-
-        private void Name_Scrolled(object sender, ItemsViewScrolledEventArgs e)
-        {
-
-        }
-
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
             if (sender is ImageButton b && b.CommandParameter is Student student)
@@ -134,7 +96,6 @@ namespace ClassAid.Views
                 requestList.Remove(student);
             }
         }
-
         private void RejectBtn_Clicked(object sender, EventArgs e)
         {
             //ImageButton btn = (ImageButton)sender;
@@ -148,31 +109,39 @@ namespace ClassAid.Views
                 requestList.Remove(student);
             }
         }
-
         private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
         {
-            //KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
-            //if (key != null)
-            //{
-            //    var retake = new RetakeStudentModel()
-            //    {
-            //        TeamCode = anotherTeamCode.Text,
-            //        AdminKey = key.AdminKey,
-            //        IsActive = false
-            //    };
-            //    if (Student.RetakeModels == null)
-            //    {
-            //        Student.RetakeModels = new List<RetakeStudentModel>();
-            //    }
-            //    Student.RetakeModels.Add(retake);
-            //    FirebaseHandler.UpdateStudent(Student);
-            //    FirebaseHandler.AddRetake(retake);
-            //}
+            KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
+            if (key != null)
+            {
+                var retake = new RetakeStudentModel()
+                {
+                    TeamCode = anotherTeamCode.Text,
+                    AdminKey = key.AdminKey,
+                    IsActive = false
+                };
+                if (Student.RetakeModels == null)
+                {
+                    Student.RetakeModels = new List<RetakeStudentModel>();
+                }
+                Student.RetakeModels.Add(retake);
+                FirebaseHandler.UpdateStudent(Student);
+                FirebaseHandler.AddRetake(retake);
+            }
         }
 
-        private void AcceptBtn_Clicked_1(object sender, EventArgs e)
+        private void ClassMateCallBtn_Clicked(object sender, EventArgs e)
         {
+            ImageButton button = (ImageButton)sender;
+            var d = (Student)button.BindingContext;
+            Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
+        }
 
+        private void TeacherCallBtn_Clicked(object sender, EventArgs e)
+        {
+            ImageButton button = (ImageButton)sender;
+            var d = (Teacher)button.BindingContext;
+            Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
     }
 }

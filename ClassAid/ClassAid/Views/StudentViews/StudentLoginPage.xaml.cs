@@ -70,7 +70,7 @@ namespace ClassAid.Views.StudentViews
                         Preferences.Set(PrefKeys.Key, student.Key);
                         Application.Current.MainPage =
                             new NavigationPage(new Dashboard(tempStudent));                        
-                        LocalDbContex.SaveUser(student);                        
+                        LocalDbContex.SaveUser(tempStudent);                        
                         LocalDbContex.SaveUser(tempAdmin);
                         LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     }
