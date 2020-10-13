@@ -40,6 +40,7 @@ namespace ClassAid.Views
             Student = student;
             InitializeComponent();
             mainGrid.Children.Remove(RequestCollectionView);
+            mainGrid.Children.Remove(RequestListTitle);
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -57,6 +58,11 @@ namespace ClassAid.Views
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
                 RequestCollectionView.ItemsSource = requestList;
+            else
+            {
+                mainGrid.Children.Remove(RequestCollectionView);
+                mainGrid.Children.Remove(RequestListTitle);
+            }
         }
         private void BindData()
         {

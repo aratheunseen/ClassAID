@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,9 +11,6 @@ using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Diagnostics;
-using Firebase.Database.Query;
 using Com.OneSignal;
 
 namespace ClassAid.Views
@@ -103,8 +99,6 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             this.student = student;
-            OneSignal.Current.SendTag("AdminKey", student.AdminKey);
-            OneSignal.Current.RegisterForPushNotifications();
             StudentInit();
         }
         public Dashboard()

@@ -116,7 +116,7 @@
 
                 <!--#region Join Request area-->
                 <!-- Join Request Title -->
-                <StackLayout x:Name="addUserList"
+                <StackLayout x:Name="RequestListTitle"
                              Grid.Row="1"
                              Grid.ColumnSpan="6"
                              Margin="40,0,0,0"
