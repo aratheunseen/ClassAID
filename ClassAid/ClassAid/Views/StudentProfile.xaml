@@ -111,7 +111,7 @@
                              WidthRequest="24" 
                              HorizontalOptions="End" 
                              VerticalOptions="End"
-                             Margin="0,0,30,35"/>
+                             Margin="0,0,30,42"/>
                 <!--#endregion-->
 
                 <!--#region Join Request area-->
