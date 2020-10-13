@@ -2,7 +2,9 @@
 using ClassAid.Models.Users;
 using Com.OneSignal;
 using System;
+using System.Collections;
 using System.Diagnostics;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -80,7 +82,8 @@ namespace ClassAid.Views.StudentViews
                         if (tempAdmin.ScheduleList != null)
                             LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
                         if (tempAdmin.StudentList != null)
-                            LocalDbContex.SaveStudents(tempAdmin.StudentList);
+                            LocalDbContex.SaveStudents(tempAdmin.StudentList
+                                .Where(item => item.IsActive == true).ToList());
                         OneSignal.Current.SendTag("AdminKey", student.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();
                     }

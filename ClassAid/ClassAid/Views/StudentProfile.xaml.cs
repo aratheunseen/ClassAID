@@ -42,21 +42,25 @@ namespace ClassAid.Views
             mainGrid.Children.Remove(RequestListTitle);
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
-            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            //{
-            //    ObservableCollection<Student> students = new ObservableCollection<Student>();
-            //    FirebaseHandler.GetStudentList(students, Student.AdminKey);
-            //    LocalDbContex.ClearTable(TableList.students);
-            //    LocalDbContex.SaveStudents(students);
-            //    //ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
-            //}
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                studentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
+                studentList.CollectionChanged += StudentList_CollectionChanged;
+                FirebaseHandler.GetStudentList(studentList, Student.AdminKey);
+            }
+        }
+
+        private void StudentList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (studentList[e.NewStartingIndex].IsActive)
+                LocalDbContex.SaveStudent(studentList[e.NewStartingIndex]);
         }
         private async void AllocateRequestList(string key)
         {
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
                 RequestCollectionView.ItemsSource = requestList;
-            else if(requestList.Count == 0)
+            else if (requestList.Count == 0)
             {
                 mainGrid.Children.Remove(RequestCollectionView);
                 mainGrid.Children.Remove(RequestListTitle);
@@ -81,11 +85,10 @@ namespace ClassAid.Views
             userDepartment.Text = BatchDetails.Department;
             userSection.Text = BatchDetails.Section;
             userSemester.Text = BatchDetails.Semester;
-
-            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents()
-                .Where(item=>item.IsActive == true).ToList();
+            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
             TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
         }
+        #region Accept And Reject
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
             if (sender is ImageButton b && b.CommandParameter is Student student)
@@ -106,6 +109,7 @@ namespace ClassAid.Views
                 requestList.Remove(student);
             }
         }
+        #endregion
         private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
         {
             // TODO: Not verified portion
@@ -127,7 +131,7 @@ namespace ClassAid.Views
                 FirebaseHandler.AddRetake(retake);
             }
         }
-
+        #region Call Functions
         private void ClassMateCallBtn_Clicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -141,5 +145,6 @@ namespace ClassAid.Views
             var d = (Teacher)button.BindingContext;
             Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
+        #endregion
     }
 }
