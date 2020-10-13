@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
-             xmlns:local="clr-namespace:ClassAid.Views.Chat"
+             xmlns:local="clr-namespace:ClassAid.Views.Chat" xmlns:models="clr-namespace:ClassAid.Models"
              x:Class="ClassAid.Views.ChatHub">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -27,10 +27,9 @@
                         HorizontalScrollBarVisibility="Never">
                 <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
                     <CollectionView x:Name="ChatViewBox"
-                                    ItemTemplate="{StaticResource MessageTemplateSelector}"
                                     Grid.Row="0"
                                     ItemsUpdatingScrollMode="KeepLastItemInView">
-                        <!--<CollectionView.ItemTemplate>
+                        <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel"
                                           x:Name="chatBoxGrid">
                                 <Grid>
@@ -38,7 +37,7 @@
                                            Margin="30,0,0,0"
                                            TextColor="Black"
                                            FontSize="Caption"/>
-                                    <Label Text="{Binding SenderKey}"
+                                    <Label Text="{Binding ID}"
                                             Margin="0,0,30,0"
                                             HorizontalOptions="End"
                                             TextColor="LightGray"
@@ -57,7 +56,7 @@
                                            FontSize="Micro"/>
                                 </Grid>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>-->
+                        </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
@@ -65,25 +64,25 @@
             <Components:ClassAidEntry x:Name="messageBox" 
                                       Grid.Row="2"
                                       TextChanged="MessageBox_TextChanged"
-                                       WidthRequest="300"
-                                       TextColor="#6264a7"
-                                       Placeholder="Type your message here!!!"
-                                       VerticalOptions="End"
-                                       HorizontalOptions="Start"
-                                       Margin="30,10,0,10"
-                                       Grid.ColumnSpan="5"/>
+                                      WidthRequest="300"
+                                      TextColor="#6264a7"
+                                      Placeholder="Type your message here!!!"
+                                      VerticalOptions="End"
+                                      HorizontalOptions="Start"
+                                      Margin="30,10,0,10"
+                                      Grid.ColumnSpan="5"/>
             <ImageButton x:Name="sendButton"
                          Grid.Row="2"
-                            HeightRequest="30"
+                         HeightRequest="30"
                          BackgroundColor="Transparent"
-                            WidthRequest="30"
-                            Margin="0,0,30,15"
-                            CornerRadius="10"
-                            Clicked="SendButton_Clicked"
-                            VerticalOptions="End"
-                            HorizontalOptions="End"
-                            Grid.Column="5"
-                            Source="send.png"/>
+                         WidthRequest="30"
+                         Margin="0,0,30,15"
+                         CornerRadius="10"
+                         Clicked="SendButton_Clicked"
+                         VerticalOptions="End"
+                         HorizontalOptions="End"
+                         Grid.Column="5"
+                         Source="send.png"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

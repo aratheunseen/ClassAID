@@ -2,15 +2,31 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:chat="clr-namespace:ClassAid.Models"
-          x:DataType="chat:ChatModel"
+          
           x:Class="ClassAid.Views.Chat.OutgoingViewCell">
     <ViewCell.View>
-        <Frame BackgroundColor="Gray"
-            Padding="10"
-            HasShadow="false"
-            Margin="80,10,10,10">
+        <Grid>
             <Label Text="{Binding Sender}"
-                  TextColor="White"/>
-        </Frame>
+                   Margin="30,0,0,0"
+                   TextColor="Black"
+                   FontSize="Caption"/>
+            <Label Text="{Binding SenderKey}"
+                   Margin="0,0,30,0"
+                   HorizontalOptions="End"
+                   TextColor="LightGray"
+                   FontSize="Caption"/>
+            <Label Text="{Binding Message}"
+                   BackgroundColor="#F7F7F7"
+                   TextColor="#6264a7"
+                   Margin="30,20,30,45"
+                   Padding="15"
+                   FontSize="Default"/>
+            <Label Text="{Binding Time}"
+                   Margin="0,0,30,30"
+                   HorizontalOptions="End"
+                   VerticalOptions="End"
+                   TextColor="Gray"
+                   FontSize="Micro"/>
+        </Grid>
     </ViewCell.View>
 </ViewCell>
