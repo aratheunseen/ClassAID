@@ -39,6 +39,7 @@ namespace ClassAid.Views
                 });
             }
         }
+        public ICommand GoToAboutPageCommamd { get { return new Command(async ()=> await Navigation.PushAsync(new AboutPage())); } }
         public ICommand GroupMessageCommand
         {
             get
