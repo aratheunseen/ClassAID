@@ -10,9 +10,7 @@ using ClassAid.Models;
 using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using Com.OneSignal;
-using System;
+using System.Linq;
 
 namespace ClassAid.Views
 {
@@ -120,7 +118,15 @@ namespace ClassAid.Views
                 LocalDbContex.SaveStudents(tempAdmin.StudentList);
                 LocalDbContex.ClearTable(TableList.teachers);
                 LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
+                LocalDbContex.ClearTable(TableList.batchdetails);
+                LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
             }
+            var ev = LocalDbContex.GetEvents().ToList();
+            firstEventBody.Text = ev[0].Details;
+            secondEventBody.Text = ev[1].Details;
+            //var sc = LocalDbContex.GetSchedules().Where(p =>
+            //p.DayOfWeek == DateTime.Now.DayOfWeek);
+            //scheduleView.ItemsSource = sc;
         }
         private void InitializeData()
         {
@@ -129,38 +135,19 @@ namespace ClassAid.Views
                 admin = LocalDbContex.GetAdmin();
                 string teamCode1 = admin.TeamCode;
                 teamCode.Text = teamCode1;
-                admin.BatchDetails = LocalDbContex.GetBatchDetails();
-                admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
-                admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
                 admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
+                firstEventBody.Text = admin.EventList[0].Details;
+                secondEventBody.Text = admin.EventList[1].Details;
+                //scheduleView.ItemsSource = admin.ScheduleList.Where(p=>
+                //p.DayOfWeek == DateTime.Now.DayOfWeek);
             }
             else
             {
                 student = LocalDbContex.GetUser();
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                {
-                    //student = await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
-                    StudentInit();
-                }
-                Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+                StudentInit();
             }
         }
-        private async void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        {
-            student = await FirebaseHandler.GetStudentAsync(Preferences.Get(PrefKeys.Key, ""));
-            StudentInit();
-        }
-        private void ScheduleModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (!ScheduleModels.Contains(ScheduleModels[0]))
-                LocalDbContex.SaveSchedule(ScheduleModels[0]);
-        }
-        private void EventModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            LocalDbContex.SaveEvent(EventModels[0]);
-        }
-
     }
 }
 
