@@ -17,13 +17,15 @@ namespace ClassAid.Views
     {
         private readonly string key;
         private readonly string Name;
+        private readonly string ID;
         private readonly ObservableCollection<ChatModel> chats;
-        public ChatHub(string key, string Name)
+        public ChatHub(string key, string Name, string ID)
         {
             InitializeComponent();
             Debug.WriteLine(Preferences.Get(PrefKeys.AdminKey, ""));
             this.key = key;
             this.Name = Name;
+            this.ID = ID;
             chats = new ObservableCollection<ChatModel>();
             FirebaseHandler.RealTimeChat(chats);
             ChatViewBox.ItemsSource = chats;
@@ -34,7 +36,7 @@ namespace ClassAid.Views
 
         private void ChatViewBox_ChildAdded(object sender, ElementEventArgs e)
         {
-           //chatBoxGrid.Bindings.
+            //chatBoxGrid.Bindings.
         }
 
         private void Chats_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -47,18 +49,21 @@ namespace ClassAid.Views
 
         private void SendButton_Clicked(object sender, EventArgs e)
         {
-            ChatModel chat = new ChatModel()
+            if (!string.IsNullOrWhiteSpace(messageBox.Text))
             {
-                Message = messageBox.Text,
-                SenderKey = key,
-                Sender = Name,
-                Time = DateTime.Now.ToString("MMM dd, hh:mm tt"),
-                AdminKey = Preferences.Get(PrefKeys.AdminKey, "")
-            };
-            messageBox.Text = string.Empty;
-            FirebaseHandler.SendMessage(chat);
+                ChatModel chat = new ChatModel()
+                {
+                    Message = messageBox.Text,
+                    SenderKey = key,
+                    Sender = Name,
+                    Time = DateTime.Now.ToString("MMM dd, hh:mm tt"),
+                    AdminKey = Preferences.Get(PrefKeys.AdminKey, ""),
+                    ID = ID
+                };
+                messageBox.Text = string.Empty;
+                FirebaseHandler.SendMessage(chat);
+            }
         }
-
         private void MessageBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(messageBox.Text))
