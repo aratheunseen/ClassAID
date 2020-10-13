@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using Firebase.Database.Query;
+using ClassAid.Views.AdminViews.Settings;
 
 namespace ClassAid.Views
 {
@@ -30,6 +31,7 @@ namespace ClassAid.Views
             InitializeComponent();
             mainGrid.Children.Remove(RetakeStudentArea);
             logoutBtn.Command = new Command(() => App.LogOut());
+            editBatchDetails.Command = new Command(()=>Navigation.PushAsync(admin));
             BindData();
             AllocateRequestList(admin.Key);
         }
@@ -39,6 +41,7 @@ namespace ClassAid.Views
             InitializeComponent();
             mainGrid.Children.Remove(RequestCollectionView);
             mainGrid.Children.Remove(RequestListTitle);
+            mainGrid.Children.Remove(editBatchDetails);
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
@@ -149,5 +152,10 @@ namespace ClassAid.Views
             Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
         #endregion
+
+        private void EditBatchDetails_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditBatchDetails(Admin));
+        }
     }
 }
