@@ -25,7 +25,8 @@
                 </Grid.ColumnDefinitions>
                 <!--#region Profile Heade-->
                 <!--Profile Header-->
-                <Image Source="edit_profile.png"
+                <ImageButton x:Name="editBatchDetails" 
+                             Source="edit_profile.png"
                        Grid.RowSpan="2" Grid.ColumnSpan="2"
                        HeightRequest="60"
                        WidthRequest="60"
