@@ -31,7 +31,7 @@ namespace ClassAid.Views
             InitializeComponent();
             mainGrid.Children.Remove(RetakeStudentArea);
             logoutBtn.Command = new Command(() => App.LogOut());
-            editBatchDetails.Command = new Command(()=>Navigation.PushAsync(admin));
+            editBatchDetails.Command = new Command(() => Navigation.PushAsync(new EditBatchDetails(admin)));
             BindData();
             AllocateRequestList(admin.Key);
         }
@@ -68,9 +68,9 @@ namespace ClassAid.Views
                     mainGrid.Children.Remove(RequestListTitle);
                 }
                 else
-                RequestCollectionView.ItemsSource = requestList;
+                    RequestCollectionView.ItemsSource = requestList;
             }
-            
+
         }
         private void BindData()
         {
