@@ -107,10 +107,10 @@
                 <BoxView Grid.Row="1"
                          HorizontalOptions="End"
                          VerticalOptions="Start" 
-                         Margin="0,65,15,0"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         BackgroundColor="DarkRed"
+                         Margin="0,67,18,0"
+                         HeightRequest="5"
+                         WidthRequest="5"
+                         BackgroundColor="#6264a7"
                          CornerRadius="30"/>
                 <BoxView Grid.Row="1"
                          Grid.Column="1"
@@ -118,8 +118,8 @@
                          VerticalOptions="Start" 
                          Margin="5,60,0,0"
                          HeightRequest="20"
-                         WidthRequest="2"
-                         BackgroundColor="DarkRed"/>
+                         WidthRequest="1"
+                         BackgroundColor="#6264a7"/>
                 <Label x:Name="firstScheduleCourseCode"
                        Grid.Column="1"
                        Grid.Row="1"
@@ -154,21 +154,22 @@
                        HorizontalOptions="End"
                        VerticalOptions="Start" 
                        Margin="5,80,15,0"/>
+                
                 <BoxView Grid.Row="1"
                          HorizontalOptions="End"
                          VerticalOptions="Start"
-                         Margin="0,140,15,0"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         BackgroundColor="DarkCyan"
+                         Margin="0,142,18,0"
+                         HeightRequest="5"
+                         WidthRequest="5"
+                         BackgroundColor="#6264a7"
                          CornerRadius="30"/>
                 <BoxView Grid.Row="1" Grid.Column="1"
                          HorizontalOptions="Start"
                          VerticalOptions="Start"
                          Margin="5,135,0,0"
                          HeightRequest="20"
-                         WidthRequest="2"
-                         BackgroundColor="DarkCyan"/>
+                         WidthRequest="1"
+                         BackgroundColor="#6264a7"/>
                 <Label x:Name="secondScheduleCourseCode"
                        Grid.Column="1"
                        Grid.Row="1"
@@ -241,10 +242,10 @@
                 <BoxView Grid.Row="2"
                          HorizontalOptions="End"
                          VerticalOptions="Start" 
-                         Margin="0,60,15,0"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         BackgroundColor="DarkRed"
+                         Margin="0,62,18,0"
+                         HeightRequest="5"
+                         WidthRequest="5"
+                         BackgroundColor="#6264a7"
                          CornerRadius="30"/>
                 <BoxView Grid.Row="2"
                          Grid.Column="1"
@@ -252,8 +253,8 @@
                          VerticalOptions="Start" 
                          Margin="5,55,0,0"
                          HeightRequest="20"
-                         WidthRequest="2"
-                         BackgroundColor="DarkRed"/>
+                         WidthRequest="1"
+                         BackgroundColor="#6264a7"/>
 
                 <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                        Grid.Column="1"
@@ -269,10 +270,10 @@
                 <BoxView Grid.Row="2"
                          HorizontalOptions="End"
                          VerticalOptions="Start" 
-                         Margin="0,155,15,0"
-                         HeightRequest="10"
-                         WidthRequest="10"
-                         BackgroundColor="DarkCyan"
+                         Margin="0,158,18,0"
+                         HeightRequest="5"
+                         WidthRequest="5"
+                         BackgroundColor="#6264a7"
                          CornerRadius="30"/>
                 <BoxView Grid.Row="2"
                          Grid.Column="1"
@@ -280,8 +281,8 @@
                          VerticalOptions="Start" 
                          Margin="5,150,0,0"
                          HeightRequest="20"
-                         WidthRequest="2"
-                         BackgroundColor="DarkCyan"/>
+                         WidthRequest="1"
+                         BackgroundColor="#6264a7"/>
                 <Label Text="Lorem Ipsum is simply dummy text of the printing industry. Lorem Ipsum is simply dummy text of the printing industry."
                        Grid.Column="1"
                        Grid.Row="2"
