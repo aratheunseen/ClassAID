@@ -32,7 +32,6 @@
                        HorizontalOptions="Start" 
                        VerticalOptions="Start"
                        Margin="50,55,0,0"/>
-
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
                        FontSize="14" Text="ID" 
