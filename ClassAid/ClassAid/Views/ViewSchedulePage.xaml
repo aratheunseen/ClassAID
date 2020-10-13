@@ -96,9 +96,7 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,5,40,0"
-                                             BackgroundColor="Transparent"
-                                             
-                                        Clicked="EditSchedule_Invoked"/>
+                                             BackgroundColor="Transparent"/>
                                 <Label x:Name="deleteSchedule"
                                         Text="Delete"
                                         Grid.Column="6"
@@ -108,8 +106,7 @@
                                         HorizontalOptions="End"
                                         VerticalOptions="Start" 
                                         Margin="0,25,30,0"
-                                             BackgroundColor="Transparent"
-                                        Clicked="DeleteSchedule_Button"/>
+                                             BackgroundColor="Transparent"/>
                             </Grid>
                         </Expander>
                     </DataTemplate>

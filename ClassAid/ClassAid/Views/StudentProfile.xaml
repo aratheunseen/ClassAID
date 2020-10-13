@@ -330,7 +330,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="users:Student">
                             <Frame>
-                                <Grid BackgroundColor="#FFF">
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
@@ -340,18 +340,19 @@
                                     <BoxView Grid.Row="0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
-                                             Margin="25,5,0,0"
-                                             HeightRequest="10"
-                                             WidthRequest="10"
-                                             BackgroundColor="Black"
+                                             Margin="30,10,0,0"
+                                             HeightRequest="5"
+                                             WidthRequest="5"
+                                             BackgroundColor="#6264a7"
                                              CornerRadius="30"/>
                                     <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
-                                             WidthRequest="2"
-                                             BackgroundColor="Black"/>
+                                             Margin="0,2,0,0"
+                                             WidthRequest="1"
+                                             BackgroundColor="#6264a7"/>
                                     <Label x:Name="studentId"
                                            Text="{Binding ID}"
                                            Grid.Column="1"
@@ -377,8 +378,8 @@
                                                  CommandParameter="{Binding .}"
                                                  BackgroundColor="Transparent"
                                                  Source="call.png"
-                                                 HeightRequest="24" 
-                                                 WidthRequest="24" 
+                                                 HeightRequest="20" 
+                                                 WidthRequest="20" 
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  Margin="0,0,15,0"/>
