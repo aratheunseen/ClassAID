@@ -8,6 +8,7 @@ using ClassAid.Models;
 using System.Collections.Specialized;
 using Xamarin.Essentials;
 using ClassAid.Models.Users;
+using System.Diagnostics;
 
 namespace ClassAid.Views
 {
@@ -20,6 +21,7 @@ namespace ClassAid.Views
         public ChatHub(string key, string Name)
         {
             InitializeComponent();
+            Debug.WriteLine(Preferences.Get(PrefKeys.AdminKey, ""));
             this.key = key;
             this.Name = Name;
             chats = new ObservableCollection<ChatModel>();
@@ -49,6 +51,14 @@ namespace ClassAid.Views
             };
             messageBox.Text = string.Empty;
             FirebaseHandler.SendMessage(chat);
+        }
+
+        private void MessageBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(messageBox.Text))
+                sendButton.IsEnabled = false;
+            else
+                sendButton.IsEnabled = true;
         }
     }
 }

@@ -18,7 +18,6 @@ namespace ClassAid.Views.AdminViews
             InitializeComponent();
             this.admin = admin;
         }
-
         private async void CompleteSignUp_Clicked()
         {
             admin.Name = userRealName.Text;

@@ -65,7 +65,7 @@ namespace ClassAid.Views.StudentViews
                     if (tempStudent.IsActive)
                     {
                         Preferences.Set(PrefKeys.IsLoggedIn, true);
-                        Preferences.Set(PrefKeys.AdminKey, tempStudent.TeamCode);
+                        Preferences.Set(PrefKeys.AdminKey, tempStudent.AdminKey);
                         Preferences.Set(PrefKeys.IsAdmin, false);
                         Preferences.Set(PrefKeys.Key, student.Key);
                         Application.Current.MainPage =

@@ -70,22 +70,36 @@ namespace ClassAid.DataContex
                  .AsObservable<T>()
                  .Subscribe(d =>
                  {
-                     collection.Insert(0, d.Object);
+                     if (!collection.Contains(d.Object))
+                         collection.Insert(0, d.Object);
                  }));
         }
         public static async void RealTimeChat(ObservableCollection<ChatModel> collection)
         {
-           _ = await Task.Run(()=> GetClient().Child("Chat")
-                .Child(Preferences.Get(PrefKeys.AdminKey, ""))
-                .AsObservable<ChatModel>().Subscribe(d=> collection.Add(d.Object)));
-            
+            _ = await Task.Run(() => GetClient().Child("Chat")
+                 .Child(Preferences.Get(PrefKeys.AdminKey, ""))
+                 .AsObservable<ChatModel>().Subscribe(d =>
+                 {
+                     if (!collection.Contains(d.Object))
+                         collection.Add(d.Object);
+                     if (collection.Count > 10)
+                     {
+                         var t = GetClient().Child("Chat")
+                         .Child(Preferences.Get(PrefKeys.AdminKey, "")).Child("10").DeleteAsync();
+                     }
+                 }));
+
         }
         public static async void GetStudentList(ObservableCollection<Student> studentColl, string adminkey)
         {
             _ = await Task.Run(() => GetClient()
             .Child(adminkey)
             .Child("StudentList")
-            .AsObservable<Student>().Subscribe(p=> { studentColl.Insert(0,p.Object);}));
+            .AsObservable<Student>().Subscribe(p =>
+            {
+                if (!studentColl.Contains(p.Object))
+                    studentColl.Insert(0, p.Object);
+            }));
         }
         #endregion
         #region Teamcode
@@ -125,13 +139,13 @@ namespace ClassAid.DataContex
             .Child(key)
             .Child("StudentList")
             .AsObservable<Student>().Subscribe(
-                p => 
+                p =>
                 {
-                    if(p.Object.IsActive == false && p.Object.IsRejected == false &&
+                    if (p.Object.IsActive == false && p.Object.IsRejected == false &&
                     !students.Contains(p.Object))
-                        students.Insert(0, p.Object); 
+                        students.Insert(0, p.Object);
                 }));
-            return students ;
+            return students;
         }
         public static async Task<IEnumerable<RetakeStudentModel>> GetRetakeStudents(string key)
         {
@@ -142,7 +156,7 @@ namespace ClassAid.DataContex
         }
         public static void SendMessage(ChatModel chat)
         {
-            GetClient().Child("Chat").Child(Preferences.Get(PrefKeys.AdminKey,"")).PostAsync(chat);
+            GetClient().Child("Chat").Child(Preferences.Get(PrefKeys.AdminKey, "")).PostAsync(chat);
         }
     }
     public enum CollectionTables

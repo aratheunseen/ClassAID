@@ -21,6 +21,11 @@ namespace ClassAid.Views.AdminViews
             //await Launcher.OpenAsync(new Uri("https://mahmudx.com")));
             TapCommand = new Command(() => BtnAdd_Clicked());
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            userName.Focus();
+        }
         private async void BtnAdd_Clicked()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

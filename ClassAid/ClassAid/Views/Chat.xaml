@@ -55,13 +55,14 @@
             <Frame BackgroundColor="white" BorderColor="#6264a7" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
             <Components:ClassAidEntry x:Name="messageBox" 
                                       Grid.Row="1"
-                       WidthRequest="300"
-                       TextColor="#6264a7"
-                       Placeholder="Type your message here!!!"
-                       VerticalOptions="End"
-                       HorizontalOptions="Start"
-                       Margin="30,10,0,10"
-                       Grid.ColumnSpan="5"/>
+                                      TextChanged="MessageBox_TextChanged"
+                                       WidthRequest="300"
+                                       TextColor="#6264a7"
+                                       Placeholder="Type your message here!!!"
+                                       VerticalOptions="End"
+                                       HorizontalOptions="Start"
+                                       Margin="30,10,0,10"
+                                       Grid.ColumnSpan="5"/>
             <ImageButton x:Name="sendButton"
                          Grid.Row="1"
                             HeightRequest="30"

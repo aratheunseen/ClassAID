@@ -98,9 +98,6 @@ namespace ClassAid.Views
         }
         private void RejectBtn_Clicked(object sender, EventArgs e)
         {
-            //ImageButton btn = (ImageButton)sender;
-            //var student = (Student)btn.BindingContext;
-            //userUniversity.Text = student.Name;
             if (sender is ImageButton b && b.CommandParameter is Student student)
             {
                 FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
