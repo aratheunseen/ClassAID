@@ -8,5 +8,6 @@ namespace ClassAid.Models
         public string SenderKey { get; set; }
         public string AdminKey { get; set; }
         public string Time { get; set; }
+        public string ID { get; set; }
     }
 }

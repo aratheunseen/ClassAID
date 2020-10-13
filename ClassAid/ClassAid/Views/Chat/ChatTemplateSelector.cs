@@ -7,8 +7,8 @@ namespace ClassAid.Views.Chat
 {
     class ChatTemplateSelector : DataTemplateSelector
     {
-        DataTemplate incomingDataTemplate;
-        DataTemplate outgoingDataTemplate;
+        private readonly DataTemplate incomingDataTemplate;
+        private readonly DataTemplate outgoingDataTemplate;
         public ChatTemplateSelector()
         {
             incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
@@ -16,12 +16,12 @@ namespace ClassAid.Views.Chat
         }
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var message = item as ChatModel;
-            if (message == null)
-                return null;
-            return message.SenderKey == Preferences.Get(PrefKeys.Key, "")
-                ? outgoingDataTemplate
-                : incomingDataTemplate;
+            //if (!(item is ChatModel message))
+            //    return null;
+            //return message.SenderKey == Preferences.Get(PrefKeys.Key, "")
+            //    ? outgoingDataTemplate
+            //    : incomingDataTemplate;
+            return incomingDataTemplate;
         }
     }
 }

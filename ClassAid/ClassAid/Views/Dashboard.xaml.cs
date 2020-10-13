@@ -39,13 +39,16 @@ namespace ClassAid.Views
                 });
             }
         }
-        public ICommand GoToAboutPageCommamd { get { return new Command(async ()=> await Navigation.PushAsync(new AboutPage())); } }
+        public ICommand GoToAboutPageCommamd { get { return new Command(async () => await Navigation.PushAsync(new AboutPage())); } }
         public ICommand GroupMessageCommand
         {
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ChatHub(Preferences.Get(PrefKeys.AdminKey, ""), Preferences.Get(PrefKeys.IsAdmin, false) ? admin.Name : student.Name)));
+                await Navigation.PushAsync(
+                    new ChatHub(Preferences.Get(PrefKeys.AdminKey, ""),
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? admin.Name : student.Name,
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? admin.ID : student.ID)));
             }
         }
         public ICommand AddScheduleCommand
@@ -172,7 +175,7 @@ namespace ClassAid.Views
         {
             LocalDbContex.SaveEvent(EventModels[0]);
         }
-        
+
     }
 }
 
