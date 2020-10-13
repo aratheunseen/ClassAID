@@ -34,13 +34,13 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             Margin="35,5,0,0"
-                                             HeightRequest="5"
-                                             WidthRequest="5"
-                                             BackgroundColor="Black"
-                                             CornerRadius="30"/>
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start" 
+                                        Margin="35,5,0,0"
+                                        HeightRequest="5"
+                                        WidthRequest="5"
+                                        BackgroundColor="Black"
+                                        CornerRadius="30"/>
                                 <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
@@ -58,34 +58,39 @@
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
                                 <Label x:Name="ScheduleCourseName"
-                                               Text="{Binding Subject}"
-                                           Margin="0,25,0,0"
-                                           Grid.Column="1"
-                                           FontSize="14"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
+                                       Text="{Binding Subject}"
+                                        Margin="0,25,0,0"
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        TextColor="Gray"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start" 
+                                        Grid.ColumnSpan="3"/>
                                 <Label x:Name="ScheduleStart" 
-                                                Text="{Binding StartTime, Converter={StaticResource timeFormatter}}"
-                                               Grid.Column="4"
-                                               Grid.ColumnSpan="2"
-                                               Grid.Row="0"
-                                               FontSize="12"
-                                               TextColor="Black"
-                                               HorizontalOptions="End"
-                                               VerticalOptions="Start" 
-                                               Margin="0,5,30,0"/>
+                                       Text="{Binding StartTime, Converter={StaticResource timeFormatter}}"
+                                        Grid.Column="4"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="0"
+                                        FontSize="12"
+                                        TextColor="Black"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start" 
+                                        Margin="0,5,30,0"/>
                                 <Label x:Name="ScheduleEnd"
-                                                Text="{Binding EndTime, Converter={StaticResource timeFormatter}}"
-                                               Grid.Column="4"
-                                               Grid.ColumnSpan="2"
-                                               Grid.Row="0"
-                                               FontSize="12"
-                                               TextColor="Black"
-                                               HorizontalOptions="End"
-                                               VerticalOptions="Start" 
-                                               Margin="0,25,30,0"/>
+                                        Text="{Binding EndTime, Converter={StaticResource timeFormatter}}"
+                                        Grid.Column="4"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="0"
+                                        FontSize="12"
+                                        TextColor="Black"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="Start" 
+                                        Margin="0,25,30,0"/>
+                                <Button x:Name="editSchedule"
+                                        Text="Edit Me"
+                                        Clicked="EditSchedule_Invoked"/>
+                                <Button Text="Edit Me"
+                                        Clicked="DeleteSchedule_Button"/>
                             </Grid>
                         </Expander>
                     </DataTemplate>
