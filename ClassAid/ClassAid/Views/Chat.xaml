@@ -10,32 +10,34 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="1"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <ScrollView VerticalScrollBarVisibility="Never"
                         Grid.ColumnSpan="6"
                         Padding="15"
                         HorizontalScrollBarVisibility="Never">
-                <StackLayout HorizontalOptions="Start" VerticalOptions="Start" Margin="0,0,0,200">
+                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
                     <CollectionView x:Name="ChatViewBox"
                                     Grid.Row="0"
-                                    HeightRequest="555"
                                     ItemsUpdatingScrollMode="KeepLastItemInView">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel">
-                                <Grid Grid.RowSpan="3">
+                                <Grid>
                                     <Label Text="{Binding Sender}"
-                                               Margin="30,0,30,0"
+                                               Margin="30,0,0,0"
                                            TextColor="Black"
                                            FontSize="Caption"/>
+                                    <Label Text="{Binding SenderKey}"
+                                               Margin="0,0,30,0"
+                                           HorizontalOptions="End"
+                                           TextColor="LightGray"
+                                           FontSize="Caption"/>
                                     <Label Text="{Binding Message}"
-                                           BackgroundColor="#F4F4F4"
+                                           BackgroundColor="#F7F7F7"
                                            TextColor="#6264a7"
                                            Margin="30,20,30,45"
                                            Padding="15"
@@ -54,7 +56,7 @@
             </ScrollView>
             <Frame BackgroundColor="white" BorderColor="#6264a7" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
             <Components:ClassAidEntry x:Name="messageBox" 
-                                      Grid.Row="1"
+                                      Grid.Row="2"
                                       TextChanged="MessageBox_TextChanged"
                                        WidthRequest="300"
                                        TextColor="#6264a7"
@@ -64,7 +66,7 @@
                                        Margin="30,10,0,10"
                                        Grid.ColumnSpan="5"/>
             <ImageButton x:Name="sendButton"
-                         Grid.Row="1"
+                         Grid.Row="2"
                             HeightRequest="30"
                             WidthRequest="30"
                              Margin="0,0,30,15"
