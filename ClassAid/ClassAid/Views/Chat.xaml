@@ -4,8 +4,15 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:y="clr-namespace:ClassAid.Models.Schedule"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
-             xmlns:models="clr-namespace:ClassAid.Models"
+             xmlns:models="clr-namespace:ClassAid.Models" 
+             xmlns:local="clr-namespace:ClassAid.Views.Chat"
              x:Class="ClassAid.Views.ChatHub">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -22,9 +29,10 @@
                         HorizontalScrollBarVisibility="Never">
                 <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
                     <CollectionView x:Name="ChatViewBox"
+                                    ItemTemplate="{StaticResource MessageTemplateSelector}"
                                     Grid.Row="0"
                                     ItemsUpdatingScrollMode="KeepLastItemInView">
-                        <CollectionView.ItemTemplate>
+                        <!--<CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ChatModel"
                                           x:Name="chatBoxGrid">
                                 <Grid>
@@ -51,7 +59,7 @@
                                            FontSize="Micro"/>
                                 </Grid>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
+                        </CollectionView.ItemTemplate>-->
                     </CollectionView>
                 </StackLayout>
             </ScrollView>
