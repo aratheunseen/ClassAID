@@ -44,6 +44,17 @@ namespace ClassAid.DataContex
                 }
             }
         }
+        public static void DeleteSchedule(ScheduleModel schedule)
+        {
+            using (IDbConnection db = new SqliteConnection(ConectionString))
+            {
+ 
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
+                db.Execute("DELETE FROM schedule WHERE (Data) = (@Data);", parameters);
+                
+            }
+        }
         public static void SaveBatchDetails(BatchDetails batchDetails)
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
@@ -82,6 +93,14 @@ namespace ClassAid.DataContex
             {
                 cnn.ExecuteAsync("INSERT OR REPLACE INTO events (Details, Title, Time) " +
                     "Values (@Details, @Title, @Time);", eventModels);
+            }
+        }
+        public static void DeleteEvent(EventModel eventModel)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.Execute("DELETE FROM events WHERE (Details, Title, Time) " +
+                    "= (@Details, @Title, @Time);", eventModel);
             }
         }
         public static void SaveUser<T>(T user)
