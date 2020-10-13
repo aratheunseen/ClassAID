@@ -42,15 +42,14 @@ namespace ClassAid.Views
             mainGrid.Children.Remove(RequestListTitle);
             logoutBtn.Command = new Command(() => App.LogOut());
             BindData();
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                ObservableCollection<Student> students = new ObservableCollection<Student>();
-                FirebaseHandler.GetStudentList(students, Student.AdminKey);
-                students.CollectionChanged += Students_CollectionChanged;
-                LocalDbContex.ClearTable(TableList.students);
-                LocalDbContex.SaveStudents(students);
-                //ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
-            }
+            //if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            //{
+            //    ObservableCollection<Student> students = new ObservableCollection<Student>();
+            //    FirebaseHandler.GetStudentList(students, Student.AdminKey);
+            //    LocalDbContex.ClearTable(TableList.students);
+            //    LocalDbContex.SaveStudents(students);
+            //    //ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
+            //}
         }
         private async void AllocateRequestList(string key)
         {
@@ -84,13 +83,8 @@ namespace ClassAid.Views
             userSemester.Text = BatchDetails.Semester;
 
             ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents()
-                .Select(item=>item.IsActive == true);
+                .Where(item=>item.IsActive == true).ToList();
             TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
-        }
-
-        private void Students_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            LocalDbContex.SaveStudent(((ObservableCollection<Student>)sender)[e.NewStartingIndex]);
         }
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
@@ -114,6 +108,7 @@ namespace ClassAid.Views
         }
         private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
         {
+            // TODO: Not verified portion
             KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
             if (key != null)
             {

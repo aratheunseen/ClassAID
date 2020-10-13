@@ -116,6 +116,7 @@ namespace ClassAid.Views
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                LocalDbContex.ClearTable(TableList.students);
                 LocalDbContex.SaveStudents(tempAdmin.StudentList);
                 LocalDbContex.ClearTable(TableList.teachers);
                 LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
