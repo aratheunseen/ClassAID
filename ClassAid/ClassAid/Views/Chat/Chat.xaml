@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
-             xmlns:y="clr-namespace:ClassAid.Models.Schedule"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
-             xmlns:models="clr-namespace:ClassAid.Models" 
              xmlns:local="clr-namespace:ClassAid.Views.Chat"
              x:Class="ClassAid.Views.ChatHub">
     <ContentPage.Resources>
