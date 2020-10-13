@@ -48,7 +48,7 @@
                 <ImageButton x:Name="editSemester"
                                         Grid.Column="2"
                        Grid.ColumnSpan="3" 
-                             Margin="130,60,0,0" 
+                             Margin="135,60,0,0" 
                                              HeightRequest="10"
                                              WidthRequest="10"
                                         Source="edit.png"
