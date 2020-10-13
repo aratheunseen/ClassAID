@@ -3,19 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.StudentViews.StudentNotActivatedPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="30">
             <Label x:Name="ErrorText" 
+                   FontSize="18"
+                   InputTransparent="False"
+                   Padding="20"
+                   Margin="15"
+                   TextColor="#6264a7"
+                   BackgroundColor="Lavender"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
             <Button x:Name="Call"
                     Text="Call"
-                    Clicked="Call_Clicked"/>
+                    Clicked="Call_Clicked"
+                    BackgroundColor="#6264a7"
+                            CornerRadius="15"
+                            TextTransform="None"/>
             <Button x:Name="SendRequest"
                     IsVisible="false"
                     Text="Send Request"
-                    Clicked="SendRequest_Clicked"/>
+                    Clicked="SendRequest_Clicked"
+                    BackgroundColor="#6264a7"
+                            CornerRadius="15"
+                            TextTransform="None"/>
             <Button x:Name="LogOut"
-                    Text="Log Out"/>
+                    Text="Log Out"
+                    BackgroundColor="#6264a7"
+                            CornerRadius="15"
+                            BorderWidth="1"
+                            BorderColor="#6264a7"
+                            TextTransform="None"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
