@@ -1,4 +1,5 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
@@ -18,15 +19,23 @@ namespace ClassAid.Views
     {
         public IValueConverter Converter { get; set; }
         private string _adminkey;
+        public bool IsAdmin { get; set; }
         public ViewSchedulePage(Admin user)
         {
             InitializeComponent();
+            IsAdmin = true;
             //scheduleCollectionView.ItemsSource = user.ScheduleList;
+            TempScheduleData scheduleData = new TempScheduleData()
+            {
+                IsAdmin = true,
+                schedules = LocalDbContex.GetSchedules()
+            };
             scheduleCollectionView.ItemsSource = LocalDbContex.GetSchedules();
         }
         public ViewSchedulePage(string adminKey)
         {
             InitializeComponent();
+            IsAdmin = false;
             _adminkey = adminKey;
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             scheduleCollectionView.ItemsSource = LocalDbContex.GetSchedules();
@@ -55,14 +64,30 @@ namespace ClassAid.Views
             }
         }
 
-        private void DeleteSipeBtn_Invoked(object sender, EventArgs e)
+        private void DeleteSchedule_Button(object sender, EventArgs e)
         {
-
+            if (IsAdmin)
+            {
+                // TODO : Impliment func
+            }
+            else
+                DependencyService.Get<Toast>().Show("You are not authorized.");
         }
 
-        private void EditSwipeBtn_Invoked(object sender, EventArgs e)
+        private void EditSchedule_Invoked(object sender, EventArgs e)
         {
-            
+            if (IsAdmin)
+            {
+                // TODO : Impliment func
+                
+            }
+            else
+                DependencyService.Get<Toast>().Show("You are not authorized.");
         }
+    }
+    public class TempScheduleData
+    {
+        public bool IsAdmin { get; set; }
+        public IEnumerable<ScheduleModel> schedules { get; set; }
     }
 }

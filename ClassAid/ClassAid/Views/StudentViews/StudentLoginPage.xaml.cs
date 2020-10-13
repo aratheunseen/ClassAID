@@ -88,7 +88,6 @@ namespace ClassAid.Views.StudentViews
             {
                 resultText.Text = "Sorry something bad happened. " + e.Message;
             }
-
         }
     }
 }
