@@ -1,10 +1,4 @@
-﻿using ClassAid.Models.Users;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using Xamarin.Essentials;
-
+﻿
 namespace ClassAid.Models
 {
     public class ChatModel

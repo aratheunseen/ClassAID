@@ -29,7 +29,11 @@
                        Margin="25,18,0,0"
                        Source="logo.png"
                        HeightRequest="50"
-                       WidthRequest="50"/>
+                       WidthRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <Frame x:Name="teamCodeBox"
                        Grid.Column="1"
