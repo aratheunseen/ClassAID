@@ -17,7 +17,11 @@ namespace ClassAid.Views.StudentViews
             this.student = student;
             InitializeComponent();
         }
-
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            studentName.Focus();
+        }
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(studentName.Text) &&
