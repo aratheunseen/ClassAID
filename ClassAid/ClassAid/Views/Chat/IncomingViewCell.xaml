@@ -2,9 +2,9 @@
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:chat="clr-namespace:ClassAid.Models"
-          x:DataType="chat:ChatModel"
+          
           x:Class="ClassAid.Views.Chat.IncomingViewCell">
-  <ViewCell.View>
+    <ViewCell.View>
         <Grid>
             <Label Text="{Binding Sender}"
                    Margin="30,0,0,0"
