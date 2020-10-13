@@ -56,10 +56,10 @@
                        Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
 
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,30,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,55,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,80,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="0,105,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,30,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,55,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,80,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,105,48,0" TextColor="#6264a7"/>
 
                 <Label x:Name="userID" 
                        Grid.Column="3" 
