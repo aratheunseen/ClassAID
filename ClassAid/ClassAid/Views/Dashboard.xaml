@@ -134,10 +134,10 @@
                             <Image Grid.Column="4"
                                    x:Name="addScheduleBtnImage"
                                    Source="plus.png"
-                                   Margin="0,5,0,0"
-                                   HeightRequest="24"
-                                   WidthRequest="24"
-                                   HorizontalOptions="End"
+                                   Margin="10,8,0,0"
+                                   HeightRequest="16"
+                                   WidthRequest="16"
+                                   HorizontalOptions="Start"
                                    VerticalOptions="Start">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddScheduleCommand}"/>
@@ -234,7 +234,7 @@
                                HorizontalOptions="End"
                                VerticalOptions="Start"/>
 
-                        <Label Text="Noticeboard"
+                        <Label Text="Notice"
                                Grid.Column="1"
                                Grid.Row="4"
                                FontSize="22"
@@ -247,11 +247,11 @@
                         <Image Grid.Column="5"
                                x:Name="addNoticeBtnImage"
                                Grid.Row="2"
-                               Margin="0,4,0,0"
+                               Margin="10,8,0,0"
                                Source="plus.png"
-                               HeightRequest="24"
-                               WidthRequest="24"
-                               HorizontalOptions="End"
+                               HeightRequest="16"
+                               WidthRequest="16"
+                               HorizontalOptions="Start"
                                VerticalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding AddEventCommand}"/>
