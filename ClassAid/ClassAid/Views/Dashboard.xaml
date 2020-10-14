@@ -239,7 +239,7 @@
                         <Image Grid.Column="5"
                                x:Name="addNoticeBtnImage"
                                Grid.Row="2"
-                               Margin="145,4,0,0"
+                               Margin="140,4,0,0"
                                Source="plus.png"
                                HeightRequest="24"
                                WidthRequest="24"
