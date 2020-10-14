@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.StudentViews.StudentNotActivatedPage">
     <ContentPage.Content>
-        <StackLayout Padding="30">
-            <Label x:Name="ErrorText" 
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="30">
+                <Image x:Name="imgBanner" 
+                       Margin="0,0,0,0"
+                       Opacity="1"
+                       Source="inactive.png"></Image>
+                <Label x:Name="ErrorText" 
                    FontSize="18"
                    InputTransparent="False"
                    Padding="20"
@@ -13,26 +18,27 @@
                    BackgroundColor="Lavender"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="Call"
+                <Button x:Name="Call"
                     Text="Call"
                     Clicked="Call_Clicked"
                     BackgroundColor="#6264a7"
                             CornerRadius="15"
                             TextTransform="None"/>
-            <Button x:Name="SendRequest"
+                <Button x:Name="SendRequest"
                     IsVisible="false"
                     Text="Send Request"
                     Clicked="SendRequest_Clicked"
                     BackgroundColor="#6264a7"
                             CornerRadius="15"
                             TextTransform="None"/>
-            <Button x:Name="LogOut"
+                <Button x:Name="LogOut"
                     Text="Log Out"
                     BackgroundColor="#6264a7"
                             CornerRadius="15"
                             BorderWidth="1"
                             BorderColor="#6264a7"
                             TextTransform="None"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
