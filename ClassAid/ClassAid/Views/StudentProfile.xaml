@@ -25,14 +25,14 @@
                 </Grid.ColumnDefinitions>
                 <!--#region Profile Heade-->
                 <!--Profile Header-->
-                <ImageButton x:Name="editBatchDetails" 
-                             Source="edit_profile.png"
-                       Grid.RowSpan="2" Grid.ColumnSpan="2"
-                       HeightRequest="60"
-                       WidthRequest="60"
+                <Image Source="avater.png"
+                       Grid.RowSpan="2" 
+                       Grid.ColumnSpan="2"
+                       HeightRequest="80"
+                       WidthRequest="80"
                        HorizontalOptions="Start" 
                        VerticalOptions="Start"
-                       Margin="50,55,0,0"/>
+                       Margin="30,40,0,0"/>
                 <Label Grid.Column="2" 
                        Grid.ColumnSpan="2" 
                        FontSize="14" Text="ID" 
@@ -94,7 +94,7 @@
                        Margin="40,150,0,0" 
                        TextColor="#6264a7"/>
                 <Label x:Name="userDepartment" 
-                       Grid.ColumnSpan="5" 
+                       Grid.ColumnSpan="4" 
                        FontSize="12"
                        Margin="40,175,0,0"
                        TextColor="#6264a7"/>
@@ -103,6 +103,15 @@
                        FontSize="14" 
                        Margin="40,195,0,0" TextColor="#6264a7"/>
                 <Image/>
+                <ImageButton x:Name="editBatchDetails"
+                             Grid.Column="4"
+                             BackgroundColor="Transparent"
+                             Source="edit.png"
+                             HeightRequest="20" 
+                             WidthRequest="20" 
+                             HorizontalOptions="End" 
+                             VerticalOptions="End"
+                             Margin="0,0,0,45"/>
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
                              BackgroundColor="Transparent"
