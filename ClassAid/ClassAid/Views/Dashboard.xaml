@@ -17,7 +17,6 @@
         <ScrollView HorizontalScrollBarVisibility="Never"
                     BackgroundColor="#fff"
                         Grid.Row="1"
-                        Grid.RowSpan="2"
                         Grid.ColumnSpan="6"
                     VerticalScrollBarVisibility="Never">
 
@@ -132,14 +131,6 @@
                                 <DataTemplate x:DataType="schedule:ScheduleModel">
                                     <Grid>
                                         <BoxView Grid.Row="0"
-                         HorizontalOptions="End"
-                         VerticalOptions="Start" 
-                         Margin="0,7,18,0"
-                         HeightRequest="5"
-                         WidthRequest="5"
-                         BackgroundColor="#6264a7"
-                         CornerRadius="30"/>
-                                        <BoxView Grid.Row="0"
                          Grid.Column="1"
                          HorizontalOptions="Start"
                          VerticalOptions="Start" 
@@ -228,14 +219,6 @@
 
                         <!-- Notice Content -->
                         <BoxView Grid.Row="2"
-                         HorizontalOptions="End"
-                         VerticalOptions="Start" 
-                         Margin="0,72,18,0"
-                         HeightRequest="5"
-                         WidthRequest="5"
-                         BackgroundColor="#6264a7"
-                         CornerRadius="30"/>
-                        <BoxView Grid.Row="2"
                          Grid.Column="1"
                          HorizontalOptions="Start"
                          VerticalOptions="Start" 
@@ -255,14 +238,6 @@
                        Grid.ColumnSpan="4"/>
 
 
-                        <BoxView Grid.Row="2"
-                         HorizontalOptions="End"
-                         VerticalOptions="Start" 
-                         Margin="0,158,18,0"
-                         HeightRequest="5"
-                         WidthRequest="5"
-                         BackgroundColor="#6264a7"
-                         CornerRadius="30"/>
                         <BoxView Grid.Row="2"
                          Grid.Column="1"
                          HorizontalOptions="Start"
