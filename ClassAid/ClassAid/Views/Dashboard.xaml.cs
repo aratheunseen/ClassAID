@@ -11,6 +11,7 @@ using System.Windows.Input;
 using ClassAid.Models.Schedule;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System;
 
 namespace ClassAid.Views
 {
@@ -126,9 +127,9 @@ namespace ClassAid.Views
             var ev = LocalDbContex.GetEvents().ToList();
             firstEventBody.Text = ev[0].Details;
             secondEventBody.Text = ev[1].Details;
-            //var sc = LocalDbContex.GetSchedules().Where(p =>
-            //p.DayOfWeek == DateTime.Now.DayOfWeek);
-            //scheduleView.ItemsSource = sc;
+            var sc = LocalDbContex.GetSchedules().Where(p =>
+            p.DayOfWeek == DateTime.Now.DayOfWeek);
+            scheduleView.ItemsSource = sc;
         }
         private void InitializeData()
         {
@@ -140,8 +141,8 @@ namespace ClassAid.Views
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
                 admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
 
-                //scheduleView.ItemsSource = admin.ScheduleList.Where(p=>
-                //p.DayOfWeek == DateTime.Now.DayOfWeek);
+                scheduleView.ItemsSource = admin.ScheduleList.Where(p =>
+                p.DayOfWeek == DateTime.Now.DayOfWeek);
             }
             else
             {

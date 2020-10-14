@@ -29,6 +29,11 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Header -->
@@ -85,45 +90,47 @@
                 </Image>
             </Grid>
             <ScrollView HorizontalScrollBarVisibility="Never"
-                    BackgroundColor="#fff"
+                        BackgroundColor="#fff"
                         Grid.Row="1"
                         Grid.RowSpan="2"
                         Grid.ColumnSpan="6"
-                    VerticalScrollBarVisibility="Never">
-                    <Grid Grid.ColumnSpan="6">
+                        VerticalScrollBarVisibility="Never">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
                         
                         <!-- Schedule Title -->
                         <StackLayout x:Name="scheduleTitle"
-                             Grid.Row="1"
-                             Grid.ColumnSpan="6"
-                             Margin="40,0,0,0"
-                             Orientation="Horizontal">
+                                     Grid.ColumnSpan="6"
+                                     Margin="40,0,0,0"
+                                     Orientation="Horizontal">
                             <Image Grid.Column="0"
-                       Grid.Row="1"
-                       Margin="0,0,5,0"
-                       Source="schedule.png"
-                       HeightRequest="32"
-                       WidthRequest="32"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start"/>
+                                   Margin="0,0,5,0"
+                                   Source="schedule.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start"/>
                             <Label Text="Schedule"
-                       Grid.Column="1"
-                       Grid.Row="1"
-                       FontSize="22"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="2"/>
+                                   Grid.Column="1"
+                                   FontSize="22"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start" 
+                                   Margin="5,0,0,0"
+                                   Grid.ColumnSpan="2"/>
                             <Image Grid.Column="5"
-                       x:Name="addScheduleBtnImage"
-                       Grid.Row="1"
-                       Source="plus.png"
-                       Margin="175,5,0,0"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start">
+                                   x:Name="addScheduleBtnImage"
+                                   Source="plus.png"
+                                   Margin="175,5,0,0"
+                                   HeightRequest="24"
+                                   WidthRequest="24"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding AddScheduleCommand}"/>
                                 </Image.GestureRecognizers>
@@ -131,58 +138,56 @@
                         </StackLayout>
                         <!-- Schedule Content -->
 
-                        <CollectionView x:Name="scheduleView" Grid.Row="1" HeightRequest="230">
+                        <CollectionView x:Name="scheduleView" 
+                                        Grid.Row="1" 
+                                        Grid.ColumnSpan="6"
+                                        HeightRequest="230">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="schedule:ScheduleModel">
                                     <Grid>
-                                        <BoxView Grid.Row="0"
-                         Grid.Column="1"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Start" 
-                         Margin="5,0,0,0"
-                         HeightRequest="20"
-                         WidthRequest="1"
-                         BackgroundColor="#6264a7"/>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView Margin="5,0,0,0"
+                                                 HeightRequest="20"
+                                                 WidthRequest="1"
+                                                 BackgroundColor="#6264a7"/>
                                         <Label x:Name="firstScheduleCourseCode"
-                               Text="{Binding CourseCode}"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       FontSize="18"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="15,0,10,0"
-                       Grid.ColumnSpan="4"/>
+                                               Text="{Binding CourseCode}"
+                                               Grid.Column="1"
+                                               FontSize="18"
+                                               TextColor="Gray" 
+                                               Margin="15,0,10,0"
+                                               Grid.ColumnSpan="4"/>
                                         <Label x:Name="firstScheduleCourseName"
-                               Text="{Binding Subject}"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       FontSize="14"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,20,10,0"
-                       Grid.ColumnSpan="3"/>
+                                               Text="{Binding Subject}"
+                                               Grid.Column="1"
+                                               Grid.Row="1"
+                                               FontSize="14"
+                                               TextColor="Gray"
+                                               Margin="5,20,10,0"
+                                               Grid.ColumnSpan="3"/>
                                         <Label x:Name="firstScheduleStart" 
-                               Text="{Binding StartTime, 
-                                    Converter={StaticResource timeFormatter}}"
-                       Grid.Column="4"
-                       Grid.Row="0"
-                       FontSize="12"
-                       TextColor="Black"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start" 
-                       Margin="5,0,15,0"/>
+                                               Text="{Binding StartTime, 
+                                            Converter={StaticResource timeFormatter}}"
+                                               Grid.Column="2"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               Margin="5,0,15,0"/>
                                         <Label x:Name="firstScheduleEnd"
-                               Text="{Binding EndTime, 
-                                    Converter={StaticResource timeFormatter}}"
-                       Grid.Column="4"
-                       Grid.Row="0"
-                       FontSize="12"
-                       TextColor="Black"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start" 
-                       Margin="5,20,15,0"/>
+                                               Text="{Binding EndTime, 
+                                            Converter={StaticResource timeFormatter}}"
+                                               Grid.Column="2"
+                                               Grid.Row="1"
+                                               FontSize="12"
+                                               TextColor="Black"
+                                               Margin="5,20,15,0"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -190,38 +195,38 @@
 
                         <!-- Notice Title -->
                         <StackLayout x:Name="eventTitle"
-                             Grid.Row="2"
-                             Grid.ColumnSpan="6"
-                             Margin="40,0,0,0"
-                             Orientation="Horizontal">
+                                     Grid.Row="2"
+                                     Grid.ColumnSpan="6"
+                                     Margin="40,0,0,0"
+                                     Orientation="Horizontal">
                         <Image Grid.Column="0"
-                       Grid.Row="2"
-                       Margin="0,0,5,0"
-                       Source="notice.png"
-                       HeightRequest="32"
-                       WidthRequest="32"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start"/>
+                               Grid.Row="2"
+                               Margin="0,0,5,0"
+                               Source="notice.png"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"/>
 
                         <Label Text="Noticeboard"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       FontSize="22"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="3"/>
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               FontSize="22"
+                               TextColor="Black"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" 
+                               Margin="5,0,0,0"
+                               Grid.ColumnSpan="3"/>
 
                         <Image Grid.Column="5"
-                       x:Name="addNoticeBtnImage"
-                       Grid.Row="2"
-                       Margin="145,4,0,0"
-                       Source="plus.png"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start">
+                               x:Name="addNoticeBtnImage"
+                               Grid.Row="2"
+                               Margin="145,4,0,0"
+                               Source="plus.png"
+                               HeightRequest="24"
+                               WidthRequest="24"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding AddEventCommand}"/>
                             </Image.GestureRecognizers>
@@ -230,42 +235,42 @@
                         
                         <!-- Notice Content -->
                         <BoxView Grid.Row="2"
-                         Grid.Column="1"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Start" 
-                         Margin="5,65,0,0"
-                         HeightRequest="20"
-                         WidthRequest="1"
-                         BackgroundColor="#6264a7"/>
+                                 Grid.Column="1"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Start" 
+                                 Margin="5,65,0,0"
+                                 HeightRequest="20"
+                                 WidthRequest="1"
+                                 BackgroundColor="#6264a7"/>
 
                         <Label x:Name="firstEventBody"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       FontSize="15"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="15,65,10,0"
-                       Grid.ColumnSpan="4"/>
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               FontSize="15"
+                               TextColor="Gray"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" 
+                               Margin="15,65,10,0"
+                               Grid.ColumnSpan="4"/>
 
 
                         <BoxView Grid.Row="2"
-                         Grid.Column="1"
-                         HorizontalOptions="Start"
-                         VerticalOptions="Start" 
-                         Margin="5,150,0,0"
-                         HeightRequest="20"
-                         WidthRequest="1"
-                         BackgroundColor="#6264a7"/>
+                                 Grid.Column="1"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Start" 
+                                 Margin="5,150,0,0"
+                                 HeightRequest="20"
+                                 WidthRequest="1"
+                                 BackgroundColor="#6264a7"/>
                         <Label x:Name="secondEventBody"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       FontSize="15"
-                       TextColor="Gray"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="15,150,10,0"
-                       Grid.ColumnSpan="4"/>
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               FontSize="15"
+                               TextColor="Gray"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" 
+                               Margin="15,150,10,0"
+                               Grid.ColumnSpan="4"/>
                     </Grid>
 
                 </ScrollView>
