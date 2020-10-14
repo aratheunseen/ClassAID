@@ -18,7 +18,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Dashboard : ContentPage
     {
-        private Admin admin;
+        private Admin Admin { get; set; }
         private Student student;
         public ObservableCollection<EventModel> EventModels { get; set; }
         public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
@@ -30,7 +30,7 @@ namespace ClassAid.Views
             {
                 return new Command(async () =>
                 {
-                    await Clipboard.SetTextAsync(admin.TeamCode);
+                    await Clipboard.SetTextAsync(Admin.TeamCode);
                     DependencyService.Get<Toast>().Show("Team code copied.");
                 });
             }
@@ -43,8 +43,8 @@ namespace ClassAid.Views
                 return new Command(async () =>
                 await Navigation.PushAsync(
                     new ChatHub(Preferences.Get(PrefKeys.AdminKey, ""),
-                    Preferences.Get(PrefKeys.IsAdmin, false) ? admin.Name : student.Name,
-                    Preferences.Get(PrefKeys.IsAdmin, false) ? admin.ID : student.ID)));
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? Admin.Name : student.Name,
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? Admin.ID : student.ID)));
             }
         }
         public ICommand AddScheduleCommand
@@ -52,7 +52,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new AddSchedulePage(admin)));
+                await Navigation.PushAsync(new AddSchedulePage(Admin)));
             }
         }
         public ICommand AddEventCommand
@@ -60,7 +60,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new AddEventPage(admin)));
+                await Navigation.PushAsync(new AddEventPage(Admin)));
             }
         }
         public ICommand ProfileBtnCommand
@@ -69,7 +69,7 @@ namespace ClassAid.Views
             {
                 return new Command(() =>
                 Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
-                    new StudentProfile(admin) : new StudentProfile(student)));
+                    new StudentProfile(Admin) : new StudentProfile(student)));
             }
         }
         public ICommand FullScheduleCommand
@@ -78,7 +78,7 @@ namespace ClassAid.Views
             {
                 return new Command(async () =>
                 await Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
-                new ViewSchedulePage(admin) : new ViewSchedulePage(student.AdminKey)));
+                new ViewSchedulePage(Admin) : new ViewSchedulePage(student.AdminKey)));
             }
         }
         public ICommand FullEventCommand
@@ -86,28 +86,29 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewEventPage(admin)));
+                await Navigation.PushAsync(new ViewEventPage(Admin)));
             }
         }
         #endregion
-        public Dashboard(Admin user)
+        public Dashboard(Admin admin)
         {
             InitializeComponent();
-            this.admin = user;
-            teamCode.Text = user.TeamCode;
-            firstEventBody.Text = admin.EventList[0].Details;
-            secondEventBody.Text = admin.EventList[1].Details;
+            this.Admin = admin;
+            teamCode.Text = admin.TeamCode;
+            BindEventList();
         }
         public Dashboard(Student student)
         {
             InitializeComponent();
             this.student = student;
             StudentInit();
+            BindEventList();
         }
         public Dashboard()
         {
             InitializeComponent();
             InitializeData();
+            BindEventList();
         }
         private async void StudentInit()
         {
@@ -125,8 +126,7 @@ namespace ClassAid.Views
                 LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
             }
             var ev = LocalDbContex.GetEvents().ToList();
-            firstEventBody.Text = ev[0].Details;
-            secondEventBody.Text = ev[1].Details;
+            
             var sc = LocalDbContex.GetSchedules().Where(p =>
             p.DayOfWeek == DateTime.Now.DayOfWeek);
             scheduleView.ItemsSource = sc;
@@ -135,13 +135,13 @@ namespace ClassAid.Views
         {
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
-                admin = LocalDbContex.GetAdmin();
-                string teamCode1 = admin.TeamCode;
-                teamCode.Text = teamCode1;
-                admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
-                admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
-
-                scheduleView.ItemsSource = admin.ScheduleList.Where(p =>
+                Admin = LocalDbContex.GetAdmin();
+                Admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
+                string teamCode = Admin.TeamCode;
+                this.teamCode.Text = teamCode;
+                Admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
+                Admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
+                scheduleView.ItemsSource = Admin.ScheduleList.Where(p =>
                 p.DayOfWeek == DateTime.Now.DayOfWeek);
             }
             else
@@ -149,6 +149,16 @@ namespace ClassAid.Views
                 student = LocalDbContex.GetUser();
                 StudentInit();
             }
+        }
+        private void BindEventList()
+        {
+            firstEventBody.Text = Admin.EventList[0].Details;
+            secondEventBody.Text = Admin.EventList[1].Details;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
         }
     }
 }
