@@ -17,45 +17,35 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical" Margin="0,30,0,0">
+                <StackLayout Orientation="Vertical" Padding="30">
                 <CollectionView x:Name="eventListView"
                       SelectionMode="None">
                     <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="schedule:EventModel">
-                                <Grid>
-                                    <BoxView HorizontalOptions="End"
-                                        VerticalOptions="Start" 
-                                        Margin="0,20,15,0"
-                                        HeightRequest="10"
-                                        WidthRequest="10"
-                                        BackgroundColor="#6264a7"
-                                        CornerRadius="30"/>
-
-                                    <BoxView Grid.Column="0"
-                                         HorizontalOptions="End"
-                                         VerticalOptions="Start"
-                                         Margin="0,15,0,0"
-                                         HeightRequest="18"
-                                         WidthRequest="1"
-                                         BackgroundColor="#6264a7"/>
-
-                                    <Label Text="{Binding Title}"
-                                       Grid.Column="1"
+                                <Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
+                                  ExpandAnimationLength="500">
+                                    <Expander.Header>
+                                        <Grid>
+                                        <Label Text="{Binding Title}"
                                        FontSize="14"
-                                       TextColor="Black"
+                                       TextColor="#6264a7"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="5,13,30,0"
-                                       Grid.ColumnSpan="4"/>
-                                    <Label Text="{Binding Details}"
-                                       Grid.Column="1"
+                                       Margin="10,30,0,0"
+                                       Grid.ColumnSpan="5"/>
+                                        </Grid>
+                                    </Expander.Header>
+
+                                    <Grid>
+                                        <Label Text="{Binding Details}"
                                        FontSize="14"
                                        TextColor="Gray"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="0,80,30,20"
-                                       Grid.ColumnSpan="4"/>
-                                </Grid>
+                                       Margin="10,20,0,30"
+                                       Grid.ColumnSpan="5"/>
+                                    </Grid>
+                                </Expander>
                             </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

@@ -19,7 +19,7 @@
                                        Grid.Column="0"
                                        Grid.Row="2"
                                        FontSize="20"
-                                       TextColor="Black"
+                                       TextColor="#6264a7"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
                                        Margin="25,30,0,25"
