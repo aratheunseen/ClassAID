@@ -2,22 +2,77 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:componentmodel="clr-namespace:ClassAid.CustomComponents"
-             x:Class="ClassAid.Views.AdminViews.Settings.EditBatchDetails">
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
+             x:Class="ClassAid.Views.AdminViews.Settings.EditBatchDetails"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
+            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="TextColor" Value="#6264a7"/>
+        </Style>
+        <Style TargetType="Frame" x:Key="ClassAidFrameDesign">
+            <Setter Property="BorderColor" Value="#6264a7"/>
+            <Setter Property="BackgroundColor" Value="#fff"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property ="CornerRadius" Value="30"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ClassAidCenterSLDesign">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <componentmodel:ClassAidEntry x:Name="departmentBox" 
+        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="#FFF">
+                <StackLayout Style="{StaticResource ClassAidCenterSLDesign}">
+                    <Label Text="Edit Batch Details"
+                       TextColor="#6264a7"
+                       FontSize="25"
+                        Margin="0,100,0,70"
+                       Opacity="1"></Label>
+                </StackLayout>
+                <StackLayout Padding="30">
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <componentmodel:ClassAidEntry x:Name="departmentBox" 
+                                                      Margin="15,3"
+                                                      TextColor="#6264a7"
                                           Placeholder="Department"/>
-            <componentmodel:ClassAidEntry x:Name="semesterBox" 
-                                          Placeholder="Semester"/>
-            <componentmodel:ClassAidEntry x:Name="sectionBox" 
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                        <componentmodel:ClassAidEntry x:Name="semesterBox" 
+                                          Placeholder="Semester"
+                                                      TextColor="#6264a7"
+                                          Margin="15,3"/>
+                    </Frame>
+                    <Frame Style="{StaticResource ClassAidFrameDesign}">
+                            <componentmodel:ClassAidEntry x:Name="sectionBox" 
+                                                          Margin="15,3"
+                                                          TextColor="#6264a7"
                                           Placeholder="Section"/>
-            <componentmodel:ClassAidEntry x:Name="universityBox" 
+                        </Frame>
+                        <Frame Style="{StaticResource ClassAidFrameDesign}">
+                                <componentmodel:ClassAidEntry x:Name="universityBox" 
+                                                              Margin="15,3"
+                                                              TextColor="#6264a7"
                                           Placeholder="University"/>
-            <Button x:Name="saveButton"
+                            </Frame>
+                    <Label Margin="30"/>
+                    <Frame BorderColor="#6264a7" 
+                       BackgroundColor="#6264a7" 
+                       Padding="15"
+                       CornerRadius="15">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="saveButton"/>
+                        </Frame.GestureRecognizers>
+                        <Label Margin="15,3"
+                                FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                HorizontalOptions="Center"
                     Text="Save"/>
-        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
