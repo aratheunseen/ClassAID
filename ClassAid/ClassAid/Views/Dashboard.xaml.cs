@@ -18,7 +18,7 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Dashboard : ContentPage
     {
-        private Admin admin;
+        private Admin admin { get; set; }
         private Student student;
         public ObservableCollection<EventModel> EventModels { get; set; }
         public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
@@ -90,13 +90,13 @@ namespace ClassAid.Views
             }
         }
         #endregion
-        public Dashboard(Admin user)
+        public Dashboard(Admin admin)
         {
             InitializeComponent();
-            this.admin = user;
-            teamCode.Text = user.TeamCode;
-            firstEventBody.Text = admin.EventList[0].Details;
-            secondEventBody.Text = admin.EventList[1].Details;
+            this.admin = admin;
+            teamCode.Text = admin.TeamCode;
+            firstEventBody.Text = this.admin.EventList[0].Details;
+            secondEventBody.Text = this.admin.EventList[1].Details;
         }
         public Dashboard(Student student)
         {
@@ -136,6 +136,7 @@ namespace ClassAid.Views
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 admin = LocalDbContex.GetAdmin();
+                admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
                 string teamCode1 = admin.TeamCode;
                 teamCode.Text = teamCode1;
                 admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
