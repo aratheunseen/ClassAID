@@ -131,7 +131,7 @@
                         </StackLayout>
                         <!-- Schedule Content -->
 
-                        <CollectionView x:Name="scheduleView" Grid.Row="1" HeightRequest="220">
+                        <CollectionView x:Name="scheduleView" Grid.Row="1" HeightRequest="230">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="schedule:ScheduleModel">
                                     <Grid>
