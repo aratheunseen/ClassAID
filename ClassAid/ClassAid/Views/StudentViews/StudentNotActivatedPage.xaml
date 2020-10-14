@@ -4,6 +4,10 @@
              x:Class="ClassAid.Views.StudentViews.StudentNotActivatedPage">
     <ContentPage.Content>
         <StackLayout Padding="30">
+            <Image x:Name="imgBanner" 
+                       Margin="0,0,0,0"
+                       Opacity="1"
+                       Source="inactive.png"></Image>
             <Label x:Name="ErrorText" 
                    FontSize="18"
                    InputTransparent="False"
