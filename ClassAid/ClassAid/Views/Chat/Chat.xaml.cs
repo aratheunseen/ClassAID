@@ -22,7 +22,6 @@ namespace ClassAid.Views
         public ChatHub(string key, string Name, string ID)
         {
             InitializeComponent();
-            Debug.WriteLine(Preferences.Get(PrefKeys.AdminKey, ""));
             this.key = key;
             this.Name = Name;
             this.ID = ID;
@@ -30,21 +29,6 @@ namespace ClassAid.Views
             FirebaseHandler.RealTimeChat(chats);
             ChatViewBox.ItemsSource = chats;
             messageBox.Completed += SendButton_Clicked;
-            chats.CollectionChanged += Chats_CollectionChanged;
-            ChatViewBox.ChildAdded += ChatViewBox_ChildAdded;
-        }
-
-        private void ChatViewBox_ChildAdded(object sender, ElementEventArgs e)
-        {
-            //chatBoxGrid.Bindings.
-        }
-
-        private void Chats_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (chats[e.NewStartingIndex].SenderKey == key)
-            {
-                // Do something.
-            }
         }
 
         private void SendButton_Clicked(object sender, EventArgs e)
@@ -61,7 +45,10 @@ namespace ClassAid.Views
                     ID = ID
                 };
                 messageBox.Text = string.Empty;
-                FirebaseHandler.SendMessage(chat);
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    FirebaseHandler.SendMessage(chat);
+                else
+                    DependencyService.Get<Toast>().Show("No INTERNET");
             }
         }
         private void MessageBox_TextChanged(object sender, TextChangedEventArgs e)

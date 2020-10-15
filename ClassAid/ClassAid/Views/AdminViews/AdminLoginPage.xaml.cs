@@ -6,6 +6,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using System.Diagnostics;
 using ClassAid.Models;
+using System.Collections.ObjectModel;
+using ClassAid.Models.Schedule;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -35,14 +37,27 @@ namespace ClassAid.Views.AdminViews
                     IsAdmin = true
                 };
                 activityIndicator.IsRunning = true;
-                var tempAdmin =
-                    await FirebaseHandler.GetAdminAsync(admin.Key);
+                var tempAdmin = await FirebaseHandler.GetAdminAsync(admin.Key);
                 if (tempAdmin == null)
                 {
                     activityIndicator.IsRunning = false;
+                    App.Admin = admin;
+                    App.Admin.TeacherList = new ObservableCollection<Teacher>();
+                    App.Admin.StudentList = new ObservableCollection<Student>();
+                    App.Admin.ScheduleList = new ObservableCollection<ScheduleModel>();
+                    App.Admin.EventList = new ObservableCollection<EventModel>();
+                    App.Admin.RetakeStudentList = new ObservableCollection<RetakeStudentModel>();
+                    App.Admin.BatchDetails = new BatchDetails();
+
+                    App.EventList = App.Admin.EventList;
+                    App.TeacherList = App.Admin.TeacherList;
+                    App.ScheduleList = App.Admin.ScheduleList;
+                    App.StudentList = App.Admin.StudentList;
+
+
                     await Navigation.PushAsync(
-                        new AdditionalDetails(admin));
-                    FirebaseHandler.InsertAdmin(admin);
+                        new AdditionalDetails());
+                    FirebaseHandler.InsertAdmin(App.Admin);
                 }
                 else
                 {
@@ -52,14 +67,27 @@ namespace ClassAid.Views.AdminViews
                     Preferences.Set(PrefKeys.Key, tempAdmin.Key);
                     activityIndicator.IsRunning = false;
                     Application.Current.MainPage =
-                        new NavigationPage(new Dashboard(tempAdmin));
+                        new NavigationPage(new Dashboard());
+
+                    App.Admin = tempAdmin;
+
                     LocalDbContex.CreateTables();
                     LocalDbContex.SaveUser(tempAdmin);
-                    LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
-                    LocalDbContex.SaveEvents(tempAdmin.EventList);
-                    LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
-                    LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
-                    LocalDbContex.SaveStudents(tempAdmin.StudentList);
+
+                    LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
+                    App.BatchDetails = App.Admin.BatchDetails;
+
+                    LocalDbContex.SaveEvents(App.Admin.EventList);
+                    App.EventList = App.Admin.EventList;
+
+                    LocalDbContex.SaveTeachers(App.Admin.TeacherList);
+                    App.TeacherList = App.Admin.TeacherList;
+
+                    LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
+                    App.ScheduleList = App.Admin.ScheduleList;
+
+                    LocalDbContex.SaveStudents(App.Admin.StudentList);
+                    App.StudentList = App.Admin.StudentList;
                 }
             }
             else

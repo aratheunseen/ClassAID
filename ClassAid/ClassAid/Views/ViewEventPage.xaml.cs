@@ -12,10 +12,10 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewEventPage : ContentPage
     {
-        public ViewEventPage(Admin admin)
+        public ViewEventPage()
         {
             InitializeComponent();
-            eventListView.ItemsSource = LocalDbContex.GetEvents();
+            eventListView.ItemsSource = App.EventList;
             
         }
 

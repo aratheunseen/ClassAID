@@ -11,10 +11,8 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Student student;
-        public AdditionalDetails(Student student)
+        public AdditionalDetails()
         {
-            this.student = student;
             InitializeComponent();
         }
         protected override void OnAppearing()
@@ -38,40 +36,44 @@ namespace ClassAid.Views.StudentViews
         public async void Button_Clicked()
         {
             activityIndicator.IsRunning = true;
-            student.TeamCode = teamCode.Text.Trim();
-            KeyVault keyVault = await FirebaseHandler.ValidateTeamCode(student.TeamCode);
+            App.Student.TeamCode = teamCode.Text.Trim();
+            KeyVault keyVault = await FirebaseHandler.ValidateTeamCode(App.Student.TeamCode);
             if (keyVault != null)
             {
-                student.IsAdmin = false;
-                student.IsActive = false;
-                student.IsRejected = false;
-                student.Name = studentName.Text.Trim();
-                student.Phone = phoneNumber.Text.Trim();
-                student.ID = studentID.Text.Trim();
-                var tempAdmin = await FirebaseHandler.GetAdminAsync(keyVault.AdminKey);
-                tempAdmin.StudentList.Add(new Student()
+                App.Student.IsAdmin = false;
+                App.Student.IsActive = false;
+                App.Student.IsRejected = false;
+                App.Student.Name = studentName.Text.Trim();
+                App.Student.Phone = phoneNumber.Text.Trim();
+                App.Student.ID = studentID.Text.Trim();
+
+                App.Admin = await FirebaseHandler.GetAdminAsync(keyVault.AdminKey);
+                App.BatchDetails = App.Admin.BatchDetails;
+
+                App.Admin.StudentList.Add(new Student()
                 {
-                    Name = student.Name,
-                    Phone = student.Phone,
-                    ID = student.ID,
-                    Key = student.Key,
-                    IsActive = student.IsActive,
-                    IsRejected = student.IsRejected
+                    Name = App.Student.Name,
+                    Phone = App.Student.Phone,
+                    ID = App.Student.ID,
+                    Key = App.Student.Key,
+                    IsActive = App.Student.IsActive,
+                    IsRejected = App.Student.IsRejected
                 });
                 Preferences.Set(PrefKeys.IsLoggedIn, true);
-                Preferences.Set(PrefKeys.AdminKey, tempAdmin.Key);
+                Preferences.Set(PrefKeys.AdminKey, App.Admin.Key);
                 Preferences.Set(PrefKeys.IsAdmin, false);
-                Preferences.Set(PrefKeys.Key, student.Key);
+                Preferences.Set(PrefKeys.Key, App.Student.Key);
                 Application.Current.MainPage =
-                    new NavigationPage(new StudentNotActivatedPage(student));
-                //OneSignal.Current.SendTag("AdminKey", student.AdminKey);
-                student.AdminKey = keyVault.AdminKey;
-                FirebaseHandler.UpdateAdmin(tempAdmin);
-                FirebaseHandler.UpdateStudent(student);
+                    new NavigationPage(new StudentNotActivatedPage());
+                //OneSignal.Current.SendTag("AdminKey", App.Student.AdminKey);
+                App.Student.AdminKey = keyVault.AdminKey;
+                App.UpdateAdminOrSync();
+                FirebaseHandler.UpdateStudent(App.Student);
+
                 LocalDbContex.CreateTables();
-                LocalDbContex.SaveUser(student);
-                LocalDbContex.SaveUser(tempAdmin);
-                LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                LocalDbContex.SaveUser(App.Student);
+                LocalDbContex.SaveUser(App.Admin);
+                LocalDbContex.SaveBatchDetails(App.BatchDetails);
             }
             else
             {
