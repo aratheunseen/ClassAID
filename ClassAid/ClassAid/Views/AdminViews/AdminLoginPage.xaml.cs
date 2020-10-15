@@ -91,7 +91,6 @@ namespace ClassAid.Views.AdminViews
                 userPass.Text.Length < 6 )
 
             {
-                
                 signInBtn.Command = null;
             }
             else
