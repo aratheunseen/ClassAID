@@ -97,17 +97,17 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Schedule Title -->
                     <StackLayout x:Name="scheduleTitle"
                                      Grid.ColumnSpan="6"
-                                     Grid.Row="1"
+                                     Grid.Row="0"
                                      Margin="40,0,0,0"
                                      Orientation="Horizontal">
                         <Image Grid.Column="0"
-                                   Grid.Row="1"
+                                   Grid.Row="0"
                                    Margin="0,0,5,0"
                                    Source="schedule.png"
                                    HeightRequest="32"
@@ -116,7 +116,7 @@
                                    VerticalOptions="Start"/>
                         <Label Text="Schedule"
                                    Grid.Column="1"
-                                   Grid.Row="1"
+                                   Grid.Row="0"
                                    FontSize="22"
                                    TextColor="Black"
                                    HorizontalOptions="Start"
@@ -124,7 +124,7 @@
                                    Margin="5,0,0,0"
                                    Grid.ColumnSpan="3"/>
                         <Image Grid.Column="4"
-                                   Grid.Row="1"
+                                   Grid.Row="0"
                                    x:Name="addScheduleBtnImage"
                                    Source="plus.png"
                                    Margin="10,8,0,0"
@@ -154,7 +154,7 @@
                                     </Grid.ColumnDefinitions>
                                     <BoxView Grid.Row="0"
                                              Grid.Column="1"
-                                             Margin="0,,0,0"
+                                             Margin="0,30,0,0"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
@@ -183,25 +183,25 @@
                                     <Label x:Name="ScheduleStart" 
                                        Text="{Binding StartTime, 
                                     Converter={StaticResource timeFormatter}}"
-                                       Grid.Column="4"
+                                       Grid.Column="5"
                                        Grid.ColumnSpan="2"
                                        Grid.Row="0"
                                        FontSize="12"
                                        TextColor="Gray"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="0,5,30,0"/>
+                                       Margin="0,40,30,0"/>
                                     <Label x:Name="ScheduleEnd"
                                        Text="{Binding EndTime, 
                                     Converter={StaticResource timeFormatter}}"
-                                       Grid.Column="4"
+                                       Grid.Column="5"
                                        Grid.ColumnSpan="2"
                                        Grid.Row="0"
                                        FontSize="12"
                                        TextColor="Gray"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Start" 
-                                       Margin="0,25,30,0"/>
+                                       Margin="0,55,30,0"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
