@@ -84,7 +84,7 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             BindEventScheduleList();
-            if (!Preferences.Get(PrefKeys.IsAdmin,false))
+            if (!Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 mainGrid.Children.Remove(addScheduleBtnImage);
                 mainGrid.Children.Remove(addScheduleBtnImage);
@@ -101,7 +101,7 @@ namespace ClassAid.Views
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
-                    secondEventBody.Text = App.Admin.EventList[1].Details;
+                    //secondEventBody.Text = App.Admin.EventList[1].Details;
                     secondEventTitle.Text = App.Admin.EventList[1].Title;
                 }
                 catch (Exception) { }
@@ -116,7 +116,7 @@ namespace ClassAid.Views
         {
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                firstEventBody.Text = App.Admin.EventList[0].Details;
+                //firstEventBody.Text = App.Admin.EventList[0].Details;
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
@@ -130,7 +130,7 @@ namespace ClassAid.Views
         private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             scheduleView.ItemsSource = App.Admin.ScheduleList
-                .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek);
+                .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek).OrderBy(p => p.StartTime);
         }
     }
 }

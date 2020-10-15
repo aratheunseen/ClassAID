@@ -62,8 +62,7 @@ namespace ClassAid.Views.StudentViews
                 Preferences.Set(PrefKeys.AdminKey, App.Admin.Key);
                 Preferences.Set(PrefKeys.IsAdmin, false);
                 Preferences.Set(PrefKeys.Key, App.Student.Key);
-                Application.Current.MainPage =
-                    new NavigationPage(new StudentNotActivatedPage());
+                Application.Current.MainPage = new StudentNotActivatedPage();
                 //OneSignal.Current.SendTag("AdminKey", App.Student.AdminKey);
                 App.Student.AdminKey = keyVault.AdminKey;
                 App.UpdateAdminOrSync();
