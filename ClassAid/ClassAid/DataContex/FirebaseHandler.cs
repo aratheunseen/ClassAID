@@ -93,8 +93,9 @@ namespace ClassAid.DataContex
                          collection.Add(d.Object);
                      if (collection.Count > 10)
                      {
-                         var t = GetClient().Child("Chat")
-                         .Child(Preferences.Get(PrefKeys.AdminKey, "")).Child("10").DeleteAsync();
+                         GetClient().Child("Chat")
+                         .Child(Preferences.Get(PrefKeys.AdminKey, ""))
+                         .Child(collection[0].DeletingKey).DeleteAsync();
                      }
                  }));
 
