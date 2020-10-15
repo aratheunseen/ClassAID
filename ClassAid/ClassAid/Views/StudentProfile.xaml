@@ -290,7 +290,7 @@
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
                                     <Label x:Name="teacherDesignation"
-                                           Text="No Designation Binding"
+                                           Text="{Binding Designation}"
                                            Margin="0,25,0,0"
                                            Grid.Column="1"
                                            FontSize="14"
