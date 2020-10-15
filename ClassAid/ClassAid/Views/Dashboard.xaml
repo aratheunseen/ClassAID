@@ -44,12 +44,12 @@
                        Source="logo.png"
                        HeightRequest="50"
                        WidthRequest="50">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
-                    </Image.GestureRecognizers>
-                </Image>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
 
-                <Frame x:Name="teamCodeBox"
+                    <Frame x:Name="teamCodeBox"
                        Grid.Column="1"
                        Grid.ColumnSpan="3"
                        BorderColor="#6264a7"
@@ -58,16 +58,16 @@
                        Padding="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
-                    <Label x:Name="teamCode"
+                        <Label x:Name="teamCode"
                            FontSize="Medium"
                            TextColor="#6264a7">
-                    </Label>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TeamCodeCopyCommand}"/>
-                    </Frame.GestureRecognizers>
-                </Frame>
+                        </Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TeamCodeCopyCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
 
-                <ImageButton x:Name="allSyncButton"
+                    <ImageButton x:Name="allSyncButton"
                              Grid.Column="3"
                              Grid.ColumnSpan="1"
                              Source="sync.png"
@@ -77,19 +77,19 @@
                              HorizontalOptions="End"
                              VerticalOptions="Start"
                              BackgroundColor="Transparent"/>
-                <Image Grid.Column="4"
+                    <Image Grid.Column="4"
                        Margin="15,25,15,0"
                        Source="avater.png"
                        HeightRequest="40"
                        WidthRequest="40"
                        HorizontalOptions="Start"
                        VerticalOptions="Start">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ProfileBtnCommand}"/>
-                    </Image.GestureRecognizers>
-                </Image>
-            </Grid>
-            <ScrollView HorizontalScrollBarVisibility="Never"
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ProfileBtnCommand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+                <ScrollView HorizontalScrollBarVisibility="Never"
                         BackgroundColor="#fff"
                         Grid.Row="1"
                         Grid.RowSpan="2"
@@ -98,7 +98,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
@@ -149,17 +149,17 @@
                         <CollectionView x:Name="scheduleView" 
                                         Grid.Row="1" 
                                         Grid.ColumnSpan="6"
-                                        HeightRequest="230">
+                                        HeightRequest="180">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate x:DataType="schedule:ScheduleModel">
                                     <Grid BackgroundColor="#FFF">
                                         <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <BoxView Grid.Row="0"
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView Grid.Row="0"
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start" 
                                         Margin="35,5,0,0"
@@ -167,14 +167,14 @@
                                         WidthRequest="5"
                                         BackgroundColor="Black"
                                         CornerRadius="30"/>
-                                            <BoxView Grid.Row="0"
+                                        <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start" 
                                              HeightRequest="20"
                                              WidthRequest="1"
                                              BackgroundColor="Black"/>
-                                            <Label x:Name="ScheduleCourseCode"
+                                        <Label x:Name="ScheduleCourseCode"
                                            Text="{Binding CourseCode}"
                                            Grid.Column="1"
                                            Margin="10,0,0,0"
@@ -183,7 +183,7 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-                                            <Label x:Name="ScheduleCourseName"
+                                        <Label x:Name="ScheduleCourseName"
                                        Text="{Binding Subject}"
                                         Margin="0,25,0,0"
                                         Grid.Column="1"
@@ -192,7 +192,7 @@
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start" 
                                         Grid.ColumnSpan="3"/>
-                                            <Label x:Name="ScheduleStart" 
+                                        <Label x:Name="ScheduleStart" 
                                        Text="{Binding StartTime, 
                                     Converter={StaticResource timeFormatter}}"
                                        Grid.Column="4"
@@ -203,7 +203,7 @@
                                        HorizontalOptions="End"
                                        VerticalOptions="Start" 
                                        Margin="0,5,30,0"/>
-                                            <Label x:Name="ScheduleEnd"
+                                        <Label x:Name="ScheduleEnd"
                                        Text="{Binding EndTime, 
                                     Converter={StaticResource timeFormatter}}"
                                        Grid.Column="4"
@@ -214,7 +214,7 @@
                                        HorizontalOptions="End"
                                        VerticalOptions="Start" 
                                        Margin="0,25,30,0"/>
-                                        </Grid>
+                                    </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
@@ -225,7 +225,7 @@
                                      Grid.ColumnSpan="6"
                                      Margin="40,0,0,0"
                                      Orientation="Horizontal">
-                        <Image Grid.Column="0"
+                            <Image Grid.Column="0"
                                Grid.Row="2"
                                Margin="0,0,5,0"
                                Source="notice.png"
@@ -234,9 +234,9 @@
                                HorizontalOptions="End"
                                VerticalOptions="Start"/>
 
-                        <Label Text="Notice"
+                            <Label Text="Notice"
                                Grid.Column="1"
-                               Grid.Row="4"
+                               Grid.Row="2"
                                FontSize="22"
                                TextColor="Black"
                                HorizontalOptions="Start"
@@ -244,7 +244,7 @@
                                Margin="5,0,0,0"
                                Grid.ColumnSpan="3"/>
 
-                        <Image Grid.Column="5"
+                            <Image Grid.Column="5"
                                x:Name="addNoticeBtnImage"
                                Grid.Row="2"
                                Margin="10,8,0,0"
@@ -253,50 +253,46 @@
                                WidthRequest="16"
                                HorizontalOptions="Start"
                                VerticalOptions="Start">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AddEventCommand}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddEventCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                         </StackLayout>
-                        
+
                         <!-- Notice Content -->
-                        <BoxView Grid.Row="3"
-                                 Grid.Column="1"
-                                 HorizontalOptions="Start"
-                                 VerticalOptions="Start" 
-                                 Margin="5,30,0,0"
-                                 HeightRequest="20"
-                                 WidthRequest="1"
-                                 BackgroundColor="#6264a7"/>
-
-                        <Label x:Name="firstEventBody"
-                               Grid.Column="1"
-                               Grid.Row="3"
-                               FontSize="15"
-                               TextColor="Gray"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Start" 
-                               Margin="15,30,10,0"
-                               Grid.ColumnSpan="4"/>
-
-
-                        <BoxView Grid.Row="3"
-                                 Grid.Column="1"
-                                 HorizontalOptions="Start"
-                                 VerticalOptions="Start" 
-                                 Margin="5,120,0,0"
-                                 HeightRequest="20"
-                                 WidthRequest="1"
-                                 BackgroundColor="#6264a7"/>
-                        <Label x:Name="secondEventBody"
-                               Grid.Column="1"
-                               Grid.Row="3"
-                               FontSize="15"
-                               TextColor="Gray"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Start" 
-                               Margin="15,120,10,60"
-                               Grid.ColumnSpan="4"/>
+                        <StackLayout Grid.Row="3" Grid.ColumnSpan="6">
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView HorizontalOptions="Start"
+                                         VerticalOptions="Start" 
+                                         Margin="5,30,0,0"
+                                         HeightRequest="20"
+                                         WidthRequest="1"
+                                         BackgroundColor="#6264a7"/>
+                                <Label x:Name="firstEventTitle"
+                                       Grid.Column="2"
+                                       FontSize="Large"
+                                       TextColor="Gray"/>
+                            </StackLayout>
+                            <Label x:Name="firstEventBody"
+                                   Grid.Column="2"
+                                   Grid.Row="1"
+                                   FontSize="15"
+                                   TextColor="Gray"/>
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView Margin="5,120,0,0"
+                                         HeightRequest="20"
+                                         WidthRequest="1"
+                                         BackgroundColor="#6264a7"/>
+                                <Label x:Name="secondEventTitle"
+                                       Grid.Column="1"
+                                       FontSize="Large"
+                                       TextColor="Gray"/>
+                            </StackLayout>
+                            <Label x:Name="secondEventBody"
+                                   Grid.Column="1"
+                                   FontSize="15"
+                                   TextColor="Gray"/>
+                        </StackLayout>
                     </Grid>
 
                 </ScrollView>
@@ -331,21 +327,21 @@
                            HorizontalOptions="Center"
                            VerticalOptions="Center"/>
                 </Frame>
-                    <Frame Grid.Column="4"
+                <Frame Grid.Column="4"
                        Grid.Row="3"
                        Grid.ColumnSpan="2"
                        BackgroundColor="Transparent"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding FullScheduleCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <Image Source="schedule.png"
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FullScheduleCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Image Source="schedule.png"
                            HeightRequest="32"
                            WidthRequest="32"
                            BackgroundColor="Transparent"/>
-                    </Frame>
-                </Grid>
+                </Frame>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

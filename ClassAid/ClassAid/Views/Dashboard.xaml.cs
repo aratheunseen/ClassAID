@@ -98,12 +98,37 @@ namespace ClassAid.Views
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
                 firstEventBody.Text = App.Admin.EventList[0].Details;
+                firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
                     secondEventBody.Text = App.Admin.EventList[1].Details;
+                    secondEventTitle.Text = App.Admin.EventList[1].Title;
                 }
                 catch (Exception) { }
             }
+            scheduleView.ItemsSource = App.Admin.ScheduleList
+                .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek);
+            App.Admin.ScheduleList.CollectionChanged += ScheduleList_CollectionChanged;
+            App.Admin.EventList.CollectionChanged += EventList_CollectionChanged;
+        }
+
+        private void EventList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
+            {
+                firstEventBody.Text = App.Admin.EventList[0].Details;
+                firstEventTitle.Text = App.Admin.EventList[0].Title;
+                try
+                {
+                    secondEventBody.Text = App.Admin.EventList[1].Details;
+                    secondEventTitle.Text = App.Admin.EventList[1].Title;
+                }
+                catch (Exception) { }
+            }
+        }
+
+        private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
             scheduleView.ItemsSource = App.Admin.ScheduleList
                 .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek);
         }
