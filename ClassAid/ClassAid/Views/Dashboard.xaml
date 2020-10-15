@@ -128,8 +128,8 @@
                                    x:Name="addScheduleBtnImage"
                                    Source="plus.png"
                                    Margin="10,8,0,0"
-                                   HeightRequest="16"
-                                   WidthRequest="16"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
                                    HorizontalOptions="Start"
                                    VerticalOptions="Start">
                             <Image.GestureRecognizers>
@@ -237,8 +237,8 @@
                                Grid.Row="2"
                                Margin="10,8,0,0"
                                Source="plus.png"
-                               HeightRequest="16"
-                               WidthRequest="16"
+                               HeightRequest="20"
+                               WidthRequest="20"
                                HorizontalOptions="Start"
                                VerticalOptions="Start">
                             <Image.GestureRecognizers>
