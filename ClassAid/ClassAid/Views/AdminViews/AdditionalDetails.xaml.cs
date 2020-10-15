@@ -31,7 +31,6 @@ namespace ClassAid.Views.AdminViews
             App.Admin.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text, App.Admin.Key);
             resultText.Text = "Creating Profile";
             App.Admin.BatchDetails = batch;
-            App.BatchDetails = batch;
 
             App.Admin.ID = stuId.Text;
             App.Admin.Phone = userPhone.Text;

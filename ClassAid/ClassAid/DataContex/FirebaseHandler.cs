@@ -72,7 +72,7 @@ namespace ClassAid.DataContex
                  .AsObservable<T>()
                  .Subscribe(d =>
                  {
-                     if (!collection.Contains(d.Object))
+                     if (!collection.Contains(d.Object) && d.Object != null)
                      {
                          bool isAdmin = Preferences.Get(PrefKeys.IsAdmin, false);
                          collection.Insert(0, d.Object);

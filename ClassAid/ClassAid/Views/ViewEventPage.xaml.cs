@@ -15,7 +15,7 @@ namespace ClassAid.Views
         public ViewEventPage()
         {
             InitializeComponent();
-            eventListView.ItemsSource = App.EventList;
+            eventListView.ItemsSource = App.Admin.EventList;
             
         }
 

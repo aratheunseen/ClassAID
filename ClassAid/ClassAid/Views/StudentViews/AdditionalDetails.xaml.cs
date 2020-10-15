@@ -48,7 +48,6 @@ namespace ClassAid.Views.StudentViews
                 App.Student.ID = studentID.Text.Trim();
 
                 App.Admin = await FirebaseHandler.GetAdminAsync(keyVault.AdminKey);
-                App.BatchDetails = App.Admin.BatchDetails;
 
                 App.Admin.StudentList.Add(new Student()
                 {
@@ -73,7 +72,7 @@ namespace ClassAid.Views.StudentViews
                 LocalDbContex.CreateTables();
                 LocalDbContex.SaveUser(App.Student);
                 LocalDbContex.SaveUser(App.Admin);
-                LocalDbContex.SaveBatchDetails(App.BatchDetails);
+                LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
             }
             else
             {

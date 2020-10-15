@@ -23,10 +23,10 @@ namespace ClassAid.Views
             InitializeComponent();
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             logoutBtn.Command = new Command(() => App.LogOut());
-            userDepartment.Text = App.BatchDetails.Department;
-            userUniversity.Text = App.BatchDetails.University;
-            userSection.Text = App.BatchDetails.Section;
-            userSemester.Text = App.BatchDetails.Semester;
+            userDepartment.Text = App.Admin.BatchDetails.Department;
+            userUniversity.Text = App.Admin.BatchDetails.University;
+            userSection.Text = App.Admin.BatchDetails.Section;
+            userSemester.Text = App.Admin.BatchDetails.Semester;
             if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 userName.Text = App.Admin.Name;
@@ -47,8 +47,8 @@ namespace ClassAid.Views
                 userPhone.Text = App.Student.Phone;
                 userID.Text = App.Student.ID;
             }
-            ClassmateCollectionView.ItemsSource = App.StudentList;
-            TeacherCollectionView.ItemsSource = App.TeacherList;
+            ClassmateCollectionView.ItemsSource = App.Admin.StudentList;
+            TeacherCollectionView.ItemsSource = App.Admin.TeacherList;
         }
 
         private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)

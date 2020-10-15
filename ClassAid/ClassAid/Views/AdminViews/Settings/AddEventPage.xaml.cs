@@ -25,14 +25,13 @@ namespace ClassAid.Views.AdminViews.Settings
             {
                 Title = eventTitle.Text,
                 Details = eventBody.Text,
-                Time = DateTime.Now.ToString(@"dd\:hh\:mm\t")
-            };
-            App.EventList.Add(e);
-            //App.Admin.EventList.Add(e);
-            if (App.EventList.Count > 10)
+                Time = DateTime.Now.ToString(@"dd\:hh\:mm\ t")
+            };            
+            App.Admin.EventList.Add(e);
+            if (App.Admin.EventList.Count > 10)
             {
-                LocalDbContex.DeleteEvent(App.EventList[10]);
-                App.EventList.RemoveAt(10);
+                LocalDbContex.DeleteEvent(App.Admin.EventList[10]);
+                App.Admin.EventList.RemoveAt(10);
                 //App.Admin.EventList.RemoveAt(10);
             }
             LocalDbContex.SaveEvent(e);
