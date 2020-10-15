@@ -14,42 +14,57 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0"
-                HorizontalOptions="Center"
-                         VerticalOptions="Start"
-                         Margin="0,30,0,30">
+                      HorizontalOptions="Center"
+                      VerticalOptions="Start"
+                      Margin="0,30,0,30">
                     <Image Source="logo.png"
-                       HeightRequest="200"
-                       WidthRequest="200"/>
-
+                           HeightRequest="200"
+                           WidthRequest="200"/>
                     <Label Text="Version: 1.0 (Beta)"
-                       HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                       Margin="0,160,0,0"/>
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="0,160,0,0"/>
                 </Grid>
                 <Grid>
                     <Label Text="About Us"
                            Margin="40,320,0,0"
                            FontSize="20"
-                           TextColor="#6264a7"/>
+                           TextColor="#6264a7">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="aboutHyperText"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Label Text="Privacy Policy"
                            Margin="40,370,0,0"
                            FontSize="20"
-                           TextColor="#6264a7"/>
+                           TextColor="#6264a7">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="privacyHyperText"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Label Text="Terms and Conditions"
                            Margin="40,420,0,0"
                            FontSize="20"
-                           TextColor="#6264a7"/>
+                           TextColor="#6264a7">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="termsHyperText"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Label Text="Help Center"
                            Margin="40,470,0,0"
                            FontSize="20"
-                           TextColor="#6264a7"/>
+                           TextColor="#6264a7">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="helpHyperText"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
                 <StackLayout HorizontalOptions="Center"
-                         VerticalOptions="End"
-                         Margin="0,0,0,25">
+                             VerticalOptions="End"
+                             Margin="0,0,0,25">
                     <Label Text=""
-                       TextColor="#6264a7"
-                       FontSize="16">
+                           TextColor="#6264a7"
+                           FontSize="16">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="© "/>
