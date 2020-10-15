@@ -38,7 +38,7 @@ namespace ClassAid.Views.AdminViews
                 };
                 activityIndicator.IsRunning = true;
                 var tempAdmin = await FirebaseHandler.GetAdminAsync(admin.Key);
-                if (tempAdmin == null)
+                if (tempAdmin == null || tempAdmin.Name == null || tempAdmin.BatchDetails == null)
                 {
                     activityIndicator.IsRunning = false;
                     App.Admin = admin;

@@ -49,7 +49,7 @@ namespace ClassAid.Views.StudentViews
                 activityIndicator.IsRunning = true;
                 App.Student = await FirebaseHandler.GetStudentAsync(student.Key);
 
-                if (App.Student == null)
+                if (App.Student == null || App.Student.Name == null)
                 {
                     activityIndicator.IsRunning = false;
                     App.Student = student;
@@ -98,9 +98,9 @@ namespace ClassAid.Views.StudentViews
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02";
+                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02" + e.Message;
             }
         }
     }
