@@ -57,10 +57,10 @@
                        Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
 
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,30,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,55,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,80,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,105,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=" : " Margin="15,30,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=" : " Margin="15,55,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=" : " Margin="15,80,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=" : " Margin="15,105,48,0" TextColor="#6264a7"/>
 
                 <Label x:Name="userID" 
                        Grid.Column="3" 
@@ -183,7 +183,7 @@
                                            Text="{Binding ID}"
                                            Grid.Column="1"
                                            Margin="10,0,0,0"
-                                           FontSize="18"
+                                           FontSize="16"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
@@ -197,17 +197,6 @@
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-                                    <ImageButton x:Name="rejectBtn" 
-                                                 Clicked="RejectBtn_Clicked"
-                                                 Grid.Column="5"
-                                                 BackgroundColor="Transparent"
-                                                 Source="reject.png"
-                                                 HeightRequest="26" 
-                                                 WidthRequest="26" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 CommandParameter="{Binding .}"
-                                                 Margin="0,0,0,0"/>
                                     <ImageButton x:Name="acceptBtn" 
                                                  Clicked="AcceptBtn_Clicked"
                                                  Grid.Column="6"
@@ -219,6 +208,17 @@
                                                  VerticalOptions="Center"
                                                  CommandParameter="{Binding .}"
                                                  Margin="0,0,15,0"/>
+                                    <ImageButton x:Name="rejectBtn" 
+                                                 Clicked="RejectBtn_Clicked"
+                                                 Grid.Column="5"
+                                                 BackgroundColor="Transparent"
+                                                 Source="reject.png"
+                                                 HeightRequest="26" 
+                                                 WidthRequest="26" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center"
+                                                 CommandParameter="{Binding .}"
+                                                 Margin="0,0,0,0"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -287,7 +287,7 @@
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
+                                           Grid.ColumnSpan="4"/>
                                     <Label x:Name="teacherDesignation"
                                            Text="{Binding Designation}"
                                            Margin="0,25,0,0"
@@ -296,7 +296,7 @@
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
+                                           Grid.ColumnSpan="4"/>
                                     <ImageButton x:Name="teacherCallBtn" 
                                                  Clicked="TeacherCallBtn_Clicked"
                                                  Grid.Column="5"
@@ -370,11 +370,11 @@
                                         Text="{Binding ID}"
                                            Grid.Column="1"
                                            Margin="10,0,0,0"
-                                           FontSize="18"
+                                           FontSize="16"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
+                                           Grid.ColumnSpan="4"/>
                                 <Label x:Name="studentName"
                                         Text="{Binding Name}"
                                            Margin="0,25,0,0"
@@ -383,7 +383,7 @@
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
-                                           Grid.ColumnSpan="3"/>
+                                           Grid.ColumnSpan="4"/>
                                 <ImageButton x:Name="classMateCallBtn" 
                                             Clicked="ClassMateCallBtn_Clicked"
                                                  Grid.Column="5"
