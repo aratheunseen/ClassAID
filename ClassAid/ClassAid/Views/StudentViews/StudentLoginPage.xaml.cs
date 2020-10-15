@@ -100,7 +100,7 @@ namespace ClassAid.Views.StudentViews
             }
             catch (Exception e)
             {
-                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02" + e.Message;
+                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02";
             }
         }
     }
