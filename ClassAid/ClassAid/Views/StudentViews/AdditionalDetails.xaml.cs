@@ -24,6 +24,7 @@ namespace ClassAid.Views.StudentViews
         {
             if (!string.IsNullOrWhiteSpace(studentName.Text) &&
                 !string.IsNullOrWhiteSpace(teamCode.Text) &&
+                !string.IsNullOrWhiteSpace(phoneNumber.Text) &&
                 !string.IsNullOrWhiteSpace(studentID.Text))
             {
                 studentSignIn.Command = new Command(() => Button_Clicked());
