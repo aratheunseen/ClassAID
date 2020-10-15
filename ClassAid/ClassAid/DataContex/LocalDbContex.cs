@@ -175,7 +175,7 @@ namespace ClassAid.DataContex
                 return schedules;
             }
         }
-        public static Student GetUser()
+        public static Student GetStudentAsUser()
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
@@ -191,7 +191,7 @@ namespace ClassAid.DataContex
                 return user[1];
             }
         }
-        public static Admin GetAdmin()
+        public static Admin GetAdminAsUser()
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
             {
@@ -259,7 +259,6 @@ namespace ClassAid.DataContex
             {
                 string sql = $"DELETE FROM {table};";
                 var d = cnn.Execute(sql);
-                Debug.WriteLine(d);
             }
         }
     }

@@ -2,8 +2,6 @@
 using ClassAid.Models.Users;
 using Com.OneSignal;
 using System;
-using System.Collections;
-using System.Diagnostics;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -48,58 +46,68 @@ namespace ClassAid.Views.StudentViews
                 };
 
                 activityIndicator.IsRunning = true;
-                var tempStudent =
-                    await FirebaseHandler.GetStudentAsync(student.Key);
-                if (tempStudent == null)
+                App.Student = await FirebaseHandler.GetStudentAsync(student.Key);
+
+                if (App.Student == null)
                 {
                     activityIndicator.IsRunning = false;
+                    App.Student = student;
                     await Navigation.PushAsync(
-                        new AdditionalDetails(student));
+                        new AdditionalDetails());
                     FirebaseHandler.InsertStudent(student);
                 }
                 else
                 {
-                    //Debug.WriteLine(student.AdminKey);
-                    Admin tempAdmin = await FirebaseHandler.GetAdminAsync(tempStudent.AdminKey);
+                    App.Admin = await FirebaseHandler.GetAdminAsync(App.Student.AdminKey);
 
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
-                    if (tempStudent.IsActive)
+                    if (App.Student.IsActive)
                     {
                         Preferences.Set(PrefKeys.IsLoggedIn, true);
-                        Preferences.Set(PrefKeys.AdminKey, tempStudent.AdminKey);
+                        Preferences.Set(PrefKeys.AdminKey, App.Student.AdminKey);
                         Preferences.Set(PrefKeys.IsAdmin, false);
                         Preferences.Set(PrefKeys.Key, student.Key);
+
+                        App.EventList = App.Admin.EventList;
+                        App.ScheduleList = App.Admin.ScheduleList;
+
                         Application.Current.MainPage =
-                            new NavigationPage(new Dashboard(tempStudent));
-                        LocalDbContex.SaveUser(tempStudent);
-                        LocalDbContex.SaveUser(tempAdmin);
-                        LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
-                        if (tempAdmin.EventList != null)
-                            LocalDbContex.SaveEvents(tempAdmin.EventList);
-                        if (tempAdmin.TeacherList != null)
-                            LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
-                        if (tempAdmin.ScheduleList != null)
-                            LocalDbContex.SaveSchedules(tempAdmin.ScheduleList);
-                        if (tempAdmin.StudentList != null)
-                            LocalDbContex.SaveStudents(tempAdmin.StudentList
+                            new NavigationPage(new Dashboard());
+
+                        LocalDbContex.SaveUser(App.Student);
+                        LocalDbContex.SaveUser(App.Admin);
+
+                        LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
+                        App.BatchDetails = App.Admin.BatchDetails;
+
+                        LocalDbContex.SaveEvents(App.Admin.EventList);
+
+                        LocalDbContex.SaveTeachers(App.Admin.TeacherList);
+                        App.TeacherList = App.Admin.TeacherList;
+
+                        LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
+
+                        LocalDbContex.SaveStudents(App.Admin.StudentList
                                 .Where(item => item.IsActive == true).ToList());
+                        App.StudentList = new System.Collections.ObjectModel.ObservableCollection<Student>
+                            (App.Admin.StudentList
+                                 .Where(item => item.IsActive == true).ToList());
+
                         OneSignal.Current.SendTag("AdminKey", student.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();
                     }
                     else
                     {
-                        Debug.WriteLine(tempStudent.Name);
-                        Debug.WriteLine(tempAdmin.Name);
-                        LocalDbContex.SaveUser(tempStudent);
-                        LocalDbContex.SaveUser(tempAdmin);
-                        Application.Current.MainPage = new StudentNotActivatedPage(tempStudent);
+                        LocalDbContex.SaveUser(App.Student);
+                        LocalDbContex.SaveUser(App.Admin);
+                        Application.Current.MainPage = new StudentNotActivatedPage();
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                resultText.Text = "Sorry something bad happened. " + e.Message;
+                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02";
             }
         }
     }

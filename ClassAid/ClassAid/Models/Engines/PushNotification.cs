@@ -2,6 +2,8 @@
 using System.Net;
 using System.Text;
 using System.Diagnostics;
+using Xamarin.Forms;
+
 namespace ClassAid.Models.Engines
 {
     public class PushNotification
@@ -40,13 +42,11 @@ namespace ClassAid.Models.Engines
                     }
                 }
             }
-            catch (WebException ex)
+            catch (WebException)
             {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(new StreamReader(ex.Response.GetResponseStream()).ReadToEnd());
+                DependencyService.Get<Toast>().Show("Couldn't send Notifications to the end users.");
             }
 
-            Debug.WriteLine(responseContent);
         }
     }
 }

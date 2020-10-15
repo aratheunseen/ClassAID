@@ -12,16 +12,14 @@ namespace ClassAid.Views.AdminViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdditionalDetails : ContentPage
     {
-        Admin admin;
-        public AdditionalDetails(Admin admin)
+        public AdditionalDetails()
         {
             InitializeComponent();
-            this.admin = admin;
         }
         private async void CompleteSignUp_Clicked()
         {
-            admin.Name = userRealName.Text;
-            admin.Phone = userPhone.Text;
+            App.Admin.Name = userRealName.Text;
+            App.Admin.Phone = userPhone.Text;
             BatchDetails batch = new BatchDetails()
             {
                 University = instName.Text,
@@ -30,22 +28,25 @@ namespace ClassAid.Views.AdminViews
                 Section = secName.Text
             };
             resultText.Text = "Creating Unique ID";
-            admin.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text,admin.Key);
+            App.Admin.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text, App.Admin.Key);
             resultText.Text = "Creating Profile";
-            admin.BatchDetails = batch;
-            admin.ID = stuId.Text;
-            admin.Phone = userPhone.Text;
+            App.Admin.BatchDetails = batch;
+            App.BatchDetails = batch;
+
+            App.Admin.ID = stuId.Text;
+            App.Admin.Phone = userPhone.Text;
             try
             {
                 Preferences.Set(PrefKeys.IsLoggedIn, true);
-                Preferences.Set(PrefKeys.AdminKey, admin.Key);
-                Preferences.Set(PrefKeys.Key, admin.Key);
+                Preferences.Set(PrefKeys.AdminKey, App.Admin.Key);
+                Preferences.Set(PrefKeys.Key, App.Admin.Key);
                 Preferences.Set(PrefKeys.IsAdmin, true);
-                FirebaseHandler.UpdateAdmin(admin);
-                Application.Current.MainPage = new NavigationPage(new Dashboard(admin));
+                FirebaseHandler.UpdateAdmin(App.Admin);
+                Application.Current.MainPage = 
+                    new NavigationPage(new Dashboard());
                 LocalDbContex.CreateTables();
-                LocalDbContex.SaveUser(admin);
-                LocalDbContex.SaveBatchDetails(admin.BatchDetails);
+                LocalDbContex.SaveUser(App.Admin);
+                LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
             }
             catch (Exception)
             {

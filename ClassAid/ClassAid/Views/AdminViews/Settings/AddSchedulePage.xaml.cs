@@ -2,10 +2,8 @@
 using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
-using Firebase.Database;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,20 +13,16 @@ namespace ClassAid.Views.AdminViews.Settings
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSchedulePage : ContentPage
     {
-        private readonly Admin admin;
-        public AddSchedulePage(Admin admin)
+        public AddSchedulePage()
         {
-            this.admin = admin;
 
             InitializeComponent();
-            teacherPeaker.ItemsSource = admin.TeacherList;
+            teacherPeaker.ItemsSource = App.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
         private async void AddScheduleBtn_Clicked()
         {
-            if (admin.ScheduleList == null)
-                admin.ScheduleList = new ObservableCollection<ScheduleModel>();
             var sc = new ScheduleModel()
             {
                 Teacher = ((Teacher)teacherPeaker.SelectedItem).Name,
@@ -38,23 +32,14 @@ namespace ClassAid.Views.AdminViews.Settings
                 CourseCode = courseCode.Text,
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
-            admin.ScheduleList.Insert(0, sc);
+            App.ScheduleList.Add(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedule(sc);
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                FirebaseHandler.UpdateAdmin(admin);
-            else
-            {
-                Preferences.Set(PrefKeys.IsSyncPending, true);
-                LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);
-                DependencyService.Get<Toast>().Show("No internet access. Sync pending.");
-            }
+            App.UpdateAdminOrSync();
         }
-
-        // TODO: Can not build after change the button to frame gesture
         private async void AddTeacher_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddTeacherPage(admin));
+            await Navigation.PushAsync(new AddTeacherPage());
         }
 
         private void Form_TextChanged(object sender, TextChangedEventArgs e)

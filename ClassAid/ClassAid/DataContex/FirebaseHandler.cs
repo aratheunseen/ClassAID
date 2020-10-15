@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using ClassAid.Models.Schedule;
 
 namespace ClassAid.DataContex
 {
@@ -72,7 +73,14 @@ namespace ClassAid.DataContex
                  .Subscribe(d =>
                  {
                      if (!collection.Contains(d.Object))
+                     {
+                         bool isAdmin = Preferences.Get(PrefKeys.IsAdmin, false);
                          collection.Insert(0, d.Object);
+                         if (collectionName == CollectionTables.EventList && !isAdmin)
+                             LocalDbContex.SaveEvent(d.Object as EventModel);
+                         else if (collectionName == CollectionTables.ScheduleList && !isAdmin)
+                             LocalDbContex.SaveSchedule(d.Object as ScheduleModel);
+                     }
                  }));
         }
         public static async void RealTimeChat(ObservableCollection<ChatModel> collection)

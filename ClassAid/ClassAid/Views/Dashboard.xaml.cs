@@ -1,15 +1,11 @@
-﻿
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ClassAid.Models.Users;
 using ClassAid.Views.AdminViews.Settings;
 using Xamarin.Essentials;
-using ClassAid.DataContex;
 using ClassAid.Models;
 using System.Windows.Input;
-using ClassAid.Models.Schedule;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System;
 
@@ -18,10 +14,6 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Dashboard : ContentPage
     {
-        private Admin Admin { get; set; }
-        private Student student;
-        public ObservableCollection<EventModel> EventModels { get; set; }
-        public ObservableCollection<ScheduleModel> ScheduleModels { get; set; }
 
         #region Declaration
         public ICommand TeamCodeCopyCommand
@@ -30,7 +22,7 @@ namespace ClassAid.Views
             {
                 return new Command(async () =>
                 {
-                    await Clipboard.SetTextAsync(Admin.TeamCode);
+                    await Clipboard.SetTextAsync(App.Admin.TeamCode);
                     DependencyService.Get<Toast>().Show("Team code copied.");
                 });
             }
@@ -43,8 +35,8 @@ namespace ClassAid.Views
                 return new Command(async () =>
                 await Navigation.PushAsync(
                     new ChatHub(Preferences.Get(PrefKeys.AdminKey, ""),
-                    Preferences.Get(PrefKeys.IsAdmin, false) ? Admin.Name : student.Name,
-                    Preferences.Get(PrefKeys.IsAdmin, false) ? Admin.ID : student.ID)));
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? App.Admin.Name : App.Student.Name,
+                    Preferences.Get(PrefKeys.IsAdmin, false) ? App.Admin.ID : App.Student.ID)));
             }
         }
         public ICommand AddScheduleCommand
@@ -52,7 +44,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new AddSchedulePage(Admin)));
+                await Navigation.PushAsync(new AddSchedulePage()));
             }
         }
         public ICommand AddEventCommand
@@ -60,7 +52,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new AddEventPage(Admin)));
+                await Navigation.PushAsync(new AddEventPage()));
             }
         }
         public ICommand ProfileBtnCommand
@@ -68,8 +60,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(() =>
-                Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
-                    new StudentProfile(Admin) : new StudentProfile(student)));
+                Navigation.PushAsync(new StudentProfile()));
             }
         }
         public ICommand FullScheduleCommand
@@ -77,8 +68,7 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(Preferences.Get(PrefKeys.IsAdmin, false) ?
-                new ViewSchedulePage(Admin) : new ViewSchedulePage(student.AdminKey)));
+                await Navigation.PushAsync(new ViewSchedulePage()));
             }
         }
         public ICommand FullEventCommand
@@ -86,79 +76,36 @@ namespace ClassAid.Views
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewEventPage(Admin)));
+                await Navigation.PushAsync(new ViewEventPage()));
             }
         }
         #endregion
-        public Dashboard(Admin admin)
-        {
-            InitializeComponent();
-            this.Admin = admin;
-            teamCode.Text = admin.TeamCode;
-            BindEventList();
-        }
-        public Dashboard(Student student)
-        {
-            InitializeComponent();
-            this.student = student;
-            StudentInit();
-            BindEventList();
-        }
         public Dashboard()
         {
             InitializeComponent();
-            InitializeData();
-            BindEventList();
-        }
-        private async void StudentInit()
-        {
-            mainGrid.Children.Remove(addScheduleBtnImage);
-            mainGrid.Children.Remove(addScheduleBtnImage);
-            mainGrid.Children.Remove(teamCodeBox);
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            BindEventScheduleList();
+            if (!Preferences.Get(PrefKeys.IsAdmin,false))
             {
-                var tempAdmin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
-                LocalDbContex.ClearTable(TableList.students);
-                LocalDbContex.SaveStudents(tempAdmin.StudentList);
-                LocalDbContex.ClearTable(TableList.teachers);
-                LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
-                LocalDbContex.ClearTable(TableList.batchdetails);
-                LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
-            }
-            var ev = LocalDbContex.GetEvents().ToList();
-            
-            var sc = LocalDbContex.GetSchedules().Where(p =>
-            p.DayOfWeek == DateTime.Now.DayOfWeek);
-            scheduleView.ItemsSource = sc;
-        }
-        private void InitializeData()
-        {
-            if (Preferences.Get(PrefKeys.IsAdmin, false))
-            {
-                Admin = LocalDbContex.GetAdmin();
-                Admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
-                string teamCode = Admin.TeamCode;
-                this.teamCode.Text = teamCode;
-                Admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
-                Admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
-                scheduleView.ItemsSource = Admin.ScheduleList.Where(p =>
-                p.DayOfWeek == DateTime.Now.DayOfWeek);
+                mainGrid.Children.Remove(addScheduleBtnImage);
+                mainGrid.Children.Remove(addScheduleBtnImage);
+                mainGrid.Children.Remove(teamCodeBox);
             }
             else
+                teamCode.Text = App.Admin.TeamCode;
+        }
+        private void BindEventScheduleList()
+        {
+            if (App.EventList != null && App.EventList.Count > 0)
             {
-                student = LocalDbContex.GetUser();
-                StudentInit();
+                firstEventBody.Text = App.EventList[0].Details;
+                try
+                {
+                    secondEventBody.Text = App.EventList[1].Details;
+                }
+                catch (Exception) { }
             }
-        }
-        private void BindEventList()
-        {
-            firstEventBody.Text = Admin.EventList[0].Details;
-            secondEventBody.Text = Admin.EventList[1].Details;
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            
+            scheduleView.ItemsSource = App.ScheduleList
+                .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek);
         }
     }
 }

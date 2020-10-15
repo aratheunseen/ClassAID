@@ -1,15 +1,12 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models.Users;
-using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Diagnostics;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using Firebase.Database.Query;
@@ -20,43 +17,45 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentProfile : ContentPage
     {
-        public Admin Admin { get; set; }
         private ObservableCollection<Student> requestList;
-        private ObservableCollection<Student> studentList;
-        public Student Student { get; set; }
-        private static BatchDetails BatchDetails;
-        public StudentProfile(Admin admin)
+        public StudentProfile()
         {
-            Admin = admin;
             InitializeComponent();
-            mainGrid.Children.Remove(RetakeStudentArea);
+            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
             logoutBtn.Command = new Command(() => App.LogOut());
-            editBatchDetails.Command = new Command(() => Navigation.PushAsync(new EditBatchDetails(admin)));
-            BindData();
-            AllocateRequestList(admin.Key);
-        }
-        public StudentProfile(Student student)
-        {
-            Student = student;
-            InitializeComponent();
-            mainGrid.Children.Remove(RequestCollectionView);
-            mainGrid.Children.Remove(RequestListTitle);
-            mainGrid.Children.Remove(editBatchDetails);
-            logoutBtn.Command = new Command(() => App.LogOut());
-            BindData();
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            userDepartment.Text = App.BatchDetails.Department;
+            userUniversity.Text = App.BatchDetails.University;
+            userSection.Text = App.BatchDetails.Section;
+            userSemester.Text = App.BatchDetails.Semester;
+            if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
-                studentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
-                studentList.CollectionChanged += StudentList_CollectionChanged;
-                FirebaseHandler.GetStudentList(studentList, Student.AdminKey);
+                userName.Text = App.Admin.Name;
+                userPhone.Text = App.Admin.Phone;
+                userID.Text = App.Admin.ID;
+                mainGrid.Children.Remove(RetakeStudentArea);
+                editBatchDetails.Command = new Command(() =>
+                    Navigation.PushAsync(new EditBatchDetails()));
+                if (Connectivity.NetworkAccess == Connectivity.NetworkAccess)
+                    AllocateRequestList(App.Admin.Key);
             }
+            else
+            {
+                mainGrid.Children.Remove(RequestCollectionView);
+                mainGrid.Children.Remove(RequestListTitle);
+                mainGrid.Children.Remove(editBatchDetails);
+                userName.Text = App.Student.Name;
+                userPhone.Text = App.Student.Phone;
+                userID.Text = App.Student.ID;
+            }
+            ClassmateCollectionView.ItemsSource = App.StudentList;
+            TeacherCollectionView.ItemsSource = App.TeacherList;
         }
 
-        private void StudentList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
-            if (studentList[e.NewStartingIndex].IsActive)
-                LocalDbContex.SaveStudent(studentList[e.NewStartingIndex]);
+            AllocateRequestList(App.Admin.Key);
         }
+
         private async void AllocateRequestList(string key)
         {
             requestList = await FirebaseHandler.GetPendingStudents(key);
@@ -70,50 +69,38 @@ namespace ClassAid.Views
                 else
                     RequestCollectionView.ItemsSource = requestList;
             }
+        }
 
-        }
-        private void BindData()
-        {
-            if (Student == null)
-            {
-                userName.Text = Admin.Name;
-                userPhone.Text = Admin.Phone;
-                userID.Text = Admin.ID;
-            }
-            else
-            {
-                userName.Text = Student.Name;
-                userPhone.Text = Student.Phone;
-                userID.Text = Student.ID;
-            }
-            BatchDetails = LocalDbContex.GetBatchDetails();
-            userUniversity.Text = BatchDetails.University;
-            userDepartment.Text = BatchDetails.Department;
-            userSection.Text = BatchDetails.Section;
-            userSemester.Text = BatchDetails.Semester;
-            ClassmateCollectionView.ItemsSource = LocalDbContex.GetStudents();
-            TeacherCollectionView.ItemsSource = LocalDbContex.GetTeachers();
-        }
         #region Accept And Reject
         private void AcceptBtn_Clicked(object sender, EventArgs e)
         {
-            if (sender is ImageButton b && b.CommandParameter is Student student)
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
-                Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
-                FirebaseHandler.UpdateAdmin(Admin);
-                requestList.Remove(student);
+                if (sender is ImageButton b && b.CommandParameter is Student student)
+                {
+                    FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
+                    App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
+                    App.UpdateAdminOrSync();
+                    requestList.Remove(student);
+                }
             }
+            else
+                DependencyService.Get<Toast>().Show("No INTERNET access. Try again later.");
         }
         private void RejectBtn_Clicked(object sender, EventArgs e)
         {
-            if (sender is ImageButton b && b.CommandParameter is Student student)
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
-                Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsRejected = true;
-                FirebaseHandler.UpdateAdmin(Admin);
-                requestList.Remove(student);
+                if (sender is ImageButton b && b.CommandParameter is Student student)
+                {
+                    FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
+                    App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsRejected = true;
+                    App.UpdateAdminOrSync();
+                    requestList.Remove(student);
+                }
             }
+            else
+                DependencyService.Get<Toast>().Show("No INTERNET access. Try again later.");
         }
         #endregion
         private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
@@ -128,13 +115,16 @@ namespace ClassAid.Views
                     AdminKey = key.AdminKey,
                     IsActive = false
                 };
-                if (Student.RetakeModels == null)
+                if (App.Student.RetakeModels == null)
                 {
-                    Student.RetakeModels = new List<RetakeStudentModel>();
+                    App.Student.RetakeModels = new List<RetakeStudentModel>();
                 }
-                Student.RetakeModels.Add(retake);
-                FirebaseHandler.UpdateStudent(Student);
-                FirebaseHandler.AddRetake(retake);
+                App.Student.RetakeModels.Add(retake);
+                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                {
+                    FirebaseHandler.UpdateStudent(App.Student);
+                    FirebaseHandler.AddRetake(retake);
+                }
             }
         }
         #region Call Functions
@@ -144,7 +134,6 @@ namespace ClassAid.Views
             var d = (Student)button.BindingContext;
             Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
-
         private void TeacherCallBtn_Clicked(object sender, EventArgs e)
         {
             ImageButton button = (ImageButton)sender;
@@ -152,10 +141,5 @@ namespace ClassAid.Views
             Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
         #endregion
-
-        private void EditBatchDetails_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new EditBatchDetails(Admin));
-        }
     }
 }
