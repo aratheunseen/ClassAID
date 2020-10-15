@@ -22,7 +22,7 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             scheduleCollectionView.ItemsSource = 
-                App.ScheduleList.OrderBy(p => p.DayOfWeek); 
+                App.Admin.ScheduleList.OrderBy(p => p.DayOfWeek); 
         }
         private void DeleteSchedule_Button(object sender, EventArgs e)
         {
@@ -30,7 +30,7 @@ namespace ClassAid.Views
             {
                 ImageButton button = sender as ImageButton;
                 var d = (ScheduleModel)button.BindingContext;
-                App.ScheduleList.Remove(d);
+                App.Admin.ScheduleList.Remove(d);
                 LocalDbContex.DeleteSchedule(d);
                 App.UpdateAdminOrSync();
             }

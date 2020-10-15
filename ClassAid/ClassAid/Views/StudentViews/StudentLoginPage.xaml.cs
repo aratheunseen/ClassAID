@@ -2,6 +2,7 @@
 using ClassAid.Models.Users;
 using Com.OneSignal;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -69,9 +70,6 @@ namespace ClassAid.Views.StudentViews
                         Preferences.Set(PrefKeys.IsAdmin, false);
                         Preferences.Set(PrefKeys.Key, student.Key);
 
-                        App.EventList = App.Admin.EventList;
-                        App.ScheduleList = App.Admin.ScheduleList;
-
                         Application.Current.MainPage =
                             new NavigationPage(new Dashboard());
 
@@ -79,20 +77,15 @@ namespace ClassAid.Views.StudentViews
                         LocalDbContex.SaveUser(App.Admin);
 
                         LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
-                        App.BatchDetails = App.Admin.BatchDetails;
 
                         LocalDbContex.SaveEvents(App.Admin.EventList);
 
                         LocalDbContex.SaveTeachers(App.Admin.TeacherList);
-                        App.TeacherList = App.Admin.TeacherList;
 
                         LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
 
                         LocalDbContex.SaveStudents(App.Admin.StudentList
                                 .Where(item => item.IsActive == true).ToList());
-                        App.StudentList = new System.Collections.ObjectModel.ObservableCollection<Student>
-                            (App.Admin.StudentList
-                                 .Where(item => item.IsActive == true).ToList());
 
                         OneSignal.Current.SendTag("AdminKey", student.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();

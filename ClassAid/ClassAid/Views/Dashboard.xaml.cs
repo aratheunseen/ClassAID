@@ -95,16 +95,16 @@ namespace ClassAid.Views
         }
         private void BindEventScheduleList()
         {
-            if (App.EventList != null && App.EventList.Count > 0)
+            if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                firstEventBody.Text = App.EventList[0].Details;
+                firstEventBody.Text = App.Admin.EventList[0].Details;
                 try
                 {
-                    secondEventBody.Text = App.EventList[1].Details;
+                    secondEventBody.Text = App.Admin.EventList[1].Details;
                 }
                 catch (Exception) { }
             }
-            scheduleView.ItemsSource = App.ScheduleList
+            scheduleView.ItemsSource = App.Admin.ScheduleList
                 .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek);
         }
     }

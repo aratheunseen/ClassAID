@@ -48,13 +48,6 @@ namespace ClassAid.Views.AdminViews
                     App.Admin.EventList = new ObservableCollection<EventModel>();
                     App.Admin.RetakeStudentList = new ObservableCollection<RetakeStudentModel>();
                     App.Admin.BatchDetails = new BatchDetails();
-
-                    App.EventList = App.Admin.EventList;
-                    App.TeacherList = App.Admin.TeacherList;
-                    App.ScheduleList = App.Admin.ScheduleList;
-                    App.StudentList = App.Admin.StudentList;
-
-
                     await Navigation.PushAsync(
                         new AdditionalDetails());
                     FirebaseHandler.InsertAdmin(App.Admin);
@@ -75,19 +68,14 @@ namespace ClassAid.Views.AdminViews
                     LocalDbContex.SaveUser(tempAdmin);
 
                     LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
-                    App.BatchDetails = App.Admin.BatchDetails;
 
                     LocalDbContex.SaveEvents(App.Admin.EventList);
-                    App.EventList = App.Admin.EventList;
 
                     LocalDbContex.SaveTeachers(App.Admin.TeacherList);
-                    App.TeacherList = App.Admin.TeacherList;
 
                     LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
-                    App.ScheduleList = App.Admin.ScheduleList;
 
                     LocalDbContex.SaveStudents(App.Admin.StudentList);
-                    App.StudentList = App.Admin.StudentList;
                 }
             }
             else

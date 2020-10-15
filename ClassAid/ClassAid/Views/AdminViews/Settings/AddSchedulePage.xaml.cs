@@ -15,9 +15,8 @@ namespace ClassAid.Views.AdminViews.Settings
     {
         public AddSchedulePage()
         {
-
             InitializeComponent();
-            teacherPeaker.ItemsSource = App.TeacherList;
+            teacherPeaker.ItemsSource = App.Admin.TeacherList;
             dayPeaker.ItemsSource = new List<string>(Enum.GetNames(typeof(DayOfWeek)));
         }
 
@@ -32,7 +31,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 CourseCode = courseCode.Text,
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
-            App.ScheduleList.Add(sc);
+            App.Admin.ScheduleList.Add(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedule(sc);
             App.UpdateAdminOrSync();

@@ -25,7 +25,7 @@ namespace ClassAid.Views.AdminViews.Settings
             });
             await Navigation.PopAsync();
             LocalDbContex.SaveTeacher(t);
-            App.TeacherList.Add(t);
+            App.Admin.TeacherList.Add(t);
             App.UpdateAdminOrSync();
         }
         
