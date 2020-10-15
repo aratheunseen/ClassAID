@@ -40,7 +40,7 @@
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="phoneNumber"
                                                    Margin="15,3"
-                                                   Placeholder="Phone Number (Optional)" 
+                                                   Placeholder="Phone Number" 
                                                    TextColor="#6264a7"
                                                    MaxLength="11"
                                                    Keyboard="Telephone"/>
