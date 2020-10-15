@@ -57,10 +57,10 @@
                        Margin="5,105,0,0" 
                        TextColor="#6264a7"/>
 
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,30,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,55,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,80,48,0" TextColor="#6264a7"/>
-                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text=": " Margin="10,105,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,30,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,55,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,80,48,0" TextColor="#6264a7"/>
+                <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" FontSize="14" Text="   : " Margin="0,105,48,0" TextColor="#6264a7"/>
 
                 <Label x:Name="userID" 
                        Grid.Column="3" 
@@ -102,7 +102,6 @@
                        Grid.ColumnSpan="4"
                        FontSize="14" 
                        Margin="40,195,0,0" TextColor="#6264a7"/>
-                <Image/>
                 <ImageButton x:Name="editBatchDetails"
                              Grid.Column="4"
                              BackgroundColor="Transparent"
@@ -111,7 +110,7 @@
                              WidthRequest="20" 
                              HorizontalOptions="End" 
                              VerticalOptions="End"
-                             Margin="0,0,0,45"/>
+                             Margin="0,0,5,45"/>
                 <ImageButton x:Name="logoutBtn" 
                              Grid.Column="5"
                              BackgroundColor="Transparent"
@@ -283,8 +282,8 @@
                                     <Label x:Name="teacherName"
                                            Text="{Binding Name}"
                                            Grid.Column="1"
-                                           Margin="10,0,0,0"
-                                           FontSize="18"
+                                           Margin="10,2,0,0"
+                                           FontSize="14"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 
@@ -293,7 +292,7 @@
                                            Text="{Binding Designation}"
                                            Margin="0,25,0,0"
                                            Grid.Column="1"
-                                           FontSize="14"
+                                           FontSize="13"
                                            TextColor="Gray"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Start" 

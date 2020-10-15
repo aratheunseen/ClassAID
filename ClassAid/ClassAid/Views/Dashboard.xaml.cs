@@ -97,7 +97,7 @@ namespace ClassAid.Views
         {
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                firstEventBody.Text = App.Admin.EventList[0].Details;
+                //firstEventBody.Text = App.Admin.EventList[0].Details;
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
@@ -116,7 +116,7 @@ namespace ClassAid.Views
         {
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                firstEventBody.Text = App.Admin.EventList[0].Details;
+                //firstEventBody.Text = App.Admin.EventList[0].Details;
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {

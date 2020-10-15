@@ -114,6 +114,7 @@
                         <!-- Schedule Title -->
                         <StackLayout x:Name="scheduleTitle"
                                      Grid.ColumnSpan="6"
+                                     Grid.Row="1"
                                      Margin="40,0,0,0"
                                      Orientation="Horizontal">
                             <Image Grid.Column="0"
@@ -159,14 +160,6 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <BoxView Grid.Row="0"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start" 
-                                        Margin="35,5,0,0"
-                                        HeightRequest="5"
-                                        WidthRequest="5"
-                                        BackgroundColor="Black"
-                                        CornerRadius="30"/>
                                         <BoxView Grid.Row="0"
                                              Grid.Column="1"
                                              HorizontalOptions="Start"
@@ -270,14 +263,9 @@
                                          BackgroundColor="#6264a7"/>
                                 <Label x:Name="firstEventTitle"
                                        Grid.Column="2"
-                                       FontSize="Large"
+                                       FontSize="15"
                                        TextColor="Gray"/>
                             </StackLayout>
-                            <Label x:Name="firstEventBody"
-                                   Grid.Column="2"
-                                   Grid.Row="1"
-                                   FontSize="15"
-                                   TextColor="Gray"/>
                             <StackLayout Orientation="Horizontal">
                                 <BoxView Margin="5,120,0,0"
                                          HeightRequest="20"
@@ -285,13 +273,9 @@
                                          BackgroundColor="#6264a7"/>
                                 <Label x:Name="secondEventTitle"
                                        Grid.Column="1"
-                                       FontSize="Large"
+                                       FontSize="15"
                                        TextColor="Gray"/>
                             </StackLayout>
-                            <Label x:Name="secondEventBody"
-                                   Grid.Column="1"
-                                   FontSize="15"
-                                   TextColor="Gray"/>
                         </StackLayout>
                     </Grid>
 
