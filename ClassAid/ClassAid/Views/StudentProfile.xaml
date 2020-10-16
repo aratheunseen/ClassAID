@@ -4,7 +4,8 @@
              xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
-             xmlns:Components="clr-namespace:ClassAid.CustomComponents" xmlns:users1="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents" 
+             xmlns:users1="clr-namespace:ClassAid.Models.Schedule"
              x:Name="This">
     <ContentPage.BindingContext>
         <x:Reference Name="This"/>
@@ -402,22 +403,6 @@
                 </CollectionView>
                 <!--#endregion-->
                 <!--#region Retake -->
-                <Grid x:Name="RetakeStudentArea" Grid.Row="5" Grid.ColumnSpan="6" Margin="10">
-                    <Components:ClassAidEntry x:Name="anotherTeamCode"
-                           Placeholder="New CR Teamcode"
-                           WidthRequest="110"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="4"
-                            Margin="15,0,0,0"/>
-                    <Button x:Name="addAnotherAdmin"
-                            Text="Join"
-                            CornerRadius="30"
-                            BackgroundColor="#6264a7"
-                            Clicked="AddAnotherAdmin_Clicked"
-                            Grid.Column="5"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,15,5"/>
-                </Grid>
             </Grid>
             <!--#endregion-->
         </ScrollView>

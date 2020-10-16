@@ -42,11 +42,6 @@ namespace ClassAid.DataContex
         {
             await GetClient().Child(admin.Key).PutAsync(admin);
         }
-        public static async void AddRetake(RetakeStudentModel retakeStudent)
-        {
-            await GetClient().Child(retakeStudent.AdminKey)
-                .Child("RetakeStudentList").PutAsync(retakeStudent);
-        }
         #endregion
         #region StudentArea
         public static async void InsertStudent(Student student)
@@ -157,13 +152,7 @@ namespace ClassAid.DataContex
                 }));
             return students;
         }
-        public static async Task<IEnumerable<RetakeStudentModel>> GetRetakeStudents(string key)
-        {
-            return (await GetClient()
-                 .Child(key).Child("RetakeStudentList")
-                 .OnceAsync<RetakeStudentModel>()).Select(p => p.Object)
-                 .Where(p => p.IsActive == false);
-        }
+
         public static void SendMessage(ChatModel chat)
         {
             GetClient().Child("Chat").Child(Preferences.Get(PrefKeys.AdminKey, "")).PostAsync(chat);

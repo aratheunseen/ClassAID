@@ -46,7 +46,6 @@ namespace ClassAid.Views.AdminViews
                     App.Admin.StudentList = new ObservableCollection<Student>();
                     App.Admin.ScheduleList = new ObservableCollection<ScheduleModel>();
                     App.Admin.EventList = new ObservableCollection<EventModel>();
-                    App.Admin.RetakeStudentList = new ObservableCollection<RetakeStudentModel>();
                     App.Admin.BatchDetails = new BatchDetails();
                     await Navigation.PushAsync(
                         new AdditionalDetails());
