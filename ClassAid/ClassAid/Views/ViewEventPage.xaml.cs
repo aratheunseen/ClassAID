@@ -1,5 +1,4 @@
-﻿
-using ClassAid.DataContex;
+﻿using ClassAid.DataContex;
 using ClassAid.Models;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
@@ -20,12 +19,12 @@ namespace ClassAid.Views
             InitializeComponent();
             eventListView.ItemsSource = App.Admin.EventList;
             if (Preferences.Get(PrefKeys.IsAdmin, false))
-                addScheduleBtn.Clicked += AddScheduleBtn_Clicked;
+                addEventBtn.Clicked += AddEventBtn_Clicked;
             else
-                mainGrid.Children.Remove(addScheduleBtn);
+                mainGrid.Children.Remove(addEventBtn);
         }
 
-        private async void AddScheduleBtn_Clicked(object sender, System.EventArgs e)
+        private async void AddEventBtn_Clicked(object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new AddEventPage());
         }

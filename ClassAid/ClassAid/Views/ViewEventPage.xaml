@@ -64,7 +64,7 @@
                            Grid.ColumnSpan="5"/>
                 </StackLayout>-->
             <StackLayout Grid.Row="1">
-                <Button x:Name="addScheduleBtn"
+                <Button x:Name="addEventBtn"
                             Text="Create new notice"/>
             </StackLayout>
         </Grid>

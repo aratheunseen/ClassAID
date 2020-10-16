@@ -62,7 +62,7 @@
                     </Frame.GestureRecognizers>
                 </Frame>
 
-                <ImageButton x:Name="allSyncButton"
+                <!--<ImageButton x:Name="allSyncButton"
                              Grid.Column="3"
                              Grid.ColumnSpan="1"
                              Source="sync.png"
@@ -71,7 +71,7 @@
                              WidthRequest="24"
                              HorizontalOptions="End"
                              VerticalOptions="Start"
-                             BackgroundColor="Transparent"/>
+                             BackgroundColor="Transparent"/>-->
                 <Image Grid.Column="4"
                        Margin="15,25,15,0"
                        Source="avater.png"
@@ -123,7 +123,7 @@
                                    VerticalOptions="Start" 
                                    Margin="5,0,0,0"
                                    Grid.ColumnSpan="4"/>
-                        <Image Grid.Column="5"
+                        <!--<Image Grid.Column="5"
                                    Grid.Row="0"
                                    x:Name="addScheduleBtnImage"
                                    Source="plus.png"
@@ -135,7 +135,7 @@
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding AddScheduleCommand}"/>
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
                     </StackLayout>
                     <!-- Schedule Content -->
 
