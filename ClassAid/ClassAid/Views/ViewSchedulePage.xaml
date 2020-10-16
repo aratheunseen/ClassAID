@@ -8,7 +8,13 @@
         <converter:TimeToStringConverter x:Key="timeFormatter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+        <!--<ScrollView HorizontalScrollBarVisibility="Never" 
+        VerticalScrollBarVisibility="Never">-->
+        <Grid x:Name="mainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <CollectionView x:Name="scheduleCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="y:ScheduleModel">
@@ -104,6 +110,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
+            <StackLayout Grid.Row="1">
+                <Button x:Name="addScheduleBtn"
+                            Text="Create new schedule"/>
+            </StackLayout>
+        </Grid>
+        <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
