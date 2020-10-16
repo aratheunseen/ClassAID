@@ -70,7 +70,11 @@
                     <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="false" 
                                        Color="#6264a7"/>
-            </StackLayout>
+                    <Label HorizontalOptions="Center"
+                       Text="Enter your existing username and password here to login. No account! enter new username and password to create one."
+                       TextColor="#6264a7">
+                    </Label>
+                </StackLayout>
         </StackLayout>
             </ScrollView>
     </ContentPage.Content>
