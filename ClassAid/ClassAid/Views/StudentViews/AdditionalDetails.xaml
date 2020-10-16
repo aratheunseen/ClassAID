@@ -85,6 +85,10 @@
                     <ActivityIndicator x:Name="activityIndicator" 
                                    IsRunning="false" 
                                        Color="#6264a7"/>
+                    <Label HorizontalOptions="Center"
+                       Text="Collect your 'Team Code' from your class representative"
+                       TextColor="#6264a7">
+                    </Label>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
