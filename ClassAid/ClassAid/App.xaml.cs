@@ -30,7 +30,6 @@ namespace ClassAid
             Admin.StudentList = new ObservableCollection<Student>();
             Admin.ScheduleList = new ObservableCollection<ScheduleModel>();
             Admin.EventList = new ObservableCollection<EventModel>();
-            Admin.RetakeStudentList = new ObservableCollection<RetakeStudentModel>();
             Admin.BatchDetails = new BatchDetails();
 
             bool loginState = Preferences.Get(PrefKeys.IsLoggedIn, false);

@@ -32,7 +32,6 @@ namespace ClassAid.Views
                 userName.Text = App.Admin.Name;
                 userPhone.Text = App.Admin.Phone;
                 userID.Text = App.Admin.ID;
-                mainGrid.Children.Remove(RetakeStudentArea);
                 editBatchDetails.Command = new Command(() =>
                     Navigation.PushAsync(new EditBatchDetails()));
                 if (Connectivity.NetworkAccess == Connectivity.NetworkAccess)
@@ -109,30 +108,7 @@ namespace ClassAid.Views
                 DependencyService.Get<Toast>().Show("No INTERNET access. Try again later.");
         }
         #endregion
-        private async void AddAnotherAdmin_Clicked(object sender, EventArgs e)
-        {
-            // TODO: Not verified portion
-            KeyVault key = await FirebaseHandler.ValidateTeamCode(anotherTeamCode.Text);
-            if (key != null)
-            {
-                var retake = new RetakeStudentModel()
-                {
-                    TeamCode = anotherTeamCode.Text,
-                    AdminKey = key.AdminKey,
-                    IsActive = false
-                };
-                if (App.Student.RetakeModels == null)
-                {
-                    App.Student.RetakeModels = new List<RetakeStudentModel>();
-                }
-                App.Student.RetakeModels.Add(retake);
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                {
-                    FirebaseHandler.UpdateStudent(App.Student);
-                    FirebaseHandler.AddRetake(retake);
-                }
-            }
-        }
+
         #region Call Functions
         private void ClassMateCallBtn_Clicked(object sender, EventArgs e)
         {
