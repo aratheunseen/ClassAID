@@ -66,7 +66,7 @@ namespace ClassAid
             {
                 Admin = await FirebaseHandler.GetAdminAsync(
                     Preferences.Get(PrefKeys.AdminKey, ""));
-
+                Student = LocalDbContex.GetStudentAsUser();
                 MainPage = new NavigationPage(new Dashboard());
 
                 LocalDbContex.ClearTable(TableList.schedule);

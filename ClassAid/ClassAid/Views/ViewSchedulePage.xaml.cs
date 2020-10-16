@@ -22,13 +22,15 @@ namespace ClassAid.Views
         public ViewSchedulePage()
         {
             InitializeComponent();
-            scheduleCollectionView.ItemsSource = 
+            scheduleCollectionView.ItemsSource =
                 App.Admin.ScheduleList.OrderBy(p => p.DayOfWeek);
             if (Preferences.Get(PrefKeys.IsAdmin, false))
-                addScheduleBtn.Clicked += AddScheduleBtn_Clicked; 
+                addScheduleBtn.Clicked += AddScheduleBtn_Clicked;
             else
-                mainGrid.Children.Remove(addScheduleBtn);
-
+            {
+                addScheduleBtn.IsVisible = false;
+                mainGrid.Children.Remove(ScheduleBtnArea);
+            }
         }
 
         private async void AddScheduleBtn_Clicked(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace ClassAid.Views
 
         private void DeleteSchedule_Button(object sender, EventArgs e)
         {
-            if (Preferences.Get(PrefKeys.IsAdmin,false))
+            if (Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 ImageButton button = sender as ImageButton;
                 var d = (ScheduleModel)button.BindingContext;

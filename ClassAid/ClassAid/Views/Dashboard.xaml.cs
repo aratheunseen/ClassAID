@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Linq;
 using System;
 using System.Collections.Specialized;
+using System.Diagnostics;
 
 namespace ClassAid.Views
 {
@@ -85,6 +86,7 @@ namespace ClassAid.Views
         {
             InitializeComponent();
             BindEventScheduleList();
+            Debug.WriteLine(Preferences.Get(PrefKeys.IsAdmin, false));
             if (!Preferences.Get(PrefKeys.IsAdmin, false))
             {
                 mainGrid.Children.Remove(teamCodeBox);
