@@ -47,7 +47,7 @@ namespace ClassAid.Views
                 userPhone.Text = App.Student.Phone;
                 userID.Text = App.Student.ID;
             }
-            ClassmateCollectionView.ItemsSource = App.Admin.StudentList;
+            ClassmateCollectionView.ItemsSource = App.Admin.StudentList.Where(p => p.IsActive == true);
             TeacherCollectionView.ItemsSource = App.Admin.TeacherList;
         }
 
@@ -61,14 +61,20 @@ namespace ClassAid.Views
             requestList = await FirebaseHandler.GetPendingStudents(key);
             if (requestList != null)
             {
+                RequestCollectionView.ItemsSource = requestList;
                 if (requestList.Count == 0)
                 {
-                    mainGrid.Children.Remove(RequestCollectionView);
-                    mainGrid.Children.Remove(RequestListTitle);
+                    //mainGrid.Children.Remove(RequestCollectionView);
+                    //mainGrid.Children.Remove(RequestListTitle);
                 }
-                else
-                    RequestCollectionView.ItemsSource = requestList;
             }
+            requestList.CollectionChanged += RequestList_CollectionChanged;
+        }
+
+        private void RequestList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            mainGrid.Children.Add(RequestListTitle);
+            mainGrid.Children.Add(RequestCollectionView);
         }
 
         #region Accept And Reject
