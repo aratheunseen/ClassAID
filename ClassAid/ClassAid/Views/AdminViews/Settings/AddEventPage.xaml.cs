@@ -26,17 +26,16 @@ namespace ClassAid.Views.AdminViews.Settings
                 Title = eventTitle.Text,
                 Details = eventBody.Text,
                 Time = DateTime.Now.ToString(@"dd\:hh\:mm\ t")
-            };            
-            App.Admin.EventList.Add(e);
+            };
+            App.Admin.EventList.Insert(0, e);
             if (App.Admin.EventList.Count > 10)
             {
                 LocalDbContex.DeleteEvent(App.Admin.EventList[10]);
                 App.Admin.EventList.RemoveAt(10);
-                //App.Admin.EventList.RemoveAt(10);
             }
             LocalDbContex.SaveEvent(e);
             App.UpdateAdminOrSync();
-            if(Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 PushNotification.Send(e.Title, e.Details, App.Admin.Key);
         }
 
