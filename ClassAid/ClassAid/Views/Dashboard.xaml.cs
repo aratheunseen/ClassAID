@@ -87,8 +87,6 @@ namespace ClassAid.Views
             BindEventScheduleList();
             if (!Preferences.Get(PrefKeys.IsAdmin, false))
             {
-                mainGrid.Children.Remove(addScheduleBtnImage);
-                mainGrid.Children.Remove(addScheduleBtnImage);
                 mainGrid.Children.Remove(teamCodeBox);
             }
             else
