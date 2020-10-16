@@ -58,10 +58,9 @@ namespace ClassAid.Views.AdminViews
                     Preferences.Set(PrefKeys.IsAdmin, true);
                     Preferences.Set(PrefKeys.Key, tempAdmin.Key);
                     activityIndicator.IsRunning = false;
-                    Application.Current.MainPage =
-                        new NavigationPage(new Dashboard());
-
                     App.Admin = tempAdmin;
+                    Application.Current.MainPage =
+                        new NavigationPage(new Dashboard());                   
 
                     LocalDbContex.CreateTables();
                     LocalDbContex.SaveUser(tempAdmin);

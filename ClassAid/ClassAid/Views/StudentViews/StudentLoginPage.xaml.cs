@@ -75,18 +75,12 @@ namespace ClassAid.Views.StudentViews
 
                         LocalDbContex.SaveUser(App.Student);
                         LocalDbContex.SaveUser(App.Admin);
-
                         LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
-
                         LocalDbContex.SaveEvents(App.Admin.EventList);
-
                         LocalDbContex.SaveTeachers(App.Admin.TeacherList);
-
                         LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
-
                         LocalDbContex.SaveStudents(App.Admin.StudentList
                                 .Where(item => item.IsActive == true).ToList());
-
                         OneSignal.Current.SendTag("AdminKey", student.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();
                     }

@@ -110,7 +110,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <StackLayout Grid.Row="1">
+            <StackLayout Grid.Row="1" x:Name="ScheduleBtnArea">
                 <Button x:Name="addScheduleBtn"
                             Text="Create new schedule"/>
             </StackLayout>

@@ -39,9 +39,9 @@ namespace ClassAid.Views
             }
             else
             {
-                mainGrid.Children.Remove(RequestCollectionView);
-                mainGrid.Children.Remove(RequestListTitle);
-                mainGrid.Children.Remove(editBatchDetails);
+                //mainGrid.Children.Remove(RequestCollectionView);
+                //mainGrid.Children.Remove(RequestListTitle);
+                //mainGrid.Children.Remove(editBatchDetails);
                 userName.Text = App.Student.Name;
                 userPhone.Text = App.Student.Phone;
                 userID.Text = App.Student.ID;
@@ -63,8 +63,8 @@ namespace ClassAid.Views
                 RequestCollectionView.ItemsSource = requestList;
                 if (requestList.Count == 0)
                 {
-                    //mainGrid.Children.Remove(RequestCollectionView);
-                    //mainGrid.Children.Remove(RequestListTitle);
+                    ////mainGrid.Children.Remove(RequestCollectionView);
+                    ////mainGrid.Children.Remove(RequestListTitle);
                 }
             }
             requestList.CollectionChanged += RequestList_CollectionChanged;
@@ -72,8 +72,8 @@ namespace ClassAid.Views
 
         private void RequestList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            mainGrid.Children.Add(RequestListTitle);
-            mainGrid.Children.Add(RequestCollectionView);
+            //mainGrid.Children.Add(RequestListTitle);
+            //mainGrid.Children.Add(RequestCollectionView);
         }
 
         #region Accept And Reject
