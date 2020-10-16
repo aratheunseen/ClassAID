@@ -8,25 +8,29 @@
              NavigationPage.HasNavigationBar="False"
              Title="Noticeboard">
     <ContentPage.Content>
-        <ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+        <!--<ScrollView HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">-->
 
-            <Grid BackgroundColor="#FFF">
+            <Grid x:Name="mainGrid" 
+                  BackgroundColor="#FFF">
                 <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="Auto" />-->
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical" Padding="30">
-                <CollectionView x:Name="eventListView"
-                      SelectionMode="None">
-                    <CollectionView.ItemTemplate>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Vertical"
+                         Padding="30">
+                    <CollectionView x:Name="eventListView"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="schedule:EventModel">
                                 <Expander ExpandAnimationEasing="{x:Static Easing.CubicIn}"
                                   ExpandAnimationLength="500">
                                     <Expander.Header>
                                         <Grid>
-                                        <Label Text="{Binding Title}"
+                                            <Label Text="{Binding Title}"
                                        FontSize="14"
                                        TextColor="#6264a7"
                                        HorizontalOptions="Start"
@@ -35,7 +39,6 @@
                                        Grid.ColumnSpan="5"/>
                                         </Grid>
                                     </Expander.Header>
-
                                     <Grid>
                                         <Label Text="{Binding Details}"
                                        FontSize="14"
@@ -47,20 +50,24 @@
                                     </Grid>
                                 </Expander>
                             </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <Grid>
-                <Label Text="No More Notice"
-                       Margin="0,0,0,30"
-                       BackgroundColor="Transparent"
-                                       FontSize="24"
-                                       TextColor="LightGray"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="End" 
-                                       Grid.ColumnSpan="5"/>
-                </Grid>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <!--<StackLayout Grid.Row="2">
+                    <Label Text="No More Notice"
+                           Margin="0,0,0,30"
+                           BackgroundColor="Transparent"
+                           FontSize="24"
+                           TextColor="LightGray"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End" 
+                           Grid.ColumnSpan="5"/>
+                </StackLayout>-->
+            <StackLayout Grid.Row="1">
+                <Button x:Name="addScheduleBtn"
+                            Text="Create new notice"/>
             </StackLayout>
-            </Grid>
-        </ScrollView>
+        </Grid>
+        <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

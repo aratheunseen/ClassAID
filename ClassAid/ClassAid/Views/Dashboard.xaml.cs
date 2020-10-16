@@ -8,6 +8,7 @@ using ClassAid.Models;
 using System.Windows.Input;
 using System.Linq;
 using System;
+using System.Collections.Specialized;
 
 namespace ClassAid.Views
 {
@@ -112,22 +113,23 @@ namespace ClassAid.Views
             App.Admin.EventList.CollectionChanged += EventList_CollectionChanged;
         }
 
-        private void EventList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void EventList_CollectionChanged(object sender, 
+            NotifyCollectionChangedEventArgs e)
         {
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                //firstEventBody.Text = App.Admin.EventList[0].Details;
+                int c = App.Admin.EventList.Count;
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
-                    //secondEventBody.Text = App.Admin.EventList[1].Details;
                     secondEventTitle.Text = App.Admin.EventList[1].Title;
                 }
                 catch (Exception) { }
             }
         }
 
-        private void ScheduleList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void ScheduleList_CollectionChanged(object sender, 
+            NotifyCollectionChangedEventArgs e)
         {
             scheduleView.ItemsSource = App.Admin.ScheduleList
                 .Where(p => p.DayOfWeek == DateTime.Now.DayOfWeek).OrderBy(p => p.StartTime);
