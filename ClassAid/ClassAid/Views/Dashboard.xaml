@@ -122,8 +122,8 @@
                                    HorizontalOptions="Start"
                                    VerticalOptions="Start" 
                                    Margin="5,0,0,0"
-                                   Grid.ColumnSpan="3"/>
-                        <Image Grid.Column="4"
+                                   Grid.ColumnSpan="4"/>
+                        <Image Grid.Column="5"
                                    Grid.Row="0"
                                    x:Name="addScheduleBtnImage"
                                    Source="plus.png"
