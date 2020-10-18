@@ -19,7 +19,9 @@ namespace ClassAid.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            Forms.SetFlags("Shapes_Experimental");
             Forms.SetFlags("Expander_Experimental");
+            //Forms.SetFlags("Shapes_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
             //Xamarin.Essentials.Platform.Init(this, bundle);

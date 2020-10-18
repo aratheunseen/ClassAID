@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:converter="clr-namespace:ClassAid.Models.Converter" 
-             xmlns:schedule="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:schedule="clr-namespace:ClassAid.Models.Schedule" 
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentViews.Dashboard">
-    <!--<ContentPage.BindingContext>
-        <x:Reference Name="This" />
-    </ContentPage.BindingContext>-->
     <ContentPage.Resources>
         <converter:TimeToStringConverter x:Key="timeFormatter"/>
     </ContentPage.Resources>
@@ -15,9 +13,10 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <!--<RowDefinition Height="*" />-->
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -27,6 +26,9 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            <Path Grid.ColumnSpan="6" Grid.RowSpan="5"
+                  Data="M119 240C331.4 126.8 198.167 16.8333 105 -24L-179.5 -71L-261 436.5C-222.833 418.167 -93.4 353.2 119 240Z"
+                  Fill="#F4F4FC" />
             <Grid Grid.ColumnSpan="6">
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
@@ -38,7 +40,6 @@
                         <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
                     </Image.GestureRecognizers>
                 </Image>
-
                 <Image Grid.Column="5"
                        Margin="15,25,15,0"
                        Source="avater.png"
@@ -50,144 +51,150 @@
                         <TapGestureRecognizer Command="{Binding ProfileBtnCommand}"/>
                     </Image.GestureRecognizers>
                 </Image>
-
             </Grid>
-            <ScrollView HorizontalScrollBarVisibility="Never"
-                        BackgroundColor="#fff"
-                        Grid.Row="1"
-                        Grid.ColumnSpan="6"
-                        VerticalScrollBarVisibility="Never">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <!-- Schedule Title -->
-                    <Grid x:Name="scheduleTitle"
-                                Grid.ColumnSpan="6"
-                                Margin="40,0,0,0">
-                        <Image Margin="0,0,5,0" 
-                               Source="schedule.png"
-                               HeightRequest="32" WidthRequest="32" HorizontalOptions="End"
-                               VerticalOptions="Start"/>
-                        <Label Text="Schedule"
-                                Grid.Column="1"
-                                FontSize="22"
-                                TextColor="Black"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Start" 
-                                Margin="5,0,0,0"
-                                Grid.ColumnSpan="4"/>
-                    </Grid>
-                    <!-- Schedule Content -->
-                    <CollectionView x:Name="scheduleView" 
-                                    Grid.Row="1"
-                                    Grid.ColumnSpan="6"
-                                    HeightRequest="180">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="schedule:ScheduleModel">
-                                <Grid BackgroundColor="#FFF">
+
+            <StackLayout Grid.Row="1"
+                         Grid.ColumnSpan="6"
+                         Orientation="Horizontal"
+                         Margin="40,0,0,0">
+                <Image Margin="0,0,5,0" 
+                       Source="schedule.png"
+                       HeightRequest="32" WidthRequest="32" HorizontalOptions="End"
+                       VerticalOptions="Start"/>
+                <Label Text="Schedule"
+                       Grid.Column="1"
+                       FontSize="Title"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,0,0,0"
+                       Grid.ColumnSpan="4"/>
+            </StackLayout>
+
+            <CollectionView x:Name="scheduleView" 
+                            Grid.Row="2"
+                            Grid.ColumnSpan="6">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="schedule:ScheduleModel">
+                        <Grid BackgroundColor="Transparent">
+                            <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                <sh:Shadows.Shades>
+                                    <sh:ImmutableShades>
+                                        <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                    </sh:ImmutableShades>
+                                </sh:Shadows.Shades>
+                                <Grid BackgroundColor="White" Padding="5">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <BoxView HeightRequest="20"
+                                    <!--<BoxView HeightRequest="20"
                                              WidthRequest="1"
-                                             BackgroundColor="#6264a7"/>
-                                    <Label x:Name="ScheduleCourseCode"
-                                           Text="{Binding CourseCode}"
-                                           Grid.Column="1"
+                                             BackgroundColor="#6264a7"/>-->
+                                    <Label Text="{Binding CourseCode}"
+                                           Margin="10,0,0,0"
                                            FontSize="Title"
-                                           TextColor="Gray"
+                                           TextColor="#6264a7"
                                            Grid.ColumnSpan="3"/>
-                                    <Label x:Name="ScheduleCourseName"
-                                           Text="{Binding Subject}"
+                                    <Label Text="{Binding Subject}"
                                            Grid.Row="1"
-                                           Grid.Column="1"
+                                           Margin="10,0,0,0"
                                            FontSize="Body"
-                                           TextColor="Gray"
+                                           TextColor="#464775"
                                            Grid.ColumnSpan="3"/>
-                                    <Label x:Name="ScheduleStart" 
-                                           Text="{Binding StartTime, 
-                                        Converter={StaticResource timeFormatter}}"
+                                    <Label Text="{Binding Teacher}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                    <Label Grid.Row="1"
                                            Grid.Column="5"
                                            Grid.ColumnSpan="2"
-                                           FontSize="12"
-                                           TextColor="Gray"/>
-                                    <Label x:Name="ScheduleEnd"
-                                           Text="{Binding EndTime, 
-                                        Converter={StaticResource timeFormatter}}"
+                                           FontSize="Small"
+                                           TextColor="#464775">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="S: "/>
+                                                <Span Text="{Binding StartTime, 
+                                                            Converter={StaticResource timeFormatter}}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Grid.Row="2"
                                            Grid.Column="5"
                                            Grid.ColumnSpan="2"
-                                           Grid.Row="1"
-                                           FontSize="12"
-                                           TextColor="Gray"/>
+                                           FontSize="Small"
+                                           TextColor="#464775">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="E: "/>
+                                                <Span Text="{Binding EndTime, 
+                                                            Converter={StaticResource timeFormatter}}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                            </sh:Shadows>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-                    <!-- Notice Title -->
-                    <StackLayout x:Name="eventTitle"
-                                 Grid.Row="2"
-                                 Grid.ColumnSpan="6"
-                                 Margin="40,0,0,0"
-                                 Orientation="Horizontal">
-                        <Image Grid.Column="0"
-                               Grid.Row="2"
-                               Margin="0,0,5,0"
-                               Source="notice.png"
-                               HeightRequest="32"
-                               WidthRequest="32"
-                               HorizontalOptions="End"
-                               VerticalOptions="Start"/>
-                        <Label Text="Notice"
-                               Grid.Column="1"
-                               Grid.Row="2"
-                               FontSize="22"
-                               TextColor="Black"
-                               HorizontalOptions="Start"
-                               VerticalOptions="Start" 
-                               Margin="5,0,0,0"
-                               Grid.ColumnSpan="3"/>
-                    </StackLayout>
-                    <!-- Notice Content -->
-
-                    <Grid Grid.Row="2" Grid.ColumnSpan="6">
-                        <BoxView HorizontalOptions="Start"
-                                 VerticalOptions="Start" 
-                                 Grid.Column="1"
-                                 Margin="0,70,0,0"
-                                 HeightRequest="20"
-                                 WidthRequest="1"
-                                 BackgroundColor="#6264a7"/>
+            <!-- Notice Title -->
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="6">
+                <BoxView HeightRequest="2" Color="#33344A" 
+                         Opacity=".1"
+                         HorizontalOptions="FillAndExpand"/>
+                <StackLayout Margin="40,0,0,0"
+                             Orientation="Horizontal">
+                    <Image Margin="0,0,5,0"
+                           Source="notice.png"
+                           HeightRequest="32"
+                           WidthRequest="32"
+                           HorizontalOptions="End"
+                           VerticalOptions="Start"/>
+                    <Label Text="Top Notice"
+                           Grid.Column="1"
+                           FontSize="Title"
+                           TextColor="Black"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Start" 
+                           Margin="5,0,0,0"
+                           Grid.ColumnSpan="3"/>
+                </StackLayout>
+                <StackLayout Margin="20,0,10,0">
+                    <StackLayout Orientation="Horizontal" Margin="2">
+                        <Ellipse Margin="0,0,10,0" HeightRequest="20"
+                                 WidthRequest="20" Fill="#E2E2F6"
+                                 VerticalOptions="Center"/>
                         <Label x:Name="firstEventTitle"
-                               Grid.Column="1"
-                               Margin="15,70,25,0"
-                               Grid.ColumnSpan="5"
-                               FontSize="15"
-                               TextColor="Gray"/>
-                        <BoxView HorizontalOptions="Start"
-                                 VerticalOptions="Start" 
-                                 Grid.Column="1"
-                                 Margin="0,150,0,0"
-                                 HeightRequest="20"
-                                 WidthRequest="1"
-                                 BackgroundColor="#6264a7"/>
+                               TextColor="#464775"
+                               FontSize="Large"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="2">
+                        <Ellipse Margin="0,0,10,0" HeightRequest="20"
+                                 WidthRequest="20" Fill="#E2E2F6"
+                                 VerticalOptions="Center"/>
                         <Label x:Name="secondEventTitle"
-                               Grid.Column="1"
-                               Margin="15,150,25,0"
-                               Grid.ColumnSpan="5"
-                               FontSize="15"
-                               TextColor="Gray"/>
-                    </Grid>
-                </Grid>
+                               FontSize="Large"
+                               TextColor="#464775"/>
+                    </StackLayout>
+                </StackLayout>
+                <BoxView HeightRequest="2" Color="#33344A" 
+                         Opacity=".3"
+                         HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
 
-            </ScrollView>
             <!-- Menu -->
-            <Grid Grid.Row="2" Grid.ColumnSpan="6">
+            <Grid Grid.Row="4" Grid.ColumnSpan="6">
                 <Frame Grid.ColumnSpan="2"
                        BackgroundColor="Transparent"
                        HorizontalOptions="Center"

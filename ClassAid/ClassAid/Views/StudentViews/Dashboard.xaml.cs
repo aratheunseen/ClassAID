@@ -17,19 +17,22 @@ namespace ClassAid.Views.StudentViews
         public Dashboard()
         {
             InitializeComponent();
-            var sc = LocalDbContex.GetEvents().ToList();
+            
             Student student = LocalDbContex.GetStudentAsUser();
-            //Action action = new Action(async () =>
-            //{
-            //    var admin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
-            firstEventTitle.Text = sc[0].Title;
-            secondEventTitle.Text = sc[1].Title;
-            scheduleView.ItemsSource = LocalDbContex.GetSchedules();
-            //    LocalDbContex.SaveUser(admin);
-            //    LocalDbContex.SaveEvents(admin.EventList);
-            //    LocalDbContex.SaveSchedules(admin.ScheduleList);
-            //});
-            //action.Invoke();
+            Action action = new Action(async () =>
+            {
+                var admin = await FirebaseHandler.GetAdminAsync(student.AdminKey);
+                firstEventTitle.Text = admin.EventList[0].Title.Trim();
+                secondEventTitle.Text = admin.EventList[1].Title.Trim();
+                var sc = LocalDbContex.GetSchedules().ToList();
+                sc.AddRange(sc);
+                sc.AddRange(sc);
+                scheduleView.ItemsSource = sc;
+                LocalDbContex.SaveUser(admin);
+                LocalDbContex.SaveEvents(admin.EventList);
+                LocalDbContex.SaveSchedules(admin.ScheduleList);
+            });
+            action.Invoke();
         }
     }
 }
