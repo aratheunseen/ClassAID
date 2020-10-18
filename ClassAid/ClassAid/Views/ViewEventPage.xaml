@@ -65,6 +65,7 @@
                 </StackLayout>-->
             <StackLayout Grid.Row="1">
                 <Button x:Name="addEventBtn"
+                        BackgroundColor="#6264a7"
                             Text="Create new notice"/>
             </StackLayout>
         </Grid>
