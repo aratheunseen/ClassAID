@@ -112,6 +112,7 @@
             </CollectionView>
             <StackLayout Grid.Row="1" x:Name="ScheduleBtnArea">
                 <Button x:Name="addScheduleBtn"
+                       BackgroundColor="#6264a7"
                             Text="Create new schedule"/>
             </StackLayout>
         </Grid>
