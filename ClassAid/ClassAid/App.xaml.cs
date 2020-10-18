@@ -45,7 +45,7 @@ namespace ClassAid
             }
             else
             {
-                InitializeData();
+               // InitializeData();
                 if (Preferences.Get(PrefKeys.IsAdmin, false))
                     MainPage = new NavigationPage(new Views.Dashboard());
                 else
@@ -199,6 +199,7 @@ namespace ClassAid
         }
         public static void UpdateAdminOrSync()
         {
+            //Admin admin
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 FirebaseHandler.UpdateAdmin(Admin);
             else
