@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ClassAid.Views.StudentViews.Profile">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#FFF" x:Name="mainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="240" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Profile Heade-->
+            <!--Profile Header-->
+            <Image Source="avater.png"
+                       Grid.RowSpan="2" 
+                       Grid.ColumnSpan="2"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       HorizontalOptions="Start" 
+                       VerticalOptions="Start"
+                       Margin="30,40,0,0"/>
+            <Label Grid.Column="2" Grid.ColumnSpan="2" 
+                   FontSize="14" Text="ID" 
+                   Margin="5,30,0,0" 
+                   TextColor="#6264a7"/>
+            <Label Grid.Column="2"
+                   Grid.ColumnSpan="2" 
+                   FontSize="14" 
+                   Text="Semester" 
+                   Margin="5,55,0,0" 
+                   TextColor="#6264a7"/>
+            <Label Grid.Column="2" 
+                   Grid.ColumnSpan="2" 
+                   FontSize="14" 
+                   Text="Section" 
+                   Margin="5,80,0,0" 
+                   TextColor="#6264a7"/>
+            <Label Grid.Column="2" 
+                   Grid.ColumnSpan="2"
+                   FontSize="14" 
+                   Text="Phone" 
+                   Margin="5,105,0,0" 
+                   TextColor="#6264a7"/>
+
+            <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" 
+                   FontSize="14" Text=" : " Margin="15,30,48,0" TextColor="#6264a7"/>
+            <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" 
+                   FontSize="14" Text=" : " Margin="15,55,48,0" TextColor="#6264a7"/>
+            <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" 
+                   FontSize="14" Text=" : " Margin="15,80,48,0" TextColor="#6264a7"/>
+            <Label Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="End" 
+                   FontSize="14" Text=" : " Margin="15,105,48,0" TextColor="#6264a7"/>
+
+            <Label x:Name="userID" 
+                   Grid.Column="3" 
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="3"
+                   FontSize="14"
+                   Margin="30,30,0,0"
+                   TextColor="#6264a7"/>
+            <Label x:Name="userSemester" 
+                   Grid.Column="3" Grid.RowSpan="2"
+                   Grid.ColumnSpan="3"
+                   FontSize="14"
+                   Margin="30,55,0,0"
+                   TextColor="#6264a7"/>
+            <Label x:Name="userSection" 
+                   Grid.Column="3"
+                   Grid.RowSpan="2" 
+                   Grid.ColumnSpan="3" 
+                   FontSize="14"
+                   Margin="30,80,0,0" TextColor="#6264a7"/>
+            <Label x:Name="userPhone" Grid.Column="3" 
+                   Grid.RowSpan="2" 
+                   Grid.ColumnSpan="3" 
+                   FontSize="16"
+                   Margin="30,105,0,0" TextColor="#6264a7"/>
+
+            <!--Name, University Name and Logout-->
+            <Label x:Name="userName"
+                   Grid.ColumnSpan="4"
+                   FontSize="17" 
+                   Margin="40,150,0,0" 
+                   TextColor="#6264a7"/>
+            <Label x:Name="userDepartment" 
+                   Grid.ColumnSpan="4" 
+                   FontSize="12"
+                   Margin="40,175,0,0"
+                   TextColor="#6264a7"/>
+            <Label x:Name="userUniversity" 
+                   Grid.ColumnSpan="4"
+                   FontSize="14" 
+                   Margin="40,195,0,0" TextColor="#6264a7"/>
+            <ImageButton x:Name="logoutBtn" 
+                   Grid.Column="5"
+                   BackgroundColor="Transparent"
+                   Source="logout.png"
+                   HeightRequest="24" 
+                   WidthRequest="24" 
+                   HorizontalOptions="End" 
+                   VerticalOptions="End"
+                   Margin="0,0,30,42"/>
+            <!--#endregion-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

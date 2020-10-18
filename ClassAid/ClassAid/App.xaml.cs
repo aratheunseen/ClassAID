@@ -13,6 +13,7 @@ using Com.OneSignal.Abstractions;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
+using ClassAid.Views.StudentViews;
 
 namespace ClassAid
 {
@@ -45,7 +46,10 @@ namespace ClassAid
             else
             {
                 InitializeData();
-                MainPage = new NavigationPage(new Dashboard());
+                if (Preferences.Get(PrefKeys.IsAdmin, false))
+                    MainPage = new NavigationPage(new Views.Dashboard());
+                else
+                    MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
             }
             OneSignal.Current.StartInit("7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f")
             .Settings(new Dictionary<string, bool>()
@@ -67,7 +71,6 @@ namespace ClassAid
                 Admin = await FirebaseHandler.GetAdminAsync(
                     Preferences.Get(PrefKeys.AdminKey, ""));
                 Student = LocalDbContex.GetStudentAsUser();
-                MainPage = new NavigationPage(new Dashboard());
 
                 LocalDbContex.ClearTable(TableList.schedule);
                 LocalDbContex.SaveSchedules(Admin.ScheduleList);
@@ -89,11 +92,10 @@ namespace ClassAid
                 FetchOnce = false;
                 if (!Preferences.Get(PrefKeys.IsAdmin, false))
                 {
-                    await FirebaseHandler.RealTimeConnection
-                        (CollectionTables.EventList, Admin.EventList, Admin.Key);
-                    await FirebaseHandler.RealTimeConnection
-                        (CollectionTables.ScheduleList, Admin.ScheduleList, Admin.Key);
+                    MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
                 }
+                else
+                    MainPage = new NavigationPage(new Views.Dashboard());
             }
             else
             {
@@ -102,13 +104,15 @@ namespace ClassAid
                     Admin = LocalDbContex.GetAdminAsUser();
                 }
                 else
+                {
                     Student = LocalDbContex.GetStudentAsUser();
-
+                    MainPage = new Profile();
+                }
                 Admin.ScheduleList = new ObservableCollection<ScheduleModel>
                     (LocalDbContex.GetSchedules());
                 Admin.EventList = new ObservableCollection<EventModel>
                     (LocalDbContex.GetEvents());
-                MainPage = new NavigationPage(new Dashboard());
+                //MainPage = new NavigationPage(new Dashboard());
 
                 Admin.TeacherList = new ObservableCollection<Teacher>
                     (LocalDbContex.GetTeachers());
