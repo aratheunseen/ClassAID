@@ -80,7 +80,7 @@
     <EmbeddedResource Update="Views\Chat\OutgoingViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Dashboard.xaml">
+    <EmbeddedResource Update="Views\AdminViews\Dashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AboutPage.xaml">
@@ -104,7 +104,7 @@
     <EmbeddedResource Update="Views\StudentViews\StudentLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentProfile.xaml">
+    <EmbeddedResource Update="Views\AdminViews\StudentProfile.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentViews\StudentNotActivatedPage.xaml">
@@ -113,10 +113,10 @@
     <EmbeddedResource Update="Views\Chat\Chat.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewEventPage.xaml">
+    <EmbeddedResource Update="Views\AdminViews\ViewEventPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewSchedulePage.xaml">
+    <EmbeddedResource Update="Views\AdminViews\ViewSchedulePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -131,7 +131,7 @@
     <Compile Update="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\StudentProfile.xaml.cs">
+    <Compile Update="Views\AdminViews\StudentProfile.xaml.cs">
       <DependentUpon>StudentProfile.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Chat\Chat.xaml.cs">
