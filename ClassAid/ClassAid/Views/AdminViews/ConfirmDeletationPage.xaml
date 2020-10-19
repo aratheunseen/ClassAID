@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="ClassAid.Views.AdminViews.ConfirmDeletationPage">
+    <ContentPage.Content >
+        <StackLayout VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand">
+            <Button x:Name="Confirm" 
+                            Clicked="Confirm_Clicked"
+                            Text="Confirm"
+                            BackgroundColor="#6264a7"
+                            CornerRadius="15"
+                            TextTransform="None"/>
+            <Button x:Name="Back" 
+                            Clicked="Back_Clicked"
+                            Text="Never Mind"
+                            BackgroundColor="#FFF"
+                            TextColor="#6264a7"
+                            CornerRadius="15"
+                            BorderWidth="1"
+                            BorderColor="#6264a7"
+                            TextTransform="None"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

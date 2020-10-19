@@ -31,6 +31,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 CourseCode = courseCode.Text,
                 DayOfWeek = (DayOfWeek)dayPeaker.SelectedIndex
             };
+            var d = App.Admin.ScheduleList;
             App.Admin.ScheduleList.Add(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedule(sc);
