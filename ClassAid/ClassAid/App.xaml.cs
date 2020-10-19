@@ -45,11 +45,19 @@ namespace ClassAid
             }
             else
             {
-               // InitializeData();
+                // InitializeData();
                 if (Preferences.Get(PrefKeys.IsAdmin, false))
                     MainPage = new NavigationPage(new Views.Dashboard());
                 else
+                {
+                    Student student = LocalDbContex.GetStudentAsUser();
+                    if(student.IsActive)
                     MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
+                    else
+                    {
+                        MainPage = new StudentNotActivatedPage(student, LocalDbContex.GetAdminAsUser());
+                    }
+                }
             }
             OneSignal.Current.StartInit("7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f")
             .Settings(new Dictionary<string, bool>()
@@ -92,7 +100,10 @@ namespace ClassAid
                 FetchOnce = false;
                 if (!Preferences.Get(PrefKeys.IsAdmin, false))
                 {
-                    MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
+                    if (Student.IsActive)
+                        MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
+                    else
+                        MainPage = new StudentNotActivatedPage(Student,Admin);
                 }
                 else
                     MainPage = new NavigationPage(new Views.Dashboard());
