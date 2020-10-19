@@ -23,7 +23,7 @@ namespace ClassAid
         internal static Admin Admin { get; set; }
         internal static Student Student { get; set; }
         internal static ObservableCollection<ChatModel> Chats { get; set; }
-        private bool FetchOnce { get; set; }
+
         public App()
         {
             InitializeComponent();
@@ -61,6 +61,7 @@ namespace ClassAid
                 }
                 Chats = new ObservableCollection<ChatModel>(LocalDbContex.GetChats());
             }
+
             OneSignal.Current.StartInit("7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f")
             .Settings(new Dictionary<string, bool>()
             {

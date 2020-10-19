@@ -21,10 +21,14 @@ namespace ClassAid.Models.Engines
             byte[] byteArray = Encoding.UTF8.GetBytes("{"
                                                     + "\"app_id\": \"7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f\","
                                                     + "\"contents\": {\"en\": \"" + message + "\"},"
-                                                    + "\"headings\": {\"en\": \"" + title + "\"},"
-                                                    + "\"filters\": [{\"field\": \"tag\", \"key\": \"AdminKey\"," +
-                                                    " \"relation\": \"=\", \"value\": \"" + key + "\"}]}");
-
+                                                    + "\"headings\": {\"en\": \"" + title + "\"}," 
+                                                    +"\"included_segments\": [\"All\"]}");
+            //byte[] byteArray = Encoding.UTF8.GetBytes("{"
+            //                                        + "\"app_id\": \"7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f\","
+            //                                        + "\"contents\": {\"en\": \"" + message + "\"},"
+            //                                        + "\"headings\": {\"en\": \"" + title + "\"},"
+            //                                        + "\"filters\": [{\"field\": \"tag\", \"key\": \"AdminKey\"," +
+            //                                        " \"relation\": \"=\", \"value\": \"" + key + "\"}]}");
             string responseContent = null;
 
             try
@@ -42,7 +46,7 @@ namespace ClassAid.Models.Engines
                     }
                 }
             }
-            catch (WebException)
+            catch (WebException e)
             {
                 DependencyService.Get<Toast>().Show("Couldn't send Notifications to the end users.");
             }

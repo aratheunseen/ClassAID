@@ -65,7 +65,7 @@ namespace ClassAid.Views.StudentViews
                 Preferences.Set(PrefKeys.AdminKey, Admin.Key);
                 Preferences.Set(PrefKeys.IsAdmin, false);
                 Preferences.Set(PrefKeys.Key, Student.Key);
-                Application.Current.MainPage = new StudentNotActivatedPage(Student,Admin);
+                Application.Current.MainPage = new StudentNotActivatedPage(Student, Admin);
                 //OneSignal.Current.SendTag("AdminKey", Student.AdminKey);
                 Student.AdminKey = keyVault.AdminKey;
                 App.UpdateAdminOrSync(Admin);
@@ -75,6 +75,10 @@ namespace ClassAid.Views.StudentViews
                 LocalDbContex.SaveUser(Student);
                 LocalDbContex.SaveUser(Admin);
                 LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
+
+                OneSignal.Current.SendTag("AdminKey", Admin.Key);
+                OneSignal.Current.RegisterForPushNotifications();
+
             }
             else
             {
