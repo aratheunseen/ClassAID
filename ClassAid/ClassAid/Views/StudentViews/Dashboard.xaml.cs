@@ -37,7 +37,7 @@ namespace ClassAid.Views.StudentViews
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewSchedulePage()));
+                await Navigation.PushAsync(new FullSchedulePage()));
             }
         }
         public ICommand FullEventCommand
