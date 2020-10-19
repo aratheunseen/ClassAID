@@ -1,9 +1,11 @@
 ﻿using ClassAid.DataContex;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,12 +37,16 @@ namespace ClassAid.Views.StudentViews
 
         private void TeacherCallBtn_Clicked(object sender, System.EventArgs e)
         {
-
+            ImageButton button = (ImageButton)sender;
+            var d = (Teacher)button.BindingContext;
+            Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
 
         private void StudentCallBtn_Clicked(object sender, System.EventArgs e)
         {
-
+            ImageButton button = (ImageButton)sender;
+            var d = (Student)button.BindingContext;
+            Launcher.OpenAsync(new Uri($"tel:{d.Phone}"));
         }
     }
 }
