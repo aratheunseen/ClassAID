@@ -13,7 +13,7 @@
         <ScrollView Margin="0,0,0,0">
             <Grid BackgroundColor="#FFF" x:Name="mainGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="240" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
