@@ -34,7 +34,7 @@ namespace ClassAid.Views.AdminViews.Settings
                 App.Admin.EventList.RemoveAt(10);
             }
             LocalDbContex.SaveEvent(e);
-            App.UpdateAdminOrSync();
+            App.UpdateAdminOrSync(App.Admin);
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                 PushNotification.Send(e.Title, e.Details, App.Admin.Key);
         }

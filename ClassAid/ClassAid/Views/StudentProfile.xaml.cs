@@ -85,7 +85,7 @@ namespace ClassAid.Views
                 {
                     FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
                     App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
-                    App.UpdateAdminOrSync();
+                    App.UpdateAdminOrSync(App.Admin);
                     requestList.Remove(student);
                 }
             }
@@ -100,7 +100,7 @@ namespace ClassAid.Views
                 {
                     FirebaseHandler.GetClient().Child(student.Key).Child("IsRejected").PutAsync(true);
                     App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsRejected = true;
-                    App.UpdateAdminOrSync();
+                    App.UpdateAdminOrSync(App.Admin);
                     requestList.Remove(student);
                 }
             }

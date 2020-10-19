@@ -1,4 +1,5 @@
 ﻿using ClassAid.DataContex;
+using ClassAid.Models.Users;
 using System;
 using System.Linq;
 using Xamarin.Essentials;
@@ -10,13 +11,17 @@ namespace ClassAid.Views.StudentViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StudentNotActivatedPage : ContentPage
     {
-        public StudentNotActivatedPage()
+        Student Student;
+        Admin Admin;
+        public StudentNotActivatedPage(Student student, Admin admin)
         {
+            Student = student;
+            Admin = admin;
             InitializeComponent();
             LogOut.Command = new Command(() => App.LogOut());
-            if (App.Student.IsRejected == true)
+            if (Student.IsRejected == true)
             {
-                ErrorText.Text = "Opps " + App.Student.Name.Split(" ")[0] + "! Your " +
+                ErrorText.Text = "Opps " + Student.Name.Split(" ")[0] + "! Your " +
                     "Account has been rejected by the authority. " +
                     "If you think this is an mistake, call your " +
                     "corresponding class representative," +
@@ -24,7 +29,7 @@ namespace ClassAid.Views.StudentViews
                 SendRequest.IsVisible = true;
             }
             else
-                ErrorText.Text = "Opps " + App.Student.Name.Split(" ")[0] + "! " +
+                ErrorText.Text = "Opps " + Student.Name.Split(" ")[0] + "! " +
                     "Your Account hasn't been activated yet. " +
                     "Please re-log in if you think this is an mistake or call your " +
                     "corresponding class representative.";
@@ -32,17 +37,17 @@ namespace ClassAid.Views.StudentViews
 
         private void Call_Clicked(object sender, EventArgs e)
         {
-            Launcher.OpenAsync(new Uri($"tel:{App.Admin.Phone}"));
+            Launcher.OpenAsync(new Uri($"tel:{Admin.Phone}"));
         }
 
         private void SendRequest_Clicked(object sender, EventArgs e)
         {
-            App.Student.IsRejected = false; 
-            FirebaseHandler.UpdateStudent(App.Student);
-            var obj = App.Admin.StudentList.FirstOrDefault(x => x.Key == App.Student.Key);
+            Student.IsRejected = false; 
+            FirebaseHandler.UpdateStudent(Student);
+            var obj = Admin.StudentList.FirstOrDefault(x => x.Key == Student.Key);
             obj.IsRejected = false;
             obj.IsActive = false;
-            App.UpdateAdminOrSync();
+            App.UpdateAdminOrSync(Admin);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ClassAid.Views.AdminViews.Settings
                     App.Admin.BatchDetails.University = universityBox.Text;
                     App.Admin.BatchDetails.Semester = semesterBox.Text;
                     App.Admin.BatchDetails.Section = sectionBox.Text;
-                    App.UpdateAdminOrSync();
+                    App.UpdateAdminOrSync(App.Admin);
                     LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
                 }
             });
