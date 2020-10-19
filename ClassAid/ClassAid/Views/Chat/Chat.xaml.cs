@@ -25,9 +25,9 @@ namespace ClassAid.Views
             this.key = key;
             this.Name = Name;
             this.ID = ID;
-            chats = new ObservableCollection<ChatModel>();
-            FirebaseHandler.RealTimeChat(chats);
-            ChatViewBox.ItemsSource = chats;
+            //chats = new ObservableCollection<ChatModel>();
+            FirebaseHandler.RealTimeChat(App.Chats);
+            ChatViewBox.ItemsSource = App.Chats;
             messageBox.Completed += SendButton_Clicked;
         }
 
@@ -45,6 +45,8 @@ namespace ClassAid.Views
                     ID = ID
                 };
                 messageBox.Text = string.Empty;
+                //App.Chats.Add(chat);
+                //LocalDbContex.SaveChat(chat);
                 if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     FirebaseHandler.SendMessage(chat);
                 else

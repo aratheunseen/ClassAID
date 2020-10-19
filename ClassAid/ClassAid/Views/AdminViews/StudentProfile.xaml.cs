@@ -87,6 +87,7 @@ namespace ClassAid.Views
                     App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
                     App.UpdateAdminOrSync(App.Admin);
                     requestList.Remove(student);
+                    LocalDbContex.SaveStudent(student);
                 }
             }
             else

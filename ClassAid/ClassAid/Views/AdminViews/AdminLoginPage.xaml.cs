@@ -8,6 +8,7 @@ using System.Diagnostics;
 using ClassAid.Models;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
+using System.Linq;
 
 namespace ClassAid.Views.AdminViews
 {
@@ -69,7 +70,7 @@ namespace ClassAid.Views.AdminViews
                     App.Admin.BatchDetails = tempAdmin.BatchDetails;
                     LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
-                    LocalDbContex.SaveStudents(tempAdmin.StudentList);
+                    LocalDbContex.SaveStudents(tempAdmin.StudentList.Where(p => p.IsActive == true));
                 }
             }
             else
@@ -80,9 +81,9 @@ namespace ClassAid.Views.AdminViews
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userName.Text) ||
-                string.IsNullOrWhiteSpace(userPass.Text)||
+                string.IsNullOrWhiteSpace(userPass.Text) ||
                 userName.Text.Length < 6 ||
-                userPass.Text.Length < 6 )
+                userPass.Text.Length < 6)
 
             {
                 signInBtn.Command = null;

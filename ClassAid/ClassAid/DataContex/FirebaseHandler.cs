@@ -85,7 +85,13 @@ namespace ClassAid.DataContex
                  .AsObservable<ChatModel>().Subscribe(d =>
                  {
                      if (!collection.Contains(d.Object))
-                         collection.Add(d.Object);
+                     {
+                         ChatModel chat = new ChatModel();
+                         chat = d.Object;
+                         chat.DeletingKey = d.Key;
+                         collection.Add(chat);
+                         LocalDbContex.SaveChat(chat);
+                     }
                      if (collection.Count > 10)
                      {
                          GetClient().Child("Chat")

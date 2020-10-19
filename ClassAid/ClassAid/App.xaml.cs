@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ClassAid.Models.Schedule;
 using ClassAid.Views.StudentViews;
+using System.Linq;
 
 namespace ClassAid
 {
@@ -21,6 +22,7 @@ namespace ClassAid
     {
         internal static Admin Admin { get; set; }
         internal static Student Student { get; set; }
+        internal static ObservableCollection<ChatModel> Chats { get; set; }
         private bool FetchOnce { get; set; }
         public App()
         {
@@ -45,19 +47,19 @@ namespace ClassAid
             }
             else
             {
-                // InitializeData();
                 if (Preferences.Get(PrefKeys.IsAdmin, false))
                     MainPage = new NavigationPage(new Views.Dashboard());
                 else
                 {
                     Student student = LocalDbContex.GetStudentAsUser();
-                    if(student.IsActive)
-                    MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
+                    if (student.IsActive)
+                        MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
                     else
                     {
                         MainPage = new StudentNotActivatedPage(student, LocalDbContex.GetAdminAsUser());
                     }
                 }
+                Chats = new ObservableCollection<ChatModel>(LocalDbContex.GetChats());
             }
             OneSignal.Current.StartInit("7ab7ae00-d9e6-47cb-a4ed-f5045215fc9f")
             .Settings(new Dictionary<string, bool>()
@@ -71,70 +73,6 @@ namespace ClassAid
             })
             .InFocusDisplaying(OSInFocusDisplayOption.Notification)
             .EndInit();
-        }
-        private async void InitializeData()
-        {
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                Admin = await FirebaseHandler.GetAdminAsync(
-                    Preferences.Get(PrefKeys.AdminKey, ""));
-                Student = LocalDbContex.GetStudentAsUser();
-
-                LocalDbContex.ClearTable(TableList.schedule);
-                LocalDbContex.SaveSchedules(Admin.ScheduleList);
-
-                LocalDbContex.ClearTable(TableList.events);
-                LocalDbContex.SaveEvents(Admin.EventList);
-
-                LocalDbContex.ClearTable(TableList.events);
-                LocalDbContex.SaveTeachers(Admin.TeacherList);
-
-                LocalDbContex.ClearTable(TableList.students);
-                LocalDbContex.SaveStudents(Admin.StudentList);
-
-                //RetakeStudentList = Admin.RetakeStudentList;
-
-                LocalDbContex.ClearTable(TableList.batchdetails);
-                LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
-
-                FetchOnce = false;
-                if (!Preferences.Get(PrefKeys.IsAdmin, false))
-                {
-                    if (Student.IsActive)
-                        MainPage = new NavigationPage(new Views.StudentViews.Dashboard());
-                    else
-                        MainPage = new StudentNotActivatedPage(Student,Admin);
-                }
-                else
-                    MainPage = new NavigationPage(new Views.Dashboard());
-            }
-            else
-            {
-                if (Preferences.Get(PrefKeys.IsAdmin, false))
-                {
-                    //Admin = LocalDbContex.GetAdminAsUser();
-                }
-                else
-                {
-                    Student = LocalDbContex.GetStudentAsUser();
-                    MainPage = new Profile();
-                }
-                Admin.ScheduleList = new ObservableCollection<ScheduleModel>
-                    (LocalDbContex.GetSchedules());
-                Admin.EventList = new ObservableCollection<EventModel>
-                    (LocalDbContex.GetEvents());
-                //MainPage = new NavigationPage(new Dashboard());
-
-                Admin.TeacherList = new ObservableCollection<Teacher>
-                    (LocalDbContex.GetTeachers());
-                Admin.StudentList = new ObservableCollection<Student>
-                    (LocalDbContex.GetStudents());
-                //RetakeStudentList = Admin.RetakeStudentList;
-                Admin.BatchDetails = LocalDbContex.GetBatchDetails();
-
-                FetchOnce = true;
-            }
-
         }
         private void CheckConnection(object sender, ConnectivityChangedEventArgs e)
         {
@@ -155,35 +93,9 @@ namespace ClassAid
                         DependencyService.Get<Toast>().Show("Sync failed. ERROR code PCAiDx06");
                     }
                 }
-                if (FetchOnce)
-                {
-                    FetchData();
-                }
             }
             else
                 return;
-        }
-        private async void FetchData()
-        {
-            Admin = await FirebaseHandler.GetAdminAsync(
-                       Preferences.Get(PrefKeys.AdminKey, ""));
-            LocalDbContex.ClearTable(TableList.schedule);
-            LocalDbContex.SaveSchedules(Admin.ScheduleList);
-
-            LocalDbContex.ClearTable(TableList.events);
-            LocalDbContex.SaveEvents(Admin.EventList);
-
-            LocalDbContex.ClearTable(TableList.events);
-            LocalDbContex.SaveTeachers(Admin.TeacherList);
-
-            LocalDbContex.ClearTable(TableList.students);
-            LocalDbContex.SaveStudents(Admin.StudentList);
-
-            //RetakeStudentList = Admin.RetakeStudentList;
-
-            LocalDbContex.ClearTable(TableList.batchdetails);
-            LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
-            FetchOnce = false;
         }
         protected override void OnStart()
         {

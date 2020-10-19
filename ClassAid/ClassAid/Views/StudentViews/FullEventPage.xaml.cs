@@ -3,6 +3,7 @@ using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -40,7 +41,7 @@ namespace ClassAid.Views.StudentViews
                 LocalDbContex.SaveBatchDetails(admin.BatchDetails);
 
                 LocalDbContex.ClearTable(TableList.students);
-                LocalDbContex.SaveStudents(admin.StudentList);
+                LocalDbContex.SaveStudents(admin.StudentList.Where(p => p.IsActive == true));
 
                 LocalDbContex.ClearTable(TableList.teachers);
                 LocalDbContex.SaveTeachers(admin.TeacherList);
