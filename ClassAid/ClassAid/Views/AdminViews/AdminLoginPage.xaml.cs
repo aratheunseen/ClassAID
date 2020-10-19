@@ -66,7 +66,7 @@ namespace ClassAid.Views.AdminViews
 
                     Application.Current.MainPage =
                         new NavigationPage(new Dashboard());
-
+                    App.Admin.BatchDetails = tempAdmin.BatchDetails;
                     LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
                     LocalDbContex.SaveStudents(tempAdmin.StudentList);
