@@ -1,15 +1,9 @@
-﻿using ClassAid.DataContex;
-using ClassAid.Models;
-using ClassAid.Models.Schedule;
+﻿using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
+using ClassAid.Views.AdminViews;
 using ClassAid.Views.AdminViews.Settings;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,20 +13,25 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewSchedulePage : ContentPage
     {
+        public ObservableCollection<ScheduleModel> SaturdaySchedules
+        {
+            get
+            {
+                return App.Admin.ScheduleList;
+            }
+        }
+        //public ObservableCollection<ScheduleModel> SundaySchedules { get; set; }
+        //public ObservableCollection<ScheduleModel> MondaySchedules { get; set; }
+        //public ObservableCollection<ScheduleModel> TuesdaySchedules { get; set; }
+        //public ObservableCollection<ScheduleModel> WednesdaySchedules { get; set; }
+        //public ObservableCollection<ScheduleModel> ThursdaySchedules { get; set; }
+        //public ObservableCollection<ScheduleModel> FridaySchedules { get; set; }
         public ViewSchedulePage()
         {
             InitializeComponent();
-            scheduleCollectionView.ItemsSource =
-                App.Admin.ScheduleList.OrderBy(p => p.DayOfWeek);
-            if (Preferences.Get(PrefKeys.IsAdmin, false))
-                addScheduleBtn.Clicked += AddScheduleBtn_Clicked;
-            else
-            {
-                addScheduleBtn.IsVisible = false;
-                mainGrid.Children.Remove(ScheduleBtnArea);
-            }
-        }
+            addScheduleBtn.Clicked += AddScheduleBtn_Clicked;
 
+        }
         private async void AddScheduleBtn_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddSchedulePage());
@@ -44,12 +43,8 @@ namespace ClassAid.Views
             {
                 ImageButton button = sender as ImageButton;
                 var d = (ScheduleModel)button.BindingContext;
-                App.Admin.ScheduleList.Remove(d);
-                LocalDbContex.DeleteSchedule(d);
-                App.UpdateAdminOrSync(App.Admin);
+                Navigation.PushAsync(new ConfirmDeletationPage(d));
             }
-            else
-                DependencyService.Get<Toast>().Show("You are not authorized.");
         }
     }
 }
