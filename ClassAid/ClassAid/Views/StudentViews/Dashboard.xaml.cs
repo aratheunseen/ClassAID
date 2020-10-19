@@ -61,10 +61,8 @@ namespace ClassAid.Views.StudentViews
                 try { secondEventTitle.Text = el[1].Title.Trim(); }
                 catch (Exception) { }
             }
-            var sc = LocalDbContex.GetSchedules().ToList();
-            sc.AddRange(sc);
-            sc.AddRange(sc);
-            scheduleView.ItemsSource = sc;
+
+            scheduleView.ItemsSource = LocalDbContex.GetSchedules();
 
             FetchData(Student);
         }

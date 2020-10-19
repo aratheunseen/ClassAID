@@ -3,6 +3,7 @@ using ClassAid.Models.Engines;
 using ClassAid.Models.Schedule;
 using ClassAid.Models.Users;
 using System;
+using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -31,7 +32,16 @@ namespace ClassAid.Views.AdminViews
             App.Admin.TeamCode = await FirebaseHandler.GetTeamCode(instName.Text, App.Admin.Key);
             resultText.Text = "Creating Profile";
             App.Admin.BatchDetails = batch;
-
+            App.Admin.ScheduleList = new ObservableCollection<ScheduleModel>();
+            App.Admin.StudentList.Add(new Student()
+            {
+                Name = App.Admin.Name,
+                Phone = App.Admin.Phone,
+                ID = App.Admin.ID,
+                Key = App.Admin.Key,
+                IsActive = true,
+                IsRejected = false
+            });
             App.Admin.ID = stuId.Text;
             App.Admin.Phone = userPhone.Text;
             try

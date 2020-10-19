@@ -46,7 +46,7 @@ namespace ClassAid.Views
                 userPhone.Text = App.Student.Phone;
                 userID.Text = App.Student.ID;
             }
-            ClassmateCollectionView.ItemsSource = App.Admin.StudentList.Where(p => p.IsActive == true);
+            ClassmateCollectionView.ItemsSource = App.Admin.StudentList.Where(p => p.IsActive == true && p.ID != App.Admin.ID);
             TeacherCollectionView.ItemsSource = App.Admin.TeacherList;
         }
 
