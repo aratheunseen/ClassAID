@@ -197,7 +197,7 @@ namespace ClassAid
             LocalDbContex.DropTables();
             OneSignal.Current.DeleteTag("AdminKey");
         }
-        public static void UpdateAdminOrSync()
+        public static void UpdateAdminOrSync(Admin admin)
         {
             //Admin admin
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)

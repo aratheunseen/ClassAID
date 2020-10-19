@@ -46,7 +46,7 @@ namespace ClassAid.Views
                 var d = (ScheduleModel)button.BindingContext;
                 App.Admin.ScheduleList.Remove(d);
                 LocalDbContex.DeleteSchedule(d);
-                App.UpdateAdminOrSync();
+                App.UpdateAdminOrSync(App.Admin);
             }
             else
                 DependencyService.Get<Toast>().Show("You are not authorized.");

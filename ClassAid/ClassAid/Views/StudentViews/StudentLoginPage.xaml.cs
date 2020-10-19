@@ -41,54 +41,58 @@ namespace ClassAid.Views.StudentViews
         {
             try
             {
-                Student student = new Student(userName.Text + "student", userPass.Text)
+                Student tempStudent = new Student(userName.Text + "student", userPass.Text)
                 {
                     IsAdmin = false
                 };
 
                 activityIndicator.IsRunning = true;
-                App.Student = await FirebaseHandler.GetStudentAsync(student.Key);
+                Student Student = await FirebaseHandler.GetStudentAsync(tempStudent.Key);
 
-                if (App.Student == null || App.Student.Name == null)
+                if (Student == null || Student.Name == null)
                 {
                     activityIndicator.IsRunning = false;
-                    App.Student = student;
+                    Student = tempStudent;
                     await Navigation.PushAsync(
-                        new AdditionalDetails());
-                    FirebaseHandler.InsertStudent(student);
+                        new AdditionalDetails(Student));
+                    FirebaseHandler.InsertStudent(tempStudent);
                 }
                 else
                 {
-                    App.Admin = await FirebaseHandler.GetAdminAsync(App.Student.AdminKey);
+                    Admin Admin = await FirebaseHandler.GetAdminAsync(Student.AdminKey);
 
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
-                    if (App.Student.IsActive)
+                    if (Student.IsActive)
                     {
                         Preferences.Set(PrefKeys.IsLoggedIn, true);
-                        Preferences.Set(PrefKeys.AdminKey, App.Student.AdminKey);
+                        Preferences.Set(PrefKeys.AdminKey, Student.AdminKey);
                         Preferences.Set(PrefKeys.IsAdmin, false);
-                        Preferences.Set(PrefKeys.Key, student.Key);
+                        Preferences.Set(PrefKeys.Key, tempStudent.Key);
+
+
+
+                        LocalDbContex.SaveUser(Student);
+                        LocalDbContex.SaveUser(Admin);
+                        LocalDbContex.SaveSchedules(Admin.ScheduleList);
+                        LocalDbContex.SaveEvents(Admin.EventList);
 
                         Application.Current.MainPage =
                             new NavigationPage(new Dashboard());
 
-                        LocalDbContex.SaveUser(App.Student);
-                        LocalDbContex.SaveUser(App.Admin);
-                        LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
-                        LocalDbContex.SaveEvents(App.Admin.EventList);
-                        LocalDbContex.SaveTeachers(App.Admin.TeacherList);
-                        LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
-                        LocalDbContex.SaveStudents(App.Admin.StudentList
+                        LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
+                        LocalDbContex.SaveTeachers(Admin.TeacherList);
+                        LocalDbContex.SaveStudents(Admin.StudentList
                                 .Where(item => item.IsActive == true).ToList());
-                        OneSignal.Current.SendTag("AdminKey", student.AdminKey);
+
+                        OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();
                     }
                     else
                     {
-                        LocalDbContex.SaveUser(App.Student);
-                        LocalDbContex.SaveUser(App.Admin);
-                        Application.Current.MainPage = new StudentNotActivatedPage();
+                        LocalDbContex.SaveUser(Student);
+                        LocalDbContex.SaveUser(Admin);
+                        Application.Current.MainPage = new StudentNotActivatedPage(Student, Admin);
                     }
                 }
             }

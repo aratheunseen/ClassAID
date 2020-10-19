@@ -34,7 +34,7 @@ namespace ClassAid.Views.AdminViews.Settings
             App.Admin.ScheduleList.Add(sc);
             await Navigation.PopAsync();
             LocalDbContex.SaveSchedule(sc);
-            App.UpdateAdminOrSync();
+            App.UpdateAdminOrSync(App.Admin);
         }
         private async void AddTeacher_Clicked(object sender, EventArgs e)
         {

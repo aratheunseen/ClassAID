@@ -26,7 +26,7 @@ namespace ClassAid.Views.AdminViews.Settings
             await Navigation.PopAsync();
             LocalDbContex.SaveTeacher(t);
             App.Admin.TeacherList.Add(t);
-            App.UpdateAdminOrSync();
+            App.UpdateAdminOrSync(App.Admin);
         }
         
         private void Form_TextChanged(object sender, TextChangedEventArgs e)
