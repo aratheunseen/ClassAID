@@ -84,15 +84,15 @@ namespace ClassAid.DataContex
                  .Child(Preferences.Get(PrefKeys.AdminKey, ""))
                  .AsObservable<ChatModel>().Subscribe(d =>
                  {
-                     if (!collection.Contains(d.Object))
+                     ChatModel chat = new ChatModel();
+                     chat = d.Object;
+                     chat.DeletingKey = d.Key;
+                     if (!collection.Any(p => p.DeletingKey == d.Key))
                      {
-                         ChatModel chat = new ChatModel();
-                         chat = d.Object;
-                         chat.DeletingKey = d.Key;
                          collection.Add(chat);
                          LocalDbContex.SaveChat(chat);
                      }
-                     if (collection.Count > 10)
+                     if (collection.Count > 50)
                      {
                          GetClient().Child("Chat")
                          .Child(Preferences.Get(PrefKeys.AdminKey, ""))
@@ -158,10 +158,14 @@ namespace ClassAid.DataContex
                 }));
             return students;
         }
-
-        public static void SendMessage(ChatModel chat)
+        public async static void SendMessage(ChatModel chat)
         {
-            GetClient().Child("Chat").Child(Preferences.Get(PrefKeys.AdminKey, "")).PostAsync(chat);
+            var d = await GetClient().Child("Chat")
+                .Child(Preferences.Get(PrefKeys.AdminKey, "")).PostAsync(chat);
+            // App.Chats.FirstOrDefault(p => p.Time == chat.Time).DeletingKey = d.Key;
+            //chat.DeletingKey = d.Key;
+            //App.Chats.Add(chat);
+            //LocalDbContex.SaveChat(chat);
         }
     }
     public enum CollectionTables
