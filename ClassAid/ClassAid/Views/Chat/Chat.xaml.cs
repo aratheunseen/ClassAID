@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using Xamarin.Essentials;
 using ClassAid.Models.Users;
 using System.Diagnostics;
+using System.Timers;
 
 namespace ClassAid.Views
 {
@@ -18,6 +19,7 @@ namespace ClassAid.Views
         private readonly string key;
         private readonly string Name;
         private readonly string ID;
+        private static Timer SyncTimer;
         private readonly ObservableCollection<ChatModel> chats;
         public ChatHub(string key, string Name, string ID)
         {
@@ -25,10 +27,23 @@ namespace ClassAid.Views
             this.key = key;
             this.Name = Name;
             this.ID = ID;
-            //chats = new ObservableCollection<ChatModel>();
+
             FirebaseHandler.RealTimeChat(App.Chats);
+            SyncTimer = new Timer(2000);
+            SyncTimer.Start();
+            SyncTimer.Elapsed += ATimer_Elapsed; ;
+
             ChatViewBox.ItemsSource = App.Chats;
             messageBox.Completed += SendButton_Clicked;
+        }
+
+        private void ATimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (App.Chats.Count < 1)
+            {
+                FirebaseHandler.RealTimeChat(App.Chats);
+                SyncTimer.Stop();
+            }
         }
 
         private void SendButton_Clicked(object sender, EventArgs e)

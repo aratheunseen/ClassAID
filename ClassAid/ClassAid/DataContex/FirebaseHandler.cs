@@ -99,7 +99,6 @@ namespace ClassAid.DataContex
                          .Child(collection[0].DeletingKey).DeleteAsync();
                      }
                  }));
-
         }
         public static async void GetStudentList(ObservableCollection<Student> studentColl, string adminkey)
         {
