@@ -14,25 +14,25 @@
         <converter:TimeToStringConverter x:Key="timeFormatter"/>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <!--Change the bg color to #FFF if requred-->
+
+        <Grid x:Name="mainGrid">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Path Grid.ColumnSpan="6" Grid.RowSpan="5"
-                  Data="M119 240C331.4 126.8 198.167 16.8333 105 -24L-179.5 -71L-261 436.5C-222.833 418.167 -93.4 353.2 119 240Z"
-                  Fill="#F4F4FC" />
+
+            <!-- Header -->
             <Grid Grid.ColumnSpan="6">
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
@@ -44,7 +44,27 @@
                         <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Grid.Column="5"
+
+                <Frame Grid.Column="1"
+                       Grid.ColumnSpan="3"
+                       BackgroundColor="Transparent"
+                       Margin="0,27,50,0"
+                       Padding="5"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start">
+                </Frame>
+
+                <!--<ImageButton x:Name="allSyncButton"
+                             Grid.Column="3"
+                             Grid.ColumnSpan="1"
+                             Source="sync.png"
+                             Margin="0,32,0,0"
+                             HeightRequest="24"
+                             WidthRequest="24"
+                             HorizontalOptions="End"
+                             VerticalOptions="Start"
+                             BackgroundColor="Transparent"/>-->
+                <Image Grid.Column="4"
                        Margin="15,25,15,0"
                        Source="avater.png"
                        HeightRequest="40"
@@ -57,184 +77,231 @@
                 </Image>
             </Grid>
 
-            <StackLayout Grid.Row="1"
-                         Grid.ColumnSpan="6"
-                         Orientation="Horizontal"
-                         Margin="40,0,0,0">
-                <Image Margin="0,0,5,0" 
-                       Source="schedule.png"
-                       HeightRequest="32" WidthRequest="32" HorizontalOptions="End"
-                       VerticalOptions="Start"/>
-                <Label Text="Schedule"
-                       Grid.Column="1"
-                       FontSize="Title"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="4"/>
-            </StackLayout>
 
-            <CollectionView x:Name="scheduleView" 
-                            Grid.Row="2"
-                            Grid.ColumnSpan="6">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="schedule:ScheduleModel">
-                        <Grid BackgroundColor="Transparent">
-                            <sh:Shadows 
-                                   CornerRadius="10"
-                                   Padding="10"
-                                   Margin="5,3,5,1"
-                                   BackgroundColor="Transparent">
-                                <sh:Shadows.Shades>
-                                    <sh:ImmutableShades>
-                                        <sh:Shade BlurRadius="10"
-                                                  Opacity="0.5"
-                                                  Color="#E2E2F6" />
-                                    </sh:ImmutableShades>
-                                </sh:Shadows.Shades>
-                                <Grid BackgroundColor="White" Padding="5">
+            <ScrollView HorizontalScrollBarVisibility="Never"
+                        BackgroundColor="#fff"
+                        Grid.Row="1"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="6"
+                        VerticalScrollBarVisibility="Never">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Schedule Title -->
+                    <StackLayout x:Name="scheduleTitle"
+                                     Grid.ColumnSpan="6"
+                                     Grid.Row="0"
+                                     Margin="40,0,0,0"
+                                     Orientation="Horizontal">
+                        <Image Grid.Column="0"
+                                   Grid.Row="0"
+                                   Margin="0,0,5,0"
+                                   Source="schedule.png"
+                                   HeightRequest="32"
+                                   WidthRequest="32"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="Start"/>
+                        <Label Text="Schedule"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   FontSize="22"
+                                   TextColor="Black"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start" 
+                                   Margin="5,0,0,0"
+                                   Grid.ColumnSpan="4"/>
+                        <!--<Image Grid.Column="5"
+                                   Grid.Row="0"
+                                   x:Name="addScheduleBtnImage"
+                                   Source="plus.png"
+                                   Margin="10,5,0,0"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddScheduleCommand}"/>
+                            </Image.GestureRecognizers>
+                        </Image>-->
+                    </StackLayout>
+                    <!-- Schedule Content -->
+
+                    <CollectionView x:Name="scheduleView" 
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="6"
+                                        HeightRequest="180">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="schedule:ScheduleModel">
+                                <Grid BackgroundColor="#FFF">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
-                                    <Label Text="{Binding CourseCode}"
-                                           Margin="10,0,0,0"
-                                           FontSize="Title"
-                                           TextColor="#6264a7"
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView Grid.Row="0"
+                                             Grid.Column="1"
+                                             Margin="0,30,0,0"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Start" 
+                                             HeightRequest="20"
+                                             WidthRequest="1"
+                                             BackgroundColor="#6264a7"/>
+                                    <Label x:Name="ScheduleCourseCode"
+                                           Text="{Binding CourseCode}"
+                                           Grid.Row="0"
+                                           Grid.Column="1"
+                                           Margin="15,30,0,0"
+                                           FontSize="18"
+                                           TextColor="Gray"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Start" 
                                            Grid.ColumnSpan="3"/>
-                                    <Label Text="{Binding Subject}"
-                                           Grid.Row="1"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                    <Label Text="{Binding Teacher}"
-                                           Grid.Row="2"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                    <Label Grid.Row="1"
-                                           Grid.Column="5"
-                                           Grid.ColumnSpan="2"
-                                           FontSize="Small"
-                                           TextColor="#464775">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="S: "/>
-                                                <Span Text="{Binding StartTime, 
-                                                            Converter={StaticResource timeFormatter}}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label Grid.Row="2"
-                                           Grid.Column="5"
-                                           Grid.ColumnSpan="2"
-                                           FontSize="Small"
-                                           TextColor="#464775">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="E: "/>
-                                                <Span Text="{Binding EndTime, 
-                                                            Converter={StaticResource timeFormatter}}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label x:Name="ScheduleCourseName"
+                                       Text="{Binding Subject}"
+                                        Margin="0,55,0,0"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        TextColor="Gray"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start" 
+                                        Grid.ColumnSpan="3"/>
+                                    <Label x:Name="ScheduleStart" 
+                                       Text="{Binding StartTime, 
+                                    Converter={StaticResource timeFormatter}}"
+                                       Grid.Column="5"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="0"
+                                       FontSize="12"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start" 
+                                       Margin="0,40,30,0"/>
+                                    <Label x:Name="ScheduleEnd"
+                                       Text="{Binding EndTime, 
+                                    Converter={StaticResource timeFormatter}}"
+                                       Grid.Column="5"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Row="0"
+                                       FontSize="12"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start" 
+                                       Margin="0,55,30,0"/>
                                 </Grid>
-                            </sh:Shadows>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-            <!-- Notice Title -->
-            <StackLayout Grid.Row="3" Grid.ColumnSpan="6">
-                <BoxView HeightRequest="2" Color="#33344A" 
-                         Opacity=".1"
-                         HorizontalOptions="FillAndExpand"/>
-                <StackLayout Margin="40,0,0,0"
-                             Orientation="Horizontal">
-                    <Image Margin="0,0,5,0"
-                           Source="notice.png"
-                           HeightRequest="32"
-                           WidthRequest="32"
-                           HorizontalOptions="End"
-                           VerticalOptions="Start"/>
-                    <Label Text="Top Notice"
-                           Grid.Column="1"
-                           FontSize="Title"
-                           TextColor="Black"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Start" 
-                           Margin="5,0,0,0"
-                           Grid.ColumnSpan="3"/>
-                </StackLayout>
-                <StackLayout Margin="20,0,10,0">
-                    <StackLayout Orientation="Horizontal" Margin="2">
-                        <Ellipse Margin="0,0,10,0" HeightRequest="20"
-                                 WidthRequest="20" Fill="#E2E2F6"
-                                 VerticalOptions="Center"/>
+                    <!-- Notice Title -->
+                    <StackLayout x:Name="eventTitle"
+                                     Grid.Row="2"
+                                     Grid.ColumnSpan="6"
+                                     Margin="40,0,0,0"
+                                     Orientation="Horizontal">
+                        <Image Grid.Column="0"
+                               Grid.Row="2"
+                               Margin="0,0,5,0"
+                               Source="notice.png"
+                               HeightRequest="32"
+                               WidthRequest="32"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"/>
+
+                        <Label Text="Notice"
+                               Grid.Column="1"
+                               Grid.Row="2"
+                               FontSize="22"
+                               TextColor="Black"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Start" 
+                               Margin="5,0,0,0"
+                               Grid.ColumnSpan="3"/>
+                    </StackLayout>
+
+                    <!-- Notice Content -->
+                    <Grid Grid.Row="2" Grid.ColumnSpan="6">
+                        <BoxView HorizontalOptions="Start"
+                                         VerticalOptions="Start" 
+                                         Grid.Column="1"
+                                         Margin="0,70,0,0"
+                                         HeightRequest="20"
+                                         WidthRequest="1"
+                                         BackgroundColor="#6264a7"/>
                         <Label x:Name="firstEventTitle"
-                               TextColor="#464775"
-                               FontSize="Large"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Margin="2">
-                        <Ellipse Margin="0,0,10,0" HeightRequest="20"
-                                 WidthRequest="20" Fill="#E2E2F6"
-                                 VerticalOptions="Center"/>
+                                       Grid.Column="1"
+                                   Margin="15,70,25,0"
+                                   Grid.ColumnSpan="5"
+                                       FontSize="15"
+                                       TextColor="Gray"/>
+                        <BoxView HorizontalOptions="Start"
+                                         VerticalOptions="Start" 
+                                         Grid.Column="1"
+                                         Margin="0,150,0,0"
+                                         HeightRequest="20"
+                                         WidthRequest="1"
+                                         BackgroundColor="#6264a7"/>
                         <Label x:Name="secondEventTitle"
-                               FontSize="Large"
-                               TextColor="#464775"/>
-                    </StackLayout>
-                </StackLayout>
-                <BoxView HeightRequest="2" Color="#33344A" 
-                         Opacity=".3"
-                         HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
+                                       Grid.Column="1"
+                                   Margin="15,150,25,0"
+                                   Grid.ColumnSpan="5"
+                                   FontSize="15"
+                                       TextColor="Gray"/>
+                    </Grid>
+                </Grid>
 
+            </ScrollView>
             <!-- Menu -->
-            <Grid Grid.Row="4" Grid.ColumnSpan="6">
-                <Frame Grid.ColumnSpan="2"
+            <Frame Grid.Column="0"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"
                        BackgroundColor="Transparent"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FullEventCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="notice.png"
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FullEventCommand}"/>
+                </Frame.GestureRecognizers>
+                <Image Source="notice.png"
                            HeightRequest="28"
                            WidthRequest="28"
                            BackgroundColor="Transparent"/>
-                </Frame>
-                <Frame Grid.Column="2"
+            </Frame>
+            <Frame Grid.Column="2"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="3"
+                       BackgroundColor="Transparent">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GroupMessageCommand}"/>
+                </Frame.GestureRecognizers>
+                <Image Grid.Column="2"
+                           Grid.Row="3"             
+                           Source="message.png"
+                           HeightRequest="32"
+                           WidthRequest="32"
+                           BackgroundColor="Transparent"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+            </Frame>
+            <Frame Grid.Column="4"
+                       Grid.Row="3"
                        Grid.ColumnSpan="2"
                        BackgroundColor="Transparent"
                        HorizontalOptions="Center"
                        VerticalOptions="Center">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GroupMessageCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="message.png"
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FullScheduleCommand}"/>
+                </Frame.GestureRecognizers>
+                <Image Source="schedule.png"
                            HeightRequest="32"
                            WidthRequest="32"
                            BackgroundColor="Transparent"/>
-                </Frame>
-                <Frame Grid.Column="4"
-                       Grid.ColumnSpan="2"
-                       BackgroundColor="Transparent"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FullScheduleCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="schedule.png"
-                           HeightRequest="32"
-                           WidthRequest="32"
-                           BackgroundColor="Transparent"/>
-                </Frame>
-            </Grid>
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
