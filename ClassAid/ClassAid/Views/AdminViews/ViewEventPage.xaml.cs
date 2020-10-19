@@ -14,14 +14,12 @@ namespace ClassAid.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewEventPage : ContentPage
     {
+        public ObservableCollection<EventModel> GetAllEvents
+        { get { return App.Admin.EventList; } }
+
         public ViewEventPage()
         {
             InitializeComponent();
-            eventListView.ItemsSource = App.Admin.EventList;
-            if (Preferences.Get(PrefKeys.IsAdmin, false))
-                addEventBtn.Clicked += AddEventBtn_Clicked;
-            else
-                mainGrid.Children.Remove(addEventBtn);
         }
 
         private async void AddEventBtn_Clicked(object sender, System.EventArgs e)
@@ -29,9 +27,6 @@ namespace ClassAid.Views
             await Navigation.PushAsync(new AddEventPage());
         }
 
-        private void OnCollectionViewScrolled(object sender, ItemsViewScrolledEventArgs e)
-        {
-
-        }
+    
     }
 }

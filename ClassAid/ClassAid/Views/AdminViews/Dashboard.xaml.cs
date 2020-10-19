@@ -87,10 +87,10 @@ namespace ClassAid.Views
         #endregion
         public Dashboard()
         {
+            App.Admin = LocalDbContex.GetAdminAsUser();
             App.Admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
             App.Admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
             InitializeComponent();
-            App.Admin = LocalDbContex.GetAdminAsUser();
             BindEventScheduleList();
         }
         private void BindEventScheduleList()

@@ -101,7 +101,7 @@ namespace ClassAid
             {
                 if (Preferences.Get(PrefKeys.IsAdmin, false))
                 {
-                    Admin = LocalDbContex.GetAdminAsUser();
+                    //Admin = LocalDbContex.GetAdminAsUser();
                 }
                 else
                 {
