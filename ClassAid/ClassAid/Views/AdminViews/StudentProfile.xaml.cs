@@ -61,20 +61,9 @@ namespace ClassAid.Views
             if (requestList != null)
             {
                 RequestCollectionView.ItemsSource = requestList;
-                if (requestList.Count == 0)
-                {
-                    ////mainGrid.Children.Remove(RequestCollectionView);
-                    ////mainGrid.Children.Remove(RequestListTitle);
-                }
             }
-            requestList.CollectionChanged += RequestList_CollectionChanged;
         }
 
-        private void RequestList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            //mainGrid.Children.Add(RequestListTitle);
-            //mainGrid.Children.Add(RequestCollectionView);
-        }
 
         #region Accept And Reject
         private void AcceptBtn_Clicked(object sender, EventArgs e)
@@ -83,6 +72,7 @@ namespace ClassAid.Views
             {
                 if (sender is ImageButton b && b.CommandParameter is Student student)
                 {
+                    var ad = App.Admin;
                     FirebaseHandler.GetClient().Child(student.Key).Child("IsActive").PutAsync(true);
                     App.Admin.StudentList.FirstOrDefault(p => p.Key == student.Key).IsActive = true;
                     App.UpdateAdminOrSync(App.Admin);

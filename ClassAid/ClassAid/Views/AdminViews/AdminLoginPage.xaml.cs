@@ -70,7 +70,7 @@ namespace ClassAid.Views.AdminViews
                     App.Admin.BatchDetails = tempAdmin.BatchDetails;
                     LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
-                    LocalDbContex.SaveStudents(tempAdmin.StudentList.Where(p => p.IsActive == true));
+                    LocalDbContex.SaveStudents(tempAdmin.StudentList);
                 }
             }
             else
