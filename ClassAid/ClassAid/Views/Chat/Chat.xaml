@@ -3,92 +3,72 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="False"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents"
-             xmlns:local="clr-namespace:ClassAid.Views.Chat" xmlns:models="clr-namespace:ClassAid.Models"
+             xmlns:models="clr-namespace:ClassAid.Models"
              x:Class="ClassAid.Views.ChatHub">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="1"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ScrollView VerticalScrollBarVisibility="Never"
-                        Grid.ColumnSpan="6"
-                        Padding="15"
-                        HorizontalScrollBarVisibility="Never">
-                <StackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                    <CollectionView x:Name="ChatViewBox"
-                                    Grid.Row="0"
-                                    ItemsUpdatingScrollMode="KeepLastItemInView">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:ChatModel"
-                                          x:Name="chatBoxGrid">
-                                <Grid>
-                                    <Label Text="{Binding Sender}"
-                                           Margin="30,0,0,0"
-                                           TextColor="Black"
-                                           FontSize="Caption"/>
-                                    <Label Text="{Binding ID}"
-                                            Margin="0,0,30,0"
-                                            HorizontalOptions="End"
-                                            TextColor="LightGray"
-                                            FontSize="Caption"/>
-                                    <Label Text="{Binding Message}"
-                                           BackgroundColor="#F7F7F7"
-                                           TextColor="#6264a7"
-                                           Margin="30,20,30,45"
-                                           Padding="15"
-                                           FontSize="Default"/>
-                                    <Label Text="{Binding Time}"
-                                           Margin="0,0,30,30"
-                                           HorizontalOptions="End"
-                                           VerticalOptions="End"
-                                           TextColor="Gray"
-                                           FontSize="Micro"/>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </StackLayout>
-            </ScrollView>
-            <Frame BackgroundColor="white" Grid.Row="1" Grid.ColumnSpan="6"></Frame>
-            <Components:ClassAidEntry x:Name="messageBox" 
-                                      Grid.Row="2"
-                                      TextChanged="MessageBox_TextChanged"
-                                      WidthRequest="300"
-                                      TextColor="#6264a7"
-                                      Placeholder="Type your message here!!!"
-                                      VerticalOptions="End"
-                                      HorizontalOptions="Start"
-                                      Margin="30,10,0,10"
-                                      Grid.ColumnSpan="5"/>
-            <ImageButton x:Name="sendButton"
-                         Grid.Row="2"
-                         HeightRequest="30"
-                         BackgroundColor="Transparent"
-                         WidthRequest="30"
-                         Margin="0,0,30,15"
-                         CornerRadius="10"
-                         Clicked="SendButton_Clicked"
-                         VerticalOptions="End"
-                         HorizontalOptions="End"
-                         Grid.Column="5"
-                         Source="send.png"/>
+            <CollectionView x:Name="ChatViewBox"
+                            Grid.ColumnSpan="6"
+                            ItemsUpdatingScrollMode="KeepLastItemInView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ChatModel"
+                                  x:Name="chatBoxGrid">
+                        <Grid>
+                            <Label Text="{Binding Sender}"
+                                   Margin="30,0,0,0"
+                                   TextColor="Black"
+                                   FontSize="Caption"/>
+                            <Label Text="{Binding ID}"
+                                   Margin="0,0,30,0"
+                                   HorizontalOptions="End"
+                                   TextColor="LightGray"
+                                   FontSize="Caption"/>
+                            <Label Text="{Binding Message}"
+                                   BackgroundColor="#F7F7F7"
+                                   TextColor="#6264a7"
+                                   Margin="30,20,30,45"
+                                   Padding="15"
+                                   FontSize="Default"/>
+                            <Label Text="{Binding Time}"
+                                   Margin="0,0,30,30"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="End"
+                                   TextColor="Gray"
+                                   FontSize="Micro"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid Grid.Row="1" Grid.ColumnSpan="6">
+                <Components:ClassAidEntry x:Name="messageBox"
+                                          TextChanged="MessageBox_TextChanged"
+                                          WidthRequest="300"
+                                          TextColor="#6264a7"
+                                          Placeholder="Type your message here!!!"
+                                          VerticalOptions="End"
+                                          HorizontalOptions="Start"
+                                          Margin="30,10,0,10"
+                                          Grid.ColumnSpan="5"/>
+                <ImageButton x:Name="sendButton"
+                             HeightRequest="30"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             Margin="0,0,30,15"
+                             CornerRadius="10"
+                             Clicked="SendButton_Clicked"
+                             VerticalOptions="End"
+                             HorizontalOptions="End"
+                             Grid.Column="5"
+                             Source="send.png"/>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
-
-<!--
-https://github.com/jamesmontemagno/MediaPlugin
-https://github.com/step-up-labs/firebase-storage-dotnet
-https://github.com/xamarin/GooglePlayServicesComponents
--->
