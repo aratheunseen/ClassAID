@@ -63,15 +63,13 @@ namespace ClassAid.Views.StudentViews
 
                     activityIndicator.IsRunning = false;
                     LocalDbContex.CreateTables();
+                    Preferences.Set(PrefKeys.IsLoggedIn, true);
+                    Preferences.Set(PrefKeys.AdminKey, Student.AdminKey);
+                    Preferences.Set(PrefKeys.IsAdmin, false);
+                    Preferences.Set(PrefKeys.Key, tempStudent.Key);
+
                     if (Student.IsActive)
                     {
-                        Preferences.Set(PrefKeys.IsLoggedIn, true);
-                        Preferences.Set(PrefKeys.AdminKey, Student.AdminKey);
-                        Preferences.Set(PrefKeys.IsAdmin, false);
-                        Preferences.Set(PrefKeys.Key, tempStudent.Key);
-
-
-
                         LocalDbContex.SaveUser(Student);
                         LocalDbContex.SaveUser(Admin);
                         LocalDbContex.SaveSchedules(Admin.ScheduleList);
