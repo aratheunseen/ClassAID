@@ -46,7 +46,7 @@ namespace ClassAid.Models.Engines
                     }
                 }
             }
-            catch (WebException e)
+            catch (WebException)
             {
                 DependencyService.Get<Toast>().Show("Couldn't send Notifications to the end users.");
             }

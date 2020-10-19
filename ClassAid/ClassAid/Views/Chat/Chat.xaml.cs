@@ -20,7 +20,6 @@ namespace ClassAid.Views
         private readonly string Name;
         private readonly string ID;
         private static Timer SyncTimer;
-        private readonly ObservableCollection<ChatModel> chats;
         public ChatHub(string key, string Name, string ID)
         {
             InitializeComponent();
