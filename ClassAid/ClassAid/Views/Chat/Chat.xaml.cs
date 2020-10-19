@@ -39,10 +39,9 @@ namespace ClassAid.Views
         private void ATimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (App.Chats.Count < 1)
-            {
                 FirebaseHandler.RealTimeChat(App.Chats);
+            if(App.Chats.Count > 0)
                 SyncTimer.Stop();
-            }
         }
 
         private void SendButton_Clicked(object sender, EventArgs e)
