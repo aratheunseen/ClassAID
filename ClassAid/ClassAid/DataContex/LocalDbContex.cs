@@ -10,6 +10,7 @@ using System.Linq;
 using ClassAid.Models.Users;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using ClassAid.Models;
 
 namespace ClassAid.DataContex
 {
@@ -48,11 +49,11 @@ namespace ClassAid.DataContex
         {
             using (IDbConnection db = new SqliteConnection(ConectionString))
             {
- 
+
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@Data", JsonConvert.SerializeObject(schedule));
                 db.Execute("DELETE FROM schedule WHERE (Data) = (@Data);", parameters);
-                
+
             }
         }
         public static void SaveBatchDetails(BatchDetails batchDetails)
@@ -175,6 +176,25 @@ namespace ClassAid.DataContex
                 return schedules;
             }
         }
+        public static void SaveChat(ChatModel chat)
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                cnn.ExecuteAsync("INSERT OR REPLACE INTO chats (Message," +
+                    "Sender, SenderKey,AdminKey, Time, ID, DeletingKey) " +
+                  "Values (@Message, @Sender, @SenderKey, @AdminKey, " +
+                  "@Time, @ID, @DeletingKey);", chat);
+            }
+
+        }
+        public static IEnumerable<ChatModel> GetChats()
+        {
+            using (IDbConnection cnn = new SqliteConnection(ConectionString))
+            {
+                return cnn.Query<ChatModel>("SELECT * FROM chats;");
+            }
+
+        }
         public static Student GetStudentAsUser()
         {
             using (IDbConnection cnn = new SqliteConnection(ConectionString))
@@ -233,6 +253,10 @@ namespace ClassAid.DataContex
                             ID text, Phone text, Key text, IsActive boolean, 
                             IsAdmin boolean)";
                 cnn.Execute(createTable);
+                createTable = @"CREATE TABLE IF NOT EXISTS chats (Message," +
+                    "Sender text, SenderKey text,AdminKey text, Time text, " +
+                    "ID text, DeletingKey text)";
+                cnn.Execute(createTable);
             }
         }
         public static void DropTables()
@@ -251,6 +275,8 @@ namespace ClassAid.DataContex
                 cnn.ExecuteAsync(sql);
                 sql = "DROP TABLE IF EXISTS students;";
                 cnn.ExecuteAsync(sql);
+                sql = "DROP TABLE IF EXISTS chats;";
+                cnn.Execute(sql);
             }
         }
         public static void ClearTable(TableList table)
@@ -264,6 +290,6 @@ namespace ClassAid.DataContex
     }
     public enum TableList
     {
-        batchdetails, schedule, events, teachers, user, students
+        batchdetails, schedule, events, teachers, user, students, chats
     }
 }

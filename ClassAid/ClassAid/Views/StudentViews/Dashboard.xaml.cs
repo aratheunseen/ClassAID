@@ -92,7 +92,7 @@ namespace ClassAid.Views.StudentViews
                 LocalDbContex.SaveBatchDetails(admin.BatchDetails);
 
                 LocalDbContex.ClearTable(TableList.students);
-                LocalDbContex.SaveStudents(admin.StudentList);
+                LocalDbContex.SaveStudents(admin.StudentList.Where(p => p.IsActive == true));
 
                 LocalDbContex.ClearTable(TableList.teachers);
                 LocalDbContex.SaveTeachers(admin.TeacherList);

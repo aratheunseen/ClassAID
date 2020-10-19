@@ -80,8 +80,7 @@ namespace ClassAid.Views.StudentViews
 
                         LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
                         LocalDbContex.SaveTeachers(Admin.TeacherList);
-                        LocalDbContex.SaveStudents(Admin.StudentList
-                                .Where(item => item.IsActive == true).ToList());
+                        LocalDbContex.SaveStudents(Admin.StudentList.Where(p => p.IsActive == true));
 
                         OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
                         OneSignal.Current.RegisterForPushNotifications();
