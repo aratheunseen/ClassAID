@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClassAid.Views.AdminViews.Settings.AddSchedulePage"
-             xmlns:Components="clr-namespace:ClassAid.CustomComponents" 
-             xmlns:forms="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <Style TargetType="Components:ClassAidEntry" x:Key="ClassAidEntryDesign">
@@ -39,11 +38,6 @@
                                TextColor="#6264a7"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
-                        <!--<forms:AutoSuggestBox PlaceholderText="Search" 
-                                              WidthRequest="200"
-                                              TextChanged="AutoSuggestBox_TextChanged"
-                                              QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                                              SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>-->
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="subjectName"
