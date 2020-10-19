@@ -201,11 +201,11 @@ namespace ClassAid
         {
             //Admin admin
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                FirebaseHandler.UpdateAdmin(Admin);
+                FirebaseHandler.UpdateAdmin(admin);
             else
             {
                 Preferences.Set(PrefKeys.IsSyncPending, true);
-                LocalStorageEngine.SaveDataAsync(Admin, FileType.Admin);
+                LocalStorageEngine.SaveDataAsync(admin, FileType.Admin);
                 DependencyService.Get<Toast>().Show("No internet access. Sync pending.");
             }
         }

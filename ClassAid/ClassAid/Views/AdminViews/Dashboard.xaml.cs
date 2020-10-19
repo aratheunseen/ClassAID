@@ -10,6 +10,9 @@ using System.Linq;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using ClassAid.DataContex;
+using System.Collections.ObjectModel;
+using ClassAid.Models.Schedule;
 
 namespace ClassAid.Views
 {
@@ -84,25 +87,23 @@ namespace ClassAid.Views
         #endregion
         public Dashboard()
         {
+            App.Admin.EventList = new ObservableCollection<EventModel>(LocalDbContex.GetEvents());
+            App.Admin.ScheduleList = new ObservableCollection<ScheduleModel>(LocalDbContex.GetSchedules());
             InitializeComponent();
+            App.Admin = LocalDbContex.GetAdminAsUser();
             BindEventScheduleList();
-            Debug.WriteLine(Preferences.Get(PrefKeys.IsAdmin, false));
-            if (!Preferences.Get(PrefKeys.IsAdmin, false))
-            {
-                mainGrid.Children.Remove(teamCodeBox);
-            }
-            else
-                teamCode.Text = App.Admin.TeamCode;
         }
         private void BindEventScheduleList()
         {
+            App.Admin.BatchDetails = LocalDbContex.GetBatchDetails();
+            App.Admin.StudentList = new ObservableCollection<Student>(LocalDbContex.GetStudents());
+            App.Admin.TeacherList = new ObservableCollection<Teacher>(LocalDbContex.GetTeachers());
+            teamCode.Text = App.Admin.TeamCode;
             if (App.Admin.EventList != null && App.Admin.EventList.Count > 0)
             {
-                //firstEventBody.Text = App.Admin.EventList[0].Details;
                 firstEventTitle.Text = App.Admin.EventList[0].Title;
                 try
                 {
-                    //secondEventBody.Text = App.Admin.EventList[1].Details;
                     secondEventTitle.Text = App.Admin.EventList[1].Title;
                 }
                 catch (Exception) { }
