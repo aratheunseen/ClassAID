@@ -59,21 +59,17 @@ namespace ClassAid.Views.AdminViews
                     Preferences.Set(PrefKeys.Key, tempAdmin.Key);
                     activityIndicator.IsRunning = false;
                     App.Admin = tempAdmin;
-                    Application.Current.MainPage =
-                        new NavigationPage(new Dashboard());                   
-
                     LocalDbContex.CreateTables();
                     LocalDbContex.SaveUser(tempAdmin);
-
-                    LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
-
                     LocalDbContex.SaveEvents(App.Admin.EventList);
-
-                    LocalDbContex.SaveTeachers(App.Admin.TeacherList);
-
                     LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
 
-                    LocalDbContex.SaveStudents(App.Admin.StudentList);
+                    Application.Current.MainPage =
+                        new NavigationPage(new Dashboard());
+
+                    LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
+                    LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
+                    LocalDbContex.SaveStudents(tempAdmin.StudentList);
                 }
             }
             else
