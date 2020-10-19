@@ -45,7 +45,7 @@ namespace ClassAid.Views.StudentViews
             get
             {
                 return new Command(async () =>
-                await Navigation.PushAsync(new ViewEventPage()));
+                await Navigation.PushAsync(new FullEventPage(Student)));
             }
         }
         #endregion

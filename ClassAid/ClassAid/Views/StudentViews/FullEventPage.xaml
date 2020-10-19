@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converter="clr-namespace:ClassAid.Models.Converter" 
+             xmlns:schedule="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             x:Class="ClassAid.Views.StudentViews.FullEventPage"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="This">
+    <ContentPage.BindingContext>
+        <x:Reference Name="This"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converter:TimeToStringConverter x:Key="timeFormatter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Margin="2,10,2,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal"
+                         Margin="40,0,0,0">
+                <Image Margin="0,0,5,0" 
+                       Source="notice.png"
+                       HeightRequest="32" WidthRequest="32" HorizontalOptions="End"
+                       VerticalOptions="Start"/>
+                <Label Text="Notice Borad"
+                       Grid.Column="1"
+                       FontSize="Title"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,0,0,0"
+                       Grid.ColumnSpan="4"/>
+            </StackLayout>
+            <RefreshView x:Name="eventRefreshView" Grid.Row="1" 
+                         Refreshing="RefreshView_Refreshing">
+                <CollectionView ItemsSource="{Binding GetAllEvents}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="schedule:EventModel">
+                            <Grid BackgroundColor="Transparent">
+                                <sh:Shadows CornerRadius="10"
+                                            Padding="10"
+                                            Margin="5,3,5,1"
+                                            BackgroundColor="Transparent">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+                                            <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Grid BackgroundColor="White" Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Title}"
+                                           Margin="10,0,0,0"
+                                           FontSize="Title"
+                                           TextColor="#6264a7"
+                                               LineBreakMode="WordWrap"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Details}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                               LineBreakMode="WordWrap"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Time}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Small"
+                                           TextColor="#464775"
+                                               LineBreakMode="WordWrap"
+                                           Grid.ColumnSpan="4"/>
+                                    </Grid>
+                                </sh:Shadows>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
