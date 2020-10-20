@@ -46,20 +46,21 @@ namespace ClassAid.Views.AdminViews
             App.Admin.Phone = userPhone.Text;
             try
             {
+                LocalDbContex.CreateTables();
                 Preferences.Set(PrefKeys.IsLoggedIn, true);
                 Preferences.Set(PrefKeys.AdminKey, App.Admin.Key);
                 Preferences.Set(PrefKeys.Key, App.Admin.Key);
                 Preferences.Set(PrefKeys.IsAdmin, true);
                 FirebaseHandler.UpdateAdmin(App.Admin);
-                Application.Current.MainPage = 
-                    new NavigationPage(new Dashboard());
-                LocalDbContex.CreateTables();
                 LocalDbContex.SaveUser(App.Admin);
                 LocalDbContex.SaveBatchDetails(App.Admin.BatchDetails);
+                Application.Current.MainPage =
+                    new NavigationPage(new Dashboard());
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resultText.Text = "Something bad happened. Please check back in a short.";
+                throw e;
+                //resultText.Text = "Something bad happened. Please check back in a short.";
             }         
         }
 
