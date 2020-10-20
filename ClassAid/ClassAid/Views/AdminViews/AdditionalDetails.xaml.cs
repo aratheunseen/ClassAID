@@ -59,8 +59,8 @@ namespace ClassAid.Views.AdminViews
             }
             catch (Exception e)
             {
-                throw e;
-                //resultText.Text = "Something bad happened. Please check back in a short.";
+               // throw e;
+                resultText.Text = "Something bad happened. Please check back in a short.";
             }         
         }
 
