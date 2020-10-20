@@ -233,16 +233,16 @@ namespace ClassAid.DataContex
             {
                 string createTable = @"CREATE TABLE IF NOT EXISTS batchdetails (
                             Department text,Semester text,Section text,University text);";
-                cnn.ExecuteAsync(createTable);
+                cnn.Execute(createTable);
                 createTable = @"CREATE TABLE IF NOT EXISTS schedule (
                             Data text);";
-                cnn.ExecuteAsync(createTable);
+                cnn.Execute(createTable);
                 createTable = @"CREATE TABLE IF NOT EXISTS events (
                             Details text, Title text, Time text)";
-                cnn.ExecuteAsync(createTable);
+                cnn.Execute(createTable);
                 createTable = @"CREATE TABLE IF NOT EXISTS teachers (
                             Name text, Designation text, Phone text)";
-                cnn.ExecuteAsync(createTable);
+                cnn.Execute(createTable);
                 createTable = @"CREATE TABLE IF NOT EXISTS user (
                             TeamCode text, AdminKey text, Name text,
                             ID text, Phone text, Key text, IsActive boolean, 
