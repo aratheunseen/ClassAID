@@ -37,7 +37,7 @@
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
                        Margin="25,18,0,0"
-                       Source="logo.png"
+                       Source="icon.png"
                        HeightRequest="50"
                        WidthRequest="50">
                     <Image.GestureRecognizers>
