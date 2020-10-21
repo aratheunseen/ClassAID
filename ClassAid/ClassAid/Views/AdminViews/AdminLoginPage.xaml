@@ -33,7 +33,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userName" 
                        Style="{StaticResource ClassAidEntryDesign}"
-                       Placeholder="Username"
+                       Placeholder="Username (6-12 char)"
                        SelectionLength="6"
                        MaxLength="10"
                        TextChanged="Form_TextChanged"/>
@@ -41,7 +41,7 @@
                 <Frame Style="{StaticResource ClassAidFrameDesign}">
                     <Components:ClassAidEntry x:Name="userPass"
                                               Style="{StaticResource ClassAidEntryDesign}"
-                                              Placeholder="Password" 
+                                              Placeholder="Password (6-12 char)" 
                                               TextChanged="Form_TextChanged"
                                               SelectionLength="6"
                                               MaxLength="10"
