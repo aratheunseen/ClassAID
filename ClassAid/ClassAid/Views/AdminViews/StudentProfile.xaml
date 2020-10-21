@@ -4,6 +4,7 @@
              xmlns:users="clr-namespace:ClassAid.Models.Users"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.StudentProfile"
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              xmlns:Components="clr-namespace:ClassAid.CustomComponents" 
              xmlns:users1="clr-namespace:ClassAid.Models.Schedule"
              x:Name="This">
@@ -157,48 +158,43 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="users:Student">
                             <Frame>
-                                <Grid BackgroundColor="#FFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             Margin="30,10,0,0"
-                                             HeightRequest="5"
-                                             WidthRequest="5"
-                                             BackgroundColor="#6264a7"
-                                             CornerRadius="30"/>
-                                    <BoxView Grid.Row="0"
-                                             Grid.Column="1"
-                                             Margin="0,2,0,0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             HeightRequest="20"
-                                             WidthRequest="1"
-                                             BackgroundColor="#6264a7"/>
-                                    <Label x:Name="studentId"
-                                           Text="{Binding ID}"
-                                           Grid.Column="1"
+                                <Grid BackgroundColor="Transparent">
+                                    <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                        <sh:Shadows.Shades>
+                                            <sh:ImmutableShades>
+                                                <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                            </sh:ImmutableShades>
+                                        </sh:Shadows.Shades>
+                                        <Grid BackgroundColor="White" Padding="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding Name}"
                                            Margin="10,0,0,0"
-                                           FontSize="16"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
+                                           FontSize="Large"
+                                           TextColor="#6264a7"
                                            Grid.ColumnSpan="3"/>
-                                    <Label x:Name="studentName"
-                                           Text="{Binding Name}"
-                                           Margin="0,25,0,0"
-                                           Grid.Column="1"
-                                           FontSize="14"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
+                                            <Label Text="{Binding ID}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
                                            Grid.ColumnSpan="3"/>
-                                    <ImageButton x:Name="acceptBtn" 
+                                            <Label Text="{Binding Phone}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                            <ImageButton x:Name="acceptBtn" 
                                                  Clicked="AcceptBtn_Clicked"
                                                  Grid.Column="6"
                                                  BackgroundColor="Transparent"
@@ -209,7 +205,7 @@
                                                  VerticalOptions="Center"
                                                  CommandParameter="{Binding .}"
                                                  Margin="0,0,15,0"/>
-                                    <ImageButton x:Name="rejectBtn" 
+                                            <ImageButton x:Name="rejectBtn" 
                                                  Clicked="RejectBtn_Clicked"
                                                  Grid.Column="5"
                                                  BackgroundColor="Transparent"
@@ -220,6 +216,8 @@
                                                  VerticalOptions="Center"
                                                  CommandParameter="{Binding .}"
                                                  Margin="0,0,0,0"/>
+                                        </Grid>
+                                    </sh:Shadows>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -256,51 +254,48 @@
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="users1:Teacher">
-                            <Frame>
-                                <Grid BackgroundColor="#FFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             Margin="30,10,0,0"
-                                             HeightRequest="5"
-                                             WidthRequest="5"
-                                             BackgroundColor="#6264a7"
-                                             CornerRadius="30"/>
-                                    <BoxView Grid.Row="0"
-                                             Grid.Column="1"
-                                             Margin="0,2,0,0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             HeightRequest="20"
-                                             WidthRequest="1"
-                                             BackgroundColor="#6264a7"/>
-                                    <Label x:Name="teacherName"
-                                           Text="{Binding Name}"
-                                           Grid.Column="1"
-                                           Margin="10,2,0,0"
-                                           FontSize="14"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="4"/>
-                                    <Label x:Name="teacherDesignation"
-                                           Text="{Binding Designation}"
-                                           Margin="0,25,0,0"
-                                           Grid.Column="1"
-                                           FontSize="13"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="4"/>
-                                    <ImageButton x:Name="teacherCallBtn" 
+                            <Grid BackgroundColor="Transparent">
+                                <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+                                            <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Grid BackgroundColor="White" Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}"
+                                           Margin="10,0,0,0"
+                                           FontSize="Large"
+                                           TextColor="#6264a7"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Designation}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Phone}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <ImageButton x:Name="teacherCallBtn" 
                                                  Clicked="TeacherCallBtn_Clicked"
-                                                 Grid.Column="5"
+                                                 Grid.Column="4"
+                                                     Grid.ColumnSpan="2"
+                                                     Grid.Row="1"
+                                                     Grid.RowSpan="2"
                                                  BackgroundColor="Transparent"
                                                  Source="call.png"
                                                  HeightRequest="20" 
@@ -308,8 +303,9 @@
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  Margin="0,0,15,0"/>
-                                </Grid>
-                            </Frame>
+                                    </Grid>
+                                </sh:Shadows>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -343,61 +339,58 @@
                                 Margin="0,35,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="users:Student">
-                            <Frame>
-                                <Grid BackgroundColor="#FFF">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <BoxView Grid.Row="0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             Margin="30,10,0,0"
-                                             HeightRequest="5"
-                                             WidthRequest="5"
-                                             BackgroundColor="#6264a7"
-                                             CornerRadius="30"/>
-                                <BoxView Grid.Row="0"
-                                             Grid.Column="1"
-                                             Margin="0,2,0,0"
-                                             HorizontalOptions="Start"
-                                             VerticalOptions="Start" 
-                                             HeightRequest="20"
-                                             WidthRequest="1"
-                                             BackgroundColor="#6264a7"/>
-                                <Label x:Name="studentId"
-                                        Text="{Binding ID}"
-                                           Grid.Column="1"
+                            <Grid BackgroundColor="Transparent">
+                                <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+                                            <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Grid BackgroundColor="White" Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}"
                                            Margin="10,0,0,0"
-                                           FontSize="16"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="4"/>
-                                <Label x:Name="studentName"
-                                        Text="{Binding Name}"
-                                           Margin="0,25,0,0"
-                                           Grid.Column="1"
-                                           FontSize="14"
-                                           TextColor="Gray"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Start" 
-                                           Grid.ColumnSpan="4"/>
-                                <ImageButton x:Name="classMateCallBtn" 
-                                            Clicked="ClassMateCallBtn_Clicked"
-                                                 Grid.Column="5"
+                                           FontSize="Large"
+                                           TextColor="#6264a7"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding ID}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Phone}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <ImageButton x:Name="studentCallBtn" 
+                                                 Clicked="StudentCallBtn_Clicked"
+                                                 Grid.Column="4"
+                                                     Grid.ColumnSpan="2"
+                                                     Grid.Row="1"
+                                                     Grid.RowSpan="2"
                                                  BackgroundColor="Transparent"
-                                             CommandParameter="{Binding .}"
                                                  Source="call.png"
                                                  HeightRequest="20" 
                                                  WidthRequest="20" 
                                                  HorizontalOptions="End" 
                                                  VerticalOptions="Center"
                                                  Margin="0,0,15,0"/>
+                                    </Grid>
+                                </sh:Shadows>
                             </Grid>
-                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
