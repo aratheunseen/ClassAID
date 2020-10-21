@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:schedule="clr-namespace:ClassAid.Models.Schedule"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:schedule="clr-namespace:ClassAid.Models.Schedule"
              NavigationPage.HasNavigationBar="False"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              xmlns:users="clr-namespace:ClassAid.Models.Users"
+             xmlns:Components="clr-namespace:ClassAid.CustomComponents" 
              x:Class="ClassAid.Views.StudentViews.Profile"
              x:Name="This">
     <ContentPage.BindingContext>
@@ -191,7 +193,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
                 <Image Grid.Column="0"
-                       Grid.Row="3"
+                       Grid.Row="2"
                        Margin="0,5,0,0"
                        Source="teacher.png"
                        HeightRequest="24"
@@ -200,7 +202,7 @@
                        VerticalOptions="Center"/>
                 <Label Text="Teachers"
                        Grid.Column="1"
-                       Grid.Row="3"
+                       Grid.Row="2"
                        FontSize="Title"
                        TextColor="Black"
                        HorizontalOptions="Start"
