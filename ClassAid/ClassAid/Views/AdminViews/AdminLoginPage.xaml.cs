@@ -64,13 +64,12 @@ namespace ClassAid.Views.AdminViews
                     LocalDbContex.SaveUser(tempAdmin);
                     LocalDbContex.SaveEvents(App.Admin.EventList);
                     LocalDbContex.SaveSchedules(App.Admin.ScheduleList);
-
-                    Application.Current.MainPage =
-                        new NavigationPage(new Dashboard());
                     App.Admin.BatchDetails = tempAdmin.BatchDetails;
                     LocalDbContex.SaveBatchDetails(tempAdmin.BatchDetails);
                     LocalDbContex.SaveTeachers(tempAdmin.TeacherList);
                     LocalDbContex.SaveStudents(tempAdmin.StudentList);
+                    Application.Current.MainPage =
+                        new NavigationPage(new Dashboard());
                 }
             }
             else

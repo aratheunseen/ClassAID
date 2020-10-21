@@ -57,7 +57,7 @@ namespace ClassAid.Views.AdminViews
                 Application.Current.MainPage =
                     new NavigationPage(new Dashboard());
             }
-            catch (Exception e)
+            catch (Exception)
             {
                // throw e;
                 resultText.Text = "Something bad happened. Please check back in a short.";
