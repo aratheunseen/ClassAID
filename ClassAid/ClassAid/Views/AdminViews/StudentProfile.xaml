@@ -124,15 +124,186 @@
                              Margin="0,0,30,42"/>
                 <!--#endregion-->
 
+                
+                <!--#region Teacher-->
+                <!-- Teacher List Title -->
+                <Image Grid.Column="0"
+                       Grid.Row="1"
+                       Margin="0,0,0,0"
+                       Source="teacher.png"
+                       HeightRequest="24"
+                       WidthRequest="24"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start"/>
+                <Label Text="Teacher"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,0,0,0"
+                       Grid.ColumnSpan="2"/>
+
+                <!-- Teacher List Content -->
+                <CollectionView x:Name="TeacherCollectionView"
+                                SelectionMode="None"
+                                Grid.Row="1"
+                                MinimumHeightRequest="1"
+                                HeightRequest="340"
+                                Grid.ColumnSpan="6"
+                                Margin="0,35,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="users1:Teacher">
+                            <Grid BackgroundColor="Transparent">
+                                <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+                                            <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Grid BackgroundColor="White" Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}"
+                                           Margin="10,0,0,0"
+                                           FontSize="Large"
+                                           TextColor="#6264a7"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Designation}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Phone}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <ImageButton x:Name="teacherCallBtn" 
+                                                 Clicked="TeacherCallBtn_Clicked"
+                                                 Grid.Column="4"
+                                                     Grid.ColumnSpan="2"
+                                                     Grid.Row="1"
+                                                     Grid.RowSpan="2"
+                                                 BackgroundColor="Transparent"
+                                                 Source="call.png"
+                                                 HeightRequest="20" 
+                                                 WidthRequest="20" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center"
+                                                 Margin="0,0,15,0"/>
+                                    </Grid>
+                                </sh:Shadows>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--#endregion-->
+                <!--#region Classmate -->
+                <!-- Classmate Title -->
+                <Image Grid.Column="0"
+                       Grid.Row="2"
+                       Margin="0,25,0,40"
+                       Source="group.png"
+                       HeightRequest="24"
+                       WidthRequest="24"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start"/>
+                <Label Text="Classmate"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" 
+                       Margin="5,25,0,40"
+                       Grid.ColumnSpan="2"/>
+
+                <!-- Classmate Content -->
+                <CollectionView x:Name="ClassmateCollectionView"
+                                SelectionMode="None"
+                                Grid.Row="2"
+                                HeightRequest="340"
+                                Grid.ColumnSpan="6"
+                                Margin="0,35,0,0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="users:Student">
+                            <Grid BackgroundColor="Transparent">
+                                <sh:Shadows 
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="5,3,5,1"
+                                   BackgroundColor="Transparent">
+                                    <sh:Shadows.Shades>
+                                        <sh:ImmutableShades>
+                                            <sh:Shade BlurRadius="10"
+                                                  Opacity="0.5"
+                                                  Color="#E2E2F6" />
+                                        </sh:ImmutableShades>
+                                    </sh:Shadows.Shades>
+                                    <Grid BackgroundColor="White" Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}"
+                                           Margin="10,0,0,0"
+                                           FontSize="Large"
+                                           TextColor="#6264a7"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding ID}"
+                                           Grid.Row="1"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <Label Text="{Binding Phone}"
+                                           Grid.Row="2"
+                                           Margin="10,0,0,0"
+                                           FontSize="Body"
+                                           TextColor="#464775"
+                                           Grid.ColumnSpan="3"/>
+                                        <ImageButton x:Name="studentCallBtn"
+                                                 Grid.Column="4"
+                                                     Grid.ColumnSpan="2"
+                                                     Grid.Row="1"
+                                                     Grid.RowSpan="2"
+                                                 BackgroundColor="Transparent"
+                                                 Source="call.png"
+                                                 HeightRequest="20" 
+                                                 WidthRequest="20" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center"
+                                                 Margin="0,0,15,0"/>
+                                    </Grid>
+                                </sh:Shadows>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--#endregion-->
                 <!--#region Join Request area-->
                 <!-- Join Request Title -->
                 <StackLayout x:Name="RequestListTitle"
-                             Grid.Row="1"
+                             Grid.Row="3"
                              Grid.ColumnSpan="6"
                              Margin="40,0,0,0"
                              Orientation="Horizontal">
                     <Image Grid.Column="0"
-                       Grid.Row="1"
+                       Grid.Row="3"
                        Source="add_user.png"
                        HeightRequest="24"
                        WidthRequest="24"
@@ -140,7 +311,7 @@
                        VerticalOptions="Start"/>
                     <Label Text="Add User"
                        Grid.Column="1"
-                       Grid.Row="1"
+                       Grid.Row="3"
                        FontSize="20"
                        TextColor="Black"
                        HorizontalOptions="Start"
@@ -150,7 +321,7 @@
                 </StackLayout>
                 <!-- Join Request Content -->
                 <CollectionView x:Name="RequestCollectionView"
-                                Grid.Row="1"
+                                Grid.Row="3"
                                 Grid.ColumnSpan="6"
                                 HeightRequest="340"
                                 SelectionMode="None"
@@ -220,176 +391,6 @@
                                     </sh:Shadows>
                                 </Grid>
                             </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <!--#endregion-->
-                <!--#region Teacher-->
-                <!-- Teacher List Title -->
-                <Image Grid.Column="0"
-                       Grid.Row="2"
-                       Margin="0,0,0,0"
-                       Source="teacher.png"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start"/>
-                <Label Text="Teacher"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       FontSize="20"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,0,0,0"
-                       Grid.ColumnSpan="2"/>
-
-                <!-- Teacher List Content -->
-                <CollectionView x:Name="TeacherCollectionView"
-                                SelectionMode="None"
-                                Grid.Row="2"
-                                MinimumHeightRequest="1"
-                                HeightRequest="340"
-                                Grid.ColumnSpan="6"
-                                Margin="0,35,0,0">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users1:Teacher">
-                            <Grid BackgroundColor="Transparent">
-                                <sh:Shadows 
-                                   CornerRadius="10"
-                                   Padding="10"
-                                   Margin="5,3,5,1"
-                                   BackgroundColor="Transparent">
-                                    <sh:Shadows.Shades>
-                                        <sh:ImmutableShades>
-                                            <sh:Shade BlurRadius="10"
-                                                  Opacity="0.5"
-                                                  Color="#E2E2F6" />
-                                        </sh:ImmutableShades>
-                                    </sh:Shadows.Shades>
-                                    <Grid BackgroundColor="White" Padding="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Label Text="{Binding Name}"
-                                           Margin="10,0,0,0"
-                                           FontSize="Large"
-                                           TextColor="#6264a7"
-                                           Grid.ColumnSpan="3"/>
-                                        <Label Text="{Binding Designation}"
-                                           Grid.Row="1"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                        <Label Text="{Binding Phone}"
-                                           Grid.Row="2"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                        <ImageButton x:Name="teacherCallBtn" 
-                                                 Clicked="TeacherCallBtn_Clicked"
-                                                 Grid.Column="4"
-                                                     Grid.ColumnSpan="2"
-                                                     Grid.Row="1"
-                                                     Grid.RowSpan="2"
-                                                 BackgroundColor="Transparent"
-                                                 Source="call.png"
-                                                 HeightRequest="20" 
-                                                 WidthRequest="20" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 Margin="0,0,15,0"/>
-                                    </Grid>
-                                </sh:Shadows>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <!--#endregion-->
-                <!--#region Classmate -->
-                <!-- Classmate Title -->
-                <Image Grid.Column="0"
-                       Grid.Row="3"
-                       Margin="0,25,0,40"
-                       Source="group.png"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Start"/>
-                <Label Text="Classmate"
-                       Grid.Column="1"
-                       Grid.Row="3"
-                       FontSize="20"
-                       TextColor="Black"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Start" 
-                       Margin="5,25,0,40"
-                       Grid.ColumnSpan="2"/>
-
-                <!-- Classmate Content -->
-                <CollectionView x:Name="ClassmateCollectionView"
-                                SelectionMode="None"
-                                Grid.Row="3"
-                                HeightRequest="340"
-                                Grid.ColumnSpan="6"
-                                Margin="0,35,0,0">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="users:Student">
-                            <Grid BackgroundColor="Transparent">
-                                <sh:Shadows 
-                                   CornerRadius="10"
-                                   Padding="10"
-                                   Margin="5,3,5,1"
-                                   BackgroundColor="Transparent">
-                                    <sh:Shadows.Shades>
-                                        <sh:ImmutableShades>
-                                            <sh:Shade BlurRadius="10"
-                                                  Opacity="0.5"
-                                                  Color="#E2E2F6" />
-                                        </sh:ImmutableShades>
-                                    </sh:Shadows.Shades>
-                                    <Grid BackgroundColor="White" Padding="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Label Text="{Binding Name}"
-                                           Margin="10,0,0,0"
-                                           FontSize="Large"
-                                           TextColor="#6264a7"
-                                           Grid.ColumnSpan="3"/>
-                                        <Label Text="{Binding ID}"
-                                           Grid.Row="1"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                        <Label Text="{Binding Phone}"
-                                           Grid.Row="2"
-                                           Margin="10,0,0,0"
-                                           FontSize="Body"
-                                           TextColor="#464775"
-                                           Grid.ColumnSpan="3"/>
-                                        <ImageButton x:Name="studentCallBtn"
-                                                 Grid.Column="4"
-                                                     Grid.ColumnSpan="2"
-                                                     Grid.Row="1"
-                                                     Grid.RowSpan="2"
-                                                 BackgroundColor="Transparent"
-                                                 Source="call.png"
-                                                 HeightRequest="20" 
-                                                 WidthRequest="20" 
-                                                 HorizontalOptions="End" 
-                                                 VerticalOptions="Center"
-                                                 Margin="0,0,15,0"/>
-                                    </Grid>
-                                </sh:Shadows>
-                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
