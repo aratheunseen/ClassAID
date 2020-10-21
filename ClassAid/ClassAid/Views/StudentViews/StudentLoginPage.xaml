@@ -37,11 +37,11 @@
                                                   SelectionLength="6"
                                                   MaxLength="10"
                                                   TextChanged="Form_TextChanged"
-                                                  Placeholder="Username"/>
+                                                  Placeholder="Username (6-12 char)"/>
                     </Frame>
                     <Frame Style="{StaticResource ClassAidFrameDesign}">
                         <Components:ClassAidEntry x:Name="userPass"
-                                                  Placeholder="Password"
+                                                  Placeholder="Password (6-12 char)"
                                                   TextColor="#6264a7"
                                                   SelectionLength="6"
                                                   MaxLength="10"
