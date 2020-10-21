@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:schedule="clr-namespace:ClassAid.Models.Schedule"
-             xmlns:converter="clr-namespace:ClassAid.Models.Converter" xmlns:sh="http://sharpnado.com"
+             xmlns:converter="clr-namespace:ClassAid.Models.Converter" 
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              NavigationPage.HasNavigationBar="False"
              x:Class="ClassAid.Views.Dashboard"
              x:Name="This">
@@ -35,10 +36,10 @@
             <Grid Grid.ColumnSpan="6">
                 <Image HorizontalOptions="Start"
                        VerticalOptions="Start" 
-                       Margin="25,18,0,0"
+                       Margin="25,25,0,0"
                        Source="icon.png"
-                       HeightRequest="50"
-                       WidthRequest="50">
+                       HeightRequest="25"
+                       WidthRequest="25">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToAboutPageCommamd}"/>
                     </Image.GestureRecognizers>
