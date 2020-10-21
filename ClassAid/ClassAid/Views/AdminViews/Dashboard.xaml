@@ -50,7 +50,7 @@
                        Grid.ColumnSpan="3"
                        BorderColor="#6264a7"
                        BackgroundColor="Transparent"
-                       Margin="0,27,50,0"
+                       Margin="0,25,50,0"
                        Padding="5"
                        HorizontalOptions="Center"
                        VerticalOptions="Start">
