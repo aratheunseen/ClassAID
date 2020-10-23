@@ -1,4 +1,6 @@
-﻿using ClassAid.DataContex;
+﻿using Android.Text;
+using ClassAid.DataContex;
+using ClassAid.Models;
 using ClassAid.Models.Users;
 using Com.OneSignal;
 using System;
@@ -39,63 +41,70 @@ namespace ClassAid.Views.StudentViews
         }
         private async void ProceedBtn()
         {
-            try
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
-                Student tempStudent = new Student(userName.Text + "student", userPass.Text)
+                try
                 {
-                    IsAdmin = false
-                };
-
-                activityIndicator.IsRunning = true;
-                Student Student = await FirebaseHandler.GetStudentAsync(tempStudent.Key);
-
-                if (Student == null || Student.Name == null)
-                {
-                    activityIndicator.IsRunning = false;
-                    Student = tempStudent;
-                    await Navigation.PushAsync(
-                        new AdditionalDetails(Student));
-                    FirebaseHandler.InsertStudent(tempStudent);
-                }
-                else
-                {
-                    Admin Admin = await FirebaseHandler.GetAdminAsync(Student.AdminKey);
-
-                    activityIndicator.IsRunning = false;
-                    LocalDbContex.CreateTables();
-                    Preferences.Set(PrefKeys.IsLoggedIn, true);
-                    Preferences.Set(PrefKeys.AdminKey, Student.AdminKey);
-                    Preferences.Set(PrefKeys.IsAdmin, false);
-                    Preferences.Set(PrefKeys.Key, tempStudent.Key);
-
-                    if (Student.IsActive)
+                    Student tempStudent = new Student(userName.Text + "student", userPass.Text)
                     {
-                        LocalDbContex.SaveUser(Student);
-                        LocalDbContex.SaveUser(Admin);
-                        LocalDbContex.SaveSchedules(Admin.ScheduleList);
-                        LocalDbContex.SaveEvents(Admin.EventList);
+                        IsAdmin = false
+                    };
 
-                        Application.Current.MainPage =
-                            new NavigationPage(new Dashboard());
+                    activityIndicator.IsRunning = true;
+                    Student Student = await FirebaseHandler.GetStudentAsync(tempStudent.Key);
 
-                        LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
-                        LocalDbContex.SaveTeachers(Admin.TeacherList);
-                        LocalDbContex.SaveStudents(Admin.StudentList.Where(p => p.IsActive == true));
-
-                        OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
-                        OneSignal.Current.RegisterForPushNotifications();
+                    if (Student == null || Student.Name == null)
+                    {
+                        activityIndicator.IsRunning = false;
+                        Student = tempStudent;
+                        await Navigation.PushAsync(
+                            new AdditionalDetails(Student));
+                        FirebaseHandler.InsertStudent(tempStudent);
                     }
                     else
                     {
-                        LocalDbContex.SaveUser(Student);
-                        LocalDbContex.SaveUser(Admin);
-                        Application.Current.MainPage = new StudentNotActivatedPage(Student, Admin);
+                        Admin Admin = await FirebaseHandler.GetAdminAsync(Student.AdminKey);
+
+                        activityIndicator.IsRunning = false;
+                        LocalDbContex.CreateTables();
+                        Preferences.Set(PrefKeys.IsLoggedIn, true);
+                        Preferences.Set(PrefKeys.AdminKey, Student.AdminKey);
+                        Preferences.Set(PrefKeys.IsAdmin, false);
+                        Preferences.Set(PrefKeys.Key, tempStudent.Key);
+
+                        if (Student.IsActive)
+                        {
+                            LocalDbContex.SaveUser(Student);
+                            LocalDbContex.SaveUser(Admin);
+                            LocalDbContex.SaveSchedules(Admin.ScheduleList);
+                            LocalDbContex.SaveEvents(Admin.EventList);
+
+                            Application.Current.MainPage =
+                                new NavigationPage(new Dashboard());
+
+                            LocalDbContex.SaveBatchDetails(Admin.BatchDetails);
+                            LocalDbContex.SaveTeachers(Admin.TeacherList);
+                            LocalDbContex.SaveStudents(Admin.StudentList.Where(p => p.IsActive == true));
+
+                            OneSignal.Current.SendTag("AdminKey", tempStudent.AdminKey);
+                            OneSignal.Current.RegisterForPushNotifications();
+                        }
+                        else
+                        {
+                            LocalDbContex.SaveUser(Student);
+                            LocalDbContex.SaveUser(Admin);
+                            Application.Current.MainPage = new StudentNotActivatedPage(Student, Admin);
+                        }
                     }
                 }
+                catch (Exception)
+                {
+                    resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02";
+                }
             }
-            catch (Exception)
+            else
             {
-                resultText.Text = "Sorry something bad happened. ERROR code PCAiDx02";
+                DependencyService.Get<Toast>().Show("No INTERNET connection.");
             }
         }
     }
