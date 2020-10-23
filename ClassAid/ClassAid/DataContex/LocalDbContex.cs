@@ -37,6 +37,7 @@ namespace ClassAid.DataContex
         {
             using (IDbConnection db = new SqliteConnection(ConectionString))
             {
+                schedules = schedules.OrderBy(p => p.DayOfWeek).ThenBy(p => p.StartTime);
                 foreach (var item in schedules)
                 {
                     DynamicParameters parameters = new DynamicParameters();
