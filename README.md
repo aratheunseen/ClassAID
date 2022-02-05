@@ -1,6 +1,6 @@
 # ClassAID
 
-ClassAID is a application which has some necessary features like group chat with classmates, class schedule management, notice with push notification system, teacher and classmates contacts for school, college or university students.
+ClassAID is a application which has some necessary features like group chat with classmates, class schedule management, notice with push notification system, teachers and classmates contacts for school, college or university students.
 
 ![ClassAiD](https://user-images.githubusercontent.com/62181222/115115287-71ad1e80-9fb5-11eb-8479-a91cf27004c6.jpg)
 
