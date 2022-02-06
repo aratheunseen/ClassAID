@@ -13,10 +13,10 @@ Step-1: Download or clone this repository -
 Step-2: Open `ClassAid.sln` in Visual Studio.
 
 ## Required Tools
-- Visual Studio
-- Xamarin
-- C#
-- Google Firebase
-- OneSignal
-- Sqlite
+- Visual Studio (IDE)
+- Xamarin (Cross platform development)
+- C# (Programming Language)
+- Google Firebase (Database)
+- OneSignal (Push Notification)
+- Sqlite (Local Database)
 
