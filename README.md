@@ -12,7 +12,7 @@ Step-1: Download or clone this repository -
 
 Step-2: Open `ClassAid.sln` in Visual Studio.
 
-## Required Tools
+## Requirements
 - Visual Studio (IDE)
 - Xamarin (Cross platform development)
 - C# (Programming Language)
